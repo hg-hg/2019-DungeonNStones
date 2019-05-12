@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>testWidgetClass</class>
+ <widget class="QMainWindow" name="testWidgetClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>testWidget</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="GameBoard" name="gb" native="true">
+    <property name="geometry">
+     <rect>
+      <x>209</x>
+      <y>11</y>
+      <width>482</width>
+      <height>478</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="player" native="true">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>11</y>
+      <width>192</width>
+      <height>478</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+   </widget>
+   <widget class="QWidget" name="enemy" native="true">
+    <property name="geometry">
+     <rect>
+      <x>697</x>
+      <y>11</y>
+      <width>192</width>
+      <height>478</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GameBoard</class>
+   <extends>QWidget</extends>
+   <header location="global">GameBoard.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
+ <connections/>
+</ui>
