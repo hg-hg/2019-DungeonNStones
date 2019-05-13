@@ -16,7 +16,7 @@ void CrushAnimation::add(Stone * stone)
 QPoint CrushAnimation::tremble(int t)
 {
 	/*QMessageBox::information(NULL, "test", "");*/
-	return QPoint((int) 3 * cos(3 * t), (int) 3 * sin(5 * t));
+	return QPoint((int) 3 * cos(3 * t), (int) 3 * sin(3 * t));
 }
 
 void CrushAnimation::timerEvent(QTimerEvent * event)
@@ -30,6 +30,7 @@ void CrushAnimation::timerEvent(QTimerEvent * event)
 		}
 	}
 	else {
+		for (auto& stone : stonesToCrush) stone->isAnimating = false;
 		setup();
 		emit finished();
 	}

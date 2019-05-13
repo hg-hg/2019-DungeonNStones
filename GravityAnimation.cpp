@@ -71,3 +71,4 @@ void GravityAnimation::setup()
 	killTimer(timerId);
 	isAnimating = false;
 }
+

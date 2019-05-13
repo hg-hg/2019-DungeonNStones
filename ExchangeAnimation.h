@@ -20,4 +20,6 @@ private slots:
 private:
 	Stone* first;
 	Stone* second;
+	int nomalTime = 150;
+	int fasttime = 100;
 };

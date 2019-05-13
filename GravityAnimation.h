@@ -16,7 +16,6 @@ protected:
 
 private:
 	void setup();
-
 signals:
 	void finished();
 
@@ -26,7 +25,6 @@ public slots:
 public:
 	qreal accelerationX = 0;
 	qreal accelerationY = 3;
-
 protected:
 	int timerId;
 

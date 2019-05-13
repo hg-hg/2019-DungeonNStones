@@ -37,6 +37,7 @@ private:
 	void evaluatePath(QVector<QPair<int, int>>& stones);
 	void evaluateStonesToCrush(QVector<QPair<int, int>>& stones);
 	void animateCrushingStones();
+	void waitForStopAnimation();
 signals:
 	void stonesCrushing(int hp, int damage, int mp);
 

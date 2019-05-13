@@ -36,7 +36,8 @@ void GameBoard::deleteStone()
 
 void GameBoard::deleteStone(int col, int row)
 {
-	if (isAnimating) return;
+	waitForStopAnimation();
+	//if (isAnimating) return;
 	if (!positionExist(col) || !positionExist(row)) return;
 	if (board[col][row] == nullptr) return;
 	stoneToCrush.append(qMakePair(col, row));
@@ -260,8 +261,18 @@ void GameBoard::animateCrushingStones()
 	crushAnimation->animate(15);
 }
 
+void GameBoard::waitForStopAnimation()
+{
+	while (isAnimating) {
+		QEventLoop loop;
+		QTimer::singleShot(50, &loop, SLOT(quit()));
+		loop.exec();
+	}
+}
+
 void GameBoard::changeStone(int row, int col, int type)
 {
+	waitForStopAnimation();
 	auto stone = board[col][row];
 	stoneManager.changeStone(stone, type, this);
 }
@@ -277,7 +288,7 @@ void GameBoard::deleteRect()
 
 void GameBoard::deleteRect(int col, int row, int width, int height)
 {
-	if (isAnimating) return;
+	waitForStopAnimation();
 	if (!positionExist(col) || !positionExist(row)) return;
 	int destX = col + width;
 	int destY = row + height;
@@ -304,7 +315,7 @@ void GameBoard::forceExchange()
 
 void GameBoard::forceExchange(int x1, int y1, int x2, int y2)
 {
-	if (isAnimating) return;
+	waitForStopAnimation();
 	setMoveData(x1, y1, x2, y2);
 	evaluate(Force);
 }
