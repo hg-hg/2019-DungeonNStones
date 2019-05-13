@@ -8,6 +8,10 @@ ExchangeAnimation::ExchangeAnimation(QObject *parent)
 
 void ExchangeAnimation::legalExchange(Stone * one, Stone * two)
 {
+	first = one;
+	second = two;
+	first->isAnimating = true;
+	second->isAnimating = true;
 	/*do not use QRect(QWidget*->rect())!!! I have wasted time finding this problem!!!
 		Or nothing changed at all, please refer to the doc to find out the reason*/
 	auto a1 = new QPropertyAnimation(one, "geometry");
@@ -30,6 +34,11 @@ void ExchangeAnimation::legalExchange(Stone * one, Stone * two)
 
 void ExchangeAnimation::illegalExchange(Stone * one, Stone * two)
 {
+	first = one;
+	second = two;
+	first->isAnimating = true;
+	second->isAnimating = true;
+
 	int dx = one->x() - two->x();
 	int dy = one->y() - two->y();
 
@@ -70,5 +79,7 @@ void ExchangeAnimation::illegalExchange(Stone * one, Stone * two)
 
 void ExchangeAnimation::sendFinishedMessage()
 {
+	first->isAnimating = false;
+	second->isAnimating = false;
 	emit(finished());
 }

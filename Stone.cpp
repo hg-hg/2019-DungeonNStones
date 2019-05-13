@@ -35,12 +35,32 @@ bool Stone::match(const Stone * stone) const
 
 void Stone::paintEvent(QPaintEvent *event) {
 	QPainter painter(this);
+	
 	painter.fillRect(event->rect(), QBrush(background));
 	painter.drawPixmap(rect(), foreground);
+	if (start) {
+		painter.setPen(edge);
+		painter.drawRect(rect());
+	}
 }
 
 void Stone::mouseReleaseEvent(QMouseEvent *) {
+	if (isAnimating) return;
 	emit clicked(this);
+}
+
+void Stone::enterEvent(QEvent * event)
+{
+	start = true;
+	edge.setColor(QColor(0xFF, 0xFA, 0xCD, 0xDD));
+	edge.setWidth(5);
+	update();
+}
+
+void Stone::leaveEvent(QEvent * event)
+{
+	edge.setColor(background);
+	update();
 }
 
 void Stone::setData()

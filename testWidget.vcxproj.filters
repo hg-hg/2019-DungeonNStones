@@ -81,6 +81,9 @@
     <ClCompile Include="ExchangeAnimation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DeleteCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -131,6 +134,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ExchangeAnimation.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="DeleteCommand.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

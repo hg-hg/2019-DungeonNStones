@@ -27,18 +27,37 @@ void GameBoard::clickedStone(Stone* stone) {
 	}
 }
 
+void GameBoard::deleteStone()
+{
+	int row = qrand() % boardSize;
+	int col = qrand() % boardSize;
+	deleteStone(row, col);
+}
+
+void GameBoard::deleteStone(int col, int row)
+{
+	if (isAnimating) return;
+	if (!positionExist(col) || !positionExist(row)) return;
+	if (board[col][row] == nullptr) return;
+	stoneToCrush.append(qMakePair(col, row));
+	gravity();
+}
+
 void GameBoard::endMove() {
+	isAnimating = false;
 	if (stOne.size() >= 3) evaluateStonesToCrush(stOne);
 	if (stTwo.size() >= 3) evaluateStonesToCrush(stTwo);
-	if (es == Click) animateCrushingStones();
+	if (es == Click || es == Force) animateCrushingStones();
 }
 
 void GameBoard::fillBoard()
 {
-	/*if delete next tow lines, you'll get the same board every time
-		so try it if you are testing the game because default board is good*/
+	/*this check if the board is alreay filled.
+		If filled, delete this.*/
+	if (!board.isEmpty()) 
+		for (auto& col : board) for (auto& row : col) delete row;
+	else board.resize(boardSize);
 	
-	board.resize(boardSize);
 	int stoneSize = Stone::size;
 	/*remember: board[col][row]
 		because first x then y*/
@@ -48,10 +67,12 @@ void GameBoard::fillBoard()
  		r.resize(boardSize);
 		for (int row = 0; row < boardSize; row++) {
 			r[row] = stoneManager.getStone(this);
+			r[row]->show();
 			r[row]->move(col * stoneSize, row * stoneSize);
 		}
 	}
 
+	/*prevent 3 or more linked stones before the game start*/
 	for (int col = 0; col < boardSize; col++) {
 		for (int row = 0; row < boardSize; row++) {
 			setMoveData(col, row, col, row);
@@ -122,18 +143,23 @@ bool GameBoard::evaluate(EvaluateState state, QVector<QVector<bool>>& visited)
 		evaluatePath(stTwo);
 	}
 	if (stOne.size() >= 3 || stTwo.size() >= 3) {
-		if (!sameLocation && state == Click) {
+		if (!sameLocation && (state == Click || state == Force)) {
+			isAnimating = true;
 			exchangeAnimaion->legalExchange(st1, st2);
 		}
 		else if (state == Gravity) {
 			endMove();
 		}
-		else if (!sameLocation && state == NORMAL) {
+		else if (!sameLocation && state == Normal) {
 			endMove();
 			board[md.firstX][md.firstY] = st1;
 			board[md.secondX][md.secondY] = st2;
 		}
 		return true;
+	}
+	else if (state == Force) {
+		isAnimating = true;
+		exchangeAnimaion->legalExchange(st1, st2);
 	}
 	else {
 		/*move is illegal, so we move two stones back*/
@@ -143,7 +169,7 @@ bool GameBoard::evaluate(EvaluateState state, QVector<QVector<bool>>& visited)
 		board[md.secondX][md.secondY] = st2;
 		return false;
 	}
-	
+	return true;
 }
 
 void GameBoard::initializeVisitedVector(QVector<QVector<bool>>& visited)
@@ -230,7 +256,57 @@ void GameBoard::animateCrushingStones()
 	/*15 is just a magic number, change it if you want.
 		But DO NOT EDIT THIS COMMENT 
 		in case I want to change it back but forget the default value*/
+	isAnimating = true;
 	crushAnimation->animate(15);
+}
+
+void GameBoard::changeStone(int row, int col, int type)
+{
+	auto stone = board[col][row];
+	stoneManager.changeStone(stone, type, this);
+}
+
+void GameBoard::deleteRect()
+{
+	int row = qrand() % boardSize;
+	int col = qrand() % boardSize;
+	int width = qMin(qrand() % boardSize, boardSize - col - 1);
+	int height = qMin(qrand() % boardSize, boardSize - row - 1);
+	deleteRect(col, row, width, height);
+}
+
+void GameBoard::deleteRect(int col, int row, int width, int height)
+{
+	if (isAnimating) return;
+	if (!positionExist(col) || !positionExist(row)) return;
+	int destX = col + width;
+	int destY = row + height;
+	if (!positionExist(destX) || !positionExist(destY)) return;
+	for (int c = col; c <= destX; c++) for (int r = row; r <= destY; r++)
+		stoneToCrush.append(qMakePair(c, r));
+	gravity();
+}
+
+void GameBoard::forceExchange()
+{
+	int row = qrand() % boardSize;
+	int col = qrand() % boardSize;
+	if (col < row) {
+		if (positionExist(col + 1)) forceExchange(col, row, col + 1, row);
+		else forceExchange(col, row, col - 1, row);
+	}
+	else {
+		if (positionExist(row + 1)) forceExchange(col, row, col, row + 1);
+		else forceExchange(col, row, col, row - 1);
+	}
+	
+}
+
+void GameBoard::forceExchange(int x1, int y1, int x2, int y2)
+{
+	if (isAnimating) return;
+	setMoveData(x1, y1, x2, y2);
+	evaluate(Force);
 }
 
 void GameBoard::gravity()
@@ -250,28 +326,6 @@ void GameBoard::gravity()
 	//for example, if you want to make the stone move from button to top, change the second loop from 0 to max.
 	//if you want to change the move from left to right, change the loop order, serach row first.
 	//dy indicates the length it moves.
-
-	//for (int col = 0; col < boardSize; col++) {
-	//	int dy = 0;
-	//	auto& column = board[col];
-	//	for (int row = boardSize - 1; row >= 0; row--) {
-	//		Stone* stone = column[row];
-	//		//if (!stone->isValid()) dy++;
-	//		if (stone == nullptr) dy++;
-	//		else {
-	//			auto p = stone->pos();
-	//			p.setY(p.y() + dy * stone->size);
-	//			if (dy == 0) continue; //it means no move
-	//			
-	//			board[col][row + dy] = stone;
-	//			board[col][row] = nullptr;
-	//			gravityAnimation->add(board[col][row + dy], p);
-	//		}
-	//	}
-	//	
-	//	if (dy > maxDy) maxDy = dy;
-	//}
-
 	for (auto& col : board) {
 		int dy = 0;
 		for (int row = boardSize - 1; row >= 0; row--) {
@@ -304,19 +358,22 @@ void GameBoard::gravity()
 			gravityAnimation->add(column[row], p);
 		}
 	}
+	isAnimating = true;
 	gravityAnimation->animate();
 	
 }
 
 void GameBoard::gravityFinished()
 {
+	isAnimating = false;
 	bool flag = false;
 	for (int col = 0; col < boardSize; col++) {
 		for (int row = 0; row < boardSize; row++) {
 			setMoveData(col, row, col, row);
-			flag = evaluate(Gravity) || flag;
+			if (evaluate(Gravity)) flag = true;
 		}
 	}
 	first = second = nullptr;
+	
 	if (flag) animateCrushingStones();
 }

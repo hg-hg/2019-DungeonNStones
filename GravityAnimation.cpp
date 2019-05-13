@@ -11,6 +11,7 @@ void GravityAnimation::add(Stone * stone, QPoint endPos)
 {
 	if (isAnimating) return;
 	data.push_back(qMakePair(stone, endPos));
+	stone->isAnimating = true;
 }
 
 void GravityAnimation::timerEvent(QTimerEvent * event)
@@ -46,7 +47,10 @@ void GravityAnimation::timerEvent(QTimerEvent * event)
 		}
 
 		stone->move(p);
-		if (!flag) it = data.erase(it);
+		if (!flag) {
+			it->first->isAnimating = false;
+			it = data.erase(it); 
+		}
 		else it++;
 	}
 	if (data.isEmpty()) {

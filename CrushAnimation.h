@@ -23,6 +23,7 @@ protected:
 
 private:
 	void setup();
+	void changeAlpha(Stone* stone);
 
 public slots:
 	void animate(int duration);

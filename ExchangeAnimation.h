@@ -16,4 +16,8 @@ signals:
 
 private slots:
 	void sendFinishedMessage();
+
+private:
+	Stone* first;
+	Stone* second;
 };

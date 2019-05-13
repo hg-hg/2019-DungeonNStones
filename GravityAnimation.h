@@ -8,7 +8,7 @@ class GravityAnimation : public QObject
 	Q_OBJECT
 
 public:
-	explicit GravityAnimation(QObject *parent);
+	explicit GravityAnimation(QObject *parent = Q_NULLPTR);
 	void add(Stone* stone, QPoint endPos);
 
 protected:

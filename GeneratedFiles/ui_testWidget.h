@@ -13,6 +13,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +23,10 @@ class Ui_testWidgetClass
 public:
     QWidget *centralWidget;
     GameBoard *gb;
+    QPushButton *resetGB;
+    QPushButton *deleteStone;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
     QWidget *player;
     QWidget *enemy;
 
@@ -35,6 +40,18 @@ public:
         gb = new GameBoard(centralWidget);
         gb->setObjectName(QString::fromUtf8("gb"));
         gb->setGeometry(QRect(209, 11, 482, 478));
+        resetGB = new QPushButton(gb);
+        resetGB->setObjectName(QString::fromUtf8("resetGB"));
+        resetGB->setGeometry(QRect(250, 450, 93, 28));
+        deleteStone = new QPushButton(gb);
+        deleteStone->setObjectName(QString::fromUtf8("deleteStone"));
+        deleteStone->setGeometry(QRect(360, 450, 93, 28));
+        pushButton = new QPushButton(gb);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(140, 450, 93, 28));
+        pushButton_2 = new QPushButton(gb);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(30, 450, 93, 28));
         player = new QWidget(centralWidget);
         player->setObjectName(QString::fromUtf8("player"));
         player->setGeometry(QRect(11, 11, 192, 478));
@@ -51,6 +68,10 @@ public:
         testWidgetClass->setCentralWidget(centralWidget);
 
         retranslateUi(testWidgetClass);
+        QObject::connect(resetGB, SIGNAL(clicked()), gb, SLOT(fillBoard()));
+        QObject::connect(deleteStone, SIGNAL(clicked()), gb, SLOT(deleteStone()));
+        QObject::connect(pushButton, SIGNAL(clicked()), gb, SLOT(deleteRect()));
+        QObject::connect(pushButton_2, SIGNAL(clicked()), gb, SLOT(forceExchange()));
 
         QMetaObject::connectSlotsByName(testWidgetClass);
     } // setupUi
@@ -58,6 +79,10 @@ public:
     void retranslateUi(QMainWindow *testWidgetClass)
     {
         testWidgetClass->setWindowTitle(QApplication::translate("testWidgetClass", "testWidget", nullptr));
+        resetGB->setText(QApplication::translate("testWidgetClass", "reset", nullptr));
+        deleteStone->setText(QApplication::translate("testWidgetClass", "delete", nullptr));
+        pushButton->setText(QApplication::translate("testWidgetClass", "rect", nullptr));
+        pushButton_2->setText(QApplication::translate("testWidgetClass", "exchange", nullptr));
     } // retranslateUi
 
 };

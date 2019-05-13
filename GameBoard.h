@@ -25,24 +25,31 @@ class GameBoard : public QWidget
 /*fuctions*/
 public:
 	GameBoard(QWidget *parent = Q_NULLPTR);
-	void fillBoard();
+	
 	void setMoveData(int fx, int fy, int sx, int sy);
 private:
 	bool isTwoStonesConnected();
-	bool evaluate(EvaluateState state = NORMAL, QVector<QVector<bool>>& visited = QVector<QVector<bool>>(0));
+	bool evaluate(EvaluateState state = Normal, QVector<QVector<bool>>& visited = QVector<QVector<bool>>(0));
 	void initializeVisitedVector(QVector<QVector<bool>>& visited);
 	bool positionExist(const int pos) const;
 	bool positionExist(const MoveData mv) const;
 	void DFS(int x, int y, QVector<QVector<bool>>& visited, QVector<QPair<int, int>>& stones);
 	void evaluatePath(QVector<QPair<int, int>>& stones);
 	void evaluateStonesToCrush(QVector<QPair<int, int>>& stones);
-	
+	void animateCrushingStones();
 signals:
 	void stonesCrushing(int hp, int damage, int mp);
 
 public slots:
+	void fillBoard();
 	void clickedStone(Stone* stone);//invoke by Stone::clicked()
-	void animateCrushingStones();
+	void deleteStone();
+	void deleteStone(int col, int row);
+	void changeStone(int row, int col, int type);
+	void deleteRect();
+	void deleteRect(int col, int row, int width, int height);
+	void forceExchange();
+	void forceExchange(int x1, int y1, int x2, int y2);
 protected slots:
 	void endMove();
 	void gravity();
@@ -52,6 +59,7 @@ public:
 	const int boardSize = 8;
 	QVector<QVector<Stone*>> board;
 private:
+	bool isAnimating = false;
 	Stone* first;
 	Stone* second;
 	QPoint firstPos;

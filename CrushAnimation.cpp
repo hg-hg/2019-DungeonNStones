@@ -23,7 +23,11 @@ void CrushAnimation::timerEvent(QTimerEvent * event)
 {
 	if (t < duration) {
 		t++;
-		for (auto& widget : stonesToCrush) widget->move(tremble(t) + widget->pos());
+		for (auto& stone : stonesToCrush) { 
+			stone->isAnimating = true;
+			stone->move(tremble(t) + stone->pos()); 
+			changeAlpha(stone);
+		}
 	}
 	else {
 		setup();
@@ -37,6 +41,13 @@ void CrushAnimation::setup()
 	stonesToCrush.clear();
 	t = 0;
 	isAnimating = false;
+}
+
+void CrushAnimation::changeAlpha(Stone * stone)
+{
+	int alpha = 256 / duration * t;
+	if (alpha > 256) alpha = 256;
+	stone->background.setAlpha(alpha);
 }
 
 void CrushAnimation::animate(int duration) {

@@ -8,7 +8,7 @@ enum StoneType{
 };
 
 enum EvaluateState {
-	Click, Gravity, NORMAL
+	Click, Gravity, Normal, Force
 	// gravity means after crushing stones
 };
 
