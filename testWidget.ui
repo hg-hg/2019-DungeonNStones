@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>500</height>
+    <width>1292</width>
+    <height>835</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,17 +17,17 @@
    <widget class="GameBoard" name="gb" native="true">
     <property name="geometry">
      <rect>
-      <x>209</x>
-      <y>11</y>
-      <width>482</width>
-      <height>478</height>
+      <x>260</x>
+      <y>10</y>
+      <width>741</width>
+      <height>771</height>
      </rect>
     </property>
     <widget class="QPushButton" name="resetGB">
      <property name="geometry">
       <rect>
-       <x>250</x>
-       <y>450</y>
+       <x>510</x>
+       <y>740</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -39,8 +39,8 @@
     <widget class="QPushButton" name="deleteStone">
      <property name="geometry">
       <rect>
-       <x>360</x>
-       <y>450</y>
+       <x>640</x>
+       <y>740</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -52,8 +52,8 @@
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>450</y>
+       <x>510</x>
+       <y>700</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -65,8 +65,8 @@
     <widget class="QPushButton" name="pushButton_2">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>450</y>
+       <x>640</x>
+       <y>700</y>
        <width>93</width>
        <height>28</height>
       </rect>
@@ -81,8 +81,8 @@
      <rect>
       <x>11</x>
       <y>11</y>
-      <width>192</width>
-      <height>478</height>
+      <width>241</width>
+      <height>651</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -95,10 +95,10 @@
    <widget class="QWidget" name="enemy" native="true">
     <property name="geometry">
      <rect>
-      <x>697</x>
-      <y>11</y>
-      <width>192</width>
-      <height>478</height>
+      <x>1060</x>
+      <y>80</y>
+      <width>211</width>
+      <height>661</height>
      </rect>
     </property>
     <property name="sizePolicy">
