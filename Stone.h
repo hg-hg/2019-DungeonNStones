@@ -18,7 +18,7 @@ public:
 	Stone(const Stone& stone);
 	bool isValid() const;
 	QSize sizeHint() const override;
-	static const int size = 50;
+	static const int size = 64;
 	bool match(const Stone* stone) const;
 
 protected:
@@ -43,5 +43,5 @@ public:
 	bool isAnimating = false;
 private:
 	bool start = false;
-
+	QSize defaultSize = QSize(25, 25);
 };

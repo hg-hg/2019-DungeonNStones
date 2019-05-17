@@ -46,6 +46,7 @@ void GameBoard::deleteStone(int col, int row)
 
 void GameBoard::endMove() {
 	isAnimating = false;
+	for (auto& col : board) for (auto& row : col) row->isAnimating = false;
 	if (stOne.size() >= 3) evaluateStonesToCrush(stOne);
 	if (stTwo.size() >= 3) evaluateStonesToCrush(stTwo);
 	if (es == Click || es == Force) animateCrushingStones();
@@ -244,6 +245,10 @@ void GameBoard::evaluateStonesToCrush(QVector<QPair<int, int>>& stones)
 		damage += st->DAMAGE;
 		mp += st->MP;
 	}
+	int bouns = stones.size();
+	hp *= bouns;
+	damage *= bouns;
+	mp *= bouns;
 	emit stonesCrushing(hp, damage, mp);
 }
 

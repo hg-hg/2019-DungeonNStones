@@ -24,7 +24,7 @@ bool Stone::isValid() const
 
 QSize Stone::sizeHint() const
 {
-	return QSize(50, 50);
+	return QSize(size, size);
 }
 
 bool Stone::match(const Stone * stone) const
@@ -35,7 +35,7 @@ bool Stone::match(const Stone * stone) const
 
 void Stone::paintEvent(QPaintEvent *event) {
 	QPainter painter(this);
-	
+	//foreground = foreground.scaled(defaultSize, Qt::KeepAspectRatio);
 	painter.fillRect(event->rect(), QBrush(background));
 	painter.drawPixmap(rect(), foreground);
 	if (start) {
@@ -72,7 +72,7 @@ void Stone::setData()
 
 void Stone::setImage()
 {
-	background = Qt::white;
-	foreground = QPixmap("icon.png");
+	background = Qt::black;
+	foreground = QPixmap(":/foreground/Resources/foreground/icon.png");
 }
 
