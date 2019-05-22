@@ -1,4 +1,5 @@
-# 2019-BattleBlocks[TOC]
+# 2019-BattleBlocks
+[TOC]
 
 # 需要展示的不同界面
 
