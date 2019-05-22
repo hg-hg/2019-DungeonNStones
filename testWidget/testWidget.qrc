@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/foreground">
+        <file>Resources/foreground/damage.png</file>
+        <file>Resources/foreground/dm.png</file>
+        <file>Resources/foreground/hd.png</file>
+        <file>Resources/foreground/hm.png</file>
+        <file>Resources/foreground/hp.png</file>
+        <file>Resources/foreground/icon.png</file>
+        <file>Resources/foreground/mp.png</file>
+    </qresource>
+</RCC>

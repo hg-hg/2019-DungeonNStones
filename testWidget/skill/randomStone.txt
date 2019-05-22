@@ -1,0 +1,3 @@
+Stone
+Delete random stone
+100

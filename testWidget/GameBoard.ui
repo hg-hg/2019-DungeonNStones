@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GameBoard</class>
+ <widget class="QWidget" name="GameBoard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1112</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="Player" name="player" native="true">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>1</y>
+     <width>300</width>
+     <height>641</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="GameLogic" name="gameCore" native="true">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>50</y>
+     <width>512</width>
+     <height>512</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>512</width>
+     <height>512</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="Player" name="enemy" native="true">
+   <property name="geometry">
+    <rect>
+     <x>812</x>
+     <y>1</y>
+     <width>300</width>
+     <height>641</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Player</class>
+   <extends>QWidget</extends>
+   <header location="global">player.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>GameLogic</class>
+   <extends>QWidget</extends>
+   <header location="global">gamelogic.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

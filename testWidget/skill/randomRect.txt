@@ -1,0 +1,3 @@
+Rect
+Delete random rect
+500

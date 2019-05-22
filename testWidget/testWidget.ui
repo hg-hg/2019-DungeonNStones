@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>testWidgetClass</class>
+ <widget class="QMainWindow" name="testWidgetClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1292</width>
+    <height>835</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>testWidget</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="GameBoard" name="gameBoard" native="true">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>1161</width>
+      <height>791</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GameBoard</class>
+   <extends>QWidget</extends>
+   <header location="global">gameboard.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,3 @@
+exchange
+exchange Random connected stones
+40
