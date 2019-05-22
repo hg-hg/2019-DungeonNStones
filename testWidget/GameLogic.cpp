@@ -265,7 +265,9 @@ void GameLogic::evaluateStonesToCrush(QVector<QPair<int, int>>& path)
 		damage += st->DAMAGE;
 		mp += st->MP;
 	}
-	int bouns = path.size() - 2;
+	int bouns = path.size();
+	if (bouns <= 3) bouns = 1;
+	else bouns -= 1;
 	hp *= bouns;
 	damage *= bouns;
 	mp *= bouns;
