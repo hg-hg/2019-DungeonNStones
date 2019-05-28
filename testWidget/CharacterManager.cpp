@@ -1,6 +1,16 @@
 #include "stdafx.h"
 #include "CharacterManager.h"
 
+CharacterManager* CharacterManager::instance = nullptr;
+
+CharacterManager* CharacterManager:: getInstance() {
+	if (instance == nullptr) {
+		instance = new CharacterManager();
+		atexit(release);
+	}
+	return instance;
+}
+
 CharacterManager::CharacterManager(QObject *parent)
 	: QObject(parent)
 {
@@ -9,6 +19,14 @@ CharacterManager::CharacterManager(QObject *parent)
 
 CharacterManager::~CharacterManager()
 {
+}
+
+void CharacterManager::release()
+{
+	if (instance) {
+		delete instance;
+		instance = nullptr;
+	}
 }
 
 Character* CharacterManager::getCharacter(QString name) const

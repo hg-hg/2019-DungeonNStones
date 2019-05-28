@@ -6,6 +6,8 @@ testWidget::testWidget(QWidget *parent)
 {
 	ui.setupUi(this);
 	am->setCurrentAccount("yuri");
-	ui.gameBoard->setData(am->getCurrentAccount(),cm->getCharacter("Test"), cm->getCharacter("Test2"));
+	account = am->getCurrentAccount();
+	ui.gameBoard->setData(account, account->getSelectedCharacter(), cm->getCharacter("Test2"));
+	qDebug() << Account::getInstance()->name;
 }
 

@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "AccountManager.h"
 
-AccountManager::AccountManager(QObject *parent, CharacterManager* chaMa)
-	: QObject(parent), cm(chaMa)
+AccountManager::AccountManager(QObject *parent)
+	: QObject(parent)
 {
 }
 
@@ -22,7 +22,8 @@ bool AccountManager::setCurrentAccount(QString accountName)
 	int money;
 	name = in.readLine();
 	money = in.readLine().toInt();
-	current = new Account(this, cm);
+	//current = new Account(this, cm);
+	
 	current->name = name;
 	current->money = money;
 	character = in.readLine();

@@ -1,18 +1,19 @@
 #pragma once
 
 #include <QObject>
-#include "Account.h"
 #include "CharacterManager.h"
+#include "Account.h"
+
 class AccountManager : public QObject
 {
 	Q_OBJECT
 
 public:
-	AccountManager(QObject *parent, CharacterManager* chaMa);
+	AccountManager(QObject *parent = Q_NULLPTR);
 	~AccountManager();
 	bool setCurrentAccount(QString accountName);
 	Account* getCurrentAccount() const;
 private:
-	Account* current;
-	CharacterManager* cm;
+	Account* current = Account::getInstance();
+	CharacterManager* cm = CharacterManager::getInstance();
 };
