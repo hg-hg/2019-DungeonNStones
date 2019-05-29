@@ -56,6 +56,7 @@ public slots:
 	void forceExchange(int x1, int y1, int x2, int y2);
 	void damage(QString account);
 	void heal(QString account);
+	void bladeSlash();
 protected slots:
 	void endMove();
 	void gravity();

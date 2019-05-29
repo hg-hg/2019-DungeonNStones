@@ -61,6 +61,7 @@ void GameLogic::useSkill(QString skill, QString account)
 	else if (skill == "Stone") deleteStone();
 	else if (skill == "damage") damage(account);
 	else if (skill == "heal") heal(account);
+	else if (skill == "BladeSlash") bladeSlash();
 }
 
 void GameLogic::fillBoard()
@@ -363,6 +364,12 @@ void GameLogic::damage(QString account)
 void GameLogic::heal(QString account)
 {
 	emit(stonesCrushing(50, 0, 0, account));
+}
+
+void GameLogic::bladeSlash()
+{
+	int col = qMin(qrand() % boardSize, boardSize - 2);
+	deleteRect(col, 0, 1, boardSize - 1);
 }
 
 void GameLogic::gravity()

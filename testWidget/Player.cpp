@@ -59,9 +59,40 @@ void Player::setCharacter(Character* ch)
 		ui.skills->addWidget(c);
 	}
 	auto skinPath = "./skin/" + character->skin;
-	QPixmap skin(skinPath);
-	skin = skin.scaled(ui.characterInfo->size(), Qt::KeepAspectRatio);
-	ui.characterInfo->setPixmap(skin);
+	if (character->skin.endsWith(".gif"))
+	{
+		QMovie *skin = new QMovie(skinPath);
+
+		QSize skinSize = QSize(320, 560);
+		//QSize skinSize = skin->currentImage().size();
+		//skin = skin->scaledSize(skinSize);
+		int he = skinSize.height();
+		int wi = skinSize.width();
+		if (wi > ui.characterInfo->size().width())
+		{
+			he *= ui.characterInfo->size().width();
+			he /= wi;
+			wi = ui.characterInfo->size().width();
+		}
+		if (he > ui.characterInfo->size().height())
+		{
+			wi *= ui.characterInfo->size().height();
+			wi /= he;
+			he = ui.characterInfo->size().height();
+		}
+		skinSize.setHeight(he);
+		skinSize.setWidth(wi);
+		skin->setScaledSize(skinSize);
+		//skin->setScaledSize(ui.characterInfo->size());
+		ui.characterInfo->setMovie(skin);
+		skin->start();
+	}
+	else
+	{
+		QPixmap skin(skinPath);
+		skin = skin.scaled(ui.characterInfo->size(), Qt::KeepAspectRatio);
+		ui.characterInfo->setPixmap(skin);
+	}
 }
 
 void Player::setAsEnemy()
