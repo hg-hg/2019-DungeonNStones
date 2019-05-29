@@ -49,6 +49,26 @@
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="backPic">
+   <property name="geometry">
+    <rect>
+     <x>3</x>
+     <y>1</y>
+     <width>1111</width>
+     <height>641</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>background/wall.png</pixmap>
+   </property>
+  </widget>
+  <zorder>backPic</zorder>
+  <zorder>player</zorder>
+  <zorder>gameCore</zorder>
+  <zorder>enemy</zorder>
  </widget>
  <customwidgets>
   <customwidget>

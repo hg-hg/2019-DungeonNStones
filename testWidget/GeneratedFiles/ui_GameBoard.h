@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
 #include <gamelogic.h>
 #include <player.h>
@@ -23,6 +24,7 @@ public:
     Player *player;
     GameLogic *gameCore;
     Player *enemy;
+    QLabel *backPic;
 
     void setupUi(QWidget *GameBoard)
     {
@@ -39,6 +41,14 @@ public:
         enemy = new Player(GameBoard);
         enemy->setObjectName(QString::fromUtf8("enemy"));
         enemy->setGeometry(QRect(812, 1, 300, 641));
+        backPic = new QLabel(GameBoard);
+        backPic->setObjectName(QString::fromUtf8("backPic"));
+        backPic->setGeometry(QRect(3, 1, 1111, 641));
+        backPic->setPixmap(QPixmap(QString::fromUtf8("background/wall.png")));
+        backPic->raise();
+        player->raise();
+        gameCore->raise();
+        enemy->raise();
 
         retranslateUi(GameBoard);
 
@@ -48,6 +58,7 @@ public:
     void retranslateUi(QWidget *GameBoard)
     {
         GameBoard->setWindowTitle(QApplication::translate("GameBoard", "Form", nullptr));
+        backPic->setText(QString());
     } // retranslateUi
 
 };

@@ -20,6 +20,8 @@ Player::Player(QWidget * parent)
 	:QWidget(parent)
 {
 	ui.setupUi(this);
+	//QFont font = QFont("·½Õý»ù´¡ÏñËØ");
+	//ui.HP->setFont(font);
 }
 
 void Player::setAccount(QString ACCOUNT)
