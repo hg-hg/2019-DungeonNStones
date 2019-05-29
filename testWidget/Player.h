@@ -10,13 +10,13 @@ class Player : public QWidget
 
 public slots:
 	void skillInvoke(QString skill, int cost);
-	void stoneCrush(int hp, int damage, int mp);
+	void stoneCrush(int hp, int damage, int mp, QString account);
 	void receiveInfo(QString account, int hp, int damage, int mp);
 
 signals:
 	void sendInfo(QString account, int hp, int damage, int mp);
 	void dead(QString account);
-	void useSkill(QString skillName);
+	void useSkill(QString skillName, QString account);
 public:
 	Player(QWidget* parent);
 	void setAccount(QString ACCOUNT);

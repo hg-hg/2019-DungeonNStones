@@ -1,0 +1,3 @@
+heal
+50 damage to self
+0

@@ -12,3 +12,7 @@ enum EvaluateState {
 	// gravity means after crushing stones
 };
 
+enum MessageType {
+	RequestAccount, WaitForGame, GameStart, GameData, Dead, Disconnect, BuyCharacter
+};
+

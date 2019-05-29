@@ -3,7 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "GameLogic.h"
 #include "Player.h"
-
+#include "Client.h"
 #include "AccountManager.h"
 #include "ui_testWidget.h"
 
@@ -24,4 +24,5 @@ private:
 	CharacterManager* cm = CharacterManager::getInstance();
 	AccountManager* am = new AccountManager();
 	Account* account = Account::getInstance();
+	Client* client = Client::getInstance();
 };

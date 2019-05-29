@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QObject>
-
+#include "Client.h"
 class GameServer : public QObject
 {
 	Q_OBJECT

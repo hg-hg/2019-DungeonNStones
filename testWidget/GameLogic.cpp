@@ -53,12 +53,14 @@ void GameLogic::endMove() {
 	if (es == Click || es == Force) animateCrushingStones();
 }
 
-void GameLogic::useSkill(QString skill)
+void GameLogic::useSkill(QString skill, QString account)
 {
 	if (skill == "changeBoard") fillBoard();
 	else if (skill == "exchange") forceExchange();
 	else if (skill == "Rect") deleteRect();
 	else if (skill == "Stone") deleteStone();
+	else if (skill == "damage") damage(account);
+	else if (skill == "heal") heal(account);
 }
 
 void GameLogic::fillBoard()
@@ -271,7 +273,7 @@ void GameLogic::evaluateStonesToCrush(QVector<QPair<int, int>>& path)
 	hp *= bouns;
 	damage *= bouns;
 	mp *= bouns;
-	emit stonesCrushing(hp, damage, mp);
+	emit stonesCrushing(hp, damage, mp, account);
 }
 
 void GameLogic::animateCrushingStones()
@@ -351,6 +353,16 @@ void GameLogic::forceExchange(int x1, int y1, int x2, int y2)
 	waitForStopAnimation();
 	setMoveData(x1, y1, x2, y2);
 	evaluate(Force);
+}
+
+void GameLogic::damage(QString account)
+{
+	emit stonesCrushing(0, 50, 0, account);
+}
+
+void GameLogic::heal(QString account)
+{
+	emit(stonesCrushing(50, 0, 0, account));
 }
 
 void GameLogic::gravity()

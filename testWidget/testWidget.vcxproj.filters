@@ -120,6 +120,15 @@
     <ClCompile Include="GameServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PVE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PVP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -135,6 +144,12 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_GameBoard.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_PVE.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_PVP.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -205,6 +220,15 @@
     <QtMoc Include="GameServer.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Client.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PVE.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PVP.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="testWidget.ui">
@@ -214,6 +238,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="GameBoard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="PVE.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="PVP.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

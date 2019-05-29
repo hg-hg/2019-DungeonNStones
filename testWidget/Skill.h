@@ -17,4 +17,7 @@ public:
 	QString name;
 	QString description;
 	int cost;
+
+private:
+	QTimer * timer;
 };

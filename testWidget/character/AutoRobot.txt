@@ -1,0 +1,8 @@
+AutoRobot
+default enemy
+10000
+1000
+0
+defaultEnemy.png
+damage
+heal

@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "Player.h"
 
-void Player::stoneCrush(int hp, int damage, int mp)
+void Player::stoneCrush(int hp, int damage, int mp, QString account)
 {
+	if (this->account == account)
 	emit sendInfo(account, hp, damage, mp);
 }
 
@@ -36,7 +37,7 @@ void Player::skillInvoke(QString skill, int cost) {
 	if (mp < cost) return;
 	mp -= cost;
 	ui.MP->setValue(mp);
-	emit useSkill(skill);
+	emit useSkill(skill, account);
 }
 
 void Player::setCharacter(Character* ch)
@@ -53,9 +54,8 @@ void Player::setCharacter(Character* ch)
 	for (auto name : character->skills) {
 		auto c = sm->getSkill(name, ui.verticalLayoutWidget);
 		if (enemy) c->setEnabled(false);
-		else {
-			connect(c, SIGNAL(useSkill(QString, int)), this, SLOT(skillInvoke(QString, int)));
-		}
+		connect(c, SIGNAL(useSkill(QString, int)), this, SLOT(skillInvoke(QString, int)));
+		
 		ui.skills->addWidget(c);
 	}
 	auto skinPath = "./skin/" + character->skin;

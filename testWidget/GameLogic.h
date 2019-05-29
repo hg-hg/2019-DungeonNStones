@@ -41,10 +41,10 @@ private:
 	void waitForStopAnimation();
 	void enableAllStones();
 signals:
-	void stonesCrushing(int hp, int damage, int mp);
+	void stonesCrushing(int hp, int damage, int mp, QString account);
 
 public slots:
-	void useSkill(QString skill);
+	void useSkill(QString skill, QString account);
 	void fillBoard();
 	void clickedStone(Stone* stone);//invoke by Stone::clicked()
 	void deleteStone();
@@ -54,6 +54,8 @@ public slots:
 	void deleteRect(int col, int row, int width, int height);
 	void forceExchange();
 	void forceExchange(int x1, int y1, int x2, int y2);
+	void damage(QString account);
+	void heal(QString account);
 protected slots:
 	void endMove();
 	void gravity();
@@ -62,6 +64,7 @@ protected slots:
 public:
 	const int boardSize = 8;
 	QVector<QVector<Stone*>> board;
+	QString account;
 private:
 	bool isAnimating = false;
 	Stone* first;
@@ -76,4 +79,5 @@ private:
 	CrushAnimation* crushAnimation;
 	GravityAnimation* gravityAnimation;
 	StoneManager stoneManager;
+	
 };

@@ -7,14 +7,18 @@
 #include "AccountManager.h"
 #include "GameServer.h"
 
+
 class GameBoard : public QWidget
 {
 	Q_OBJECT
 
+public slots:
+	void gameStart(QString enemy, QString enemyCharacter);
+
 public:
-	GameBoard(QWidget *parent);
+	GameBoard(QWidget *parent = Q_NULLPTR);
 	~GameBoard();
-	Account* current;
+	Account* current = Account::getInstance();
 	void setData(Account* acct, Character* myCha, Character* enemyCha);
 private:
 	Ui::GameBoard ui;
