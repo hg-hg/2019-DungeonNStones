@@ -21,8 +21,7 @@ public:
 signals:
 	void waitForGame(QString account, QString character);
 	void clientGameData(QString data);
-	//void dataReady(const QString &data);
-//void addAccount(QString account);
+
 
 public slots:
 	void readMessage();
