@@ -50,7 +50,7 @@ void CrushAnimation::changeAlpha(Stone * stone)
 {
 	int alpha = 256 / duration * t;
 	if (alpha > 256) alpha = 256;
-	stone->background.setAlpha(alpha);
+	//stone->background.setAlpha(alpha);
 }
 
 void CrushAnimation::animate(int duration) {

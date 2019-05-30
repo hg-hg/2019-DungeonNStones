@@ -18,6 +18,7 @@ void StoneMP::setData()
 
 void StoneMP::setImage()
 {
-	background = Qt::blue;
+	//background = Qt::blue;
+	background = QPixmap("./Resources/stone_background.png");
 	foreground = QPixmap(":/foreground/Resources/foreground/mp.png");
 }

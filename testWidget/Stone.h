@@ -38,7 +38,7 @@ public:
 	static const int size = 64;
 	int TYPE = NORMAL_STONE;
 	int HP = 0, DAMAGE = 0, MP = 0;
-	QColor background;
+	QPixmap background;
 	QPixmap foreground;
 	QPen edge;
 	bool isAnimating = false;

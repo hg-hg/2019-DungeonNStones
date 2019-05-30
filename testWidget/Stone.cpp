@@ -62,7 +62,9 @@ void Stone::enterEvent(QEvent * event)
 
 void Stone::leaveEvent(QEvent * event)
 {
-	edge.setColor(background);
+	//edge.setColor(background);
+	//edge.setColor(QPalette::Background);
+	edge = QPen();
 	update();
 }
 
@@ -75,6 +77,7 @@ void Stone::setData()
 
 void Stone::setImage()
 {
-	background = Qt::black;
+	//background = Qt::black;
+	background = QPixmap("./Resources/stone_background.png");
 	foreground = QPixmap(":/foreground/Resources/foreground/icon.png");
 }

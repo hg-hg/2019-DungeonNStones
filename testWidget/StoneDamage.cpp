@@ -19,6 +19,7 @@ void StoneDamage::setData()
 
 void StoneDamage::setImage()
 {
-	background = Qt::lightGray;
+	//background = Qt::lightGray;
+	background = QPixmap("./Resources/stone_background.png");
 	foreground = QPixmap(":/foreground/Resources/foreground/damage.png");
 }

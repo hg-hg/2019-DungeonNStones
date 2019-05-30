@@ -18,6 +18,7 @@ void StoneHM::setData()
 
 void StoneHM::setImage()
 {
-	background = Qt::darkCyan;
+	//background = Qt::darkCyan;
+	background = QPixmap("./Resources/stone_background.png");
 	foreground = QPixmap(":/foreground/Resources/foreground/hm.png");
 }
