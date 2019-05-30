@@ -9,7 +9,7 @@ PVE::PVE(QWidget *parent)
 	ui.setupUi(this);
 	//ui.gameBoard->setData(account, account->getSelectedCharacter(), CharacterManager::getInstance()->getCharacter("AutoRobot"));
 	ui.gameBoard->setData(account, CharacterManager::getInstance()->getCharacter("Knight"), CharacterManager::getInstance()->getCharacter("AutoRobot"));
-	ui.gameBoard->setLocalGame(false);
+	ui.gameBoard->setLocalGame(true);
 }
 
 PVE::~PVE()
