@@ -15,6 +15,7 @@ protected:
 
 signals:
 	void sendMessage(int sockDest, QString message);
+	void changeUI(QString);
 
 private slots:
 	void clientDisconnected(int sockDesc);

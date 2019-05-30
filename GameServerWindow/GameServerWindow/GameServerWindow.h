@@ -12,6 +12,9 @@ class GameServerWindow : public QMainWindow
 public:
 	GameServerWindow(QWidget *parent = Q_NULLPTR);
 
+public slots:
+	void changeLabel(QString);
+
 private:
 	void setupServer();
 

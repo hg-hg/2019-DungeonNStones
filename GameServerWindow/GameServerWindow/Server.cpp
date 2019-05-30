@@ -17,7 +17,8 @@ void Server::incomingConnection(qintptr sockDesc)
 {
 
 	ServerThread *thread = new ServerThread(sockDesc);
-
+	//QMessageBox::information(NULL, "amd yes", "coming");
+	emit changeUI("thread coming, socket desc: " + QString::number(sockDesc));
 	//m_dialog->showConnection(sockDesc);
 
 	connect(thread, SIGNAL(disconnectTCP(int)), this, SLOT(clientDisconnected(int)));

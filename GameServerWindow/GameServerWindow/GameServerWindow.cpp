@@ -11,10 +11,15 @@ GameServerWindow::GameServerWindow(QWidget *parent)
 	setupServer();
 }
 
+void GameServerWindow::changeLabel(QString str) {
+	ui.label->setText(str);
+}
+
 void GameServerWindow::setupServer()
 {
 	server = new Server(this);
-	if (!server->listen(QHostAddress::LocalHost, 10086)) {
+	connect(server, SIGNAL(changeUI(QString)), this, SLOT(changeLabel(QString)));
+	if (!server->listen(QHostAddress::Any, 27015)) {
 		ui.client->setText("wrong");
 	}
 	else {
