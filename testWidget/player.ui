@@ -18,15 +18,12 @@
     <rect>
      <x>50</x>
      <y>310</y>
-     <width>171</width>
+     <width>141</width>
      <height>23</height>
     </rect>
    </property>
    <property name="value">
     <number>100</number>
-   </property>
-   <property name="textVisible">
-    <bool>true</bool>
    </property>
    <property name="format">
     <string>%v</string>
@@ -37,7 +34,7 @@
     <rect>
      <x>50</x>
      <y>360</y>
-     <width>171</width>
+     <width>141</width>
      <height>23</height>
     </rect>
    </property>
@@ -53,7 +50,7 @@
     <rect>
      <x>60</x>
      <y>10</y>
-     <width>121</width>
+     <width>131</width>
      <height>271</height>
     </rect>
    </property>
@@ -76,33 +73,6 @@
     </property>
    </layout>
   </widget>
-  <widget class="QLabel" name="characterBack">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>60</y>
-     <width>141</width>
-     <height>221</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>background/wall_character.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <zorder>characterBack</zorder>
-  <zorder>HP</zorder>
-  <zorder>MP</zorder>
-  <zorder>characterInfo</zorder>
-  <zorder>verticalLayoutWidget</zorder>
  </widget>
  <resources/>
  <connections/>

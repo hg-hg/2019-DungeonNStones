@@ -35,6 +35,14 @@ bool AccountManager::setCurrentAccount(QString accountName)
 	return true;
 }
 
+bool AccountManager::setCurrentAccount(QString name, int money, QString defaultCharacter)
+{
+	current->name = name;
+	current->money = money;
+	current->selectedCharacter = cm->getCharacter(defaultCharacter);
+	return false;
+}
+
 Account * AccountManager::getCurrentAccount() const
 {
 	return current;

@@ -14,7 +14,7 @@
    <string>testWidget</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="PVE" name="pve" native="true">
+   <widget class="PVP" name="gb" native="true">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -29,9 +29,9 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>PVE</class>
+   <class>PVP</class>
    <extends>QWidget</extends>
-   <header location="global">PVE.h</header>
+   <header location="global">PVP.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

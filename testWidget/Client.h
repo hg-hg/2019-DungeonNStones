@@ -2,6 +2,7 @@
 
 #include <QTcpSocket>
 #include "const.h"
+#include "AccountManager.h"
 
 class Client : public QTcpSocket
 {
@@ -12,7 +13,9 @@ private:
 	Client(const Client &);
 	Client& operator=(const Client &);
 	static Client* instance;
-
+	AccountManager* am = new AccountManager();
+	void initializeAccount();
+	QString getLine();
 public:
 	static Client* getInstance();
 	static void release();
@@ -21,13 +24,14 @@ public:
 
 public slots:
 	void readMessage();
-	void sendMessage(QString message);
-	void requestAccount();
+	void sendMessage(const QString& message);
+	void requestAccount(QString accountName);
 	void gameStart();
 	void sendGameData(QString account, int hp, int damage, int mp);
 	void sendWaitForGame(QString account, QString character);
 	void sendDead(QString account);
 	void sendBuyCharacter(QString account, QString character);
+	void gameData();
 
 signals:
 	void gameData(QString account, int hp, int damage, int mp);

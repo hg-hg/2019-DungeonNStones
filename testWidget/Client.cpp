@@ -8,6 +8,29 @@ Client::Client(QObject *parent)
 	: QTcpSocket(parent)
 {
 	//connectToServer();
+	
+}
+
+void Client::initializeAccount()
+{
+	QString name, character;
+	int money, size;
+	name = getLine();
+	money = getLine().toInt();
+	character = getLine();
+	size = getLine().toInt();
+	am->setCurrentAccount(name, money, character);
+	for (int i = 0; i < size; i++) {
+		character = getLine();
+		Account::getInstance()->characters.append(character);
+	}
+}
+
+QString Client::getLine()
+{
+	QString str = readLine().simplified();
+	if (str.isEmpty()) return getLine();
+	return str;
 }
 
 Client * Client::getInstance()
@@ -30,6 +53,7 @@ void Client::release()
 void Client::connectToServer()
 {
 	connectToHost(QHostAddress::LocalHost, 10086);
+	waitForConnected();
 	connect(this, SIGNAL(readyRead()), this, SLOT(readMessage()));
 }
 
@@ -38,13 +62,17 @@ Client::~Client()
 }
 
 void Client::readMessage() {
-	MessageType type = static_cast<MessageType>(readLine().toInt());
+	MessageType type = static_cast<MessageType>(getLine().toInt());
 	switch (type)
 	{
+	case RequestAccount:
+		initializeAccount();
+		break;
 	case GameStart:
 		gameStart();
 		break;
 	case GameData:
+		gameData();
 		break;
 	case Dead:
 		break;
@@ -53,22 +81,25 @@ void Client::readMessage() {
 	}
 }
 
-void Client::sendMessage(QString message)
+void Client::sendMessage(const QString& message)
 {
 	write(message.toStdString().data());
 	waitForBytesWritten();
+	//waitForReadyRead();
 }
 
-void Client::requestAccount()
+void Client::requestAccount(QString accountName)
 {
-	QString message = MessageType::RequestAccount;
+	QString message = QString::number(MessageType::RequestAccount) + "\n" + accountName;
 	sendMessage(message);
+	waitForReadyRead();
 }
 
 void Client::gameStart()
 {
-	QString enemyAccount = readLine();
-	QString enemyCharacter = readLine();
+	QString enemyAccount = getLine();
+	QString enemyCharacter = getLine();
+	qDebug() << enemyAccount << enemyCharacter;
 	emit gameStart(enemyAccount, enemyCharacter);
 }
 
@@ -94,4 +125,16 @@ void Client::sendDead(QString account)
 void Client::sendBuyCharacter(QString account, QString character)
 {
 	QString message = QString::number(MessageType::BuyCharacter) + "\n" + account + "\n" + character;
+	sendMessage(message);
+}
+
+void Client::gameData()
+{
+	QString account;
+	int hp, damage, mp;
+	account = getLine();
+	hp = getLine().toInt();
+	damage = getLine().toInt();
+	mp = getLine().toInt();
+	emit gameData(account, hp, damage, mp);
 }

@@ -17,11 +17,11 @@ public slots:
 
 public:
 	GameBoard(QWidget *parent = Q_NULLPTR);
+	void setLocalGame(bool flag);
 	~GameBoard();
 	Account* current = Account::getInstance();
 	void setData(Account* acct, Character* myCha, Character* enemyCha);
 private:
 	Ui::GameBoard ui;
 	QString enemyAccount = "enemy";
-	GameServer* gs;
 };
