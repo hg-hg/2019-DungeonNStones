@@ -40,6 +40,7 @@ void Player::skillInvoke(QString skill, int cost) {
 	mp -= cost;
 	ui.MP->setValue(mp);
 	emit useSkill(skill, account);
+	emit sendInfo(account, 0, 0, -cost);
 }
 
 void Player::setCharacter(Character* ch)

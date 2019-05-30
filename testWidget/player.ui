@@ -18,15 +18,12 @@
     <rect>
      <x>50</x>
      <y>310</y>
-     <width>171</width>
+     <width>141</width>
      <height>23</height>
     </rect>
    </property>
    <property name="value">
     <number>100</number>
-   </property>
-   <property name="textVisible">
-    <bool>true</bool>
    </property>
    <property name="format">
     <string>%v</string>
@@ -37,7 +34,7 @@
     <rect>
      <x>50</x>
      <y>360</y>
-     <width>171</width>
+     <width>141</width>
      <height>23</height>
     </rect>
    </property>
@@ -52,8 +49,13 @@
    <property name="geometry">
     <rect>
      <x>60</x>
+<<<<<<< HEAD
      <y>0</y>
      <width>121</width>
+=======
+     <y>10</y>
+     <width>131</width>
+>>>>>>> 9c666d5b7e07c41be0d85f4b008b63e39c59eed9
      <height>271</height>
     </rect>
    </property>
@@ -76,6 +78,7 @@
     </property>
    </layout>
   </widget>
+<<<<<<< HEAD
   <widget class="QLabel" name="characterBack">
    <property name="geometry">
     <rect>
@@ -103,6 +106,8 @@
   <zorder>MP</zorder>
   <zorder>characterInfo</zorder>
   <zorder>verticalLayoutWidget</zorder>
+=======
+>>>>>>> 9c666d5b7e07c41be0d85f4b008b63e39c59eed9
  </widget>
  <resources/>
  <connections/>

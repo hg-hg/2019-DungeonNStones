@@ -14,16 +14,32 @@ GameBoard::GameBoard(QWidget* parent)
 {
 	ui.setupUi(this);
 	ui.gameCore->account = Account::getInstance()->name;
-	connect(Client::getInstance(), SIGNAL(gameStart(QString, QString)), this, SLOT(gameStart(QString, QString)));
+	//connect(Client::getInstance(), SIGNAL(gameStart(QString, QString)), this, SLOT(gameStart(QString, QString)));
 	connect(ui.gameCore, SIGNAL(stonesCrushing(int, int, int, QString)), ui.player, SLOT(stoneCrush(int, int, int, QString)));
 	connect(ui.gameCore, SIGNAL(stonesCrushing(int, int, int, QString)), ui.enemy, SLOT(stoneCrush(int, int, int, QString)));
-	gs = new GameServer(this);
+	
+}
+
+void GameBoard::setLocalGame(bool flag)
+{
 	connect(ui.player, SIGNAL(useSkill(QString, QString)), ui.gameCore, SLOT(useSkill(QString, QString)));
-	connect(ui.enemy, SIGNAL(useSkill(QString, QString)), ui.gameCore, SLOT(useSkill(QString, QString)));
-	connect(ui.player, SIGNAL(sendInfo(QString, int, int, int)), gs, SLOT(receiveInfo(QString, int, int, int)));
-	connect(ui.enemy, SIGNAL(sendInfo(QString, int, int, int)), gs, SLOT(receiveInfo(QString, int, int, int)));
-	connect(gs, SIGNAL(sendInfo(QString, int, int, int)), ui.player, SLOT(receiveInfo(QString, int, int, int)));
-	connect(gs, SIGNAL(sendInfo(QString, int, int, int)), ui.enemy, SLOT(receiveInfo(QString, int, int, int)));
+	if (flag) {
+		GameServer* gs = new GameServer(this);
+
+		//for auto robot
+		connect(ui.enemy, SIGNAL(useSkill(QString, QString)), ui.gameCore, SLOT(useSkill(QString, QString)));
+
+		connect(ui.player, SIGNAL(sendInfo(QString, int, int, int)), gs, SLOT(receiveInfo(QString, int, int, int)));
+		connect(ui.enemy, SIGNAL(sendInfo(QString, int, int, int)), gs, SLOT(receiveInfo(QString, int, int, int)));
+		connect(gs, SIGNAL(sendInfo(QString, int, int, int)), ui.player, SLOT(receiveInfo(QString, int, int, int)));
+		connect(gs, SIGNAL(sendInfo(QString, int, int, int)), ui.enemy, SLOT(receiveInfo(QString, int, int, int)));
+	}
+	else {
+		Client* client = Client::getInstance();
+		connect(ui.player, SIGNAL(sendInfo(QString, int, int, int)), client, SLOT(sendGameData(QString, int, int, int)));
+		connect(client, SIGNAL(gameData(QString, int, int, int)), ui.player, SLOT(receiveInfo(QString, int, int, int)));
+		connect(client, SIGNAL(gameData(QString, int, int, int)), ui.enemy, SLOT(receiveInfo(QString, int, int, int)));
+	}
 }
 
 GameBoard::~GameBoard()

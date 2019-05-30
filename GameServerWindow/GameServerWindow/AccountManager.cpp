@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "AccountManager.h"
+#include "const.h"
 
 AccountManager::AccountManager(QObject *parent)
 	: QObject(parent)
@@ -10,7 +11,7 @@ AccountManager::~AccountManager()
 {
 }
 
-bool AccountManager::setCurrentAccount(QString accountName)
+QString AccountManager::getAccount(QString accountName)
 {
 	auto fileName = "./Account/" + accountName + ".txt";
 	QFile file(fileName);
@@ -23,27 +24,18 @@ bool AccountManager::setCurrentAccount(QString accountName)
 	name = in.readLine();
 	money = in.readLine().toInt();
 	//current = new Account(this, cm);
-	
-	current->name = name;
-	current->money = money;
+	QString message = QString::number(MessageType::RequestAccount) + "\n";
+	message.append(name + "\n" + QString::number(money) + "\n");
 	character = in.readLine();
-	current->selectedCharacter = cm->getCharacter(character);
+	message.append(character + "\n");
+	QStringList list;
 	while (!in.atEnd()) {
 		character = in.readLine();
-		current->characters.append(character);
+		list.append(character);
 	}
-	return true;
+	message.append(QString::number(list.size()) + "\n");
+	for (auto str : list) message.append(str + "\n");
+	
+	return message;
 }
 
-bool AccountManager::setCurrentAccount(QString name, int money, QString defaultCharacter)
-{
-	current->name = name;
-	current->money = money;
-	current->selectedCharacter = cm->getCharacter(defaultCharacter);
-	return false;
-}
-
-Account * AccountManager::getCurrentAccount() const
-{
-	return current;
-}
