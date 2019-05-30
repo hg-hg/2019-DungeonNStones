@@ -44,7 +44,7 @@ public:
         MP->setValue(0);
         characterInfo = new QLabel(PlayerWidget);
         characterInfo->setObjectName(QString::fromUtf8("characterInfo"));
-        characterInfo->setGeometry(QRect(60, 10, 121, 271));
+        characterInfo->setGeometry(QRect(60, 0, 121, 271));
         verticalLayoutWidget = new QWidget(PlayerWidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(50, 410, 141, 171));
@@ -54,7 +54,7 @@ public:
         skills->setContentsMargins(0, 0, 0, 0);
         characterBack = new QLabel(PlayerWidget);
         characterBack->setObjectName(QString::fromUtf8("characterBack"));
-        characterBack->setGeometry(QRect(50, 60, 141, 221));
+        characterBack->setGeometry(QRect(30, 30, 181, 251));
         characterBack->setPixmap(QPixmap(QString::fromUtf8("background/wall_character.png")));
         characterBack->setScaledContents(true);
         characterBack->setAlignment(Qt::AlignCenter);
