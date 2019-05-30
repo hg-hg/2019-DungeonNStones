@@ -65,10 +65,30 @@
     <pixmap>background/wall.png</pixmap>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>30</y>
+     <width>551</width>
+     <height>551</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>background/wall_core.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
   <zorder>backPic</zorder>
   <zorder>player</zorder>
-  <zorder>gameCore</zorder>
   <zorder>enemy</zorder>
+  <zorder>label</zorder>
+  <zorder>gameCore</zorder>
  </widget>
  <customwidgets>
   <customwidget>

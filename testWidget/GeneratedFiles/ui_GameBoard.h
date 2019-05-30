@@ -25,6 +25,7 @@ public:
     GameLogic *gameCore;
     Player *enemy;
     QLabel *backPic;
+    QLabel *label;
 
     void setupUi(QWidget *GameBoard)
     {
@@ -45,10 +46,16 @@ public:
         backPic->setObjectName(QString::fromUtf8("backPic"));
         backPic->setGeometry(QRect(3, 1, 1111, 641));
         backPic->setPixmap(QPixmap(QString::fromUtf8("background/wall.png")));
+        label = new QLabel(GameBoard);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(280, 30, 551, 551));
+        label->setPixmap(QPixmap(QString::fromUtf8("background/wall_core.png")));
+        label->setScaledContents(true);
         backPic->raise();
         player->raise();
-        gameCore->raise();
         enemy->raise();
+        label->raise();
+        gameCore->raise();
 
         retranslateUi(GameBoard);
 
@@ -59,6 +66,7 @@ public:
     {
         GameBoard->setWindowTitle(QApplication::translate("GameBoard", "Form", nullptr));
         backPic->setText(QString());
+        label->setText(QString());
     } // retranslateUi
 
 };

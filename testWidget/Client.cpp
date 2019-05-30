@@ -53,6 +53,7 @@ void Client::release()
 void Client::connectToServer()
 {
 	connectToHost(QHostAddress::LocalHost, 10086);
+	//connectToHost("www.huaji.store", 27015);
 	waitForConnected();
 	connect(this, SIGNAL(readyRead()), this, SLOT(readMessage()));
 }

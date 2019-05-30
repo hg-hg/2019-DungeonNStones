@@ -9,7 +9,7 @@
 #ifndef UI_TESTWIDGET_H
 #define UI_TESTWIDGET_H
 
-#include <PVE.h>
+#include <PVP.h>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
@@ -21,7 +21,7 @@ class Ui_testWidgetClass
 {
 public:
     QWidget *centralWidget;
-    PVE *pve;
+    PVP *gb;
 
     void setupUi(QMainWindow *testWidgetClass)
     {
@@ -30,9 +30,9 @@ public:
         testWidgetClass->resize(1292, 835);
         centralWidget = new QWidget(testWidgetClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        pve = new PVE(centralWidget);
-        pve->setObjectName(QString::fromUtf8("pve"));
-        pve->setGeometry(QRect(30, 30, 1161, 791));
+        gb = new PVP(centralWidget);
+        gb->setObjectName(QString::fromUtf8("gb"));
+        gb->setGeometry(QRect(30, 30, 1161, 791));
         testWidgetClass->setCentralWidget(centralWidget);
 
         retranslateUi(testWidgetClass);

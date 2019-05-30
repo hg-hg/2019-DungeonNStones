@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Client_t {
-    QByteArrayData data[19];
-    char stringdata0[188];
+    QByteArrayData data[20];
+    char stringdata0[200];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,18 +46,20 @@ QT_MOC_LITERAL(10, 76, 11), // "readMessage"
 QT_MOC_LITERAL(11, 88, 11), // "sendMessage"
 QT_MOC_LITERAL(12, 100, 7), // "message"
 QT_MOC_LITERAL(13, 108, 14), // "requestAccount"
-QT_MOC_LITERAL(14, 123, 12), // "sendGameData"
-QT_MOC_LITERAL(15, 136, 15), // "sendWaitForGame"
-QT_MOC_LITERAL(16, 152, 9), // "character"
-QT_MOC_LITERAL(17, 162, 8), // "sendDead"
-QT_MOC_LITERAL(18, 171, 16) // "sendBuyCharacter"
+QT_MOC_LITERAL(14, 123, 11), // "accountName"
+QT_MOC_LITERAL(15, 135, 12), // "sendGameData"
+QT_MOC_LITERAL(16, 148, 15), // "sendWaitForGame"
+QT_MOC_LITERAL(17, 164, 9), // "character"
+QT_MOC_LITERAL(18, 174, 8), // "sendDead"
+QT_MOC_LITERAL(19, 183, 16) // "sendBuyCharacter"
 
     },
     "Client\0gameData\0\0account\0hp\0damage\0"
     "mp\0gameStart\0enemyAccount\0enemyCharacter\0"
     "readMessage\0sendMessage\0message\0"
-    "requestAccount\0sendGameData\0sendWaitForGame\0"
-    "character\0sendDead\0sendBuyCharacter"
+    "requestAccount\0accountName\0sendGameData\0"
+    "sendWaitForGame\0character\0sendDead\0"
+    "sendBuyCharacter"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,7 +69,7 @@ static const uint qt_meta_data_Client[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -75,18 +77,19 @@ static const uint qt_meta_data_Client[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    4,   64,    2, 0x06 /* Public */,
-       7,    2,   73,    2, 0x06 /* Public */,
+       1,    4,   69,    2, 0x06 /* Public */,
+       7,    2,   78,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      10,    0,   78,    2, 0x0a /* Public */,
-      11,    1,   79,    2, 0x0a /* Public */,
-      13,    0,   82,    2, 0x0a /* Public */,
-       7,    0,   83,    2, 0x0a /* Public */,
-      14,    4,   84,    2, 0x0a /* Public */,
-      15,    2,   93,    2, 0x0a /* Public */,
-      17,    1,   98,    2, 0x0a /* Public */,
-      18,    2,  101,    2, 0x0a /* Public */,
+      10,    0,   83,    2, 0x0a /* Public */,
+      11,    1,   84,    2, 0x0a /* Public */,
+      13,    1,   87,    2, 0x0a /* Public */,
+       7,    0,   90,    2, 0x0a /* Public */,
+      15,    4,   91,    2, 0x0a /* Public */,
+      16,    2,  100,    2, 0x0a /* Public */,
+      18,    1,  105,    2, 0x0a /* Public */,
+      19,    2,  108,    2, 0x0a /* Public */,
+       1,    0,  113,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int,    3,    4,    5,    6,
@@ -95,12 +98,13 @@ static const uint qt_meta_data_Client[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   12,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   14,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int,    3,    4,    5,    6,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   16,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   17,
     QMetaType::Void, QMetaType::QString,    3,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   16,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   17,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -114,13 +118,14 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 0: _t->gameData((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         case 1: _t->gameStart((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 2: _t->readMessage(); break;
-        case 3: _t->sendMessage((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 4: _t->requestAccount(); break;
+        case 3: _t->sendMessage((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 4: _t->requestAccount((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 5: _t->gameStart(); break;
         case 6: _t->sendGameData((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         case 7: _t->sendWaitForGame((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 8: _t->sendDead((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 9: _t->sendBuyCharacter((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 10: _t->gameData(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -171,13 +176,13 @@ int Client::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }

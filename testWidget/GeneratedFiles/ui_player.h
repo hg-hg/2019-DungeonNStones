@@ -26,7 +26,7 @@ public:
     QLabel *characterInfo;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *skills;
-    QLabel *characterBack;
+    QLabel *CharaBack;
 
     void setupUi(QWidget *PlayerWidget)
     {
@@ -35,30 +35,28 @@ public:
         PlayerWidget->resize(271, 603);
         HP = new QProgressBar(PlayerWidget);
         HP->setObjectName(QString::fromUtf8("HP"));
-        HP->setGeometry(QRect(50, 310, 171, 23));
+        HP->setGeometry(QRect(70, 320, 161, 23));
         HP->setValue(100);
-        HP->setTextVisible(true);
         MP = new QProgressBar(PlayerWidget);
         MP->setObjectName(QString::fromUtf8("MP"));
-        MP->setGeometry(QRect(50, 360, 171, 23));
+        MP->setGeometry(QRect(70, 370, 161, 23));
         MP->setValue(0);
         characterInfo = new QLabel(PlayerWidget);
         characterInfo->setObjectName(QString::fromUtf8("characterInfo"));
-        characterInfo->setGeometry(QRect(60, 0, 121, 271));
+        characterInfo->setGeometry(QRect(70, 10, 131, 271));
         verticalLayoutWidget = new QWidget(PlayerWidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(50, 410, 141, 171));
+        verticalLayoutWidget->setGeometry(QRect(70, 420, 131, 171));
         skills = new QVBoxLayout(verticalLayoutWidget);
         skills->setSpacing(2);
         skills->setObjectName(QString::fromUtf8("skills"));
         skills->setContentsMargins(0, 0, 0, 0);
-        characterBack = new QLabel(PlayerWidget);
-        characterBack->setObjectName(QString::fromUtf8("characterBack"));
-        characterBack->setGeometry(QRect(30, 30, 181, 251));
-        characterBack->setPixmap(QPixmap(QString::fromUtf8("background/wall_character.png")));
-        characterBack->setScaledContents(true);
-        characterBack->setAlignment(Qt::AlignCenter);
-        characterBack->raise();
+        CharaBack = new QLabel(PlayerWidget);
+        CharaBack->setObjectName(QString::fromUtf8("CharaBack"));
+        CharaBack->setGeometry(QRect(40, 60, 191, 231));
+        CharaBack->setPixmap(QPixmap(QString::fromUtf8("background/wall_character.png")));
+        CharaBack->setScaledContents(true);
+        CharaBack->raise();
         HP->raise();
         MP->raise();
         characterInfo->raise();
@@ -75,7 +73,7 @@ public:
         HP->setFormat(QApplication::translate("PlayerWidget", "%v", nullptr));
         MP->setFormat(QApplication::translate("PlayerWidget", "%v", nullptr));
         characterInfo->setText(QApplication::translate("PlayerWidget", "TextLabel", nullptr));
-        characterBack->setText(QString());
+        CharaBack->setText(QString());
     } // retranslateUi
 
 };
