@@ -14,7 +14,7 @@ GameServerWindow::GameServerWindow(QWidget *parent)
 void GameServerWindow::setupServer()
 {
 	server = new Server(this);
-	if (!server->listen(QHostAddress("192.168.1.243"), 10086)) {
+	if (!server->listen(QHostAddress::LocalHost, 10086)) {
 		ui.client->setText("wrong");
 	}
 	else {
