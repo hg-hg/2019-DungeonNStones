@@ -22,8 +22,8 @@ void Server::incomingConnection(qintptr sockDesc)
 	//m_dialog->showConnection(sockDesc);
 
 	connect(thread, SIGNAL(disconnectTCP(int)), this, SLOT(clientDisconnected(int)));
-	//connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
-	connect(thread, SIGNAL(finished()), this, SLOT(deleteLater()));
+	connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+	//connect(thread, SIGNAL(finished()), this, SLOT(deleteLater()));
 	//connect(thread, SIGNAL(addAccount(QString)), this, SLOT(addAccount(QString)));
 	connect(thread, SIGNAL(threadWaitForGame(QString, QString)), this, SLOT(waitingForGame(QString, QString)));
 	connect(this, SIGNAL(sendMessage(int, QString)), thread, SLOT(sendMessage(int, QString)));
@@ -52,10 +52,12 @@ void Server::waitingForGame(QString account, QString character)
 		QString enemyAccount = enemyThread->socket->account;
 		waiting.pop_front();
 		QString base = QString::number(MessageType::GameStart) + "\n";
-		QString enemy = base + enemyAccount + "\n" + enemyCharacter;
-		base += account + "\n" + character;
+		QString enemy = base + enemyAccount + "\n" + enemyCharacter + "\n";
+		base += account + "\n" + character + "\n";
 		emit sendMessage(sockDesc, enemy);
 		emit sendMessage(enemySockDesc, base);
+		thread->enemy = enemyThread;
+		enemyThread->enemy = thread;
 		playing.append(qMakePair(thread, enemyThread));
 	}
 }
@@ -85,6 +87,13 @@ void Server::clientDisconnected(int sockDesc)
 		else if (it->second == thread) {
 			emit sendMessage(it->first->m_sockDesc, message);
 			it = playing.erase(it);
+		}
+		else it++;
+	}
+	for (auto it = waiting.begin(); it != waiting.end(); ) {
+		if (it->second == thread) {
+			it = waiting.erase(it);
+			break;
 		}
 		else it++;
 	}

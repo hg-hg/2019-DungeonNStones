@@ -14,10 +14,10 @@ MySocket::~MySocket()
 
 }
 
-QString MySocket::getLine()
+QString MySocket::getLine(int times)
 {
 	QString str = readLine();
-	if (str.isEmpty()) return getLine();
+	if (str.isEmpty() && times < 10) return getLine(++times);
 	return str.simplified();
 }
 
@@ -32,13 +32,14 @@ void MySocket::sendMessage(QString data)
 void MySocket::receiveGameData()
 {
 	QString message = QString::number(MessageType::GameData) + "\n";
-	QString account, hp, damage, mp;
-	account = getLine();
-	hp = getLine();
-	damage = getLine();
-	mp = getLine();
-	readAll();
-	message += account + "\n" + hp + "\n" + damage + "\n" + mp;
+	//QString account, hp, damage, mp;
+	//account = getLine();
+	//hp = getLine();
+	//damage = getLine();
+	//mp = getLine();
+	////readAll();
+	//message += account + "\n" + hp + "\n" + damage + "\n" + mp + "\n";
+	message += readAll();
 	emit clientGameData(message);
 }
 

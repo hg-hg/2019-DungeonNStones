@@ -3,6 +3,7 @@
 #include <QThread>
 #include "MySocket.h"
 
+class Server;
 class ServerThread : public QThread
 {
 	Q_OBJECT
@@ -34,4 +35,5 @@ private slots:
 public:
 	MySocket * socket;
 	int m_sockDesc;
+	ServerThread* enemy;
 };

@@ -11,7 +11,7 @@ public:
 	~MySocket();
 
 private:
-	QString getLine();
+	QString getLine(int times = 0);
 	void accountInfo();
 	void clientWaitForGame();
 	void receiveGameData();

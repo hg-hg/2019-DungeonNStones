@@ -44,16 +44,6 @@ void ServerThread::sendMessage(int sockDest, QString data)
 	socket->sendMessage(data);
 }
 
-//void ServerThread::readMessage(const QString &data)
-//{
-//	//emit dataReady(data);
-//}
-
-//void ServerThread::addAccount(QString account)
-//{
-//	emit addAccount(account);
-//}
-
 void ServerThread::clientWaitForGame(QString account, QString character)
 {
 	emit threadWaitForGame(account, character);
@@ -66,7 +56,9 @@ void ServerThread::gameStart(QString enemyAccount, QString enemyCharacter)
 
 void ServerThread::gameData(QString data)
 {
-	emit threadGameData(data);
+	//emit threadGameData(data);
+	enemy->sendMessage(enemy->m_sockDesc ,data);
+	sendMessage(m_sockDesc, data);
 }
 
 void ServerThread::disconnectToHost()
