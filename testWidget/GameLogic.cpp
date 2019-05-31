@@ -324,6 +324,7 @@ void GameLogic::deleteRect()
 
 void GameLogic::deleteRect(int col, int row, int width, int height)
 {
+	countEffect = false;
 	waitForStopAnimation();
 	if (!isPositionValid(col, row)) return;
 	int destX = col + width;
@@ -332,6 +333,7 @@ void GameLogic::deleteRect(int col, int row, int width, int height)
 	for (int c = col; c <= destX; c++) for (int r = row; r <= destY; r++)
 		stoneToCrush.append(qMakePair(c, r));
 	gravity();
+	countEffect = true;
 }
 
 void GameLogic::forceExchange()
@@ -392,19 +394,24 @@ void GameLogic::gravity()
 	for (auto pos : stoneToCrush) {
 		auto st = board[pos.first][pos.second];
 		if (st->isValid()) {
-			hp += st->HP;
-			damage += st->DAMAGE;
-			mp += st->MP;
-			bouns++;
+			if (countEffect) {
+				hp += st->HP;
+				damage += st->DAMAGE;
+				mp += st->MP;
+				bouns++;
+			}
 			delete st;
 			board[pos.first][pos.second] = nullptr;
 			//only delete is useless, you must reset it to nullptr explicitly
 		}
 	}
-	if (bouns <= 3) bouns = 1;
-	else bouns -= 2;
-	hp *= bouns; damage *= bouns; mp *= bouns;
-	emit stonesCrushing(hp, damage, mp, account);
+	if (countEffect) {
+		if (bouns <= 3) bouns = 1;
+		else bouns -= 2;
+		hp *= bouns; damage *= bouns; mp *= bouns;
+		emit stonesCrushing(hp, damage, mp, account);
+	}
+	//countEffect = true;
 	stoneToCrush.resize(0);
 	int maxDy = 0;
 

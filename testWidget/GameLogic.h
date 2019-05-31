@@ -69,6 +69,7 @@ public:
 	QString account;
 private:
 	bool isAnimating = false;
+	bool countEffect = true;
 	Stone* first;
 	Stone* second;
 	QPoint firstPos;
