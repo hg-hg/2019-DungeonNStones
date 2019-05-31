@@ -361,6 +361,11 @@ void GameLogic::damage(QString account)
 	emit stonesCrushing(0, 50, 0, account);
 }
 
+void GameLogic::damage(QString account, int dam)
+{
+	emit stonesCrushing(0, dam, 0, account);
+}
+
 void GameLogic::heal(QString account)
 {
 	emit(stonesCrushing(50, 0, 0, account));
@@ -369,6 +374,14 @@ void GameLogic::heal(QString account)
 void GameLogic::bladeSlash()
 {
 	int col = qMin(qrand() % boardSize, boardSize - 2);
+	int dam = 0;
+	for (int i = col; i <= col + 1; i++) {
+		for (auto row : board[col]) {
+			dam += row->DAMAGE;
+		}
+	}
+	dam /= 2;
+	damage(account, dam);
 	deleteRect(col, 0, 1, boardSize - 1);
 }
 

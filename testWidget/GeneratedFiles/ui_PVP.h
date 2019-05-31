@@ -25,8 +25,10 @@ public:
     QGridLayout *gridLayout;
     QStackedWidget *stack;
     QWidget *waiting;
-    QLabel *label;
+    QLabel *waitingForGame;
     GameBoard *playing;
+    QWidget *disconnect;
+    QLabel *enemyDisconnect;
 
     void setupUi(QWidget *PVP)
     {
@@ -41,22 +43,35 @@ public:
         stack->setObjectName(QString::fromUtf8("stack"));
         waiting = new QWidget();
         waiting->setObjectName(QString::fromUtf8("waiting"));
-        label = new QLabel(waiting);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(270, 260, 331, 241));
+        waitingForGame = new QLabel(waiting);
+        waitingForGame->setObjectName(QString::fromUtf8("waitingForGame"));
+        waitingForGame->setGeometry(QRect(270, 260, 331, 241));
         QFont font;
         font.setFamily(QString::fromUtf8("Adobe Arabic"));
         font.setPointSize(48);
-        label->setFont(font);
+        waitingForGame->setFont(font);
         stack->addWidget(waiting);
         playing = new GameBoard();
         playing->setObjectName(QString::fromUtf8("playing"));
         stack->addWidget(playing);
+        disconnect = new QWidget();
+        disconnect->setObjectName(QString::fromUtf8("disconnect"));
+        enemyDisconnect = new QLabel(disconnect);
+        enemyDisconnect->setObjectName(QString::fromUtf8("enemyDisconnect"));
+        enemyDisconnect->setGeometry(QRect(130, 270, 701, 271));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Adobe Arabic"));
+        font1.setPointSize(72);
+        enemyDisconnect->setFont(font1);
+        stack->addWidget(disconnect);
 
         gridLayout->addWidget(stack, 0, 0, 1, 1);
 
 
         retranslateUi(PVP);
+
+        stack->setCurrentIndex(2);
+
 
         QMetaObject::connectSlotsByName(PVP);
     } // setupUi
@@ -64,7 +79,8 @@ public:
     void retranslateUi(QWidget *PVP)
     {
         PVP->setWindowTitle(QApplication::translate("PVP", "PVP", nullptr));
-        label->setText(QApplication::translate("PVP", "\347\255\211\345\276\205\345\214\271\351\205\215", nullptr));
+        waitingForGame->setText(QApplication::translate("PVP", "\347\255\211\345\276\205\345\214\271\351\205\215", nullptr));
+        enemyDisconnect->setText(QApplication::translate("PVP", "\346\225\214\344\272\272\351\200\203\350\267\221\344\272\206", nullptr));
     } // retranslateUi
 
 };

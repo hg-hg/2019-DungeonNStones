@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_GameLogic_t {
-    QByteArrayData data[31];
-    char stringdata0[233];
+    QByteArrayData data[32];
+    char stringdata0[237];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -58,11 +58,12 @@ QT_MOC_LITERAL(22, 173, 2), // "x1"
 QT_MOC_LITERAL(23, 176, 2), // "y1"
 QT_MOC_LITERAL(24, 179, 2), // "x2"
 QT_MOC_LITERAL(25, 182, 2), // "y2"
-QT_MOC_LITERAL(26, 185, 4), // "heal"
-QT_MOC_LITERAL(27, 190, 10), // "bladeSlash"
-QT_MOC_LITERAL(28, 201, 7), // "endMove"
-QT_MOC_LITERAL(29, 209, 7), // "gravity"
-QT_MOC_LITERAL(30, 217, 15) // "gravityFinished"
+QT_MOC_LITERAL(26, 185, 3), // "dam"
+QT_MOC_LITERAL(27, 189, 4), // "heal"
+QT_MOC_LITERAL(28, 194, 10), // "bladeSlash"
+QT_MOC_LITERAL(29, 205, 7), // "endMove"
+QT_MOC_LITERAL(30, 213, 7), // "gravity"
+QT_MOC_LITERAL(31, 221, 15) // "gravityFinished"
 
     },
     "GameLogic\0stonesCrushing\0\0hp\0damage\0"
@@ -70,7 +71,7 @@ QT_MOC_LITERAL(30, 217, 15) // "gravityFinished"
     "clickedStone\0Stone*\0stone\0deleteStone\0"
     "col\0row\0changeStone\0type\0deleteRect\0"
     "width\0height\0forceExchange\0x1\0y1\0x2\0"
-    "y2\0heal\0bladeSlash\0endMove\0gravity\0"
+    "y2\0dam\0heal\0bladeSlash\0endMove\0gravity\0"
     "gravityFinished"
 };
 #undef QT_MOC_LITERAL
@@ -81,7 +82,7 @@ static const uint qt_meta_data_GameLogic[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      17,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -89,25 +90,26 @@ static const uint qt_meta_data_GameLogic[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    4,   99,    2, 0x06 /* Public */,
+       1,    4,  104,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    2,  108,    2, 0x0a /* Public */,
-       9,    0,  113,    2, 0x0a /* Public */,
-      10,    1,  114,    2, 0x0a /* Public */,
-      13,    0,  117,    2, 0x0a /* Public */,
-      13,    2,  118,    2, 0x0a /* Public */,
-      16,    3,  123,    2, 0x0a /* Public */,
-      18,    0,  130,    2, 0x0a /* Public */,
-      18,    4,  131,    2, 0x0a /* Public */,
-      21,    0,  140,    2, 0x0a /* Public */,
-      21,    4,  141,    2, 0x0a /* Public */,
-       4,    1,  150,    2, 0x0a /* Public */,
-      26,    1,  153,    2, 0x0a /* Public */,
-      27,    0,  156,    2, 0x0a /* Public */,
-      28,    0,  157,    2, 0x09 /* Protected */,
-      29,    0,  158,    2, 0x09 /* Protected */,
-      30,    0,  159,    2, 0x09 /* Protected */,
+       7,    2,  113,    2, 0x0a /* Public */,
+       9,    0,  118,    2, 0x0a /* Public */,
+      10,    1,  119,    2, 0x0a /* Public */,
+      13,    0,  122,    2, 0x0a /* Public */,
+      13,    2,  123,    2, 0x0a /* Public */,
+      16,    3,  128,    2, 0x0a /* Public */,
+      18,    0,  135,    2, 0x0a /* Public */,
+      18,    4,  136,    2, 0x0a /* Public */,
+      21,    0,  145,    2, 0x0a /* Public */,
+      21,    4,  146,    2, 0x0a /* Public */,
+       4,    1,  155,    2, 0x0a /* Public */,
+       4,    2,  158,    2, 0x0a /* Public */,
+      27,    1,  163,    2, 0x0a /* Public */,
+      28,    0,  166,    2, 0x0a /* Public */,
+      29,    0,  167,    2, 0x09 /* Protected */,
+      30,    0,  168,    2, 0x09 /* Protected */,
+      31,    0,  169,    2, 0x09 /* Protected */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::QString,    3,    4,    5,    6,
@@ -124,6 +126,7 @@ static const uint qt_meta_data_GameLogic[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   22,   23,   24,   25,
     QMetaType::Void, QMetaType::QString,    6,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,    6,   26,
     QMetaType::Void, QMetaType::QString,    6,
     QMetaType::Void,
     QMetaType::Void,
@@ -151,11 +154,12 @@ void GameLogic::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 9: _t->forceExchange(); break;
         case 10: _t->forceExchange((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         case 11: _t->damage((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 12: _t->heal((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 13: _t->bladeSlash(); break;
-        case 14: _t->endMove(); break;
-        case 15: _t->gravity(); break;
-        case 16: _t->gravityFinished(); break;
+        case 12: _t->damage((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 13: _t->heal((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 14: _t->bladeSlash(); break;
+        case 15: _t->endMove(); break;
+        case 16: _t->gravity(); break;
+        case 17: _t->gravityFinished(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -210,13 +214,13 @@ int GameLogic::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 18;
     }
     return _id;
 }

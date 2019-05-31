@@ -43,7 +43,8 @@ public:
         MP->setValue(0);
         characterInfo = new QLabel(PlayerWidget);
         characterInfo->setObjectName(QString::fromUtf8("characterInfo"));
-        characterInfo->setGeometry(QRect(70, 10, 131, 271));
+        characterInfo->setGeometry(QRect(70, 0, 131, 271));
+        characterInfo->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
         verticalLayoutWidget = new QWidget(PlayerWidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(70, 420, 131, 171));

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Client_t {
-    QByteArrayData data[20];
-    char stringdata0[200];
+    QByteArrayData data[21];
+    char stringdata0[216];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,24 +42,25 @@ QT_MOC_LITERAL(6, 35, 2), // "mp"
 QT_MOC_LITERAL(7, 38, 9), // "gameStart"
 QT_MOC_LITERAL(8, 48, 12), // "enemyAccount"
 QT_MOC_LITERAL(9, 61, 14), // "enemyCharacter"
-QT_MOC_LITERAL(10, 76, 11), // "readMessage"
-QT_MOC_LITERAL(11, 88, 11), // "sendMessage"
-QT_MOC_LITERAL(12, 100, 7), // "message"
-QT_MOC_LITERAL(13, 108, 14), // "requestAccount"
-QT_MOC_LITERAL(14, 123, 11), // "accountName"
-QT_MOC_LITERAL(15, 135, 12), // "sendGameData"
-QT_MOC_LITERAL(16, 148, 15), // "sendWaitForGame"
-QT_MOC_LITERAL(17, 164, 9), // "character"
-QT_MOC_LITERAL(18, 174, 8), // "sendDead"
-QT_MOC_LITERAL(19, 183, 16) // "sendBuyCharacter"
+QT_MOC_LITERAL(10, 76, 15), // "enemyDisconnect"
+QT_MOC_LITERAL(11, 92, 11), // "readMessage"
+QT_MOC_LITERAL(12, 104, 11), // "sendMessage"
+QT_MOC_LITERAL(13, 116, 7), // "message"
+QT_MOC_LITERAL(14, 124, 14), // "requestAccount"
+QT_MOC_LITERAL(15, 139, 11), // "accountName"
+QT_MOC_LITERAL(16, 151, 12), // "sendGameData"
+QT_MOC_LITERAL(17, 164, 15), // "sendWaitForGame"
+QT_MOC_LITERAL(18, 180, 9), // "character"
+QT_MOC_LITERAL(19, 190, 8), // "sendDead"
+QT_MOC_LITERAL(20, 199, 16) // "sendBuyCharacter"
 
     },
     "Client\0gameData\0\0account\0hp\0damage\0"
     "mp\0gameStart\0enemyAccount\0enemyCharacter\0"
-    "readMessage\0sendMessage\0message\0"
-    "requestAccount\0accountName\0sendGameData\0"
-    "sendWaitForGame\0character\0sendDead\0"
-    "sendBuyCharacter"
+    "enemyDisconnect\0readMessage\0sendMessage\0"
+    "message\0requestAccount\0accountName\0"
+    "sendGameData\0sendWaitForGame\0character\0"
+    "sendDead\0sendBuyCharacter"
 };
 #undef QT_MOC_LITERAL
 
@@ -74,36 +75,36 @@ static const uint qt_meta_data_Client[] = {
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
        1,    4,   69,    2, 0x06 /* Public */,
        7,    2,   78,    2, 0x06 /* Public */,
+      10,    0,   83,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      10,    0,   83,    2, 0x0a /* Public */,
-      11,    1,   84,    2, 0x0a /* Public */,
-      13,    1,   87,    2, 0x0a /* Public */,
-       7,    0,   90,    2, 0x0a /* Public */,
-      15,    4,   91,    2, 0x0a /* Public */,
-      16,    2,  100,    2, 0x0a /* Public */,
-      18,    1,  105,    2, 0x0a /* Public */,
-      19,    2,  108,    2, 0x0a /* Public */,
+      11,    0,   84,    2, 0x0a /* Public */,
+      12,    1,   85,    2, 0x0a /* Public */,
+      14,    1,   88,    2, 0x0a /* Public */,
+      16,    4,   91,    2, 0x0a /* Public */,
+      17,    2,  100,    2, 0x0a /* Public */,
+      19,    1,  105,    2, 0x0a /* Public */,
+      20,    2,  108,    2, 0x0a /* Public */,
        1,    0,  113,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int,    3,    4,    5,    6,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    8,    9,
+    QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   12,
-    QMetaType::Void, QMetaType::QString,   14,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   13,
+    QMetaType::Void, QMetaType::QString,   15,
     QMetaType::Void, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int,    3,    4,    5,    6,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   17,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   18,
     QMetaType::Void, QMetaType::QString,    3,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   17,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,   18,
     QMetaType::Void,
 
        0        // eod
@@ -117,10 +118,10 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         switch (_id) {
         case 0: _t->gameData((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         case 1: _t->gameStart((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 2: _t->readMessage(); break;
-        case 3: _t->sendMessage((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 4: _t->requestAccount((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 5: _t->gameStart(); break;
+        case 2: _t->enemyDisconnect(); break;
+        case 3: _t->readMessage(); break;
+        case 4: _t->sendMessage((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 5: _t->requestAccount((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 6: _t->sendGameData((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         case 7: _t->sendWaitForGame((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 8: _t->sendDead((*reinterpret_cast< QString(*)>(_a[1]))); break;
@@ -141,6 +142,13 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             using _t = void (Client::*)(QString , QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Client::gameStart)) {
                 *result = 1;
+                return;
+            }
+        }
+        {
+            using _t = void (Client::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Client::enemyDisconnect)) {
+                *result = 2;
                 return;
             }
         }
@@ -199,6 +207,12 @@ void Client::gameStart(QString _t1, QString _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void Client::enemyDisconnect()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE
