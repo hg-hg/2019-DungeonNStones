@@ -260,7 +260,7 @@ void GameLogic::evaluatePath(QVector<QPair<int, int>>& path)
 
 void GameLogic::evaluateStonesToCrush(QVector<QPair<int, int>>& path)
 {
-	int hp = 0, damage = 0, mp = 0;
+	/*int hp = 0, damage = 0, mp = 0;
 	for (auto stone : path) {
 		stoneToCrush.append(stone);
 		auto st = board[stone.first][stone.second];
@@ -274,7 +274,7 @@ void GameLogic::evaluateStonesToCrush(QVector<QPair<int, int>>& path)
 	hp *= bouns;
 	damage *= bouns;
 	mp *= bouns;
-	emit stonesCrushing(hp, damage, mp, account);
+	emit stonesCrushing(hp, damage, mp, account);*/
 }
 
 void GameLogic::animateCrushingStones()
@@ -388,14 +388,23 @@ void GameLogic::bladeSlash(QString account)
 void GameLogic::gravity()
 {
 	enableAllStones();
+	int hp = 0, damage = 0, mp = 0, bouns = 0;
 	for (auto pos : stoneToCrush) {
 		auto st = board[pos.first][pos.second];
 		if (st->isValid()) {
+			hp += st->HP;
+			damage += st->DAMAGE;
+			mp += st->MP;
+			bouns++;
 			delete st;
 			board[pos.first][pos.second] = nullptr;
 			//only delete is useless, you must reset it to nullptr explicitly
 		}
 	}
+	if (bouns <= 3) bouns = 1;
+	else bouns -= 2;
+	hp *= bouns; damage *= bouns; mp *= bouns;
+	emit stonesCrushing(hp, damage, mp, account);
 	stoneToCrush.resize(0);
 	int maxDy = 0;
 
