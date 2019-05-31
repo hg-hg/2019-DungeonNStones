@@ -9,7 +9,11 @@ ServerThread::ServerThread(int sockDesc, QObject *parent)
 
 ServerThread::~ServerThread()
 {
+	quit();
+	wait();
+
 	socket->close();
+	socket->deleteLater();
 }
 
 void ServerThread::run()
@@ -20,7 +24,8 @@ void ServerThread::run()
 		return;
 	}
 
-	//connect(socket, &MySocket::disconnected, this, &ServerThread::disconnectToHost);
+	connect(socket, &MySocket::disconnected, this, &ServerThread::disconnectToHost);
+	//connect(socket, SIGNAL(clientDisconncting()), this, SLOT(disconnectToHost()));
 	/*connect(socket, SIGNAL(dataReady(const QString&, const QByteArray&)),
 		this, SLOT(readMessage(const QString&, const QByteArray&)));*/
 
@@ -66,6 +71,6 @@ void ServerThread::gameData(QString data)
 
 void ServerThread::disconnectToHost()
 {
-	//emit disconnectTCP(m_sockDesc);
 	socket->disconnectFromHost();
+	emit disconnectTCP(m_sockDesc);
 }

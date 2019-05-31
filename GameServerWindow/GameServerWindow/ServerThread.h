@@ -19,8 +19,7 @@ public slots:
 signals:
 	//void dataReady(const QString &data);
 	//void sendMessage(const QString &data);
-	//void disconnectTCP(int sockDesc);
-	//void addAccount(QString account);
+	void disconnectTCP(int sockDesc);
 	void threadWaitForGame(QString account, QString character);
 	void threadGameData(QString data);
 

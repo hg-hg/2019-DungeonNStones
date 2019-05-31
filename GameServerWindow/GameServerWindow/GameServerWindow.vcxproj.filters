@@ -39,9 +39,6 @@
     <ClCompile Include="GameServerWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Client.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AccountManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -68,9 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="GameServerWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Client.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="AccountManager.h">

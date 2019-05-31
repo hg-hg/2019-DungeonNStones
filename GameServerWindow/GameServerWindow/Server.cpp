@@ -22,7 +22,8 @@ void Server::incomingConnection(qintptr sockDesc)
 	//m_dialog->showConnection(sockDesc);
 
 	connect(thread, SIGNAL(disconnectTCP(int)), this, SLOT(clientDisconnected(int)));
-	connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+	//connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+	connect(thread, SIGNAL(finished()), this, SLOT(deleteLater()));
 	//connect(thread, SIGNAL(addAccount(QString)), this, SLOT(addAccount(QString)));
 	connect(thread, SIGNAL(threadWaitForGame(QString, QString)), this, SLOT(waitingForGame(QString, QString)));
 	connect(this, SIGNAL(sendMessage(int, QString)), thread, SLOT(sendMessage(int, QString)));
@@ -73,5 +74,26 @@ void Server::sendGameData(QString data)
 
 void Server::clientDisconnected(int sockDesc)
 {
-	//m_dialog->showDisconnection(sockDesc);
+	emit changeUI(QString::number(sockDesc) + " disconnect");
+	auto thread = static_cast<ServerThread*>(sender());
+	QString message = QString::number(MessageType::Disconnect);
+	for (auto it = playing.begin(); it != playing.end();) {
+		if (it->first == thread) {
+			emit sendMessage(it->second->m_sockDesc, message);
+			it = playing.erase(it);
+		}
+		else if (it->second == thread) {
+			emit sendMessage(it->first->m_sockDesc, message);
+			it = playing.erase(it);
+		}
+		else it++;
+	}
+	for (auto it = online.begin(); it != online.end(); ) {
+		if (*it == thread) {
+			it = online.erase(it);
+			break;
+		}
+		else it++;
+	}
+	thread->deleteLater();
 }
