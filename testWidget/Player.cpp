@@ -37,8 +37,6 @@ Player::Player(QWidget * parent, QString ACCOUNT)
 
 void Player::skillInvoke(QString skill, int cost) {
 	if (mp < cost) return;
-	mp -= cost;
-	ui.MP->setValue(mp);
 	emit useSkill(skill, account);
 	emit sendInfo(account, 0, 0, -cost);
 }
