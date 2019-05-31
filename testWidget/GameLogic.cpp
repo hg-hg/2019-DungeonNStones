@@ -260,15 +260,15 @@ void GameLogic::evaluatePath(QVector<QPair<int, int>>& path)
 
 void GameLogic::evaluateStonesToCrush(QVector<QPair<int, int>>& path)
 {
-	/*int hp = 0, damage = 0, mp = 0;
+	//int hp = 0, damage = 0, mp = 0;
 	for (auto stone : path) {
 		stoneToCrush.append(stone);
-		auto st = board[stone.first][stone.second];
+		/*auto st = board[stone.first][stone.second];
 		hp += st->HP;
 		damage += st->DAMAGE;
-		mp += st->MP;
+		mp += st->MP;*/
 	}
-	int bouns = path.size();
+	/*int bouns = path.size();
 	if (bouns <= 3) bouns = 1;
 	else bouns -= 2;
 	hp *= bouns;
