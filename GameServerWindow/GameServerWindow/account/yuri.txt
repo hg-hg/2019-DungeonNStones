@@ -1,6 +1,6 @@
 yuri
 500
-Kinght
+Test
 Test
 Test2
 Knight
