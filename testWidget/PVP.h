@@ -15,7 +15,7 @@ public:
 	QString enemyAccount;
 
 public slots:
-	void gameStart(QString account, QString character);
+	void startGame(QString account, QString character);
 	void enemyDisconnected();
 private:
 	Ui::PVP ui;

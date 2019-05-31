@@ -11,7 +11,6 @@ testWidget::testWidget(QWidget *parent)
 	//account = am->getCurrentAccount();
 	client->connectToServer();
 	//获得了Account名
-	//client->requestAccount("yuri");
 	client->requestAccount("wtf");
 	
 	qDebug() << Account::getInstance()->name;

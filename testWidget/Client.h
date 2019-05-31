@@ -16,7 +16,7 @@ private:
 	AccountManager* am = new AccountManager();
 	void initializeAccount();
 	void gameStart();
-	QString getLine();
+	QString getLine(int times = 0);
 public:
 	static Client* getInstance();
 	static void release();

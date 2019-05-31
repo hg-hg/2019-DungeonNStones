@@ -13,6 +13,9 @@ signals:
 	void useSkill(QString, int);
 private slots:
 	void skillClicked();
+
+public slots:
+	void frozen(int);
 public:
 	QString name;
 	QString description;

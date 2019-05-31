@@ -26,10 +26,10 @@ void Client::initializeAccount()
 	}
 }
 
-QString Client::getLine()
+QString Client::getLine(int times)
 {
 	QString str = readLine();
-	if (str.isEmpty()) return getLine();
+	if (str.isEmpty() && times < 10) return getLine(++times);
 	return str.simplified();
 }
 
@@ -108,32 +108,33 @@ void Client::gameStart()
 {
 	QString enemyAccount = getLine();
 	QString enemyCharacter = getLine();
-	qDebug() << enemyAccount << enemyCharacter;
+	//qDebug() << enemyAccount << enemyCharacter;
 	emit gameStart(enemyAccount, enemyCharacter);
 }
 
 void Client::sendGameData(QString account, int hp, int damage, int mp)
 {
 	QString message = QString::number(MessageType::GameData) + "\n" +
-		account + "\n" + QString::number(hp) + "\n" + QString::number(damage) + "\n" + QString::number(mp);
+		account + "\n" + QString::number(hp) + "\n" + QString::number(damage) + "\n" + QString::number(mp) + "\n";
 	sendMessage(message);
 }
 
 void Client::sendWaitForGame(QString account, QString character)
 {
-	QString message = QString::number(MessageType::WaitForGame) + "\n" + account + "\n" + character;
+	QString message = QString::number(MessageType::WaitForGame) + "\n" + account + "\n" + character + "\n";
 	sendMessage(message);
+	//waitForReadyRead();
 }
 
 void Client::sendDead(QString account)
 {
-	QString message = QString::number(MessageType::Dead) + "\n" + account;
+	QString message = QString::number(MessageType::Dead) + "\n" + account + "\n";
 	sendMessage(message);
 }
 
 void Client::sendBuyCharacter(QString account, QString character)
 {
-	QString message = QString::number(MessageType::BuyCharacter) + "\n" + account + "\n" + character;
+	QString message = QString::number(MessageType::BuyCharacter) + "\n" + account + "\n" + character + "\n";
 	sendMessage(message);
 }
 

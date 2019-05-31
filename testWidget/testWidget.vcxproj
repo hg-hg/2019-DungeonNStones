@@ -96,6 +96,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,6 +133,7 @@
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameServer.cpp" />
     <ClCompile Include="GravityAnimation.cpp" />
+    <ClCompile Include="Login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PVE.cpp" />
@@ -166,6 +168,7 @@
     <QtMoc Include="GameBoard.h" />
     <QtMoc Include="GameServer.h" />
     <ClInclude Include="GeneratedFiles\ui_GameBoard.h" />
+    <ClInclude Include="GeneratedFiles\ui_Login.h" />
     <ClInclude Include="GeneratedFiles\ui_player.h" />
     <ClInclude Include="GeneratedFiles\ui_PVE.h" />
     <ClInclude Include="GeneratedFiles\ui_PVP.h" />
@@ -176,6 +179,7 @@
     <QtMoc Include="SkillManager.h" />
     <QtMoc Include="PVE.h" />
     <QtMoc Include="PVP.h" />
+    <QtMoc Include="Login.h" />
     <ClInclude Include="stdafx.h" />
     <QtMoc Include="StoneDM.h" />
     <QtMoc Include="StoneHM.h" />
@@ -188,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="GameBoard.ui" />
+    <QtUic Include="Login.ui" />
     <QtUic Include="player.ui" />
     <QtUic Include="PVE.ui" />
     <QtUic Include="PVP.ui" />
@@ -204,7 +209,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="msvc2017_64" MocOptions="" />
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="5.12.3" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
