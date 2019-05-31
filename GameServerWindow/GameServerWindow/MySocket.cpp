@@ -16,9 +16,9 @@ MySocket::~MySocket()
 
 QString MySocket::getLine()
 {
-	QString str = readLine().simplified();
+	QString str = readLine();
 	if (str.isEmpty()) return getLine();
-	return str;
+	return str.simplified();
 }
 
 void MySocket::sendMessage(QString data)
@@ -77,6 +77,7 @@ void MySocket::readMessage()
 		receiveGameData();
 		break;
 	case Dead:
+		
 		break;
 	case Disconnect:
 		break;

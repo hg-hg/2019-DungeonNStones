@@ -22,7 +22,6 @@ signals:
 	void waitForGame(QString account, QString character);
 	void clientGameData(QString data);
 
-
 public slots:
 	void readMessage();
 	void sendMessage(QString data);
