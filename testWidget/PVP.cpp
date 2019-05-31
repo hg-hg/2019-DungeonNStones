@@ -11,14 +11,20 @@ PVP::PVP(QWidget *parent)
 {
 	Client* client = Client::getInstance();
 	connect(client, SIGNAL(gameStart(QString, QString)), this, SLOT(gameStart(QString, QString)));
+	connect(client, SIGNAL(enemyDisconnect()), this, SLOT(enemyDisconnected()));
 	client->sendWaitForGame(account->name, account->getSelectedCharacter()->name);
 	ui.setupUi(this);
 	ui.playing->setLocalGame(false);
-	
+	ui.stack->setCurrentWidget(ui.waiting);
 }
 
 PVP::~PVP()
 {
+}
+
+void PVP::enemyDisconnected()
+{
+	ui.stack->setCurrentWidget(ui.disconnect);
 }
 
 void PVP::gameStart(QString account, QString character)

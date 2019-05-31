@@ -16,8 +16,11 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stack">
+     <property name="currentIndex">
+      <number>2</number>
+     </property>
      <widget class="QWidget" name="waiting">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="waitingForGame">
        <property name="geometry">
         <rect>
          <x>270</x>
@@ -38,6 +41,27 @@
       </widget>
      </widget>
      <widget class="GameBoard" name="playing"/>
+     <widget class="QWidget" name="disconnect">
+      <widget class="QLabel" name="enemyDisconnect">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>270</y>
+         <width>701</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Adobe Arabic</family>
+         <pointsize>72</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>敌人逃跑了</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
    </item>
   </layout>

@@ -17,6 +17,7 @@ public:
 	testWidget(QWidget *parent = Q_NULLPTR);
 
 protected:
+	void closeEvent(QCloseEvent *event) override;
 	
 private:
 	Ui::testWidgetClass ui;

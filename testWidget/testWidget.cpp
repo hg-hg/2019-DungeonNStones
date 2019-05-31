@@ -10,7 +10,8 @@ testWidget::testWidget(QWidget *parent)
 	//wtf
 	//account = am->getCurrentAccount();
 	client->connectToServer();
-	client->requestAccount("wtf");
+	//获得了Account名
+	client->requestAccount("yuri");
 	
 	qDebug() << Account::getInstance()->name;
 	ui.setupUi(this);
@@ -19,3 +20,7 @@ testWidget::testWidget(QWidget *parent)
 	
 }
 
+void testWidget::closeEvent(QCloseEvent * event)
+{
+	client->sendDisconnecting();
+}
