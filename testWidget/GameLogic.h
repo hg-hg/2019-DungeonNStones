@@ -57,7 +57,7 @@ public slots:
 	void damage(QString account);
 	void damage(QString account, int dam);
 	void heal(QString account);
-	void bladeSlash();
+	void bladeSlash(QString account);
 protected slots:
 	void endMove();
 	void gravity();
