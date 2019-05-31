@@ -1,1 +1,4 @@
+#visual studio things ignoring
 x64
+.vs
+GeneratedFiles
