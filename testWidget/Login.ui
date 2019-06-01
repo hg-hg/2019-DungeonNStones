@@ -13,29 +13,55 @@
   <property name="windowTitle">
    <string>Login</string>
   </property>
-  <widget class="QLineEdit" name="account">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>280</y>
-     <width>611</width>
-     <height>71</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="login">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>400</y>
-     <width>231</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>login</string>
-   </property>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="enterAccount">
+      <widget class="QLineEdit" name="account">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>270</y>
+         <width>771</width>
+         <height>91</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="login">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>450</y>
+         <width>231</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>login</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="waiting">
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>350</y>
+         <width>72</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>等待界面</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
@@ -47,8 +73,8 @@
    <slot>loginToServer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>554</x>
-     <y>438</y>
+     <x>535</x>
+     <y>499</y>
     </hint>
     <hint type="destinationlabel">
      <x>754</x>

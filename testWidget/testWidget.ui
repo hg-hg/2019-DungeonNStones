@@ -14,24 +14,28 @@
    <string>testWidget</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="PVP" name="gb" native="true">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>30</y>
-      <width>1161</width>
-      <height>791</height>
-     </rect>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <widget class="Login" name="login"/>
+      <widget class="MainScene" name="mainScene"/>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>PVP</class>
+   <class>Login</class>
    <extends>QWidget</extends>
-   <header location="global">PVP.h</header>
+   <header location="global">Login.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MainScene</class>
+   <extends>QWidget</extends>
+   <header location="global">Mainscene.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -135,6 +135,7 @@
     <ClCompile Include="GravityAnimation.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PVE.cpp" />
     <ClCompile Include="PVP.cpp" />
@@ -169,6 +170,7 @@
     <QtMoc Include="GameServer.h" />
     <ClInclude Include="GeneratedFiles\ui_GameBoard.h" />
     <ClInclude Include="GeneratedFiles\ui_Login.h" />
+    <ClInclude Include="GeneratedFiles\ui_MainScene.h" />
     <ClInclude Include="GeneratedFiles\ui_player.h" />
     <ClInclude Include="GeneratedFiles\ui_PVE.h" />
     <ClInclude Include="GeneratedFiles\ui_PVP.h" />
@@ -180,6 +182,7 @@
     <QtMoc Include="PVE.h" />
     <QtMoc Include="PVP.h" />
     <QtMoc Include="Login.h" />
+    <QtMoc Include="MainScene.h" />
     <ClInclude Include="stdafx.h" />
     <QtMoc Include="StoneDM.h" />
     <QtMoc Include="StoneHM.h" />
@@ -193,6 +196,7 @@
   <ItemGroup>
     <QtUic Include="GameBoard.ui" />
     <QtUic Include="Login.ui" />
+    <QtUic Include="MainScene.ui" />
     <QtUic Include="player.ui" />
     <QtUic Include="PVE.ui" />
     <QtUic Include="PVP.ui" />

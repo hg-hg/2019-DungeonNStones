@@ -132,6 +132,9 @@
     <ClCompile Include="Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -156,6 +159,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_Login.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MainScene.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -238,6 +244,9 @@
     <QtMoc Include="Login.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="MainScene.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="testWidget.ui">
@@ -256,6 +265,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Login.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MainScene.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
