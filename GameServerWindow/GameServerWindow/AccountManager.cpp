@@ -13,7 +13,7 @@ AccountManager::~AccountManager()
 
 QString AccountManager::getAccount(QString accountName)
 {
-	auto fileName = "./Account/" + accountName + ".txt";
+	auto fileName = "./account/" + accountName + ".txt";
 	QFile file(fileName);
 	if (!file.open(QFile::ReadOnly | QFile::Text)) {
 		qDebug(); return false;
