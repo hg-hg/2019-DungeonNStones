@@ -20,27 +20,105 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="enterAccount">
-      <widget class="QLineEdit" name="account">
+      <widget class="QFrame" name="frame">
        <property name="geometry">
         <rect>
-         <x>140</x>
-         <y>270</y>
-         <width>771</width>
-         <height>91</height>
+         <x>320</x>
+         <y>260</y>
+         <width>391</width>
+         <height>391</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">*{
+	font-family:century gothic;
+	font-size:24px;
+}
+#LogIn{
+	background:url(E://LogInScene.jpg);
+}
+QFrame{
+	background:#333;
+	border-radius:15px;
+}
+QToolButton{
+	border-radius:60px;
+	background:white;
+}
+QLabel{
+	color:white;
+}
+QPushButton{
+	border-radius:15px;
+	background:red;
+	color:white;
+}
+QPushButton:hover{
+	border-radius:15px;
+	background:#94edff;
+	color:white;
+}
+QLineEdit{
+background:transparent;
+border:none;
+color:#717207;
+border-bottom:1px solid #717207;
+
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLineEdit" name="account">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>160</y>
+          <width>291</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>User Name</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="login">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>300</y>
+          <width>341</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>login</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QPushButton" name="login">
+      <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>410</x>
-         <y>450</y>
-         <width>231</width>
-         <height>51</height>
+         <x>440</x>
+         <y>150</y>
+         <width>111</width>
+         <height>121</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	border-radius:60px;
+	background:white;
+}</string>
        </property>
        <property name="text">
-        <string>login</string>
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>Picture/logIn.jpg</pixmap>
        </property>
       </widget>
      </widget>

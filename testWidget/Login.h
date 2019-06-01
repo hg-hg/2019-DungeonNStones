@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QWidget>
+
 #include "ui_Login.h"
 
 class Login : public QWidget
@@ -10,6 +11,7 @@ class Login : public QWidget
 public:
 	Login(QWidget *parent = Q_NULLPTR);
 	~Login();
+	void keyPressEvent(QKeyEvent * event) override;
 
 public slots:
 	void loginToServer();

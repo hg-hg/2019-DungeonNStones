@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Login.h"
 #include "Client.h"
-
+#include <QKeyEvent>
 
 
 Login::Login(QWidget *parent)
@@ -16,6 +16,15 @@ Login::Login(QWidget *parent)
 Login::~Login()
 {
 	qDebug();
+}
+
+void Login::keyPressEvent(QKeyEvent * event)
+{
+	if (event->key() == Qt::Key_Return)
+	{
+		Client::getInstance()->requestAccount(ui.account->text());
+		ui.stackedWidget->setCurrentWidget(ui.waiting);
+	}
 }
 
 void Login::accountInitialized()
