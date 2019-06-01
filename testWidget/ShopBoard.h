@@ -14,6 +14,7 @@ public:
 	ShopBoard(QWidget *parent = Q_NULLPTR);
 	~ShopBoard();
 private:
+	void initialSelectedCharacter();
 	void initialMainWidget();
 	void initialStackWidget();
 	void initialVectors();
