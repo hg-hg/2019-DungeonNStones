@@ -124,9 +124,12 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="AccountManager.cpp" />
+    <ClCompile Include="BuyButton.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CharacterManager.cpp" />
+    <ClCompile Include="CharacterWidget.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="CommodityWidget.cpp" />
     <ClCompile Include="CrushAnimation.cpp" />
     <ClCompile Include="ExchangeAnimation.cpp" />
     <ClCompile Include="GameBoard.cpp" />
@@ -136,9 +139,13 @@
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
+    <ClCompile Include="MessageWidget.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PVE.cpp" />
     <ClCompile Include="PVP.cpp" />
+    <ClCompile Include="ReturnButton.cpp" />
+    <ClCompile Include="SelectButton.cpp" />
+    <ClCompile Include="ShopBoard.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SkillManager.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -161,6 +168,9 @@
     <QtMoc Include="Account.h" />
     <QtMoc Include="AccountManager.h" />
     <QtMoc Include="Client.h" />
+    <QtMoc Include="BuyButton.h" />
+    <QtMoc Include="CharacterWidget.h" />
+    <QtMoc Include="CommodityWidget.h" />
     <ClInclude Include="const.h" />
     <QtMoc Include="StoneManager.h" />
     <QtMoc Include="GameLogic.h" />
@@ -183,6 +193,10 @@
     <QtMoc Include="PVP.h" />
     <QtMoc Include="Login.h" />
     <QtMoc Include="MainScene.h" />
+    <QtMoc Include="MessageWidget.h" />
+    <QtMoc Include="ReturnButton.h" />
+    <QtMoc Include="SelectButton.h" />
+    <QtMoc Include="ShopBoard.h" />
     <ClInclude Include="stdafx.h" />
     <QtMoc Include="StoneDM.h" />
     <QtMoc Include="StoneHM.h" />

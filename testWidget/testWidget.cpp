@@ -3,6 +3,7 @@
 #include "Client.h"
 #include "PVE.h"
 #include "PVP.h"
+#include "ShopBoard.h"
 Client * client = Client::getInstance();
 
 testWidget::testWidget(QWidget *parent)
@@ -48,6 +49,9 @@ void testWidget::pve()
 
 void testWidget::shop()
 {
+	auto shopBoard = new ShopBoard(this);
+	ui.stackedWidget->addWidget(shopBoard);
+	ui.stackedWidget->setCurrentWidget(shopBoard);
 }
 
 void testWidget::quit()
