@@ -102,10 +102,10 @@ border-bottom:1px solid #717207;
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>440</x>
-         <y>150</y>
-         <width>111</width>
-         <height>121</height>
+         <x>460</x>
+         <y>140</y>
+         <width>131</width>
+         <height>131</height>
         </rect>
        </property>
        <property name="styleSheet">

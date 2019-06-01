@@ -10,6 +10,7 @@ class MainScene : public QWidget
 public:
 	MainScene(QWidget *parent = Q_NULLPTR);
 	~MainScene();
+	void initButton();
 
 public slots:
 	void pvp();

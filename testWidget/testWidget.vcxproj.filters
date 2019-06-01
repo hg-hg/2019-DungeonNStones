@@ -162,6 +162,9 @@
     <ClCompile Include="ShopBoard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainSceneButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -296,6 +299,9 @@
       <Filter>Header Files\shop</Filter>
     </QtMoc>
     <QtMoc Include="ShopBoard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="MainSceneButton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

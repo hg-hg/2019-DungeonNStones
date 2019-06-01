@@ -5,10 +5,20 @@ MainScene::MainScene(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+	initButton();
 }
 
 MainScene::~MainScene()
 {
+}
+
+void MainScene::initButton()
+{
+	ui.PVE->setPicture(".//Picture//PVE.bmp");
+	ui.PVP->setPicture(".//Picture//PVP.bmp");
+	ui.Quit->setPicture(".//Picture//exit.bmp");
+	ui.Setting->setPicture(".//Picture//Setting.bmp");
+	ui.shopBoard->setPicture(".//Picture//shop.bmp");
 }
 
 void MainScene::pvp()
@@ -35,3 +45,4 @@ void MainScene::setting()
 {
 	emit goSetting();
 }
+

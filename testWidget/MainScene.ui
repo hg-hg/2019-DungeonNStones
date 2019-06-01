@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>MainScene</string>
   </property>
-  <widget class="QPushButton" name="shopBoard">
+  <widget class="MainSceneButton" name="shopBoard">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -23,10 +23,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>商店</string>
+    <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="PVE">
+  <widget class="MainSceneButton" name="PVE">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -36,10 +36,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>本地对战</string>
+    <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="PVP">
+  <widget class="MainSceneButton" name="PVP">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -49,10 +49,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>联网对战</string>
+    <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="Setting">
+  <widget class="MainSceneButton" name="Setting">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -62,10 +62,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>设置</string>
+    <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="Quit">
+  <widget class="MainSceneButton" name="Quit">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -75,11 +75,18 @@
     </rect>
    </property>
    <property name="text">
-    <string>退出</string>
+    <string/>
    </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MainSceneButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">mainscenebutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

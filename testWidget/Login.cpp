@@ -26,7 +26,12 @@ void Login::keyPressEvent(QKeyEvent * event)
 		ui.stackedWidget->setCurrentWidget(ui.waiting);
 	}
 }
-
+void Login::paintEvent(QPaintEvent*) {
+	QPainter painter(this);
+	QPixmap pix;
+	pix.load(".//Picture//LogInScene.jpg");
+	painter.drawPixmap(0, 0, this->width(), this->height(), pix);
+}
 void Login::accountInitialized()
 {
 	emit mainScene();
