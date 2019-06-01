@@ -13,7 +13,10 @@ public:
 
 public slots:
 	void loginToServer();
+	void accountInitialized();
 
+signals:
+	void mainScene();
 private:
 	Ui::Login ui;
 };

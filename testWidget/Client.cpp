@@ -24,6 +24,7 @@ void Client::initializeAccount()
 		character = getLine();
 		Account::getInstance()->characters.append(character);
 	}
+	emit accountInitialized();
 }
 
 QString Client::getLine(int times)
@@ -52,8 +53,8 @@ void Client::release()
 
 void Client::connectToServer()
 {
-	//connectToHost(QHostAddress("39.107.229.247"), 27015);
-	connectToHost(QHostAddress::LocalHost, 27015);
+	connectToHost(QHostAddress("39.107.229.247"), 27015);
+	//connectToHost(QHostAddress::LocalHost, 27015);
 	waitForConnected();
 	connect(this, SIGNAL(readyRead()), this, SLOT(readMessage()));
 }

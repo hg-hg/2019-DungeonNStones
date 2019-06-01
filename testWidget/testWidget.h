@@ -18,6 +18,14 @@ public:
 
 protected:
 	void closeEvent(QCloseEvent *event) override;
+
+public slots:
+	void mainScene();
+	void pvp();
+	void pve();
+	void shop();
+	void quit();
+	void setting();
 	
 private:
 	Ui::testWidgetClass ui;
@@ -26,4 +34,6 @@ private:
 	AccountManager* am = new AccountManager();
 	Account* account = Account::getInstance();
 	Client* client = Client::getInstance();
+	/*PVE * pve;
+	PVP * pvp;*/
 };

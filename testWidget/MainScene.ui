@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainScene</class>
+ <widget class="QWidget" name="MainScene">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1064</width>
+    <height>745</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainScene</string>
+  </property>
+  <widget class="QPushButton" name="shopBoard">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>80</y>
+     <width>591</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>商店</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PVE">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>210</y>
+     <width>591</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>本地对战</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PVP">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>330</y>
+     <width>591</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>联网对战</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Setting">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>440</y>
+     <width>591</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>设置</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Quit">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>550</y>
+     <width>591</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>shopBoard</sender>
+   <signal>clicked()</signal>
+   <receiver>MainScene</receiver>
+   <slot>shop()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>688</x>
+     <y>126</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>932</x>
+     <y>183</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PVE</sender>
+   <signal>clicked()</signal>
+   <receiver>MainScene</receiver>
+   <slot>pve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>683</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>930</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PVP</sender>
+   <signal>clicked()</signal>
+   <receiver>MainScene</receiver>
+   <slot>pvp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>682</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>923</x>
+     <y>408</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Setting</sender>
+   <signal>clicked()</signal>
+   <receiver>MainScene</receiver>
+   <slot>setting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>684</x>
+     <y>475</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>921</x>
+     <y>508</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Quit</sender>
+   <signal>clicked()</signal>
+   <receiver>MainScene</receiver>
+   <slot>quit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>687</x>
+     <y>591</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>920</x>
+     <y>626</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>shop()</slot>
+  <slot>pve()</slot>
+  <slot>pvp()</slot>
+  <slot>setting()</slot>
+  <slot>quit()</slot>
+ </slots>
+</ui>

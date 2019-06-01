@@ -35,6 +35,7 @@ public slots:
 	void gameData();
 
 signals:
+	void accountInitialized();
 	void gameData(QString account, int hp, int damage, int mp);
 	void gameStart(QString enemyAccount, QString enemyCharacter);
 	void enemyDisconnect();
