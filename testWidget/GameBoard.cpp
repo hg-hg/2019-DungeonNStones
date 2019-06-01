@@ -6,7 +6,7 @@
 void GameBoard::gameStart(QString enemy, QString enemyCharacter)
 {
 	enemyAccount = enemy;
-	setData(current, current->getSelectedCharacter(), CharacterManager::getInstance()->getCharacter(enemyCharacter));
+	setData(CharacterManager::getInstance()->getCharacter(enemyCharacter));
 }
 
 GameBoard::GameBoard(QWidget* parent)
@@ -23,11 +23,13 @@ GameBoard::GameBoard(QWidget* parent)
 void GameBoard::setLocalGame(bool flag)
 {
 	connect(ui.player, SIGNAL(useSkill(QString, QString)), ui.gameCore, SLOT(useSkill(QString, QString)));
+	connect(ui.player, SIGNAL(dead(QString)), this, SLOT(playerDead(QString)));
 	if (flag) {
 		GameServer* gs = new GameServer(this);
 
 		//for auto robot
 		connect(ui.enemy, SIGNAL(useSkill(QString, QString)), ui.gameCore, SLOT(useSkill(QString, QString)));
+		connect(ui.enemy, SIGNAL(dead(QString)), this, SLOT(playerDead(QString)));
 
 		connect(ui.player, SIGNAL(sendInfo(QString, int, int, int)), gs, SLOT(receiveInfo(QString, int, int, int)));
 		connect(ui.enemy, SIGNAL(sendInfo(QString, int, int, int)), gs, SLOT(receiveInfo(QString, int, int, int)));
@@ -42,15 +44,26 @@ void GameBoard::setLocalGame(bool flag)
 	}
 }
 
+void GameBoard::playerDead(QString playerAccount)
+{
+	emit sendPlayerDead(playerAccount);
+}
+
+void GameBoard::restart()
+{
+	ui.player->initialStatus();
+	ui.enemy->initialStatus();
+}
+
 GameBoard::~GameBoard()
 {
 }
 
-void GameBoard::setData(Account * acct, Character * myCha, Character * enemyCha)
+void GameBoard::setData(Character * enemyCha)
 {
-	current = acct;
-	ui.player->setAccount(current->name);
-	ui.player->setCharacter(myCha);
+	auto account = Account::getInstance();
+	ui.player->setAccount(account->name);
+	ui.player->setCharacter(account->getSelectedCharacter());
 	ui.enemy->setAccount(enemyAccount);
 	ui.enemy->setAsEnemy();
 	ui.enemy->setCharacter(enemyCha);

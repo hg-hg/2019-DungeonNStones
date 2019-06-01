@@ -14,14 +14,20 @@ class GameBoard : public QWidget
 
 public slots:
 	void gameStart(QString enemy, QString enemyCharacter);
+	void playerDead(QString playerAccount);
+	void restart();
+signals:
+	void sendPlayerDead(QString playerAccount);
 
 public:
 	GameBoard(QWidget *parent = Q_NULLPTR);
-	void setLocalGame(bool flag);
 	~GameBoard();
-	Account* current = Account::getInstance();
-	void setData(Account* acct, Character* myCha, Character* enemyCha);
+	void setLocalGame(bool flag);
+	void setData(Character* enemyCha);
+
+public:
+	QString enemyAccount = "enemy";
 private:
 	Ui::GameBoard ui;
-	QString enemyAccount = "enemy";
+
 };

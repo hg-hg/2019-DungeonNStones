@@ -44,6 +44,7 @@ void testWidget::pvp()
 void testWidget::pve()
 {
 	PVE * pve = new PVE(this);
+	connect(pve, SIGNAL(mainScene()), this, SLOT(mainScene()));
 	ui.stackedWidget->addWidget(pve);
 	ui.stackedWidget->setCurrentWidget(pve);
 }
@@ -58,6 +59,7 @@ void testWidget::shop()
 
 void testWidget::quit()
 {
+	exit(0);
 }
 
 void testWidget::setting()

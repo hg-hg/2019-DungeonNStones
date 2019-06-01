@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>937</width>
-    <height>0</height>
+    <width>1077</width>
+    <height>766</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,46 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="GameBoard" name="gameBoard" native="true"/>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="playing">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="GameBoard" name="gameBoard" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gameOver">
+      <widget class="QLabel" name="movie">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>961</width>
+         <height>711</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>逃跑</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -29,5 +68,25 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>PVE</receiver>
+   <slot>escape()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>645</x>
+     <y>735</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>858</x>
+     <y>780</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>escape()</slot>
+ </slots>
 </ui>

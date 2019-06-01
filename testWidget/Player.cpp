@@ -16,6 +16,17 @@ void Player::receiveInfo(QString account, int hp, int damage, int mp)
 	}
 }
 
+void Player::initialStatus()
+{
+	hp = maxHP = character->hp;
+	maxMP = character->mp;
+	mp = 0;
+	ui.HP->setMaximum(maxHP);
+	ui.HP->setValue(hp);
+	ui.MP->setMaximum(maxMP);
+	ui.MP->setValue(mp);
+}
+
 Player::Player(QWidget * parent)
 	:QWidget(parent)
 {
@@ -44,14 +55,7 @@ void Player::skillInvoke(QString skill, int cost) {
 void Player::setCharacter(Character* ch)
 {
 	character = ch;
-	character->setParent(this);
-	hp = maxHP = character->hp;
-	maxMP = character->mp;
-	mp = 0;
-	ui.HP->setMaximum(maxHP);
-	ui.HP->setValue(hp);
-	ui.MP->setMaximum(maxMP);
-	ui.MP->setValue(mp);
+	initialStatus();
 	for (auto name : character->skills) {
 		auto c = sm->getSkill(name, ui.verticalLayoutWidget);
 		if (enemy) c->setEnabled(false);
@@ -103,6 +107,7 @@ void Player::setAsEnemy()
 
 void Player::takeDamage(int damage)
 {
+	if (hp == 0) return;
 	if (hp > damage) hp -= damage;
 	else {
 		hp = 0;

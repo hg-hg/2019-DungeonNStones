@@ -10,8 +10,17 @@ class PVE : public QWidget
 public:
 	PVE(QWidget *parent = Q_NULLPTR);
 	~PVE();
+	
+private:
+	void confirm();
+
+signals:
+	void mainScene();
+
+public slots:
+	void playerDead(QString playerAccount);
+	void escape();
 
 private:
 	Ui::PVE ui;
-	Account * account = Account::getInstance();
 };

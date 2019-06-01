@@ -19,13 +19,12 @@ private:
 	Account(QObject *parent = Q_NULLPTR);
 	Account(const Account &);
 	Account& operator=(const Account &);
-public:
 
+public:
 	QString name;
 	int money;
 	QList<QString> characters;
-	Character* selectedCharacter;
-
+	Character* selectedCharacter = nullptr;
 private:
 	CharacterManager* cm = CharacterManager::getInstance();
 	static Account* instance;

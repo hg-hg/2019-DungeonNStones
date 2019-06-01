@@ -12,7 +12,7 @@ public slots:
 	void skillInvoke(QString skill, int cost);
 	void stoneCrush(int hp, int damage, int mp, QString account);
 	void receiveInfo(QString account, int hp, int damage, int mp);
-
+	void initialStatus();
 signals:
 	void sendInfo(QString account, int hp, int damage, int mp);
 	void dead(QString account);

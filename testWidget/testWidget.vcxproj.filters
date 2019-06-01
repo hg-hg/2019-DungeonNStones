@@ -52,6 +52,12 @@
     <Filter Include="Header Files\shop">
       <UniqueIdentifier>{061282c2-9a2d-436f-968a-dce5a9849fb1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\MainWindow">
+      <UniqueIdentifier>{4715a878-35eb-4a8f-a891-126c97ca1729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainWindow">
+      <UniqueIdentifier>{9e3bad0b-f257-44dd-afc1-e0d3f3508d29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -135,9 +141,6 @@
     <ClCompile Include="PVP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Login.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BuyButton.cpp">
       <Filter>Source Files\shop</Filter>
     </ClCompile>
@@ -156,14 +159,17 @@
     <ClCompile Include="MessageWidget.cpp">
       <Filter>Source Files\shop</Filter>
     </ClCompile>
-    <ClCompile Include="ShopBoard.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Login.cpp">
+      <Filter>Source Files\MainWindow</Filter>
     </ClCompile>
     <ClCompile Include="MainScene.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MainWindow</Filter>
     </ClCompile>
     <ClCompile Include="MainSceneButton.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopBoard.cpp">
+      <Filter>Source Files\shop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,12 +280,6 @@
     <QtMoc Include="PVP.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="Login.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="MainScene.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="CharacterWidget.h">
       <Filter>Header Files\shop</Filter>
     </QtMoc>
@@ -298,11 +298,17 @@
     <QtMoc Include="SelectButton.h">
       <Filter>Header Files\shop</Filter>
     </QtMoc>
-    <QtMoc Include="ShopBoard.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="Login.h">
+      <Filter>Header Files\MainWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="MainScene.h">
+      <Filter>Header Files\MainWindow</Filter>
     </QtMoc>
     <QtMoc Include="MainSceneButton.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MainWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="ShopBoard.h">
+      <Filter>Header Files\shop</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
