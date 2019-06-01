@@ -2,4 +2,9 @@
 x64
 .vs
 GeneratedFiles
-*.zip
+**/*.vcxproj
+**/*.vcxproj.filters
+**/*.vcxproj.user
+
+#other things ignoring
+**/*.zip
