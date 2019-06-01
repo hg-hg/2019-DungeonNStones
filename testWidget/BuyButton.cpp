@@ -12,6 +12,7 @@ BuyButton::~BuyButton()
 {
 }
 
+//this is the style of the BuyButton
 void BuyButton::initialStyle()
 {
 	auto font = QFont("Microsoft YaHei", 8, 50, true);
