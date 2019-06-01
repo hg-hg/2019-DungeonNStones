@@ -9,10 +9,24 @@ ShopBoard::ShopBoard(QWidget *parent)
 	initialMainWidget();
 	initialStackWidget();
 	initialEvent();
+	initialSelectedCharacter();
 }
 
 ShopBoard::~ShopBoard()
 {
+}
+
+void ShopBoard::initialSelectedCharacter()
+{
+	auto current = account->getSelectedCharacter();
+	for (auto it : commodities)
+	{
+		if (it->getCharacterWidget()->getCharacter()->name == current->name)
+		{
+			it->getSelectButton()->setText("Selected");
+			it->getSelectButton()->setEnabled(false);
+		}
+	}
 }
 
 void ShopBoard::initialMainWidget()
