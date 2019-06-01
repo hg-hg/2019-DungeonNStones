@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QWidget>
-
 #include "ui_Login.h"
 #include <QPainter>
 class Login : public QWidget
@@ -11,8 +10,8 @@ class Login : public QWidget
 public:
 	Login(QWidget *parent = Q_NULLPTR);
 	~Login();
-	void paintEvent(QPaintEvent*);
 	void keyPressEvent(QKeyEvent * event) override;
+	void paintEvent(QPaintEvent*) override;
 
 public slots:
 	void loginToServer();

@@ -35,6 +35,7 @@ void testWidget::closeEvent(QCloseEvent * event)
 
 void testWidget::pvp()
 {
+
 	PVP * pvp = new PVP(this);
 	ui.stackedWidget->addWidget(pvp);
 	ui.stackedWidget->setCurrentWidget(pvp);

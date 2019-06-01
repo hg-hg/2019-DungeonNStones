@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "MainScene.h"
-
+#include <QTimer>
 MainScene::MainScene(QWidget *parent)
 	: QWidget(parent)
 {
@@ -23,26 +23,53 @@ void MainScene::initButton()
 
 void MainScene::pvp()
 {
-	emit goPVP();
+	ui.PVP->ZoomPush();
+	ui.PVP->ZoomPop();
+	QTimer::singleShot(500, this, [=]() {
+		emit goPVP();
+	});
 }
 
 void MainScene::pve()
 {
-	emit goPVE();
+	ui.PVE->ZoomPush();
+	ui.PVE->ZoomPop();
+	QTimer::singleShot(500, this, [=]() {
+		emit goPVE();
+	});
 }
 
 void MainScene::shop()
 {
-	emit goShop();
+	ui.shopBoard->ZoomPush();
+	ui.shopBoard->ZoomPop();
+	QTimer::singleShot(500, this, [=]() {
+		emit goShop();
+	});
+	
 }
 
 void MainScene::quit()
 {
-	emit goQuit();
+	ui.Quit->ZoomPush();
+	ui.Quit->ZoomPop();
+	QTimer::singleShot(500, this, [=]() {
+		emit goQuit();
+	});
+	
 }
-
+void MainScene::paintEvent(QPaintEvent*) {
+	QPainter painter(this);
+	QPixmap pix;
+	pix.load(".//Picture//Scence.bmp");
+	painter.drawPixmap(0, 0, this->width(), this->height(), pix);
+}
 void MainScene::setting()
 {
-	emit goSetting();
+	ui.Setting->ZoomPush();
+	ui.Setting->ZoomPop();
+	QTimer::singleShot(500, this, [=]() {
+		emit goSetting();
+	});
+	
 }
-

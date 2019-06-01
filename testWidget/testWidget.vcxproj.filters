@@ -138,9 +138,6 @@
     <ClCompile Include="Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BuyButton.cpp">
       <Filter>Source Files\shop</Filter>
     </ClCompile>
@@ -160,6 +157,9 @@
       <Filter>Source Files\shop</Filter>
     </ClCompile>
     <ClCompile Include="ShopBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MainSceneButton.cpp">
