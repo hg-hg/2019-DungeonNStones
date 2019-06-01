@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ShopBoard</class>
+ <widget class="QWidget" name="ShopBoard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>920</width>
+    <height>719</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ShopBoard</string>
+  </property>
+  <widget class="QPushButton" name="backToMain">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>640</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>BACK</string>
+   </property>
+  </widget>
+  <widget class="QStackedWidget" name="stack">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>731</width>
+     <height>611</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="page"/>
+   <widget class="QWidget" name="page_2"/>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>backToMain</sender>
+   <signal>clicked()</signal>
+   <receiver>ShopBoard</receiver>
+   <slot>backToMainScene()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>833</x>
+     <y>652</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>891</x>
+     <y>592</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>backToMainScene()</slot>
+ </slots>
+</ui>

@@ -184,6 +184,7 @@
     <ClInclude Include="GeneratedFiles\ui_player.h" />
     <ClInclude Include="GeneratedFiles\ui_PVE.h" />
     <ClInclude Include="GeneratedFiles\ui_PVP.h" />
+    <ClInclude Include="GeneratedFiles\ui_ShopBoard.h" />
     <ClInclude Include="GeneratedFiles\ui_testWidget.h" />
     <QtMoc Include="GravityAnimation.h" />
     <QtMoc Include="Player.h" />
@@ -214,6 +215,7 @@
     <QtUic Include="player.ui" />
     <QtUic Include="PVE.ui" />
     <QtUic Include="PVP.ui" />
+    <QtUic Include="ShopBoard.ui" />
     <QtUic Include="testWidget.ui" />
   </ItemGroup>
   <ItemGroup>

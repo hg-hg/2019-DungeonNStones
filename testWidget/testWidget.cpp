@@ -50,6 +50,7 @@ void testWidget::pve()
 void testWidget::shop()
 {
 	auto shopBoard = new ShopBoard(this);
+	connect(shopBoard, SIGNAL(mainScene()), this, SLOT(mainScene()));
 	ui.stackedWidget->addWidget(shopBoard);
 	ui.stackedWidget->setCurrentWidget(shopBoard);
 }

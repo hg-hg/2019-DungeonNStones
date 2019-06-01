@@ -1,8 +1,7 @@
 #pragma once
 
 #include <QWidget>
-#include <QStackedWidget>
-#include <QPushButton>
+#include "ui_ShopBoard.h"
 #include "Account.h"
 #include "CommodityWidget.h"
 #include "MessageWidget.h"
@@ -12,26 +11,26 @@ class ShopBoard : public QWidget
 	Q_OBJECT
 
 public:
-	ShopBoard(QWidget *parent);
+	ShopBoard(QWidget *parent = Q_NULLPTR);
 	~ShopBoard();
-	QSize sizeHint() const override;
-	void setAccount(Account * account);
-	Account* getAccount();
 private:
 	void initialMainWidget();
 	void initialStackWidget();
-	void intialVectors();
+	void initialVectors();
 	void initialLayoutMain();
 	void initialEvent();
 private slots:
 	void displayMessage(CharacterWidget * current);
 	void deleteMessage();
 	void updateSelectedCharacter();
-public:
-	QWidget * mainWidget;
-	QVector<CommodityWidget *> containers;
+	void backToMainScene();
+
+signals:
+	void mainScene();
+private:
+	Ui::ShopBoard ui;
+	QScrollArea * mainWidget;
+	QVector<CommodityWidget *> commodities;
 	QMap<Character *, MessageWidget *> messages;
-	Account* account = Account::getInstance();
-	QStackedWidget * stack;
-	QPushButton * returnButton;
+	Account * account = Account::getInstance();
 };

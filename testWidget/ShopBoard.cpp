@@ -1,12 +1,11 @@
 #include "stdafx.h"
 #include "ShopBoard.h"
-#include "CharacterWidget.h"
 
 ShopBoard::ShopBoard(QWidget *parent)
 	: QWidget(parent)
 {
-	setAccount(account);
-	intialVectors();
+	ui.setupUi(this);
+	initialVectors();
 	initialMainWidget();
 	initialStackWidget();
 	initialEvent();
@@ -16,43 +15,30 @@ ShopBoard::~ShopBoard()
 {
 }
 
-QSize ShopBoard::sizeHint() const
-{
-	return QSize(600, 1000);
-}
-
 void ShopBoard::initialMainWidget()
 {
-	mainWidget = new QWidget();
+	mainWidget = new QScrollArea();
 	initialLayoutMain();
 }
 
 void ShopBoard::initialStackWidget()
 {
-	stack = new QStackedWidget();
-	
-	stack->addWidget(mainWidget);
+	ui.stack->addWidget(mainWidget);
 	for (auto it : messages)
-		stack->addWidget(it);
-
-	auto layout = new QGridLayout();
-	layout->addWidget(stack);
-	this->setLayout(layout);
-	stack->setCurrentWidget(mainWidget);
-	//stack->setCurrentWidget(messages[containers[0]->getCharacterWidget()->getCharacter()]);
+		ui.stack->addWidget(it);
+	ui.stack->setCurrentWidget(mainWidget);
 }
 
-void ShopBoard::intialVectors()
+void ShopBoard::initialVectors()
 {
-	containers.clear();
-	containers.resize(0);
+	commodities.clear();
 	messages.clear();
 	auto map = CharacterManager::getInstance()->characters;
 	for (auto it : map) {
-		auto temp = new CommodityWidget(this, it, account);
-		containers.push_back(temp);
-		auto temp2 = new MessageWidget(this, it);
-		messages.insert(it,temp2);
+		auto tempCommodity = new CommodityWidget(this, it, account);
+		commodities.push_back(tempCommodity);
+		auto tempMessage = new MessageWidget(this, it);
+		messages.insert(it, tempMessage);
 	}
 }
 
@@ -62,10 +48,10 @@ void ShopBoard::initialLayoutMain()
 	layout->setVerticalSpacing(20);
 	layout->setHorizontalSpacing(16);
 	int count = 0;
-	while (count < containers.size()) 
+	while (count < commodities.size())
 	{
-		containers[count]->setMaximumSize(130, 240);
-		layout->addWidget(containers[count],count/4,count%4,1,1);
+		commodities[count]->setMaximumSize(130, 240);
+		layout->addWidget(commodities[count], count / 4, count % 4, 1, 1);
 		count++;
 	}
 	mainWidget->setLayout(layout);
@@ -73,7 +59,7 @@ void ShopBoard::initialLayoutMain()
 
 void ShopBoard::initialEvent()
 {
-	for (auto it : containers)
+	for (auto it : commodities)
 	{
 		connect(it->getCharacterWidget(), SIGNAL(showMessage(CharacterWidget *)), this, SLOT(displayMessage(CharacterWidget*)));
 		connect(it, SIGNAL(updateSelected()), this, SLOT(updateSelectedCharacter()));
@@ -81,28 +67,27 @@ void ShopBoard::initialEvent()
 	for (auto it : messages)
 		connect(it->getReturnButton(), SIGNAL(returnSignal()), this, SLOT(deleteMessage()));
 }
-	
 
 void ShopBoard::displayMessage(CharacterWidget * current)
 {
 	Character * character = current->getCharacter();
-	stack->setCurrentWidget(messages[character]);
+	ui.stack->setCurrentWidget(messages[character]);
 }
 
 void ShopBoard::deleteMessage()
 {
-	stack->setCurrentWidget(mainWidget);
+	ui.stack->setCurrentWidget(mainWidget);
 }
 
 void ShopBoard::updateSelectedCharacter()
 {
 	auto current = account->getSelectedCharacter();
-	for (auto it : containers) 
+	for (auto it : commodities)
 	{
-		if (it->getCharacterWidget()->getCharacter()->name != current->name) 
+		if (it->getCharacterWidget()->getCharacter()->name != current->name)
 		{
 			it->getSelectButton()->setText("SELECT");
-			if (account->hasBoughtCharacter(it->getCharacterWidget()->getCharacter()->name)) 
+			if (account->hasBoughtCharacter(it->getCharacterWidget()->getCharacter()->name))
 			{
 				it->getSelectButton()->setEnabled(true);
 			}
@@ -110,13 +95,7 @@ void ShopBoard::updateSelectedCharacter()
 	}
 }
 
-void ShopBoard::setAccount(Account * account)
+void ShopBoard::backToMainScene()
 {
-	this->account = account;
+	emit mainScene();
 }
-
-Account * ShopBoard::getAccount()
-{
-	return this->account;
-}
-

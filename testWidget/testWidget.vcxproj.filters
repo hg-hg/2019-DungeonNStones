@@ -153,14 +153,14 @@
     <ClCompile Include="SelectButton.cpp">
       <Filter>Source Files\shop</Filter>
     </ClCompile>
-    <ClCompile Include="ShopBoard.cpp">
-      <Filter>Source Files\shop</Filter>
-    </ClCompile>
     <ClCompile Include="ReturnButton.cpp">
       <Filter>Source Files\shop</Filter>
     </ClCompile>
     <ClCompile Include="MessageWidget.cpp">
       <Filter>Source Files\shop</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopBoard.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +189,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MainScene.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_ShopBoard.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -293,7 +296,7 @@
       <Filter>Header Files\shop</Filter>
     </QtMoc>
     <QtMoc Include="ShopBoard.h">
-      <Filter>Header Files\shop</Filter>
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +319,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="MainScene.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ShopBoard.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
