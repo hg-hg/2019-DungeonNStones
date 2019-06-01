@@ -1,10 +1,10 @@
-#visual studio things ignoring
+# Visual studio things ignoring
 x64
 .vs
 GeneratedFiles
-**/*.vcxproj
-**/*.vcxproj.filters
-**/*.vcxproj.user
 
-#other things ignoring
+# User-specific files
+*.user
+
+# Other things ignoring
 **/*.zip
