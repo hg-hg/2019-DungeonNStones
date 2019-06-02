@@ -20,7 +20,8 @@ signals:
 public slots:
 	void playerDead(QString playerAccount);
 	void escape();
-
+	void continueGame();
+	void quitGame();
 private:
 	Ui::PVE ui;
 };

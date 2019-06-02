@@ -9,6 +9,7 @@ PVE::PVE(QWidget *parent)
 	ui.setupUi(this);
 	//Account * account = Account::getInstance();
 	ui.stackedWidget->setCurrentWidget(ui.playing);
+	ui.toast->setCurrentWidget(ui.escapePage);
 	connect(ui.gameBoard, SIGNAL(sendPlayerDead(QString)), this, SLOT(playerDead(QString)));
 	ui.gameBoard->setData(CharacterManager::getInstance()->getCharacter("AutoRobot"));
 	ui.gameBoard->setLocalGame(true);
@@ -20,17 +21,7 @@ PVE::~PVE()
 
 void PVE::confirm()
 {
-	QMessageBox msg(this);
-	msg.setWindowTitle("Game is Over");
-	msg.setText("again?");
-	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-	if (msg.exec() == QMessageBox::Ok) {
-		ui.gameBoard->restart();
-		ui.stackedWidget->setCurrentWidget(ui.playing);
-	}
-	else {
-		emit mainScene();
-	}
+	ui.toast->setCurrentWidget(ui.continuePage);
 }
 
 void PVE::escape()
@@ -40,6 +31,18 @@ void PVE::escape()
 	msg.setText("are you sure?");
 	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
 	if (msg.exec() == QMessageBox::Ok) emit mainScene();
+}
+
+void PVE::continueGame()
+{
+	ui.gameBoard->restart();
+	ui.stackedWidget->setCurrentWidget(ui.playing);
+	ui.toast->setCurrentWidget(ui.escapePage);
+}
+
+void PVE::quitGame()
+{
+	emit mainScene();
 }
 
 void PVE::playerDead(QString playerAccount)

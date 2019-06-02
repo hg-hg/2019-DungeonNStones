@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1077</width>
-    <height>766</height>
+    <height>970</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="playing">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -50,10 +50,69 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>逃跑</string>
+    <widget class="QStackedWidget" name="toast">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>50</height>
+      </size>
      </property>
+     <widget class="QWidget" name="escapePage">
+      <widget class="QPushButton" name="escape">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>1055</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>逃跑</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="continuePage">
+      <widget class="QLabel" name="askIfContinue">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>72</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>是否继续？</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="continueGame">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>10</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>是</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="quitGame">
+       <property name="geometry">
+        <rect>
+         <x>650</x>
+         <y>10</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>否</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
    </item>
   </layout>
@@ -70,23 +129,57 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>escape</sender>
    <signal>clicked()</signal>
    <receiver>PVE</receiver>
    <slot>escape()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>645</x>
-     <y>735</y>
+     <x>656</x>
+     <y>1179</y>
     </hint>
     <hint type="destinationlabel">
      <x>858</x>
-     <y>780</y>
+     <y>766</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>continueGame</sender>
+   <signal>clicked()</signal>
+   <receiver>PVE</receiver>
+   <slot>continueGame()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>869</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>766</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>quitGame</sender>
+   <signal>clicked()</signal>
+   <receiver>PVE</receiver>
+   <slot>quitGame()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>708</x>
+     <y>869</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>767</x>
+     <y>766</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>escape()</slot>
+  <slot>continueGame()</slot>
+  <slot>quitGame()</slot>
  </slots>
 </ui>
