@@ -64,6 +64,9 @@
    <property name="pixmap">
     <pixmap>background/wall.png</pixmap>
    </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
