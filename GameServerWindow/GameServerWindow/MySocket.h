@@ -15,6 +15,7 @@ private:
 	void accountInfo();
 	void clientWaitForGame();
 	void receiveGameData();
+	void accountChanged();
 public:
 	void gameStart(QString enemyAccount, QString enemyCharacter);
 

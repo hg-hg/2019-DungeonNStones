@@ -59,6 +59,7 @@ void testWidget::shop()
 
 void testWidget::quit()
 {
+	account->sendAcccountInfo();
 	exit(0);
 }
 

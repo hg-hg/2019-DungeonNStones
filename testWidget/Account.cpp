@@ -44,7 +44,6 @@ bool Account::buyCharacter(QString chaName, int cost)
 	if (money < cost) return false;
 	money -= cost;
 	characters.append(chaName);
-	Client::getInstance()->sendBuyCharacter(name, chaName);
 	return true;
 }
 
@@ -58,5 +57,20 @@ bool Account::setCharacter(QString chaName)
 Character * Account::getSelectedCharacter() const
 {
 	return selectedCharacter;
+}
+
+void Account::sendAcccountInfo() const
+{
+	QStringList list;
+	list.append(name);
+	list.append(QString::number(money));
+	list.append(selectedCharacter->name);
+	for (auto c : characters) list.append(c);
+	Client::getInstance()->sendAccountInfo(list);
+}
+
+void Account::addMoney(int gain)
+{
+	money += gain;
 }
 

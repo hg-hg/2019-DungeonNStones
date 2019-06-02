@@ -66,6 +66,13 @@ void Client::sendDisconnecting()
 	disconnectFromHost();
 }
 
+void Client::sendAccountInfo(QStringList info)
+{
+	QString message = QString::number(MessageType::AccountChange) + "\n";
+	for (auto str : info) message += str + "\n";
+	sendMessage(message);
+}
+
 Client::~Client()
 {
 }
@@ -130,12 +137,6 @@ void Client::sendWaitForGame(QString account, QString character)
 void Client::sendDead(QString account)
 {
 	QString message = QString::number(MessageType::Dead) + "\n" + account + "\n";
-	sendMessage(message);
-}
-
-void Client::sendBuyCharacter(QString account, QString character)
-{
-	QString message = QString::number(MessageType::BuyCharacter) + "\n" + account + "\n" + character + "\n";
 	sendMessage(message);
 }
 

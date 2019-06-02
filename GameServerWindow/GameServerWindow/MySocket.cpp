@@ -43,6 +43,15 @@ void MySocket::receiveGameData()
 	emit clientGameData(message);
 }
 
+void MySocket::accountChanged()
+{
+	AccountManager am;
+	QString account, str;
+	account = getLine();
+	str = readAll();
+	am.setAccount(account, str);
+}
+
 void MySocket::accountInfo()
 {
 	AccountManager am;
@@ -82,7 +91,8 @@ void MySocket::readMessage()
 		break;
 	case Disconnect:
 		break;
-	case BuyCharacter:
+	case AccountChange:
+		accountChanged();
 		break;
 	}
 }

@@ -14,7 +14,8 @@ public:
 	bool buyCharacter(QString chaName, int cost);
 	bool setCharacter(QString chaName);
 	Character* getSelectedCharacter() const;
-
+	void sendAcccountInfo() const;
+	void addMoney(int gain);
 private:
 	Account(QObject *parent = Q_NULLPTR);
 	Account(const Account &);

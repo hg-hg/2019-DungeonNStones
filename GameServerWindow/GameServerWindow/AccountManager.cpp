@@ -39,3 +39,15 @@ QString AccountManager::getAccount(QString accountName)
 	return message;
 }
 
+void AccountManager::setAccount(QString accountName, QString str)
+{
+	auto fileName = "./account/" + accountName + ".txt";
+	QFile file(fileName);
+	if (!file.open(QFile::WriteOnly | QFile::Text)) {
+		qDebug(); return;
+	}
+	QTextStream out(&file);
+	if (str[str.size() - 1] == "\n") str.chop(1);
+	out << accountName << "\n" << str;
+}
+

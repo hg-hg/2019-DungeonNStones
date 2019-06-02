@@ -22,6 +22,7 @@ public:
 	static void release();
 	void connectToServer();
 	void sendDisconnecting();
+	void sendAccountInfo(QStringList info);
 	~Client();
 
 public slots:
@@ -31,7 +32,6 @@ public slots:
 	void sendGameData(QString account, int hp, int damage, int mp);
 	void sendWaitForGame(QString account, QString character);
 	void sendDead(QString account);
-	void sendBuyCharacter(QString account, QString character);
 	void gameData();
 
 signals:

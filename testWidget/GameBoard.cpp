@@ -46,6 +46,9 @@ void GameBoard::setLocalGame(bool flag)
 
 void GameBoard::playerDead(QString playerAccount)
 {
+	Account * account = Account::getInstance();
+	if (playerAccount == account->name) account->addMoney(300);
+	else account->addMoney(1000);
 	emit sendPlayerDead(playerAccount);
 }
 

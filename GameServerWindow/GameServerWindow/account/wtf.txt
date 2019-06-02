@@ -1,5 +1,5 @@
 wtf
-5000
+6000
 Knight
 Test
 Test2
