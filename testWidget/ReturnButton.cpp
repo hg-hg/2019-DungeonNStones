@@ -14,11 +14,11 @@ ReturnButton::~ReturnButton()
 
 void ReturnButton::initialStyle()
 {
-	auto font = QFont("Microsoft YaHei", 8, 50, true);
+	/*auto font = QFont("Microsoft YaHei", 8, 50, true);
 	setFont(font);
 	setText("RETURN");
 	setStyleSheet("color: black");
-	setMaximumSize(70, 40);
+	setMaximumSize(70, 40);*/
 }
 
 void ReturnButton::returnClicked() 

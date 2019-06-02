@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "MessageWidget.h"
 
-MessageWidget::MessageWidget(QWidget *parent, Character * character)
+MessageWidget::MessageWidget(QWidget *parent,Character* character)
 	: QWidget(parent)
 {
+	ui.setupUi(this);
 	setCharacter(character);
+	initialLabels();
 	initialDisplay();
-	initialReturnButton();
-	initialLayout();
 	initialReturnEvent();
 }
 
@@ -15,56 +15,58 @@ MessageWidget::~MessageWidget()
 {
 }
 
-QSize MessageWidget::sizeHint() const
-{
-	return originSize;
-}
-
-ReturnButton * MessageWidget::getReturnButton()
-{
-	return returnButton;
-}
-
 void MessageWidget::setCharacter(Character * character)
 {
 	this->character = character;
 }
 
-void MessageWidget::initialLayout()
+ReturnButton * MessageWidget::getReturnButton()
 {
-	auto layout = new QGridLayout;
-	layout->setVerticalSpacing(100);
-	layout->setRowMinimumHeight(0, 400);
-	layout->addWidget(displayFlied, 0, 0, 1, 3);
-	layout->addWidget(returnButton, 1, 0, 1, 1);
-	this->setLayout(layout);
-
+	return ui.returnButton;
 }
 
 void MessageWidget::initialDisplay()
 {
-	displayFlied = new QTextBrowser();
-	auto font = QFont("Microsoft YaHei", 8, 50, true);
-	displayFlied->setFont(font);
-	displayFlied->append("Name : " + character->name + "\n");
-	displayFlied->append("HP : " + QString::number(character->hp) + "\n");
-	displayFlied->append("MP : " + QString::number(character->mp) + "\n");
-	displayFlied->append("Price : " + QString::number(character->price) + "\n");
-	displayFlied->append("Discription : " + character->description + "\n");
-
+	ui.gridLayout->setVerticalSpacing(50);
+	ui.gridLayout->setHorizontalSpacing(20);
+	int i;
+	for ( i = 0;i < labels.size();i++) 
+	{
+		ui.gridLayout->addWidget(labels[i].first,i, 0, 1, 1);
+		ui.gridLayout->addWidget(labels[i].second, i, 1, 1, 1);
+	}
+	auto description = new QLabel("Description :");
+	ui.gridLayout->addWidget(description,i,0,1,1);
+	initialDescription();
 }
 
 void MessageWidget::initialReturnEvent()
 {
-	connect(returnButton, SIGNAL(returnSignal()),this, SLOT(deleteThis()));
+	connect(ui.returnButton, SIGNAL(returnSignal()), this, SLOT(deleteThis()));
 }
 
-void MessageWidget::initialReturnButton()
+void MessageWidget::initialLabels()
 {
-	returnButton = new ReturnButton(this);
+	labels.clear();
+	auto name = new QLabel("Name : "); auto nameCon = new QLabel(character->name);
+	auto HP = new QLabel("HP : "); auto hpCon = new QLabel(QString::number(character->hp));
+	auto MP = new QLabel("MP : "); auto mpCon = new QLabel(QString::number(character->mp));
+	auto price = new QLabel("Price : "); auto priceCon = new QLabel(QString::number(character->price));
+	labels.push_back(QPair<QLabel*,QLabel*>(name, nameCon));
+	labels.push_back(QPair<QLabel*, QLabel*>(HP, hpCon));
+	labels.push_back(QPair<QLabel*, QLabel*>(MP, mpCon));
+	labels.push_back(QPair<QLabel*, QLabel*>(price, priceCon));
 }
+
+void MessageWidget::initialDescription()
+{
+	ui.descriptionField->append(character->description + "\n");
+}
+
+
 
 void MessageWidget::deleteThis() 
 {
 	emit deleteSignal();
 }
+

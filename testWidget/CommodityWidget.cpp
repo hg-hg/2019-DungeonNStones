@@ -40,6 +40,11 @@ SelectButton * CommodityWidget::getSelectButton()
 	return selectButton;
 }
 
+BuyButton * CommodityWidget::getBuyButton()
+{
+	return buyButton;
+}
+
 void CommodityWidget::initialButton()
 {
 	buyButton = new BuyButton(this);
@@ -51,6 +56,7 @@ void CommodityWidget::initialButton()
 	}
 	else 
 	{
+		buyButton->setText(QString::number(characterWidget->getCharacter()->price));
 		selectButton->setEnabled(false);
 	}
 }
@@ -89,6 +95,7 @@ void CommodityWidget::initialBuyConfirmMessage()
 			buyButton->setText("Already Own");
 			buyButton->setEnabled(false);
 			selectButton->setEnabled(true);
+			emit updateMoney();
 		}
 		else
 		{

@@ -21,6 +21,7 @@ public:
 	void setAccount(Account * account);
 	CharacterWidget * getCharacterWidget();
 	SelectButton * getSelectButton();
+	BuyButton * getBuyButton();
 private:
 	void initialButton();
 	void initialLayout();
@@ -29,6 +30,8 @@ private:
 	void initialSelectConfirmMessage();
 signals:
 	void updateSelected();
+signals:
+	void updateMoney();
 private slots:
 	void mouseClickedBuy();
 	void mouseClickedSelect();

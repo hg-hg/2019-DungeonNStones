@@ -10,6 +10,7 @@ ShopBoard::ShopBoard(QWidget *parent)
 	initialStackWidget();
 	initialEvent();
 	initialSelectedCharacter();
+	initialMoney();
 }
 
 ShopBoard::~ShopBoard()
@@ -31,16 +32,15 @@ void ShopBoard::initialSelectedCharacter()
 
 void ShopBoard::initialMainWidget()
 {
-	mainWidget = new QScrollArea();
+	
 	initialLayoutMain();
 }
 
 void ShopBoard::initialStackWidget()
 {
-	ui.stack->addWidget(mainWidget);
 	for (auto it : messages)
 		ui.stack->addWidget(it);
-	ui.stack->setCurrentWidget(mainWidget);
+	ui.stack->setCurrentWidget(ui.page);
 }
 
 void ShopBoard::initialVectors()
@@ -58,17 +58,15 @@ void ShopBoard::initialVectors()
 
 void ShopBoard::initialLayoutMain()
 {
-	auto layout = new QGridLayout();
-	layout->setVerticalSpacing(20);
-	layout->setHorizontalSpacing(16);
+	ui.layout->setVerticalSpacing(20);
+	ui.layout->setHorizontalSpacing(16);
 	int count = 0;
 	while (count < commodities.size())
 	{
 		commodities[count]->setMaximumSize(130, 240);
-		layout->addWidget(commodities[count], count / 4, count % 4, 1, 1);
+		ui.layout->addWidget(commodities[count], count / 4, count % 4, 1, 1);
 		count++;
 	}
-	mainWidget->setLayout(layout);
 }
 
 void ShopBoard::initialEvent()
@@ -77,9 +75,15 @@ void ShopBoard::initialEvent()
 	{
 		connect(it->getCharacterWidget(), SIGNAL(showMessage(CharacterWidget *)), this, SLOT(displayMessage(CharacterWidget*)));
 		connect(it, SIGNAL(updateSelected()), this, SLOT(updateSelectedCharacter()));
+		connect(it, SIGNAL(updateMoney()), this, SLOT(updateMoney()));
 	}
 	for (auto it : messages)
 		connect(it->getReturnButton(), SIGNAL(returnSignal()), this, SLOT(deleteMessage()));
+}
+
+void ShopBoard::initialMoney()
+{
+	ui.moneyEdit->setText(QString::number(account->money));
 }
 
 void ShopBoard::displayMessage(CharacterWidget * current)
@@ -90,7 +94,7 @@ void ShopBoard::displayMessage(CharacterWidget * current)
 
 void ShopBoard::deleteMessage()
 {
-	ui.stack->setCurrentWidget(mainWidget);
+	ui.stack->setCurrentWidget(ui.page);
 }
 
 void ShopBoard::updateSelectedCharacter()
@@ -107,6 +111,11 @@ void ShopBoard::updateSelectedCharacter()
 			}
 		}
 	}
+}
+
+void ShopBoard::updateMoney()
+{
+	ui.moneyEdit->setText(QString::number(account->money));
 }
 
 void ShopBoard::backToMainScene()

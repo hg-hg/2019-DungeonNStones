@@ -6,36 +6,99 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>920</width>
-    <height>719</height>
+    <width>1321</width>
+    <height>832</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ShopBoard</string>
   </property>
-  <widget class="QPushButton" name="backToMain">
-   <property name="geometry">
-    <rect>
-     <x>750</x>
-     <y>640</y>
-     <width>131</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>BACK</string>
-   </property>
-  </widget>
   <widget class="QStackedWidget" name="stack">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>30</x>
      <y>20</y>
-     <width>731</width>
-     <height>611</height>
+     <width>1011</width>
+     <height>701</height>
     </rect>
    </property>
-   <widget class="QWidget" name="page"/>
+   <widget class="QWidget" name="page">
+    <widget class="QScrollArea" name="mainWidget">
+     <property name="geometry">
+      <rect>
+       <x>19</x>
+       <y>36</y>
+       <width>761</width>
+       <height>591</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>759</width>
+        <height>589</height>
+       </rect>
+      </property>
+      <widget class="QWidget" name="gridLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>50</y>
+         <width>641</width>
+         <height>481</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="layout"/>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="backToMain">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>650</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>BACK</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="moneyLabel">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>160</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string> Your  Money :</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="moneyEdit">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>190</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 132, 139,0);
+border-radius: 3px;
+color:rgb(0,0,0);</string>
+     </property>
+    </widget>
+   </widget>
    <widget class="QWidget" name="page_2"/>
   </widget>
  </widget>

@@ -187,6 +187,7 @@
     <ClInclude Include="GeneratedFiles\ui_GameBoard.h" />
     <ClInclude Include="GeneratedFiles\ui_Login.h" />
     <ClInclude Include="GeneratedFiles\ui_MainScene.h" />
+    <ClInclude Include="GeneratedFiles\ui_MessageWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_player.h" />
     <ClInclude Include="GeneratedFiles\ui_PVE.h" />
     <ClInclude Include="GeneratedFiles\ui_PVP.h" />
@@ -200,11 +201,11 @@
     <QtMoc Include="PVP.h" />
     <QtMoc Include="Login.h" />
     <QtMoc Include="MainScene.h" />
-    <QtMoc Include="MessageWidget.h" />
     <QtMoc Include="ReturnButton.h" />
     <QtMoc Include="SelectButton.h" />
     <QtMoc Include="ShopBoard.h" />
     <QtMoc Include="MainSceneButton.h" />
+    <QtMoc Include="MessageWidget.h" />
     <ClInclude Include="stdafx.h" />
     <QtMoc Include="StoneDM.h" />
     <QtMoc Include="StoneHM.h" />
@@ -219,6 +220,7 @@
     <QtUic Include="GameBoard.ui" />
     <QtUic Include="Login.ui" />
     <QtUic Include="MainScene.ui" />
+    <QtUic Include="MessageWidget.ui" />
     <QtUic Include="player.ui" />
     <QtUic Include="PVE.ui" />
     <QtUic Include="PVP.ui" />
@@ -236,7 +238,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="5.12.3" MocOptions="" />
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="msvc2017_64" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

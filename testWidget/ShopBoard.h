@@ -20,17 +20,19 @@ private:
 	void initialVectors();
 	void initialLayoutMain();
 	void initialEvent();
+	void initialMoney();
 private slots:
 	void displayMessage(CharacterWidget * current);
 	void deleteMessage();
 	void updateSelectedCharacter();
+	void updateMoney();
 	void backToMainScene();
 
 signals:
 	void mainScene();
 private:
 	Ui::ShopBoard ui;
-	QScrollArea * mainWidget;
+
 	QVector<CommodityWidget *> commodities;
 	QMap<Character *, MessageWidget *> messages;
 	Account * account = Account::getInstance();

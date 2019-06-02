@@ -1,11 +1,9 @@
 #pragma once
 
 #include <QWidget>
-#include <QSize>
-#include <QTextBrowser>
-#include <QGridLayout>
+#include <QLabel>
 #include "Character.h"
-#include "BuyButton.h"
+#include "ui_MessageWidget.h"
 #include "ReturnButton.h"
 
 class MessageWidget : public QWidget
@@ -13,23 +11,22 @@ class MessageWidget : public QWidget
 	Q_OBJECT
 
 public:
-	MessageWidget(QWidget *parent,Character * character);
+	MessageWidget(QWidget *parent ,Character* character);
 	~MessageWidget();
-	QSize sizeHint() const override;
 	ReturnButton * getReturnButton();
 private:
-	void setCharacter(Character * character);
-	void initialLayout();
+	void setCharacter(Character *character);
 	void initialDisplay();
-	void initialReturnButton();
 	void initialReturnEvent();
+	void initialLabels();
+	void initialDescription();
 signals:
 	void deleteSignal();
 private slots:
 	void deleteThis();
 private:
-	Character* character;
-	QSize originSize = QSize(600,1000);
-	QTextBrowser* displayFlied;
-	ReturnButton * returnButton;
+	Ui::MessageWidget ui;
+	Character * character;
+	QVector<QPair<QLabel*, QLabel*>> labels;
+	
 };
