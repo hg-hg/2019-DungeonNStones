@@ -61,7 +61,7 @@ void MainScene::quit()
 void MainScene::paintEvent(QPaintEvent*) {
 	QPainter painter(this);
 	QPixmap pix;
-	pix.load(".//Picture//Scence.bmp");
+	pix.load(".//Background//wall_complex.png");
 	painter.drawPixmap(0, 0, this->width(), this->height(), pix);
 }
 void MainScene::setting()

@@ -16,7 +16,7 @@
   <widget class="MainSceneButton" name="shopBoard">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>240</x>
      <y>80</y>
      <width>591</width>
      <height>61</height>
