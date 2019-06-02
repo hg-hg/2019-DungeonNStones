@@ -28,6 +28,8 @@ void Server::incomingConnection(qintptr sockDesc)
 	connect(thread, SIGNAL(threadWaitForGame(QString, QString)), this, SLOT(waitingForGame(QString, QString)));
 	connect(this, SIGNAL(sendMessage(int, QString)), thread, SLOT(sendMessage(int, QString)));
 	connect(thread, SIGNAL(threadGameData(QString)), this, SLOT(sendGameData(QString)));
+	connect(thread, SIGNAL(clientEscape()), this, SLOT(escape()));
+	connect(thread, SIGNAL(clientStopMatching()), this, SLOT(stopMatching()));
 	//connect(thread, SIGNAL(dataReady(QString)))
 	
 	online.append(thread);
@@ -74,19 +76,46 @@ void Server::sendGameData(QString data)
 	}
 }
 
+void Server::escape()
+{
+	auto thread = static_cast<ServerThread*>(sender());
+	emit changeUI(QString::number(thread->m_sockDesc) + " escape");
+	QString message = QString::number(MessageType::EscapeGame);
+	for (auto it = playing.begin(); it != playing.end();) {
+		if (it->first == thread || it->second == thread) {
+			if (it->first == thread) emit sendMessage(it->second->m_sockDesc, message);
+			else emit sendMessage(it->first->m_sockDesc, message);
+			it = playing.erase(it);
+			break;
+		}
+		else it++;
+	}
+}
+
+void Server::stopMatching()
+{
+	auto thread = static_cast<ServerThread*>(sender());
+	emit changeUI(QString::number(thread->m_sockDesc) + " stop matching");
+	for (auto it = waiting.begin(); it != waiting.end(); ) {
+		if (it->second == thread) {
+			it = waiting.erase(it);
+			break;
+		}
+		else it++;
+	}
+}
+
 void Server::clientDisconnected(int sockDesc)
 {
 	emit changeUI(QString::number(sockDesc) + " disconnect");
 	auto thread = static_cast<ServerThread*>(sender());
 	QString message = QString::number(MessageType::Disconnect);
 	for (auto it = playing.begin(); it != playing.end();) {
-		if (it->first == thread) {
-			emit sendMessage(it->second->m_sockDesc, message);
+		if (it->first == thread || it->second == thread) {
+			if (it->first == thread) emit sendMessage(it->second->m_sockDesc, message);
+			else emit sendMessage(it->first->m_sockDesc, message);
 			it = playing.erase(it);
-		}
-		else if (it->second == thread) {
-			emit sendMessage(it->first->m_sockDesc, message);
-			it = playing.erase(it);
+			break;
 		}
 		else it++;
 	}

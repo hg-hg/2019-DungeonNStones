@@ -52,6 +52,16 @@ void MySocket::accountChanged()
 	am.setAccount(account, str);
 }
 
+void MySocket::clientEscape()
+{
+	emit clientEscapeGame();
+}
+
+void MySocket::clientStopMatch()
+{
+	emit clientStopMatching();
+}
+
 void MySocket::accountInfo()
 {
 	AccountManager am;
@@ -93,6 +103,12 @@ void MySocket::readMessage()
 		break;
 	case AccountChange:
 		accountChanged();
+		break;
+	case EscapeGame:
+		clientEscape();
+		break;
+	case StopMatching:
+		clientStopMatch();
 		break;
 	}
 }

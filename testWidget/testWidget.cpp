@@ -37,6 +37,7 @@ void testWidget::pvp()
 {
 
 	PVP * pvp = new PVP(this);
+	connect(pvp, SIGNAL(mainScene()), this, SLOT(mainScene()));
 	ui.stackedWidget->addWidget(pvp);
 	ui.stackedWidget->setCurrentWidget(pvp);
 }

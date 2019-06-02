@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>936</width>
-    <height>754</height>
+    <width>1086</width>
+    <height>747</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,9 +15,9 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QStackedWidget" name="stack">
+    <widget class="QStackedWidget" name="mainStack">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="waiting">
       <widget class="QLabel" name="waitingForGame">
@@ -64,6 +64,100 @@
      </widget>
     </widget>
    </item>
+   <item row="1" column="0">
+    <widget class="QStackedWidget" name="toast">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>100</height>
+      </size>
+     </property>
+     <widget class="QWidget" name="escape">
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>40</y>
+         <width>761</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>escape</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="matching">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>40</y>
+         <width>431</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>stop matching</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="gameOver">
+      <widget class="QLabel" name="winner">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>50</y>
+         <width>72</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>who wins</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>50</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>find another game?</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>40</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>yes</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>40</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>no</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -76,5 +170,76 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>PVP</receiver>
+   <slot>escape()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>625</x>
+     <y>702</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>993</x>
+     <y>759</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>PVP</receiver>
+   <slot>stopMatching()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>550</x>
+     <y>688</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>606</x>
+     <y>745</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>PVP</receiver>
+   <slot>continueMatching()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>461</x>
+     <y>685</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>484</x>
+     <y>741</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>PVP</receiver>
+   <slot>quitGame()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>687</x>
+     <y>697</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>732</x>
+     <y>745</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>escape()</slot>
+  <slot>continueMatching()</slot>
+  <slot>stopMatching()</slot>
+  <slot>quitGame()</slot>
+ </slots>
 </ui>

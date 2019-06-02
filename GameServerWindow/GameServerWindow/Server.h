@@ -21,6 +21,8 @@ private slots:
 	void clientDisconnected(int sockDesc);
 	void waitingForGame(QString account, QString character);
 	void sendGameData(QString data);
+	void escape();
+	void stopMatching();
 
 private:
 	QList<ServerThread*> online;

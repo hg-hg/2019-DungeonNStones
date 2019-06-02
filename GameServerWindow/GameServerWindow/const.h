@@ -1,4 +1,4 @@
 #pragma once
 enum MessageType {
-	RequestAccount, WaitForGame, GameStart, GameData, Dead, Disconnect, AccountChange
+	RequestAccount, WaitForGame, StopMatching, GameStart, GameData, Dead, EscapeGame, Disconnect, AccountChange
 };

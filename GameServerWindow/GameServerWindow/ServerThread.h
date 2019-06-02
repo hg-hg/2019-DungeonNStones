@@ -23,12 +23,16 @@ signals:
 	void disconnectTCP(int sockDesc);
 	void threadWaitForGame(QString account, QString character);
 	void threadGameData(QString data);
+	void clientEscape();
+	void clientStopMatching();
 
 private slots:
 	void disconnectToHost();
 	void clientWaitForGame(QString account, QString character);
 	void gameStart(QString enemyAccount, QString enemyCharacter);
 	void gameData(QString data);
+	void escapeGame();
+	void stopMatching();
 	//void addAccount(QString account);
 	//void readMessage(const QString &data);
 

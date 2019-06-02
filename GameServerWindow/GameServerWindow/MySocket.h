@@ -16,12 +16,16 @@ private:
 	void clientWaitForGame();
 	void receiveGameData();
 	void accountChanged();
+	void clientEscape();
+	void clientStopMatch();
 public:
 	void gameStart(QString enemyAccount, QString enemyCharacter);
 
 signals:
 	void waitForGame(QString account, QString character);
 	void clientGameData(QString data);
+	void clientEscapeGame();
+	void clientStopMatching();
 
 public slots:
 	void readMessage();

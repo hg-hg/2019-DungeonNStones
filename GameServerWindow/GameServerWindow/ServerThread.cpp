@@ -33,6 +33,8 @@ void ServerThread::run()
 	//connect(socket, SIGNAL(addAccount(QString)), this, SLOT(addAccount(QString)));
 	connect(socket, SIGNAL(waitForGame(QString, QString)), this, SLOT(clientWaitForGame(QString, QString)));
 	connect(socket, SIGNAL(clientGameData(QString)), this, SLOT(gameData(QString)));
+	connect(socket, SIGNAL(clientEscapeGame()), this, SLOT(escapeGame()));
+	connect(socket, SIGNAL(clientStopMatching()), this, SLOT(stopMatching()));
 	exec();
 }
 
@@ -59,6 +61,16 @@ void ServerThread::gameData(QString data)
 	//emit threadGameData(data);
 	enemy->sendMessage(enemy->m_sockDesc ,data);
 	sendMessage(m_sockDesc, data);
+}
+
+void ServerThread::escapeGame()
+{
+	emit clientEscape();
+}
+
+void ServerThread::stopMatching()
+{
+	emit clientStopMatching();
 }
 
 void ServerThread::disconnectToHost()

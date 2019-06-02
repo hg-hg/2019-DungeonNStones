@@ -73,6 +73,18 @@ void Client::sendAccountInfo(QStringList info)
 	sendMessage(message);
 }
 
+void Client::sendStopMatching()
+{
+	QString message = QString::number(MessageType::StopMatching) + "\n";
+	sendMessage(message);
+}
+
+void Client::sendEscapeGame()
+{
+	QString message = QString::number(MessageType::EscapeGame) + "\n";
+	sendMessage(message);
+}
+
 Client::~Client()
 {
 }
@@ -95,6 +107,10 @@ void Client::readMessage() {
 	case Disconnect:
 		emit enemyDisconnect();
 		break;
+	case EscapeGame:
+		emit enemyDisconnect();
+		break;
+	
 	}
 }
 

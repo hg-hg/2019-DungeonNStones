@@ -17,6 +17,13 @@ public:
 public slots:
 	void startGame(QString account, QString character);
 	void enemyDisconnected();
+	void continueMatching();
+	void escape();
+	void stopMatching();
+	void quitGame();
+
+signals:
+	void mainScene();
 private:
 	Ui::PVP ui;
 };
