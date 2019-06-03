@@ -21,7 +21,7 @@ ShopBoard::~ShopBoard()
 
 void ShopBoard::initialSelectedCharacter()
 {
-	auto current = account->getSelectedCharacter();
+	const auto current = account->getSelectedCharacter();
 	for (auto it : commodities)
 	{
 		if (it->getCharacterWidget()->getCharacter()->name == current->name)
@@ -62,7 +62,7 @@ void ShopBoard::initialLayoutMain()
 {
 	ui.layout->setVerticalSpacing(20);
 	ui.layout->setHorizontalSpacing(16);
-	int count = 0;
+	auto count = 0;
 	while (count < commodities.size())
 	{
 		commodities[count]->setMaximumSize(130, 240);
@@ -85,7 +85,7 @@ void ShopBoard::initialEvent()
 
 void ShopBoard::initialMoney()
 {
-	ui.moneyEdit->setText(QString::number(account->money));
+	ui.moneyLabel->setText(QString::number(account->money));
 }
 
 void ShopBoard::displayMessage(CharacterWidget * current)
@@ -101,7 +101,7 @@ void ShopBoard::deleteMessage()
 
 void ShopBoard::updateSelectedCharacter()
 {
-	auto current = account->getSelectedCharacter();
+	const auto current = account->getSelectedCharacter();
 	for (auto it : commodities)
 	{
 		if (it->getCharacterWidget()->getCharacter()->name != current->name)
@@ -117,7 +117,7 @@ void ShopBoard::updateSelectedCharacter()
 
 void ShopBoard::updateMoney()
 {
-	ui.moneyEdit->setText(QString::number(account->money));
+	ui.moneyLabel->setText(QString::number(account->money));
 }
 
 void ShopBoard::backToMainScene()
