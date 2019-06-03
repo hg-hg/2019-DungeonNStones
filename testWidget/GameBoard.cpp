@@ -23,9 +23,10 @@ GameBoard::GameBoard(QWidget* parent)
 
 void GameBoard::setLocalGame(const bool flag)
 {
+	localGame = flag;
 	connect(ui.player, SIGNAL(useSkill(QString, QString)), ui.gameCore, SLOT(useSkill(QString, QString)));
 	connect(ui.player, SIGNAL(dead(QString)), this, SLOT(playerDead(QString)));
-	if (flag)
+	if (localGame)
 	{
 		const auto gs = new GameServer(this);
 
@@ -45,6 +46,7 @@ void GameBoard::setLocalGame(const bool flag)
 		        SLOT(sendGameData(QString, int, int, int)));
 		connect(client, SIGNAL(gameData(QString, int, int, int)), ui.player, SLOT(receiveInfo(QString, int, int, int)));
 		connect(client, SIGNAL(gameData(QString, int, int, int)), ui.enemy, SLOT(receiveInfo(QString, int, int, int)));
+		connect(ui.player, SIGNAL(dead(account)), this, SLOT(playerDead(QString)));
 	}
 }
 
@@ -55,7 +57,8 @@ void GameBoard::playerDead(QString playerAccount)
 	Account* account = Account::getInstance();
 	if (playerAccount == account->name) account->addMoney(300);
 	else account->addMoney(1000);
-	emit sendPlayerDead(playerAccount);
+	if (localGame) emit sendPlayerDead(playerAccount);
+	else Client::getInstance()->sendDead(account->name);
 }
 
 void GameBoard::restart()

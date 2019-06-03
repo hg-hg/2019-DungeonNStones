@@ -8,11 +8,11 @@ class ServerThread : public QThread
 {
 	Q_OBJECT
 public:
-	ServerThread(int sockDesc, QObject *parent = Q_NULLPTR);
+	explicit ServerThread(int sockDesc, QObject *parent = Q_NULLPTR);
 	~ServerThread();
 
 private:
-	void run();
+	void run() override;
 
 public slots:
 	void sendMessage(int sockDest, QString data);
@@ -25,6 +25,7 @@ signals:
 	void threadGameData(QString data);
 	void clientEscape();
 	void clientStopMatching();
+	void clientDead(QString account);
 
 private slots:
 	void disconnectToHost();
@@ -33,11 +34,12 @@ private slots:
 	void gameData(QString data);
 	void escapeGame();
 	void stopMatching();
+	void clientDie(QString account);
 	//void addAccount(QString account);
 	//void readMessage(const QString &data);
 
 public:
 	MySocket * socket;
-	int m_sockDesc;
+	int sockDesc;
 	ServerThread* enemy;
 };

@@ -9,6 +9,7 @@ void Player::stoneCrush(const int hp, const int damage, const int mp, const QStr
 
 void Player::receiveInfo(const QString& account, const int hp, const int damage, const int mp)
 {
+	if (hp == 0) return;
 	if (account != this->account) takeDamage(damage);
 	else
 	{
@@ -44,6 +45,7 @@ void Player::setAccount(const QString account)
 
 void Player::skillInvoke(const QString& skill, const int cost)
 {
+	if (hp == 0) return;
 	if (gamePause) return;
 	if (mp < cost) return;
 	emit useSkill(skill, account);

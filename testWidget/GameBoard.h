@@ -29,5 +29,5 @@ public:
 	QString enemyAccount = "enemy";
 private:
 	Ui::GameBoard ui;
-
+	bool localGame;
 };

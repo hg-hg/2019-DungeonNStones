@@ -17,6 +17,7 @@ private:
 	AccountManager* am = new AccountManager();
 	void initializeAccount();
 	void gameStart();
+	void die();
 	QString getLine(int times = 0);
 
 public:
@@ -24,18 +25,19 @@ public:
 	static void release();
 	void connectToServer();
 	void sendMessage(const QString& message);
-	void requestAccount(QString accountName);
-	void sendWaitForGame(QString account, QString character);
+	void requestAccount(const QString& accountName);
+	void sendWaitForGame(const QString& account, const QString& character);
 	void sendDisconnecting();
-	void sendAccountInfo(QStringList info);
+	void sendAccountInfo(const QStringList& info);
 	void sendStopMatching();
 	void sendEscapeGame();
+	void sendDead(const QString& account);
 	~Client();
 
 public slots:
 	void readMessage();
-	void sendGameData(QString account, int hp, int damage, int mp);
-	void sendDead(QString account);
+	void sendGameData(const QString& account, int hp, int damage, int mp);
+	
 	void gameData();
 
 signals:
@@ -43,4 +45,5 @@ signals:
 	void gameData(QString account, int hp, int damage, int mp);
 	void gameStart(QString enemyAccount, QString enemyCharacter);
 	void enemyDisconnect();
+	void dead(QString account);
 };

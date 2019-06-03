@@ -5,9 +5,9 @@
 
 class MySocket : public QTcpSocket
 {
-	Q_OBJECT
+Q_OBJECT
 public:
-	explicit MySocket(int sockDesc, QObject *parent = Q_NULLPTR);
+	explicit MySocket(int sockDesc, QObject* parent = Q_NULLPTR);
 	~MySocket();
 
 private:
@@ -18,20 +18,20 @@ private:
 	void accountChanged();
 	void clientEscape();
 	void clientStopMatch();
+	void clientDie();
 public:
-	void gameStart(QString enemyAccount, QString enemyCharacter);
+	void gameStart(const QString& enemyAccount, const QString& enemyCharacter);
 
 signals:
 	void waitForGame(QString account, QString character);
 	void clientGameData(QString data);
 	void clientEscapeGame();
 	void clientStopMatching();
+	void clientDead(QString account);
 
 public slots:
 	void readMessage();
-	void sendMessage(QString data);
-	
-	
+	void sendMessage(const QString& data);
 
 public:
 	QString account;

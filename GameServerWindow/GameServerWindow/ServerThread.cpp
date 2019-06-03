@@ -1,10 +1,9 @@
 #include "stdafx.h"
 #include "serverthread.h"
 
-ServerThread::ServerThread(int sockDesc, QObject *parent)
-	: QThread(parent),m_sockDesc(sockDesc)
+ServerThread::ServerThread(int sockDesc, QObject* parent)
+	: QThread(parent), sockDesc(sockDesc)
 {
-
 }
 
 ServerThread::~ServerThread()
@@ -18,49 +17,43 @@ ServerThread::~ServerThread()
 
 void ServerThread::run()
 {
-	socket = new MySocket(m_sockDesc);
+	socket = new MySocket(sockDesc);
 
-	if (!socket->setSocketDescriptor(m_sockDesc)) {
-		return;
-	}
+	if (!socket->setSocketDescriptor(sockDesc)) return;
+
 
 	connect(socket, &MySocket::disconnected, this, &ServerThread::disconnectToHost);
-	//connect(socket, SIGNAL(clientDisconncting()), this, SLOT(disconnectToHost()));
-	/*connect(socket, SIGNAL(dataReady(const QString&, const QByteArray&)),
-		this, SLOT(readMessage(const QString&, const QByteArray&)));*/
-
-	//connect(this, SIGNAL(sendMessage(const QString&)), socket, SLOT(sendMessage(const QString&)));
-	//connect(socket, SIGNAL(addAccount(QString)), this, SLOT(addAccount(QString)));
 	connect(socket, SIGNAL(waitForGame(QString, QString)), this, SLOT(clientWaitForGame(QString, QString)));
 	connect(socket, SIGNAL(clientGameData(QString)), this, SLOT(gameData(QString)));
 	connect(socket, SIGNAL(clientEscapeGame()), this, SLOT(escapeGame()));
 	connect(socket, SIGNAL(clientStopMatching()), this, SLOT(stopMatching()));
+	connect(socket, SIGNAL(clientDead(QString)), this, SLOT(clientDie(QString)));
 	exec();
 }
 
-void ServerThread::sendMessage(int sockDest, QString data)
+void ServerThread::sendMessage(const int sockDest, const QString data)
 {
-	if (sockDest != m_sockDesc) return;
-	if (data.isEmpty()) {return;}
+	if (sockDest != sockDesc) return;
+	if (data.isEmpty()) { return; }
 	qDebug() << sockDest << " " << data;
 	socket->sendMessage(data);
 }
 
-void ServerThread::clientWaitForGame(QString account, QString character)
+void ServerThread::clientWaitForGame(const QString account, const QString character)
 {
 	emit threadWaitForGame(account, character);
 }
 
-void ServerThread::gameStart(QString enemyAccount, QString enemyCharacter)
+void ServerThread::gameStart(const QString enemyAccount, const QString enemyCharacter)
 {
 	socket->gameStart(enemyAccount, enemyCharacter);
 }
 
-void ServerThread::gameData(QString data)
+void ServerThread::gameData(const QString data)
 {
 	//emit threadGameData(data);
-	enemy->sendMessage(enemy->m_sockDesc ,data);
-	sendMessage(m_sockDesc, data);
+	enemy->sendMessage(enemy->sockDesc, data);
+	sendMessage(sockDesc, data);
 }
 
 void ServerThread::escapeGame()
@@ -73,8 +66,13 @@ void ServerThread::stopMatching()
 	emit clientStopMatching();
 }
 
+void ServerThread::clientDie(QString account)
+{
+	emit clientDead(account);
+}
+
 void ServerThread::disconnectToHost()
 {
 	socket->disconnectFromHost();
-	emit disconnectTCP(m_sockDesc);
+	emit disconnectTCP(sockDesc);
 }

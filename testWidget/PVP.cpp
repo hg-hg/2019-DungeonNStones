@@ -6,12 +6,13 @@
 Account* account = Account::getInstance();
 
 
-PVP::PVP(QWidget *parent)
+PVP::PVP(QWidget* parent)
 	: QWidget(parent)
 {
 	Client* client = Client::getInstance();
 	connect(client, SIGNAL(gameStart(QString, QString)), this, SLOT(startGame(QString, QString)));
 	connect(client, SIGNAL(enemyDisconnect()), this, SLOT(enemyDisconnected()));
+	connect(client, SIGNAL(dead(QString)), this, SLOT(die(QString)));
 	client->sendWaitForGame(account->name, account->getSelectedCharacter()->name);
 	ui.setupUi(this);
 	ui.playing->setLocalGame(false);
@@ -64,9 +65,25 @@ void PVP::quitGame()
 	emit mainScene();
 }
 
+void PVP::die(const QString dead)
+{
+	ui.mainStack->setCurrentWidget(ui.dead);
+	QString whoDead = "enemy dead", winner = "you win";
+	if (account->name == dead)
+	{
+		whoDead = "you dead";
+		winner = "enemy win";
+	}
+	ui.winner->setText(winner);
+	ui.whoDead->setText(whoDead);
+	ui.toast->setCurrentWidget(ui.gameOver);
+}
+
 void PVP::startGame(const QString& account, const QString& character)
 {
 	ui.mainStack->setCurrentWidget(ui.playing);
-	ui.playing->gameStart(account, character);
 	ui.toast->setCurrentWidget(ui.escape);
+	if (started) return;
+	ui.playing->gameStart(account, character);
+	started = true;
 }

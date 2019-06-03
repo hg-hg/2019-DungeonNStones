@@ -3,7 +3,7 @@
 #include "AccountManager.h"
 #include <QHostAddress>
 
-MySocket::MySocket(int sockDesc, QObject *parent) :
+MySocket::MySocket(const int sockDesc, QObject* parent) :
 	QTcpSocket(parent), m_sockDesc(sockDesc)
 {
 	connect(this, SIGNAL(readyRead()), this, SLOT(readMessage()));
@@ -11,19 +11,19 @@ MySocket::MySocket(int sockDesc, QObject *parent) :
 
 MySocket::~MySocket()
 {
-
 }
 
 QString MySocket::getLine(int times)
 {
-	QString str = readLine();
+	const QString str = readLine();
 	if (str.isEmpty() && times < 10) return getLine(++times);
 	return str.simplified();
 }
 
-void MySocket::sendMessage(QString data)
+void MySocket::sendMessage(const QString& data)
 {
-	if (!data.isEmpty()) {
+	if (!data.isEmpty())
+	{
 		write(data.toStdString().data());
 	}
 	waitForBytesWritten();
@@ -31,7 +31,7 @@ void MySocket::sendMessage(QString data)
 
 void MySocket::receiveGameData()
 {
-	QString message = QString::number(MessageType::GameData) + "\n";
+	QString message = QString::number(GameData) + "\n";
 	//QString account, hp, damage, mp;
 	//account = getLine();
 	//hp = getLine();
@@ -46,9 +46,8 @@ void MySocket::receiveGameData()
 void MySocket::accountChanged()
 {
 	AccountManager am;
-	QString account, str;
-	account = getLine();
-	str = readAll();
+	const auto account = getLine();
+	const QString str = readAll();
 	am.setAccount(account, str);
 }
 
@@ -62,6 +61,12 @@ void MySocket::clientStopMatch()
 	emit clientStopMatching();
 }
 
+void MySocket::clientDie()
+{
+	const auto account = getLine();
+	emit clientDead(account);
+}
+
 void MySocket::accountInfo()
 {
 	AccountManager am;
@@ -71,22 +76,23 @@ void MySocket::accountInfo()
 
 void MySocket::clientWaitForGame()
 {
-	QString account = getLine();
-	QString character = getLine();
+	const auto account = getLine();
+	const auto character = getLine();
 	emit waitForGame(account, character);
 }
 
-void MySocket::gameStart(QString enemyAccount, QString enemyCharacter)
+void MySocket::gameStart(const QString& enemyAccount, const QString& enemyCharacter)
 {
-	QString message = QString::number(MessageType::GameStart) + "\n";
+	QString message = QString::number(GameStart) + "\n";
 	message += enemyAccount + "\n" + enemyCharacter + "\n";
 	sendMessage(message);
 }
 
 void MySocket::readMessage()
 {
-	MessageType type = static_cast<MessageType>(getLine().toInt());
-	switch (type) {
+	const auto type = static_cast<MessageType>(getLine().toInt());
+	switch (type)
+	{
 	case RequestAccount:
 		accountInfo();
 		break;
@@ -97,7 +103,7 @@ void MySocket::readMessage()
 		receiveGameData();
 		break;
 	case Dead:
-		
+		clientDie();
 		break;
 	case Disconnect:
 		break;
@@ -110,5 +116,6 @@ void MySocket::readMessage()
 	case StopMatching:
 		clientStopMatch();
 		break;
+	default: ;
 	}
 }

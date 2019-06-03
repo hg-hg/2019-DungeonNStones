@@ -1,22 +1,18 @@
 #include "stdafx.h"
 #include "Server.h"
 
-Server::Server(QObject *parent) :
+Server::Server(QObject* parent) :
 	QTcpServer(parent)
 {
-	/* get current dialog object */
-	//m_dialog = dynamic_cast<Dialog *>(parent);
 }
 
 Server::~Server()
 {
-
 }
 
-void Server::incomingConnection(qintptr sockDesc)
+void Server::incomingConnection(const qintptr sockDesc)
 {
-
-	ServerThread *thread = new ServerThread(sockDesc);
+	auto* thread = new ServerThread(sockDesc);
 	//QMessageBox::information(NULL, "amd yes", "coming");
 	emit changeUI("thread coming, socket desc: " + QString::number(sockDesc));
 	//m_dialog->showConnection(sockDesc);
@@ -30,31 +26,33 @@ void Server::incomingConnection(qintptr sockDesc)
 	connect(thread, SIGNAL(threadGameData(QString)), this, SLOT(sendGameData(QString)));
 	connect(thread, SIGNAL(clientEscape()), this, SLOT(escape()));
 	connect(thread, SIGNAL(clientStopMatching()), this, SLOT(stopMatching()));
-	//connect(thread, SIGNAL(dataReady(QString)))
-	
+	connect(thread, SIGNAL(clientDead(QString)), this, SLOT(die(QString)));
+
 	online.append(thread);
 
 
 	thread->start();
 }
 
-void Server::waitingForGame(QString account, QString character)
+void Server::waitingForGame(const QString& account, const QString& character)
 {
-	auto thread = static_cast<ServerThread*>(sender());
+	auto thread = dynamic_cast<ServerThread*>(sender());
 
-	if (waiting.empty()) {
+	if (waiting.empty())
+	{
 		waiting.append(qMakePair(character, thread));
 	}
-	else {
-		int sockDesc = thread->m_sockDesc;
-		auto pair = waiting.front();
-		auto enemyCharacter = pair.first;
-		auto enemyThread = pair.second;
-		int enemySockDesc = enemyThread->m_sockDesc;
-		QString enemyAccount = enemyThread->socket->account;
+	else
+	{
+		const auto sockDesc = thread->sockDesc;
+		const auto pair = waiting.front();
+		const auto enemyCharacter = pair.first;
+		const auto enemyThread = pair.second;
+		const auto enemySockDesc = enemyThread->sockDesc;
+		const auto enemyAccount = enemyThread->socket->account;
 		waiting.pop_front();
-		QString base = QString::number(MessageType::GameStart) + "\n";
-		QString enemy = base + enemyAccount + "\n" + enemyCharacter + "\n";
+		auto base = QString::number(GameStart) + "\n";
+		const auto enemy = base + enemyAccount + "\n" + enemyCharacter + "\n";
 		base += account + "\n" + character + "\n";
 		emit sendMessage(sockDesc, enemy);
 		emit sendMessage(enemySockDesc, base);
@@ -64,13 +62,15 @@ void Server::waitingForGame(QString account, QString character)
 	}
 }
 
-void Server::sendGameData(QString data)
+void Server::sendGameData(const QString& data)
 {
-	auto thread = static_cast<ServerThread*>(sender());
-	for (auto p : playing) {
-		if (p.first == thread || p.second == thread) {
-			emit sendMessage(p.first->m_sockDesc, data);
-			emit sendMessage(p.second->m_sockDesc, data);
+	auto thread = dynamic_cast<ServerThread*>(sender());
+	for (auto p : playing)
+	{
+		if (p.first == thread || p.second == thread)
+		{
+			emit sendMessage(p.first->sockDesc, data);
+			emit sendMessage(p.second->sockDesc, data);
 			return;
 		}
 	}
@@ -78,60 +78,90 @@ void Server::sendGameData(QString data)
 
 void Server::escape()
 {
-	auto thread = static_cast<ServerThread*>(sender());
-	emit changeUI(QString::number(thread->m_sockDesc) + " escape");
-	QString message = QString::number(MessageType::EscapeGame);
-	for (auto it = playing.begin(); it != playing.end();) {
-		if (it->first == thread || it->second == thread) {
-			if (it->first == thread) emit sendMessage(it->second->m_sockDesc, message);
-			else emit sendMessage(it->first->m_sockDesc, message);
+	auto thread = dynamic_cast<ServerThread*>(sender());
+	emit changeUI(QString::number(thread->sockDesc) + " escape");
+	const auto message = QString::number(EscapeGame);
+	for (auto it = playing.begin(); it != playing.end();)
+	{
+		if (it->first == thread || it->second == thread)
+		{
+			if (it->first == thread) emit sendMessage(it->second->sockDesc, message);
+			else emit sendMessage(it->first->sockDesc, message);
 			it = playing.erase(it);
 			break;
 		}
-		else it++;
+		++it;
 	}
 }
 
 void Server::stopMatching()
 {
-	auto thread = static_cast<ServerThread*>(sender());
-	emit changeUI(QString::number(thread->m_sockDesc) + " stop matching");
-	for (auto it = waiting.begin(); it != waiting.end(); ) {
-		if (it->second == thread) {
+	auto thread = dynamic_cast<ServerThread*>(sender());
+	emit changeUI(QString::number(thread->sockDesc) + " stop matching");
+	for (auto it = waiting.begin(); it != waiting.end();)
+	{
+		if (it->second == thread)
+		{
 			it = waiting.erase(it);
 			break;
 		}
-		else it++;
+		++it;
 	}
 }
 
-void Server::clientDisconnected(int sockDesc)
+void Server::clientDisconnected(const int sockDesc)
 {
 	emit changeUI(QString::number(sockDesc) + " disconnect");
-	auto thread = static_cast<ServerThread*>(sender());
-	QString message = QString::number(MessageType::Disconnect);
-	for (auto it = playing.begin(); it != playing.end();) {
-		if (it->first == thread || it->second == thread) {
-			if (it->first == thread) emit sendMessage(it->second->m_sockDesc, message);
-			else emit sendMessage(it->first->m_sockDesc, message);
+	auto thread = dynamic_cast<ServerThread*>(sender());
+	const auto message = QString::number(Disconnect);
+	for (auto it = playing.begin(); it != playing.end();)
+	{
+		if (it->first == thread || it->second == thread)
+		{
+			if (it->first == thread) emit sendMessage(it->second->sockDesc, message);
+			else emit sendMessage(it->first->sockDesc, message);
 			it = playing.erase(it);
 			break;
 		}
-		else it++;
+		++it;
 	}
-	for (auto it = waiting.begin(); it != waiting.end(); ) {
-		if (it->second == thread) {
+	for (auto it = waiting.begin(); it != waiting.end();)
+	{
+		if (it->second == thread)
+		{
 			it = waiting.erase(it);
 			break;
 		}
-		else it++;
+		++it;
 	}
-	for (auto it = online.begin(); it != online.end(); ) {
-		if (*it == thread) {
+	for (auto it = online.begin(); it != online.end();)
+	{
+		if (*it == thread)
+		{
 			it = online.erase(it);
 			break;
 		}
-		else it++;
+		++it;
 	}
 	thread->deleteLater();
+}
+
+void Server::die(const QString& account)
+{
+	auto thread = dynamic_cast<ServerThread*>(sender());
+	emit changeUI(QString::number(thread->sockDesc) + " dead");
+	const auto message = QString::number(Dead) + "\n" + account + "\n";
+	for (auto it = playing.begin(); it != playing.end();)
+	{
+		const auto first = it->first;
+		const auto second = it->second;
+		if (first == thread || second == thread)
+		{
+			emit sendMessage(first->sockDesc, message);
+			emit sendMessage(second->sockDesc, message);
+			it = playing.erase(it);
+			break;
+		}
+		++it;
+	}
 }

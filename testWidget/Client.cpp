@@ -66,10 +66,10 @@ void Client::sendDisconnecting()
 	disconnectFromHost();
 }
 
-void Client::sendAccountInfo(QStringList info)
+void Client::sendAccountInfo(const QStringList& info)
 {
 	auto message = QString::number(AccountChange) + "\n";
-	for (auto str : info) message += str + "\n";
+	for (const auto str : info) message += str + "\n";
 	sendMessage(message);
 }
 
@@ -104,6 +104,7 @@ void Client::readMessage()
 		gameData();
 		break;
 	case Dead:
+		die();
 		break;
 	case Disconnect:
 		emit enemyDisconnect();
@@ -122,7 +123,7 @@ void Client::sendMessage(const QString& message)
 	//waitForReadyRead();
 }
 
-void Client::requestAccount(QString accountName)
+void Client::requestAccount(const QString& accountName)
 {
 	const auto message = QString::number(RequestAccount) + "\n" + accountName;
 	sendMessage(message);
@@ -137,21 +138,27 @@ void Client::gameStart()
 	emit gameStart(enemyAccount, enemyCharacter);
 }
 
-void Client::sendGameData(const QString account, const int hp, const int damage, const int mp)
+void Client::die()
+{
+	const auto account = getLine();
+	emit dead(account);
+}
+
+void Client::sendGameData(const QString& account, const int hp, const int damage, const int mp)
 {
 	const auto message = QString::number(GameData) + "\n" +
 		account + "\n" + QString::number(hp) + "\n" + QString::number(damage) + "\n" + QString::number(mp) + "\n";
 	sendMessage(message);
 }
 
-void Client::sendWaitForGame(const QString account, const QString character)
+void Client::sendWaitForGame(const QString& account, const QString& character)
 {
 	const auto message = QString::number(WaitForGame) + "\n" + account + "\n" + character + "\n";
 	sendMessage(message);
 	//waitForReadyRead();
 }
 
-void Client::sendDead(const QString account)
+void Client::sendDead(const QString& account)
 {
 	const auto message = QString::number(Dead) + "\n" + account + "\n";
 	sendMessage(message);

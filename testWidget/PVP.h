@@ -7,10 +7,10 @@
 
 class PVP : public QWidget
 {
-	Q_OBJECT
+Q_OBJECT
 
 public:
-	PVP(QWidget *parent = Q_NULLPTR);
+	PVP(QWidget* parent = Q_NULLPTR);
 	~PVP();
 	QString enemyAccount;
 
@@ -21,9 +21,11 @@ public slots:
 	void escape();
 	void stopMatching();
 	void quitGame();
+	void die(QString dead);
 
 signals:
 	void mainScene();
 private:
 	Ui::PVP ui;
+	bool started = false;
 };

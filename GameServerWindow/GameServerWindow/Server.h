@@ -19,10 +19,11 @@ signals:
 
 private slots:
 	void clientDisconnected(int sockDesc);
-	void waitingForGame(QString account, QString character);
-	void sendGameData(QString data);
+	void waitingForGame(const QString& account, const QString& character);
+	void sendGameData(const QString& data);
 	void escape();
 	void stopMatching();
+	void die(const QString& account);
 
 private:
 	QList<ServerThread*> online;
