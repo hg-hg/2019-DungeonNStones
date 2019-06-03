@@ -35,8 +35,8 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>310</y>
+     <x>30</x>
+     <y>300</y>
      <width>300</width>
      <height>250</height>
     </rect>
@@ -72,12 +72,23 @@
     <property name="text">
      <string/>
     </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>button/MainScene/PVE_button.png</normaloff>
+      <normalon>button/MainScene/PVE_button_p.png</normalon>button/MainScene/PVE_button.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>580</width>
+      <height>140</height>
+     </size>
+    </property>
    </widget>
    <widget class="MainSceneButton" name="PVP">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>90</y>
+      <y>80</y>
       <width>300</width>
       <height>70</height>
      </rect>
@@ -85,11 +96,21 @@
     <property name="text">
      <string/>
     </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>button/MainScene/PVP_button.png</normaloff>button/MainScene/PVP_button.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>300</width>
+      <height>70</height>
+     </size>
+    </property>
    </widget>
    <widget class="MainSceneButton" name="Setting">
     <property name="geometry">
      <rect>
-      <x>105</x>
+      <x>100</x>
       <y>180</y>
       <width>90</width>
       <height>70</height>
@@ -102,7 +123,7 @@
    <widget class="MainSceneButton" name="Quit">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>200</x>
       <y>180</y>
       <width>90</width>
       <height>70</height>
