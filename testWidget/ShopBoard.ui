@@ -57,7 +57,7 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QPushButton" name="backToMain">
+    <widget class="ReturnButton" name="backToMain">
      <property name="geometry">
       <rect>
        <x>800</x>
@@ -103,6 +103,13 @@ color:rgb(0,0,0);</string>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ReturnButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">returnbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ShopBoard.h"
-
+#include "ReturnButton.h"
+#include <QTimer>
 ShopBoard::ShopBoard(QWidget *parent)
 	: QWidget(parent)
 {
@@ -11,6 +12,7 @@ ShopBoard::ShopBoard(QWidget *parent)
 	initialEvent();
 	initialSelectedCharacter();
 	initialMoney();
+	ui.backToMain->setPicture(".//Picture//back.bmp");
 }
 
 ShopBoard::~ShopBoard()
@@ -120,5 +122,9 @@ void ShopBoard::updateMoney()
 
 void ShopBoard::backToMainScene()
 {
-	emit mainScene();
+	ui.backToMain->ZoomPush();
+	ui.backToMain->ZoomPop();
+	QTimer::singleShot(500, this, [=]() {
+		emit mainScene();
+	});
 }

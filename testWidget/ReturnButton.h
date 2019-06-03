@@ -9,6 +9,9 @@ class ReturnButton : public QPushButton
 public:
 	ReturnButton(QWidget *parent);
 	~ReturnButton();
+	void setPicture(QString normalImg);
+	void ZoomPush();
+	void ZoomPop();
 private:
 	void initialStyle();
 signals:
