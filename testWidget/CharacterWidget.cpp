@@ -72,6 +72,6 @@ void CharacterWidget::setImage()
 
 void CharacterWidget::initialClickEvent()
 {
-	connect(this, SIGNAL(quirySiganl()), this, SLOT(quryClicked()));
+	connect(this, SIGNAL(querySignal()), this, SLOT(queryClicked()));
 }
 
