@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "Skill.h"
 
-Skill::Skill(QWidget *parent, QString skillName, QString desc, int skillCost)
+Skill::Skill(QWidget* parent, const QString skillName, const QString desc, const int skillCost)
 	: QPushButton(parent), name(skillName), description(desc), cost(skillCost)
 {
 	setText(name);
-	if (skillName == "damage" || skillName == "heal") {
+	if (skillName == "damage" || skillName == "heal")
+	{
 		//timer = new QTimer(this);
 		connect(timer, SIGNAL(timeout()), this, SLOT(skillClicked()));
 		setEnabled(false);

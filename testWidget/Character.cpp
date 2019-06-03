@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "Character.h"
 
-Character::Character(QObject *parent, QString Name, QString desc, int Price, int HP, int MP, QString Skin)
+Character::Character(QObject* parent, const QString Name, const QString desc, const int Price, const int HP, const int MP, const QString Skin)
 	: QObject(parent), name(Name), description(desc), price(Price), hp(HP), mp(MP), skin(Skin)
 {
 }
 
-void Character::operator=(const Character & character)
+void Character::operator=(const Character& character)
 {
 	name = character.name;
 	description = character.description;

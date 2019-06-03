@@ -5,21 +5,21 @@
 
 class Account : public QObject
 {
-	Q_OBJECT
+Q_OBJECT
 public:
 	static Account* getInstance();
 	static void release();
 	~Account();
-	bool hasBoughtCharacter(QString chaName) const;
-	bool buyCharacter(QString chaName, int cost);
-	bool setCharacter(QString chaName);
+	bool hasBoughtCharacter(QString characterName) const;
+	bool buyCharacter(QString characterName, int cost);
+	bool setCharacter(QString characterName);
 	Character* getSelectedCharacter() const;
-	void sendAcccountInfo() const;
+	void sendAccountInfo() const;
 	void addMoney(int gain);
 private:
-	Account(QObject *parent = Q_NULLPTR);
-	Account(const Account &);
-	Account& operator=(const Account &);
+	Account(QObject* parent = Q_NULLPTR);
+	Account(const Account&);
+	Account& operator=(const Account&);
 
 public:
 	QString name;

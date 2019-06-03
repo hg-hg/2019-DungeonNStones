@@ -1,14 +1,14 @@
 #pragma once
 
 #include <QObject>
-#include "Skill.h"
+
 class Character : public QObject
 {
-	Q_OBJECT
+Q_OBJECT
 
 public:
-	Character(QObject *parent, QString Name, QString desc, int Price, int HP, int MP, QString Skin);
-	void operator= (const Character& character);
+	Character(QObject* parent, QString Name, QString desc, int Price, int HP, int MP, QString Skin);
+	void operator=(const Character& character);
 	~Character();
 
 	QString name;

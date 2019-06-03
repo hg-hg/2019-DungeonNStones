@@ -6,10 +6,10 @@
 
 class AccountManager : public QObject
 {
-	Q_OBJECT
+Q_OBJECT
 
 public:
-	AccountManager(QObject *parent = Q_NULLPTR);
+	AccountManager(QObject* parent = Q_NULLPTR);
 	~AccountManager();
 	bool setCurrentAccount(QString accountName);
 	bool setCurrentAccount(QString name, int money, QString defaultCharacter);

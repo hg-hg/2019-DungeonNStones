@@ -2,28 +2,26 @@
 #include "Account.h"
 #include "Client.h"
 
-//Account::Account(QObject *parent, CharacterManager* chaMa)
-//	: QObject(parent), cm(chaMa)
-//{
-//}
-
 Account* Account::instance = nullptr;
 
-Account* Account::getInstance() {
-	if (instance == nullptr) {
+Account* Account::getInstance()
+{
+	if (instance == nullptr)
+	{
 		instance = new Account();
 		atexit(release);
 	}
 	return instance;
 }
 
-Account::Account(QObject * parent)
+Account::Account(QObject* parent)
 {
 }
 
 void Account::release()
 {
-	if (instance) {
+	if (instance)
+	{
 		delete instance;
 		instance = nullptr;
 	}
@@ -33,33 +31,33 @@ Account::~Account()
 {
 }
 
-bool Account::hasBoughtCharacter(QString chaName) const
+bool Account::hasBoughtCharacter(const QString characterName) const
 {
-	return characters.contains(chaName);
+	return characters.contains(characterName);
 }
 
-bool Account::buyCharacter(QString chaName, int cost)
+bool Account::buyCharacter(const QString characterName, const int cost)
 {
-	if (hasBoughtCharacter(chaName)) return false;
+	if (hasBoughtCharacter(characterName)) return false;
 	if (money < cost) return false;
 	money -= cost;
-	characters.append(chaName);
+	characters.append(characterName);
 	return true;
 }
 
-bool Account::setCharacter(QString chaName)
+bool Account::setCharacter(const QString characterName)
 {
-	if (!hasBoughtCharacter(chaName)) return false;
-	selectedCharacter = cm->getCharacter(chaName);
+	if (!hasBoughtCharacter(characterName)) return false;
+	selectedCharacter = cm->getCharacter(characterName);
 	return true;
 }
 
-Character * Account::getSelectedCharacter() const
+Character* Account::getSelectedCharacter() const
 {
 	return selectedCharacter;
 }
 
-void Account::sendAcccountInfo() const
+void Account::sendAccountInfo() const
 {
 	QStringList list;
 	list.append(name);
@@ -69,8 +67,7 @@ void Account::sendAcccountInfo() const
 	Client::getInstance()->sendAccountInfo(list);
 }
 
-void Account::addMoney(int gain)
+void Account::addMoney(const int gain)
 {
 	money += gain;
 }
-

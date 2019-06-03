@@ -6,11 +6,11 @@
 
 class CrushAnimation : public QObject
 {
-	Q_OBJECT
+Q_OBJECT
 
-/*functions*/
+	/*functions*/
 public:
-	explicit CrushAnimation(QObject *parent = Q_NULLPTR);
+	explicit CrushAnimation(QObject* parent = Q_NULLPTR);
 	void add(Stone* stone);
 	/*you can change this function if you like,
 		this means to change the location of the stone according to time,
@@ -19,7 +19,7 @@ public:
 protected:
 	/*overide from QObject
 		invoke every time*/
-	void timerEvent(QTimerEvent *event) override;
+	void timerEvent(QTimerEvent* event) override;
 
 private:
 	void setup();
@@ -28,9 +28,9 @@ private:
 public slots:
 	void animate(int duration);
 signals:
-	void finished();//connect to GameBoard::gravity()
+	void finished(); //connect to GameBoard::gravity()
 
-/*members*/
+	/*members*/
 protected:
 	/*from QObject*/
 	int timerId;

@@ -4,10 +4,10 @@
 
 class Skill : public QPushButton
 {
-	Q_OBJECT
+Q_OBJECT
 
 public:
-	explicit Skill(QWidget *parent, QString skillName, QString desc, int skillCost);
+	explicit Skill(QWidget* parent, QString skillName, QString desc, int skillCost);
 
 signals:
 	void useSkill(QString, int);
@@ -23,5 +23,5 @@ public:
 	int cost;
 
 private:
-	QTimer * timer = new QTimer(this);
+	QTimer* timer = new QTimer(this);
 };
