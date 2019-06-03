@@ -1,33 +1,39 @@
 #include "stdafx.h"
 #include "GameLogic.h"
 
-GameLogic::GameLogic(QWidget *parent)
+GameLogic::GameLogic(QWidget* parent)
 	: QWidget(parent)
 {
+	es = EvaluateState::Normal;
 	first = second = nullptr;
-	exchangeAnimaion = new ExchangeAnimation(this);
+	exchangeAnimation = new ExchangeAnimation(this);
 	crushAnimation = new CrushAnimation(this);
 	gravityAnimation = new GravityAnimation(this);
 	fillBoard();
-	connect(exchangeAnimaion, SIGNAL(finished()), this, SLOT(endMove()));
+	connect(exchangeAnimation, SIGNAL(finished()), this, SLOT(endMove()));
 	connect(gravityAnimation, SIGNAL(finished()), this, SLOT(gravityFinished()));
 	connect(crushAnimation, SIGNAL(finished()), this, SLOT(gravity()));
 }
 
-void GameLogic::clickedStone(Stone* stone) {
+void GameLogic::clickedStone(Stone* stone)
+{
 	if (stone->isAnimating) return;
-	QPoint location = getPosition(stone);
+	const auto location = getPosition(stone);
 	if (willDrop(location)) return;
-	if (first == nullptr) {
+	if (first == nullptr)
+	{
 		first = stone;
 		firstPos = location;
 	}
-	else if (stone != first) {
+	else if (stone != first)
+	{
 		second = stone;
 		secondPos = location;
 	}
-	if (second != nullptr) {
-		if (isTwoStonesConnected()) {
+	if (second != nullptr)
+	{
+		if (isTwoStonesConnected())
+		{
 			QVector<QVector<bool>> visited(boardSize, QVector<bool>(boardSize, false));
 			//TODO: Evaluate the board, using dfs;
 			evaluate(Click, visited);
@@ -38,12 +44,12 @@ void GameLogic::clickedStone(Stone* stone) {
 
 void GameLogic::deleteStone()
 {
-	int row = qrand() % boardSize;
-	int col = qrand() % boardSize;
+	const auto row = qrand() % boardSize;
+	const auto col = qrand() % boardSize;
 	deleteStone(row, col);
 }
 
-void GameLogic::deleteStone(int col, int row)
+void GameLogic::deleteStone(const int col, const int row)
 {
 	waitForStopAnimation();
 	//if (isAnimating) return;
@@ -53,7 +59,8 @@ void GameLogic::deleteStone(int col, int row)
 	gravity();
 }
 
-void GameLogic::endMove() {
+void GameLogic::endMove()
+{
 	isAnimating = false;
 	enableAllStones();
 	if (pathOne.size() >= 3) evaluateStonesToCrush(pathOne);
@@ -61,7 +68,7 @@ void GameLogic::endMove() {
 	if (es == Click || es == Force) animateCrushingStones();
 }
 
-void GameLogic::useSkill(QString skill, QString account)
+void GameLogic::useSkill(const QString& skill, const QString& account)
 {
 	if (skill == "changeBoard") fillBoard();
 	else if (skill == "exchange") forceExchange();
@@ -76,18 +83,20 @@ void GameLogic::fillBoard()
 {
 	/*this check if the board is alreay filled.
 		If filled, delete this.*/
-	if (!board.isEmpty()) 
+	if (!board.isEmpty())
 		for (auto& col : board) for (auto& row : col) delete row;
 	else board.resize(boardSize);
-	
-	int stoneSize = Stone::size;
+
+	const auto stoneSize = Stone::size;
 	/*remember: board[col][row]
 		because first x then y*/
-	for (int col = 0; col < boardSize; col++) {
+	for (auto col = 0; col < boardSize; col++)
+	{
 		/*MUST USE & reference, or nothing changed at all!!!*/
 		auto& r = board[col];
- 		r.resize(boardSize);
-		for (int row = 0; row < boardSize; row++) {
+		r.resize(boardSize);
+		for (auto row = 0; row < boardSize; row++)
+		{
 			r[row] = stoneManager.getStone(this);
 			r[row]->show();
 			r[row]->move(col * stoneSize, row * stoneSize);
@@ -95,10 +104,13 @@ void GameLogic::fillBoard()
 	}
 
 	/*prevent 3 or more linked stones before the game start*/
-	for (int col = 0; col < boardSize; col++) {
-		for (int row = 0; row < boardSize; row++) {
+	for (auto col = 0; col < boardSize; col++)
+	{
+		for (auto row = 0; row < boardSize; row++)
+		{
 			setMoveData(col, row, col, row);
-			for (int type = NORMAL_STONE; type <= DM_STONE && evaluate(); type++) {
+			for (int type = NORMAL_STONE; type <= DM_STONE && evaluate(); type++)
+			{
 				stoneManager.changeStone(board[col][row], type, this);
 			}
 		}
@@ -107,28 +119,31 @@ void GameLogic::fillBoard()
 	first = second = nullptr;
 }
 
-void GameLogic::setMoveData(int fx, int fy, int sx, int sy)
+void GameLogic::setMoveData(const int fx, const int fy, const int sx, const int sy)
 {
 	md = MoveData(fx, fy, sx, sy);
 	first = board[fx][fy];
 	second = board[sx][sy];
 }
 
-QPoint GameLogic::getPosition(const Stone * stone) const
+QPoint GameLogic::getPosition(const Stone* stone) const
 {
-	for (int col = 0; col < boardSize; col++) {
+	for (auto col = 0; col < boardSize; col++)
+	{
 		auto r = board[col];
-		for (int row = 0; row < boardSize; row++) {
-			if (r[row] == stone) return QPoint(col, row);
+		for (auto row = 0; row < boardSize; row++)
+		{
+			if (r[row] == stone) return {col, row};
 		}
 	}
-	return QPoint(0, 0);
+	return {0, 0};
 }
 
 bool GameLogic::willDrop(const QPoint location) const
 {
 	auto col = board[location.x()];
-	for (int i = location.y(); i < 8; i++) {
+	for (auto i = location.y(); i < 8; i++)
+	{
 		if (col[i]->isAnimating) return true;
 	}
 	return false;
@@ -144,15 +159,15 @@ bool GameLogic::isTwoStonesConnected()
 		}
 	}*/
 	md = MoveData(firstPos.x(), firstPos.y(), secondPos.x(), secondPos.y());
-	if (abs(md.firstX - md.secondX) == 1 && md.firstY == md.secondY) return true;	//Horizental
-	if (abs(md.firstY - md.secondY) == 1 && md.firstX == md.secondX) return true;	//Vertical
+	if (abs(md.firstX - md.secondX) == 1 && md.firstY == md.secondY) return true; //Horizental
+	if (abs(md.firstY - md.secondY) == 1 && md.firstX == md.secondX) return true; //Vertical
 	return false;
 }
 
-bool GameLogic::evaluate(EvaluateState state, QVector<QVector<bool>>& visited)
+bool GameLogic::evaluate(const EvaluateState state, QVector<QVector<bool>>& visited)
 {
 	es = state;
-	bool sameLocation = false;
+	auto sameLocation = false;
 	if (md.firstX == md.secondX && md.firstY == md.secondY) sameLocation = true;
 	initializeVisitedVector(visited);
 
@@ -169,36 +184,43 @@ bool GameLogic::evaluate(EvaluateState state, QVector<QVector<bool>>& visited)
 	pathTwo.resize(0);
 
 	pathOne.append(qMakePair(md.secondX, md.secondY));
-	DFS(md.secondX, md.secondY, visited, pathOne);
+	dfs(md.secondX, md.secondY, visited, pathOne);
 	evaluatePath(pathOne);
-	if (!sameLocation) {
+	if (!sameLocation)
+	{
 		pathTwo.append(qMakePair(md.firstX, md.firstY));
-		DFS(md.firstX, md.firstY, visited, pathTwo);
+		dfs(md.firstX, md.firstY, visited, pathTwo);
 		evaluatePath(pathTwo);
 	}
-	if (pathOne.size() >= 3 || pathTwo.size() >= 3) {
-		if (!sameLocation && (state == Click || state == Force)) {
+	if (pathOne.size() >= 3 || pathTwo.size() >= 3)
+	{
+		if (!sameLocation && (state == Click || state == Force))
+		{
 			isAnimating = true;
-			exchangeAnimaion->legalExchange(st1, st2);
+			exchangeAnimation->legalExchange(st1, st2);
 		}
-		else if (state == Gravity) {
+		else if (state == Gravity)
+		{
 			endMove();
 		}
-		else if (!sameLocation && state == Normal) {
+		else if (!sameLocation && state == Normal)
+		{
 			endMove();
 			board[md.firstX][md.firstY] = st1;
 			board[md.secondX][md.secondY] = st2;
 		}
 		return true;
 	}
-	else if (state == Force) {
+	if (state == Force)
+	{
 		isAnimating = true;
-		exchangeAnimaion->legalExchange(st1, st2);
+		exchangeAnimation->legalExchange(st1, st2);
 	}
-	else {
+	else
+	{
 		/*move is illegal, so we move two stones back*/
 		if (!sameLocation && state == Click)
-			exchangeAnimaion->illegalExchange(st1, st2);
+			exchangeAnimation->illegalExchange(st1, st2);
 		board[md.firstX][md.firstY] = st1;
 		board[md.secondX][md.secondY] = st2;
 		return false;
@@ -206,28 +228,28 @@ bool GameLogic::evaluate(EvaluateState state, QVector<QVector<bool>>& visited)
 	return true;
 }
 
-void GameLogic::initializeVisitedVector(QVector<QVector<bool>>& visited)
+void GameLogic::initializeVisitedVector(QVector<QVector<bool>>& visited) const
 {
 	if (!visited.isEmpty()) return;
 	visited = QVector<QVector<bool>>(boardSize, QVector<bool>(boardSize, false));
 }
 
-bool GameLogic::isPositionValid(int position) const
+bool GameLogic::isPositionValid(const int position) const
 {
 	return (0 <= position && position < boardSize);
 }
 
-bool GameLogic::isPositionValid(int col, int row) const
+auto GameLogic::isPositionValid(const int col, int row) const -> bool
 {
 	return isPositionValid(col) && isPositionValid(row);
 }
 
 bool GameLogic::isMoveValid() const
 {
-	int fx = md.firstX;
-	int fy = md.firstY;
-	int sx = md.secondX;
-	int sy = md.secondY;
+	const auto fx = md.firstX;
+	const auto fy = md.firstY;
+	const auto sx = md.secondX;
+	const auto sy = md.secondY;
 	//if move stones position is illegal
 	if (!isPositionValid(fx, fy) || !isPositionValid(sx, sy)) return false;
 	if (abs(fx - sx) > 1 || abs(fy - sy) > 1) return false;
@@ -239,52 +261,59 @@ bool GameLogic::isMoveValid() const
 	return true;
 }
 
-void GameLogic::DFS(int col, int row, QVector<QVector<bool>>& visited, QVector<QPair<int, int>>& stones)
+void GameLogic::dfs(const int col, const int row, QVector<QVector<bool>>& visited, QVector<QPair<int, int>>& path)
 {
 	Stone* stone = board[col][row];
 	visited[col][row] = true;
 	//North
-	if (isPositionValid(row - 1) && !visited[col][row - 1] && stone->match(board[col][row - 1])) {
+	if (isPositionValid(row - 1) && !visited[col][row - 1] && stone->match(board[col][row - 1]))
+	{
 		if (stone->isAnimating) return;
-		stones.append(qMakePair(col, row - 1));
-		DFS(col, row - 1, visited, stones);
+		path.append(qMakePair(col, row - 1));
+		dfs(col, row - 1, visited, path);
 	}
 	//South
-	if (isPositionValid(row + 1) && !visited[col][row + 1] && stone->match(board[col][row + 1])) {
+	if (isPositionValid(row + 1) && !visited[col][row + 1] && stone->match(board[col][row + 1]))
+	{
 		if (stone->isAnimating) return;
-		stones.append(qMakePair(col, row + 1));
-		DFS(col, row + 1, visited, stones);
+		path.append(qMakePair(col, row + 1));
+		dfs(col, row + 1, visited, path);
 	}
 	//East
-	if (isPositionValid(col + 1) && !visited[col + 1][row] && stone->match(board[col + 1][row])) {
+	if (isPositionValid(col + 1) && !visited[col + 1][row] && stone->match(board[col + 1][row]))
+	{
 		if (stone->isAnimating) return;
-		stones.append(qMakePair(col + 1, row));
-		DFS(col + 1, row, visited, stones);
+		path.append(qMakePair(col + 1, row));
+		dfs(col + 1, row, visited, path);
 	}
 	//West
-	if (isPositionValid(col - 1) && !visited[col - 1][row] && stone->match(board[col - 1][row])) {
+	if (isPositionValid(col - 1) && !visited[col - 1][row] && stone->match(board[col - 1][row]))
+	{
 		if (stone->isAnimating) return;
-		stones.append(qMakePair(col - 1, row));
-		DFS(col - 1, row, visited, stones);
+		path.append(qMakePair(col - 1, row));
+		dfs(col - 1, row, visited, path);
 	}
 }
 
-void GameLogic::evaluatePath(QVector<QPair<int, int>>& path)
+void GameLogic::evaluatePath(QVector<QPair<int, int>>& path) const
 {
-	/*after dfs, we may get a path containning more than 2 stones;
-		however, it may be zig-zag style, 
-		so we move stones without two friends both in horizen and vertical.*/
-	for (auto it = path.begin(); it != path.end(); ) {
-		int col = 0, row = 0;
-		if (willDrop(QPoint(col, row))) {
+	/*after dfs, we may get a path containing more than 2 stones;
+		however, it may be zig-zag style,
+		so we move stones without two friends both in horizon and vertical.*/
+	for (auto it = path.begin(); it != path.end();)
+	{
+		auto col = 0, row = 0;
+		if (willDrop(QPoint(col, row)))
+		{
 			it = path.erase(it);
 			continue;
 		}
-		for (const auto p : path) {
+		for (const auto p : path)
+		{
 			if (p.first == it->first) col++;
 			if (p.second == it->second) row++;
 		}
-		/*My(yuri's) preffered way to remove element while iterating ;D*/
+		/*My(yuri's) preferred way to remove element while iterating ;D*/
 		if (col < 3 && row < 3) it = path.erase(it);
 		else it++;
 	}
@@ -293,39 +322,32 @@ void GameLogic::evaluatePath(QVector<QPair<int, int>>& path)
 void GameLogic::evaluateStonesToCrush(QVector<QPair<int, int>>& path)
 {
 	//int hp = 0, damage = 0, mp = 0;
-	for (auto stone : path) {
+	for (auto stone : path)
+	{
 		stoneToCrush.append(stone);
-		/*auto st = board[stone.first][stone.second];
-		hp += st->HP;
-		damage += st->DAMAGE;
-		mp += st->MP;*/
 	}
-	/*int bouns = path.size();
-	if (bouns <= 3) bouns = 1;
-	else bouns -= 2;
-	hp *= bouns;
-	damage *= bouns;
-	mp *= bouns;
-	emit stonesCrushing(hp, damage, mp, account);*/
+
 }
 
 void GameLogic::animateCrushingStones()
 {
-	for (auto pos : stoneToCrush) {
-		auto st = board[pos.first][pos.second];
+	for (auto& pos : stoneToCrush)
+	{
+		auto& st = board[pos.first][pos.second];
 		crushAnimation->add(st);
 	}
 
 	/*15 is just a magic number, change it if you want.
-		But DO NOT EDIT THIS COMMENT 
+		But DO NOT EDIT THIS COMMENT
 		in case I want to change it back but forget the default value*/
 	isAnimating = true;
 	crushAnimation->animate(15);
 }
 
-void GameLogic::waitForStopAnimation()
+void GameLogic::waitForStopAnimation() const
 {
-	while (isAnimating) {
+	while (isAnimating)
+	{
 		QEventLoop loop;
 		QTimer::singleShot(50, &loop, SLOT(quit()));
 		loop.exec();
@@ -337,7 +359,7 @@ void GameLogic::enableAllStones()
 	for (auto& col : board) for (auto& row : col) row->isAnimating = false;
 }
 
-void GameLogic::changeStone(int row, int col, int type)
+auto GameLogic::changeStone(const int row, const int col, int type) -> void
 {
 	waitForStopAnimation();
 	auto stone = board[col][row];
@@ -347,70 +369,74 @@ void GameLogic::changeStone(int row, int col, int type)
 
 void GameLogic::deleteRect()
 {
-	int row = qrand() % boardSize;
-	int col = qrand() % boardSize;
-	int width = qMin(qrand() % boardSize, boardSize - col - 1);
-	int height = qMin(qrand() % boardSize, boardSize - row - 1);
+	const auto row = qrand() % boardSize;
+	const auto col = qrand() % boardSize;
+	const auto width = qMin(qrand() % boardSize, boardSize - col - 1);
+	const auto height = qMin(qrand() % boardSize, boardSize - row - 1);
 	deleteRect(col, row, width, height);
 }
 
-void GameLogic::deleteRect(int col, int row, int width, int height)
+void GameLogic::deleteRect(const int col, const int row, const int width, const int height)
 {
 	countEffect = false;
 	waitForStopAnimation();
 	if (!isPositionValid(col, row)) return;
-	int destX = col + width;
-	int destY = row + height;
+	const auto destX = col + width;
+	const auto destY = row + height;
 	if (!isPositionValid(destX, destY)) return;
-	for (int c = col; c <= destX; c++) for (int r = row; r <= destY; r++)
-		stoneToCrush.append(qMakePair(c, r));
+	for (auto c = col; c <= destX; c++)
+		for (auto r = row; r <= destY; r++)
+			stoneToCrush.append(qMakePair(c, r));
 	gravity();
 	countEffect = true;
 }
 
 void GameLogic::forceExchange()
 {
-	int row = qrand() % boardSize;
-	int col = qrand() % boardSize;
-	if (col < row) {
+	const auto row = qrand() % boardSize;
+	const auto col = qrand() % boardSize;
+	if (col < row)
+	{
 		if (isPositionValid(col + 1)) forceExchange(col, row, col + 1, row);
 		else forceExchange(col, row, col - 1, row);
 	}
-	else {
+	else
+	{
 		if (isPositionValid(row + 1)) forceExchange(col, row, col, row + 1);
 		else forceExchange(col, row, col, row - 1);
 	}
-	
 }
 
-void GameLogic::forceExchange(int x1, int y1, int x2, int y2)
+void GameLogic::forceExchange(const int x1, const int y1, const int x2, const int y2)
 {
 	waitForStopAnimation();
 	setMoveData(x1, y1, x2, y2);
 	evaluate(Force);
 }
 
-void GameLogic::damage(QString account)
+void GameLogic::damage(const QString& account)
 {
 	emit stonesCrushing(0, 50, 0, account);
 }
 
-void GameLogic::damage(QString account, int dam)
+void GameLogic::damage(const QString& account, const int dam)
 {
 	emit stonesCrushing(0, dam, 0, account);
 }
 
-void GameLogic::heal(QString account)
+void GameLogic::heal(const QString& account)
 {
 	emit(stonesCrushing(50, 0, 0, account));
 }
 
-void GameLogic::bladeSlash(QString account)
+void GameLogic::bladeSlash(const QString& account)
 {
-	int col = qMin(qrand() % boardSize, boardSize - 2);
-	int dam = 0;
-	for (int i = col; i <= col + 1; i++) {
-		for (auto row : board[col]) {
+	const auto col = qMin(qrand() % boardSize, boardSize - 2);
+	auto dam = 0;
+	for (auto i = col; i <= col + 1; i++)
+	{
+		for (auto row : board[col])
+		{
 			dam += row->DAMAGE;
 		}
 	}
@@ -422,43 +448,52 @@ void GameLogic::bladeSlash(QString account)
 void GameLogic::gravity()
 {
 	enableAllStones();
-	int hp = 0, damage = 0, mp = 0, bouns = 0;
-	for (auto pos : stoneToCrush) {
+	auto hp = 0, damage = 0, mp = 0, bonus = 0;
+	for (const auto pos : stoneToCrush)
+	{
 		auto st = board[pos.first][pos.second];
-		if (st->isValid()) {
-			if (countEffect) {
+		if (st->isValid())
+		{
+			if (countEffect)
+			{
 				hp += st->HP;
 				damage += st->DAMAGE;
 				mp += st->MP;
-				bouns++;
+				bonus++;
 			}
 			delete st;
 			board[pos.first][pos.second] = nullptr;
 			//only delete is useless, you must reset it to nullptr explicitly
 		}
 	}
-	if (countEffect) {
-		if (bouns <= 3) bouns = 1;
-		else bouns -= 2;
-		hp *= bouns; damage *= bouns; mp *= bouns;
+	if (countEffect)
+	{
+		if (bonus <= 3) bonus = 1;
+		else bonus -= 2;
+		hp *= bonus;
+		damage *= bonus;
+		mp *= bonus;
 		emit stonesCrushing(hp, damage, mp, account);
 	}
 	//countEffect = true;
 	stoneToCrush.resize(0);
-	int maxDy = 0;
+	auto maxDy = 0;
 
-	//if you change the gravity derection, please change this nested loop.
+	//if you change the gravity direction, please change this nested loop.
 	//for example, if you want to make the stone move from button to top, change the second loop from 0 to max.
 	//if you want to change the move from left to right, change the loop order, serach row first.
 	//dy indicates the length it moves.
-	for (auto& col : board) {
-		int dy = 0;
-		for (int row = boardSize - 1; row >= 0; row--) {
+	for (auto& col : board)
+	{
+		auto dy = 0;
+		for (auto row = boardSize - 1; row >= 0; row--)
+		{
 			auto& stone = col[row];
 			if (stone == nullptr) dy++;
-			else {
+			else
+			{
 				auto p = stone->pos();
-				p.setY(p.y() + dy * stone->size);
+				p.setY(p.y() + dy * Stone::size);
 				if (dy == 0) continue;
 				col[row + dy] = stone;
 				col[row] = nullptr;
@@ -469,12 +504,14 @@ void GameLogic::gravity()
 	}
 
 	/*drop from maxDy above*/
-	for (int col = 0; col < boardSize; col++) {
+	for (auto col = 0; col < boardSize; col++)
+	{
 		auto& column = board[col];
-		int top = 0;
+		auto top = 0;
 		while (top < boardSize && !column[top]->isValid()) top++;
-		int size = Stone::size;
-		for (int row = 0; row < top; row++) {
+		const auto size = Stone::size;
+		for (auto row = 0; row < top; row++)
+		{
 			auto stone = stoneManager.getStone(this);
 			stone->show();
 			column[row] = stone;
@@ -485,21 +522,22 @@ void GameLogic::gravity()
 	}
 	isAnimating = true;
 	gravityAnimation->animate();
-	
 }
 
 void GameLogic::gravityFinished()
 {
 	enableAllStones();
 	isAnimating = false;
-	bool flag = false;
-	for (int col = 0; col < boardSize; col++) {
-		for (int row = 0; row < boardSize; row++) {
+	auto flag = false;
+	for (auto col = 0; col < boardSize; col++)
+	{
+		for (auto row = 0; row < boardSize; row++)
+		{
 			setMoveData(col, row, col, row);
 			if (evaluate(Gravity)) flag = true;
 		}
 	}
 	first = second = nullptr;
-	
+
 	if (flag) animateCrushingStones();
 }

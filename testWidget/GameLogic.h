@@ -10,7 +10,9 @@ struct MoveData
 {
 	int firstX, firstY, secondX, secondY;
 	MoveData() = default;
-	MoveData(int fx, int fy, int sx, int sy) {
+
+	MoveData(const int fx, const int fy, const int sx, const int sy)
+	{
 		firstY = fy;
 		firstX = fx;
 		secondX = sx;
@@ -20,35 +22,35 @@ struct MoveData
 
 class GameLogic : public QWidget
 {
-	Q_OBJECT
+Q_OBJECT
 
-/*fuctions*/
+	/*functions*/
 public:
-	GameLogic(QWidget *parent = Q_NULLPTR);
-	
+	GameLogic(QWidget* parent = Q_NULLPTR);
+
 	void setMoveData(int fx, int fy, int sx, int sy);
 private:
 	QPoint getPosition(const Stone* stone) const;
-	bool willDrop(const QPoint location) const;
+	bool willDrop(QPoint location) const;
 	bool isTwoStonesConnected();
 	bool evaluate(EvaluateState state = Normal, QVector<QVector<bool>>& visited = QVector<QVector<bool>>(0));
-	void initializeVisitedVector(QVector<QVector<bool>>& visited);
+	void initializeVisitedVector(QVector<QVector<bool>>& visited) const;
 	bool isPositionValid(int position) const;
 	bool isPositionValid(int col, int row) const;
 	bool isMoveValid() const;
-	void DFS(int x, int y, QVector<QVector<bool>>& visited, QVector<QPair<int, int>>& path);
-	void evaluatePath(QVector<QPair<int, int>>& stones);
+	void dfs(int col, int row, QVector<QVector<bool>>& visited, QVector<QPair<int, int>>& path);
+	void evaluatePath(QVector<QPair<int, int>>& path) const;
 	void evaluateStonesToCrush(QVector<QPair<int, int>>& path);
 	void animateCrushingStones();
-	void waitForStopAnimation();
+	void waitForStopAnimation() const;
 	void enableAllStones();
 signals:
 	void stonesCrushing(int hp, int damage, int mp, QString account);
 
 public slots:
-	void useSkill(QString skill, QString account);
+	void useSkill(const QString& skill, const QString& account);
 	void fillBoard();
-	void clickedStone(Stone* stone);//invoke by Stone::clicked()
+	void clickedStone(Stone* stone); //invoke by Stone::clicked()
 	void deleteStone();
 	void deleteStone(int col, int row);
 	void changeStone(int row, int col, int type);
@@ -56,15 +58,15 @@ public slots:
 	void deleteRect(int col, int row, int width, int height);
 	void forceExchange();
 	void forceExchange(int x1, int y1, int x2, int y2);
-	void damage(QString account);
-	void damage(QString account, int dam);
-	void heal(QString account);
-	void bladeSlash(QString account);
+	void damage(const QString& account);
+	void damage(const QString& account, int dam);
+	void heal(const QString& account);
+	void bladeSlash(const QString& account);
 protected slots:
 	void endMove();
 	void gravity();
 	void gravityFinished();
-/*members*/
+	/*members*/
 public:
 	const int boardSize = 8;
 	QVector<QVector<Stone*>> board;
@@ -76,13 +78,12 @@ private:
 	Stone* second;
 	QPoint firstPos;
 	QPoint secondPos;
-	MoveData md;
+	MoveData md = {0, 0, 0, 0};
 	EvaluateState es;
 	QVector<QPair<int, int>> pathOne, pathTwo;
 	QVector<QPair<int, int>> stoneToCrush;
-	ExchangeAnimation* exchangeAnimaion;
+	ExchangeAnimation* exchangeAnimation;
 	CrushAnimation* crushAnimation;
 	GravityAnimation* gravityAnimation;
 	StoneManager stoneManager;
-	
 };

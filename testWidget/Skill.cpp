@@ -21,10 +21,6 @@ void Skill::skillClicked()
 	emit useSkill(name, cost);
 }
 
-void Skill::frozen(int)
-{
-}
-
 void Skill::frozeTimer()
 {
 	if (timer == nullptr) return;
