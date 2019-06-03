@@ -1,8 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
-#include "GameLogic.h"
-#include "Player.h"
+
 #include "Client.h"
 #include "AccountManager.h"
 #include "ui_testWidget.h"
@@ -18,6 +17,9 @@ public:
 
 protected:
 	void closeEvent(QCloseEvent *event) override;
+
+private:
+	void moveToCenter();
 
 public slots:
 	void mainScene();

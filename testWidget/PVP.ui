@@ -6,154 +6,176 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1086</width>
-    <height>747</height>
+    <width>1112</width>
+    <height>641</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>PVP</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
-    <widget class="QStackedWidget" name="mainStack">
-     <property name="currentIndex">
-      <number>0</number>
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
-     <widget class="QWidget" name="waiting">
-      <widget class="QLabel" name="waitingForGame">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>260</y>
-         <width>331</width>
-         <height>241</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Adobe Arabic</family>
-         <pointsize>48</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>等待匹配</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="GameBoard" name="playing"/>
-     <widget class="QWidget" name="disconnect">
-      <widget class="QLabel" name="enemyDisconnect">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>270</y>
-         <width>701</width>
-         <height>271</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Adobe Arabic</family>
-         <pointsize>72</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>敌人逃跑了</string>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QStackedWidget" name="toast">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>100</height>
-      </size>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QWidget" name="escape">
-      <widget class="QPushButton" name="pushButton">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>40</y>
-         <width>761</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>escape</string>
-       </property>
+     <widget class="QStackedWidget" name="mainStack">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1112</width>
+        <height>641</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="waiting">
+       <widget class="QLabel" name="waitingForGame">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>260</y>
+          <width>331</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Adobe Arabic</family>
+          <pointsize>48</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>等待匹配</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="GameBoard" name="playing"/>
+      <widget class="QWidget" name="disconnect">
+       <widget class="QLabel" name="enemyDisconnect">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>270</y>
+          <width>701</width>
+          <height>271</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Adobe Arabic</family>
+          <pointsize>72</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>敌人逃跑了</string>
+        </property>
+       </widget>
       </widget>
      </widget>
-     <widget class="QWidget" name="matching">
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>40</y>
-         <width>431</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>stop matching</string>
-       </property>
+     <widget class="QStackedWidget" name="toast">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>591</y>
+        <width>1112</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>100</height>
+       </size>
+      </property>
+      <widget class="QWidget" name="escape">
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>10</y>
+          <width>761</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>escape</string>
+        </property>
+       </widget>
       </widget>
-     </widget>
-     <widget class="QWidget" name="gameOver">
-      <widget class="QLabel" name="winner">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>50</y>
-         <width>72</width>
-         <height>15</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>who wins</string>
-       </property>
+      <widget class="QWidget" name="matching">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>10</y>
+          <width>431</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>stop matching</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>50</y>
-         <width>171</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>find another game?</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="geometry">
-        <rect>
-         <x>400</x>
-         <y>40</y>
-         <width>93</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>yes</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="geometry">
-        <rect>
-         <x>630</x>
-         <y>40</y>
-         <width>93</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>no</string>
-       </property>
+      <widget class="QWidget" name="gameOver">
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>10</y>
+          <width>1011</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="winner">
+           <property name="text">
+            <string>who wins</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>find another game?</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_3">
+           <property name="text">
+            <string>yes</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_4">
+           <property name="text">
+            <string>no</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </widget>
     </widget>

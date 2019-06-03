@@ -4,6 +4,8 @@
 #include "PVE.h"
 #include "PVP.h"
 #include "ShopBoard.h"
+#include "GameBoard.h"
+
 Client * client = Client::getInstance();
 
 testWidget::testWidget(QWidget *parent)
@@ -33,11 +35,18 @@ void testWidget::closeEvent(QCloseEvent * event)
 	client->sendDisconnecting();
 }
 
+void testWidget::moveToCenter()
+{
+	setFixedSize({ 1112, 641 });
+	const auto deskRect = QApplication::desktop()->availableGeometry();
+	this->move((deskRect.right() - 1112) / 2, (deskRect.bottom() - 641) / 2);
+}
+
 void testWidget::pvp()
 {
 
 	PVP * pvp = new PVP(this);
-	setFixedSize({ 1112, 641 });
+	moveToCenter();
 	connect(pvp, SIGNAL(mainScene()), this, SLOT(mainScene()));
 	ui.stackedWidget->addWidget(pvp);
 	ui.stackedWidget->setCurrentWidget(pvp);
@@ -46,9 +55,7 @@ void testWidget::pvp()
 void testWidget::pve()
 {
 	PVE * pve = new PVE(this);
-	setFixedSize({ 1112, 641 });
-	QRect deskRect = QApplication::desktop()->availableGeometry();
-	this->move((deskRect.right() - 1112) / 2, (deskRect.bottom() - 641) / 2);
+	moveToCenter();
 	connect(pve, SIGNAL(mainScene()), this, SLOT(mainScene()));
 	ui.stackedWidget->addWidget(pve);
 	ui.stackedWidget->setCurrentWidget(pve);
@@ -56,7 +63,7 @@ void testWidget::pve()
 
 void testWidget::shop()
 {
-	auto shopBoard = new ShopBoard(this);
+	const auto shopBoard = new ShopBoard(this);
 	connect(shopBoard, SIGNAL(mainScene()), this, SLOT(mainScene()));
 	ui.stackedWidget->addWidget(shopBoard);
 	ui.stackedWidget->setCurrentWidget(shopBoard);

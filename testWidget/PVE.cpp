@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "PVE.h"
-#include "Account.h"
 #include "CharacterManager.h"
 
 PVE::PVE(QWidget *parent)

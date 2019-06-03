@@ -4,12 +4,12 @@
 #include <QKeyEvent>
 
 
-Login::Login(QWidget *parent)
+Login::Login(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	QMovie *movie = new QMovie(".//skin//knight_m_idle_anim_f0.gif");
-	movie->setScaledSize(QSize(ui.label_2->size().width(), ui.label_2->size().width()*560/320));
+	auto movie = new QMovie(".//skin//knight_m_idle_anim_f0.gif");
+	movie->setScaledSize(QSize(ui.label_2->size().width(), ui.label_2->size().width() * 560 / 320));
 	ui.label_2->setMovie(movie);
 	movie->start();
 	ui.stackedWidget->setCurrentWidget(ui.enterAccount);
@@ -18,22 +18,21 @@ Login::Login(QWidget *parent)
 
 Login::~Login()
 {
-	qDebug();
 }
 
-void Login::paintEvent(QPaintEvent*) {
+void Login::paintEvent(QPaintEvent*)
+{
 	QPainter painter(this);
 	//QPixmap pix;
 	//pix.load(".//Background//wall.png");
 	//painter.drawPixmap(0, 0, this->width(), this->height(), pix);
 }
 
-void Login::keyPressEvent(QKeyEvent * event)
+void Login::keyPressEvent(QKeyEvent* event)
 {
 	if (event->key() == Qt::Key_Return)
 	{
-		Client::getInstance()->requestAccount(ui.account->text());
-		ui.stackedWidget->setCurrentWidget(ui.waiting);
+		loginToServer();
 	}
 }
 
@@ -44,6 +43,8 @@ void Login::accountInitialized()
 
 void Login::loginToServer()
 {
+	const auto accountName = ui.account->text();
+	if (accountName.isEmpty()) return;
 	Client::getInstance()->requestAccount(ui.account->text());
 	ui.stackedWidget->setCurrentWidget(ui.waiting);
 }
