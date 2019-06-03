@@ -28,6 +28,8 @@ public:
 	
 	void setMoveData(int fx, int fy, int sx, int sy);
 private:
+	QPoint getPosition(const Stone* stone) const;
+	bool willDrop(const QPoint location) const;
 	bool isTwoStonesConnected();
 	bool evaluate(EvaluateState state = Normal, QVector<QVector<bool>>& visited = QVector<QVector<bool>>(0));
 	void initializeVisitedVector(QVector<QVector<bool>>& visited);

@@ -25,6 +25,7 @@ void Player::initialStatus()
 	ui.HP->setValue(hp);
 	ui.MP->setMaximum(maxMP);
 	ui.MP->setValue(mp);
+	setGamePause(false);
 }
 
 Player::Player(QWidget * parent)
@@ -47,6 +48,7 @@ Player::Player(QWidget * parent, QString ACCOUNT)
 }
 
 void Player::skillInvoke(QString skill, int cost) {
+	if (gamePause) return;
 	if (mp < cost) return;
 	emit useSkill(skill, account);
 	emit sendInfo(account, 0, 0, -cost);
@@ -60,7 +62,8 @@ void Player::setCharacter(Character* ch)
 		auto c = sm->getSkill(name, ui.verticalLayoutWidget);
 		if (enemy) c->setEnabled(false);
 		connect(c, SIGNAL(useSkill(QString, int)), this, SLOT(skillInvoke(QString, int)));
-		
+		connect(this, SIGNAL(pauseGame()), c, SLOT(frozeTimer()));
+		connect(this, SIGNAL(restartGame()), c, SLOT(restartTimer()));
 		ui.skills->addWidget(c);
 	}
 	auto skinPath = "./skin/" + character->skin;
@@ -128,6 +131,13 @@ void Player::recoverMP(int MP)
 	mp += MP;
 	mp = qMin(mp, character->mp);
 	ui.MP->setValue(mp);
+}
+
+void Player::setGamePause(bool pause)
+{
+	gamePause = pause;
+	if (pause) emit pauseGame();
+	else emit restartGame();
 }
 
 Player::~Player()

@@ -17,6 +17,8 @@ signals:
 	void sendInfo(QString account, int hp, int damage, int mp);
 	void dead(QString account);
 	void useSkill(QString skillName, QString account);
+	void pauseGame();
+	void restartGame();
 public:
 	Player(QWidget* parent);
 	void setAccount(QString ACCOUNT);
@@ -26,6 +28,7 @@ public:
 	void takeDamage(int);
 	void recoverHP(int);
 	void recoverMP(int);
+	void setGamePause(bool pause);
 	~Player();
 
 private:
@@ -36,4 +39,5 @@ private:
 	int hp = 0, mp = 0;
 	int maxHP, maxMP;
 	bool enemy = false;
+	bool gamePause = false;
 };

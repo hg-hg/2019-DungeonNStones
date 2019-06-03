@@ -46,6 +46,8 @@ void GameBoard::setLocalGame(bool flag)
 
 void GameBoard::playerDead(QString playerAccount)
 {
+	ui.enemy->setGamePause(true);
+	ui.player->setGamePause(true);
 	Account * account = Account::getInstance();
 	if (playerAccount == account->name) account->addMoney(300);
 	else account->addMoney(1000);
@@ -54,6 +56,7 @@ void GameBoard::playerDead(QString playerAccount)
 
 void GameBoard::restart()
 {
+	ui.gameCore->fillBoard();
 	ui.player->initialStatus();
 	ui.enemy->initialStatus();
 }

@@ -8,7 +8,7 @@ class Skill : public QPushButton
 
 public:
 	explicit Skill(QWidget *parent, QString skillName, QString desc, int skillCost);
-
+	
 signals:
 	void useSkill(QString, int);
 private slots:
@@ -16,11 +16,13 @@ private slots:
 
 public slots:
 	void frozen(int);
+	void frozeTimer();
+	void restartTimer();
 public:
 	QString name;
 	QString description;
 	int cost;
 
 private:
-	QTimer * timer;
+	QTimer * timer = new QTimer(this);
 };

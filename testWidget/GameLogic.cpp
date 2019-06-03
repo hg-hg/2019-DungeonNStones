@@ -15,10 +15,18 @@ GameLogic::GameLogic(QWidget *parent)
 }
 
 void GameLogic::clickedStone(Stone* stone) {
-	if (first == nullptr) first = stone;
-	if (first->isAnimating) return;
-	else if (stone != first) second = stone;
-	if (second != nullptr && !second->isAnimating) {
+	if (stone->isAnimating) return;
+	QPoint location = getPosition(stone);
+	if (willDrop(location)) return;
+	if (first == nullptr) {
+		first = stone;
+		firstPos = location;
+	}
+	else if (stone != first) {
+		second = stone;
+		secondPos = location;
+	}
+	if (second != nullptr) {
 		if (isTwoStonesConnected()) {
 			QVector<QVector<bool>> visited(boardSize, QVector<bool>(boardSize, false));
 			//TODO: Evaluate the board, using dfs;
@@ -106,15 +114,35 @@ void GameLogic::setMoveData(int fx, int fy, int sx, int sy)
 	second = board[sx][sy];
 }
 
-bool GameLogic::isTwoStonesConnected()
+QPoint GameLogic::getPosition(const Stone * stone) const
 {
 	for (int col = 0; col < boardSize; col++) {
+		auto r = board[col];
+		for (int row = 0; row < boardSize; row++) {
+			if (r[row] == stone) return QPoint(col, row);
+		}
+	}
+	return QPoint(0, 0);
+}
+
+bool GameLogic::willDrop(const QPoint location) const
+{
+	auto col = board[location.x()];
+	for (int i = location.y(); i < 8; i++) {
+		if (col[i]->isAnimating) return true;
+	}
+	return false;
+}
+
+bool GameLogic::isTwoStonesConnected()
+{
+	/*for (int col = 0; col < boardSize; col++) {
 		auto r = board[col];
 		for (int row = 0; row < boardSize; row++) {
 			if (r[row] == first) firstPos = QPoint(col, row);
 			if (r[row] == second) secondPos = QPoint(col, row);
 		}
-	}
+	}*/
 	md = MoveData(firstPos.x(), firstPos.y(), secondPos.x(), secondPos.y());
 	if (abs(md.firstX - md.secondX) == 1 && md.firstY == md.secondY) return true;	//Horizental
 	if (abs(md.firstY - md.secondY) == 1 && md.firstX == md.secondX) return true;	//Vertical
@@ -248,6 +276,10 @@ void GameLogic::evaluatePath(QVector<QPair<int, int>>& path)
 		so we move stones without two friends both in horizen and vertical.*/
 	for (auto it = path.begin(); it != path.end(); ) {
 		int col = 0, row = 0;
+		if (willDrop(QPoint(col, row))) {
+			it = path.erase(it);
+			continue;
+		}
 		for (const auto p : path) {
 			if (p.first == it->first) col++;
 			if (p.second == it->second) row++;
