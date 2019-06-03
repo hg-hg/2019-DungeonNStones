@@ -122,8 +122,8 @@ void ShopBoard::updateMoney()
 
 void ShopBoard::backToMainScene()
 {
-	ui.backToMain->ZoomPush();
-	ui.backToMain->ZoomPop();
+	ui.backToMain->zoomPush();
+	ui.backToMain->zoomPop();
 	QTimer::singleShot(500, this, [=]() {
 		emit mainScene();
 	});

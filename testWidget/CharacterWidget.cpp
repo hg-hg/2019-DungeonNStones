@@ -6,7 +6,7 @@ CharacterWidget::CharacterWidget(QWidget *parent, Character * character)
 {
 	setCharacter(character);
 	setImage();
-	initilalClickEvent();
+	initialClickEvent();
 }
 
 CharacterWidget::~CharacterWidget()
@@ -15,7 +15,7 @@ CharacterWidget::~CharacterWidget()
 
 QSize CharacterWidget::sizeHint() const
 {
-	return originSzie;
+	return originSize;
 }
 
 void CharacterWidget::setCharacter(Character *character)
@@ -41,7 +41,7 @@ void CharacterWidget::paintEvent(QPaintEvent* event)
 
 void CharacterWidget::mouseReleaseEvent(QMouseEvent * event)
 {
-	emit quirySiganl();
+	emit querySignal();
 }
 
 void CharacterWidget::enterEvent(QEvent * event)
@@ -58,7 +58,7 @@ void CharacterWidget::leaveEvent(QEvent * event)
 	update();
 }
 
-void CharacterWidget::quryClicked()
+void CharacterWidget::queryClicked()
 {
 	emit showMessage(this);
 }
@@ -70,7 +70,7 @@ void CharacterWidget::setImage()
 	foreground = foreground.scaled(QSize(100, 130));
 }
 
-void CharacterWidget::initilalClickEvent()
+void CharacterWidget::initialClickEvent()
 {
 	connect(this, SIGNAL(quirySiganl()), this, SLOT(quryClicked()));
 }

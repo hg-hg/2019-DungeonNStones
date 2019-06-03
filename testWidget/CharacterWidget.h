@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QWidget>
-#include <QPainter>
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include "Character.h"
@@ -24,12 +23,11 @@ protected:
 	void leaveEvent(QEvent * event) override;
 private:
 	virtual void setImage();
-	void initilalClickEvent();
+	void initialClickEvent();
 private slots:
-	void quryClicked();
+	void queryClicked();
 signals:
-	void quirySiganl();
-signals:	
+	void querySignal();
 	void showMessage(CharacterWidget *);
 public:
 	Character* character;
@@ -37,7 +35,7 @@ public:
 	QPixmap foreground;
 	QPen edge;
 private:
-	QSize originSzie = QSize(100, 130);
+	QSize originSize = QSize(100, 130);
 	bool mouseHasEntered = false;
 
 };

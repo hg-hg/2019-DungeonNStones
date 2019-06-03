@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ReturnButton.h"
-ReturnButton::ReturnButton(QWidget *parent)
+
+ReturnButton::ReturnButton(QWidget* parent)
 	: QPushButton(parent)
 {
 	initialStyle();
@@ -8,9 +9,7 @@ ReturnButton::ReturnButton(QWidget *parent)
 	connect(this, SIGNAL(clicked()), this, SLOT(returnClicked()));
 }
 
-ReturnButton::~ReturnButton()
-{
-}
+ReturnButton::~ReturnButton() = default;
 
 void ReturnButton::initialStyle()
 {
@@ -20,23 +19,28 @@ void ReturnButton::initialStyle()
 	setStyleSheet("color: black");
 	setMaximumSize(70, 40);*/
 }
-void ReturnButton::ZoomPush() {
-	QPropertyAnimation * animation = new QPropertyAnimation(this, "geometry");
+
+void ReturnButton::zoomPush()
+{
+	auto animation = new QPropertyAnimation(this, "geometry");
 	animation->setDuration(200);
 	animation->setStartValue(QRect(this->x(), this->y(), this->width(), this->height()));
 	animation->setEndValue(QRect(this->x(), this->y() + 10, this->width(), this->height()));
 	animation->setEasingCurve(QEasingCurve::OutBounce);
 	animation->start();
 }
-void ReturnButton::ZoomPop() {
-	QPropertyAnimation * animation = new QPropertyAnimation(this, "geometry");
+
+void ReturnButton::zoomPop()
+{
+	auto animation = new QPropertyAnimation(this, "geometry");
 	animation->setDuration(200);
 	animation->setStartValue(QRect(this->x(), this->y() + 10, this->width(), this->height()));
 	animation->setEndValue(QRect(this->x(), this->y(), this->width(), this->height()));
 	animation->setEasingCurve(QEasingCurve::OutBounce);
 	animation->start();
 }
-void ReturnButton::setPicture(QString normalImg)
+
+void ReturnButton::setPicture(const QString& normalImg)
 {
 	QPixmap pix;
 	pix.load(normalImg);
@@ -46,8 +50,8 @@ void ReturnButton::setPicture(QString normalImg)
 	this->setIcon(pix);
 	this->setIconSize(QSize(pix.width(), pix.height()));
 }
-void ReturnButton::returnClicked() 
-{
 
+void ReturnButton::returnClicked()
+{
 	emit returnSignal();
 }

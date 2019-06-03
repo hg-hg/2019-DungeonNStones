@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CommodityWidget.h"
 
-CommodityWidget::CommodityWidget(QWidget *parent, Character * character, Account * account)
+CommodityWidget::CommodityWidget(QWidget* parent, Character* character, Account* account)
 	: QWidget(parent)
 {
 	setCharacterWidget(character);
@@ -20,27 +20,27 @@ QSize CommodityWidget::sizeHint() const
 	return originSzie;
 }
 
-void CommodityWidget::setCharacterWidget(Character * character)
+void CommodityWidget::setCharacterWidget(Character* character)
 {
 	this->characterWidget = new CharacterWidget(this, character);
 }
 
-void CommodityWidget::setAccount(Account * account)
+void CommodityWidget::setAccount(Account* account)
 {
 	this->account = account;
 }
 
-CharacterWidget * CommodityWidget::getCharacterWidget()
+CharacterWidget* CommodityWidget::getCharacterWidget()
 {
 	return characterWidget;
 }
 
-SelectButton * CommodityWidget::getSelectButton()
+SelectButton* CommodityWidget::getSelectButton()
 {
 	return selectButton;
 }
 
-BuyButton * CommodityWidget::getBuyButton()
+BuyButton* CommodityWidget::getBuyButton()
 {
 	return buyButton;
 }
@@ -54,7 +54,7 @@ void CommodityWidget::initialButton()
 		buyButton->setText("Already Own");
 		buyButton->setEnabled(false);
 	}
-	else 
+	else
 	{
 		buyButton->setText(QString::number(characterWidget->getCharacter()->price));
 		selectButton->setEnabled(false);
@@ -88,8 +88,8 @@ void CommodityWidget::initialBuyConfirmMessage()
 
 	if (msg.exec() == QMessageBox::Ok)
 	{
-		QString name = characterWidget->getCharacter()->name;
-		int cost = characterWidget->getCharacter()->price;
+		const auto name = characterWidget->getCharacter()->name;
+		const auto cost = characterWidget->getCharacter()->price;
 		if (account->buyCharacter(name, cost))
 		{
 			buyButton->setText("Already Own");
@@ -114,9 +114,9 @@ void CommodityWidget::initialSelectConfirmMessage()
 	msg.setWindowTitle("Confirm");
 	msg.setText("Sure to select?");
 	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-	if (msg.exec() == QMessageBox::Ok) 
+	if (msg.exec() == QMessageBox::Ok)
 	{
-		QString name = characterWidget->getCharacter()->name;
+		const auto name = characterWidget->getCharacter()->name;
 		account->setCharacter(name);
 		selectButton->setText("Selected");
 		selectButton->setEnabled(false);

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "SelectButton.h"
 
-SelectButton::SelectButton(QWidget *parent)
+SelectButton::SelectButton(QWidget* parent)
 	: QPushButton(parent)
 {
 	initialStyle();
@@ -14,13 +14,13 @@ SelectButton::~SelectButton()
 
 void SelectButton::initialStyle()
 {
-	auto font = QFont("Microsoft YaHei", 8, 50, true);
+	const auto font = QFont("Microsoft YaHei", 8, 50, true);
 	setFont(font);
 	setText("SELECT");
 	setStyleSheet("color: black");
 }
 
-void SelectButton::selectClicked() 
+void SelectButton::selectClicked()
 {
 	emit selectSignal();
 }
