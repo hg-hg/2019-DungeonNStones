@@ -162,6 +162,27 @@ border-bottom:1px solid #717207;
        <zorder>login</zorder>
        <zorder>label_2</zorder>
       </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>800</width>
+         <height>600</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>background/wall.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <zorder>label_3</zorder>
+      <zorder>frame</zorder>
      </widget>
      <widget class="QWidget" name="waiting">
       <widget class="QLabel" name="label">

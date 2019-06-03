@@ -6,111 +6,157 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1077</width>
-    <height>970</height>
+    <width>1112</width>
+    <height>641</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>PVE</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
-    <widget class="QStackedWidget" name="stackedWidget">
-     <property name="currentIndex">
-      <number>1</number>
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
-     <widget class="QWidget" name="playing">
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <widget class="GameBoard" name="gameBoard" native="true"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="gameOver">
-      <widget class="QLabel" name="movie">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>961</width>
-         <height>711</height>
-        </rect>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QStackedWidget" name="toast">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>50</height>
-      </size>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QWidget" name="escapePage">
-      <widget class="QPushButton" name="escape">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>1055</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>逃跑</string>
-       </property>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1112</width>
+        <height>641</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="playing">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="GameBoard" name="gameBoard" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="gameOver">
+       <widget class="QLabel" name="movie">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>961</width>
+          <height>711</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </widget>
      </widget>
-     <widget class="QWidget" name="continuePage">
-      <widget class="QLabel" name="askIfContinue">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>20</y>
-         <width>72</width>
-         <height>15</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>是否继续？</string>
-       </property>
+     <widget class="QStackedWidget" name="toast">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>591</y>
+        <width>1112</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <widget class="QWidget" name="escapePage">
+       <widget class="QPushButton" name="escape">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>1055</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>逃跑</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QPushButton" name="continueGame">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>10</y>
-         <width>93</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>是</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="quitGame">
-       <property name="geometry">
-        <rect>
-         <x>650</x>
-         <y>10</y>
-         <width>93</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>否</string>
-       </property>
+      <widget class="QWidget" name="continuePage">
+       <widget class="QLabel" name="askIfContinue">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>72</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>是否继续？</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="continueGame">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>10</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>是</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="quitGame">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>10</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>否</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
