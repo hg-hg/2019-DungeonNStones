@@ -15,7 +15,7 @@ public:
 	QString enemyAccount;
 
 public slots:
-	void startGame(QString account, QString character);
+	void startGame(const QString& account, const QString& character);
 	void enemyDisconnected();
 	void continueMatching();
 	void escape();

@@ -1,16 +1,17 @@
 #include "stdafx.h"
 #include "Player.h"
 
-void Player::stoneCrush(int hp, int damage, int mp, QString account)
+void Player::stoneCrush(const int hp, const int damage, const int mp, const QString& account)
 {
 	if (this->account == account)
 	emit sendInfo(account, hp, damage, mp);
 }
 
-void Player::receiveInfo(QString account, int hp, int damage, int mp)
+void Player::receiveInfo(const QString& account, const int hp, const int damage, const int mp)
 {
 	if (account != this->account) takeDamage(damage);
-	else {
+	else
+	{
 		recoverHP(hp);
 		recoverMP(mp);
 	}
@@ -28,26 +29,21 @@ void Player::initialStatus()
 	setGamePause(false);
 }
 
-Player::Player(QWidget * parent)
-	:QWidget(parent)
+Player::Player(QWidget* parent)
+	: QWidget(parent)
 {
 	ui.setupUi(this);
 	//QFont font = QFont("·½Õý»ù´¡ÏñËØ");
 	//ui.HP->setFont(font);
 }
 
-void Player::setAccount(QString ACCOUNT)
+void Player::setAccount(const QString account)
 {
-	account = ACCOUNT;
+	this->account = account;
 }
 
-Player::Player(QWidget * parent, QString ACCOUNT)
-	:QWidget(parent), account(ACCOUNT)
+void Player::skillInvoke(const QString& skill, const int cost)
 {
-	ui.setupUi(this);
-}
-
-void Player::skillInvoke(QString skill, int cost) {
 	if (gamePause) return;
 	if (mp < cost) return;
 	emit useSkill(skill, account);
@@ -58,7 +54,8 @@ void Player::setCharacter(Character* ch)
 {
 	character = ch;
 	initialStatus();
-	for (auto name : character->skills) {
+	for (const auto& name : character->skills)
+	{
 		auto c = sm->getSkill(name, ui.verticalLayoutWidget);
 		if (enemy) c->setEnabled(false);
 		connect(c, SIGNAL(useSkill(QString, int)), this, SLOT(skillInvoke(QString, int)));
@@ -66,16 +63,16 @@ void Player::setCharacter(Character* ch)
 		connect(this, SIGNAL(restartGame()), c, SLOT(restartTimer()));
 		ui.skills->addWidget(c);
 	}
-	auto skinPath = "./skin/" + character->skin;
+	const auto skinPath = "./skin/" + character->skin;
 	if (character->skin.endsWith(".gif"))
 	{
-		QMovie *skin = new QMovie(skinPath);
+		auto skin = new QMovie(skinPath);
 
-		QSize skinSize = QSize(320, 560);
+		auto skinSize = QSize(320, 560);
 		//QSize skinSize = skin->currentImage().size();
 		//skin = skin->scaledSize(skinSize);
-		int he = skinSize.height();
-		int wi = skinSize.width();
+		auto he = skinSize.height();
+		auto wi = skinSize.width();
 		if (wi > ui.characterInfo->size().width())
 		{
 			he *= ui.characterInfo->size().width();
@@ -108,38 +105,37 @@ void Player::setAsEnemy()
 	enemy = true;
 }
 
-void Player::takeDamage(int damage)
+void Player::takeDamage(const int damage)
 {
 	if (hp == 0) return;
 	if (hp > damage) hp -= damage;
-	else {
+	else
+	{
 		hp = 0;
 		emit dead(account);
 	}
 	ui.HP->setValue(hp);
 }
 
-void Player::recoverHP(int HP)
+void Player::recoverHP(const int HP)
 {
 	hp += HP;
 	hp = qMin(hp, character->hp);
 	ui.HP->setValue(hp);
 }
 
-void Player::recoverMP(int MP)
+void Player::recoverMP(const int MP)
 {
 	mp += MP;
 	mp = qMin(mp, character->mp);
 	ui.MP->setValue(mp);
 }
 
-void Player::setGamePause(bool pause)
+void Player::setGamePause(const bool pause)
 {
 	gamePause = pause;
 	if (pause) emit pauseGame();
 	else emit restartGame();
 }
 
-Player::~Player()
-{
-}
+Player::~Player()= default;

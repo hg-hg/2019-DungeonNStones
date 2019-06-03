@@ -64,7 +64,7 @@ void PVP::quitGame()
 	emit mainScene();
 }
 
-void PVP::startGame(QString account, QString character)
+void PVP::startGame(const QString& account, const QString& character)
 {
 	ui.mainStack->setCurrentWidget(ui.playing);
 	ui.playing->gameStart(account, character);

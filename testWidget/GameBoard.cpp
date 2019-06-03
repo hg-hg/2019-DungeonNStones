@@ -3,29 +3,31 @@
 #include "Client.h"
 #include "CharacterManager.h"
 
-void GameBoard::gameStart(QString enemy, QString enemyCharacter)
+void GameBoard::gameStart(const QString enemy, const QString enemyCharacter)
 {
 	enemyAccount = enemy;
 	setData(CharacterManager::getInstance()->getCharacter(enemyCharacter));
 }
 
 GameBoard::GameBoard(QWidget* parent)
-	:QWidget(parent)
+	: QWidget(parent)
 {
 	ui.setupUi(this);
 	ui.gameCore->account = Account::getInstance()->name;
 	//connect(Client::getInstance(), SIGNAL(gameStart(QString, QString)), this, SLOT(gameStart(QString, QString)));
-	connect(ui.gameCore, SIGNAL(stonesCrushing(int, int, int, QString)), ui.player, SLOT(stoneCrush(int, int, int, QString)));
-	connect(ui.gameCore, SIGNAL(stonesCrushing(int, int, int, QString)), ui.enemy, SLOT(stoneCrush(int, int, int, QString)));
-	
+	connect(ui.gameCore, SIGNAL(stonesCrushing(int, int, int, QString)), ui.player,
+	        SLOT(stoneCrush(int, int, int, QString)));
+	connect(ui.gameCore, SIGNAL(stonesCrushing(int, int, int, QString)), ui.enemy,
+	        SLOT(stoneCrush(int, int, int, QString)));
 }
 
-void GameBoard::setLocalGame(bool flag)
+void GameBoard::setLocalGame(const bool flag)
 {
 	connect(ui.player, SIGNAL(useSkill(QString, QString)), ui.gameCore, SLOT(useSkill(QString, QString)));
 	connect(ui.player, SIGNAL(dead(QString)), this, SLOT(playerDead(QString)));
-	if (flag) {
-		GameServer* gs = new GameServer(this);
+	if (flag)
+	{
+		const auto gs = new GameServer(this);
 
 		//for auto robot
 		connect(ui.enemy, SIGNAL(useSkill(QString, QString)), ui.gameCore, SLOT(useSkill(QString, QString)));
@@ -36,9 +38,11 @@ void GameBoard::setLocalGame(bool flag)
 		connect(gs, SIGNAL(sendInfo(QString, int, int, int)), ui.player, SLOT(receiveInfo(QString, int, int, int)));
 		connect(gs, SIGNAL(sendInfo(QString, int, int, int)), ui.enemy, SLOT(receiveInfo(QString, int, int, int)));
 	}
-	else {
+	else
+	{
 		Client* client = Client::getInstance();
-		connect(ui.player, SIGNAL(sendInfo(QString, int, int, int)), client, SLOT(sendGameData(QString, int, int, int)));
+		connect(ui.player, SIGNAL(sendInfo(QString, int, int, int)), client,
+		        SLOT(sendGameData(QString, int, int, int)));
 		connect(client, SIGNAL(gameData(QString, int, int, int)), ui.player, SLOT(receiveInfo(QString, int, int, int)));
 		connect(client, SIGNAL(gameData(QString, int, int, int)), ui.enemy, SLOT(receiveInfo(QString, int, int, int)));
 	}
@@ -48,7 +52,7 @@ void GameBoard::playerDead(QString playerAccount)
 {
 	ui.enemy->setGamePause(true);
 	ui.player->setGamePause(true);
-	Account * account = Account::getInstance();
+	Account* account = Account::getInstance();
 	if (playerAccount == account->name) account->addMoney(300);
 	else account->addMoney(1000);
 	emit sendPlayerDead(playerAccount);
@@ -65,7 +69,7 @@ GameBoard::~GameBoard()
 {
 }
 
-void GameBoard::setData(Character * enemyCha)
+void GameBoard::setData(Character* enemyCha)
 {
 	auto account = Account::getInstance();
 	ui.player->setAccount(account->name);

@@ -4,7 +4,7 @@
 GameLogic::GameLogic(QWidget* parent)
 	: QWidget(parent)
 {
-	es = EvaluateState::Normal;
+	es = Normal;
 	first = second = nullptr;
 	exchangeAnimation = new ExchangeAnimation(this);
 	crushAnimation = new CrushAnimation(this);
@@ -326,7 +326,6 @@ void GameLogic::evaluateStonesToCrush(QVector<QPair<int, int>>& path)
 	{
 		stoneToCrush.append(stone);
 	}
-
 }
 
 void GameLogic::animateCrushingStones()

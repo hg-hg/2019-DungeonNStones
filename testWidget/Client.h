@@ -6,14 +6,14 @@
 
 class Client : public QTcpSocket
 {
-	Q_OBJECT
+Q_OBJECT
 
 private:
 	static Client* instance;
-	Client(QObject *parent = Q_NULLPTR);
-	Client(const Client &);
-	Client& operator=(const Client &);
-	
+	Client(QObject* parent = Q_NULLPTR);
+	Client(const Client&);
+	Client& operator=(const Client&);
+
 	AccountManager* am = new AccountManager();
 	void initializeAccount();
 	void gameStart();

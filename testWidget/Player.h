@@ -4,14 +4,15 @@
 #include "Character.h"
 #include "SkillManager.h"
 #include "ui_player.h"
+
 class Player : public QWidget
 {
-	Q_OBJECT
+Q_OBJECT
 
 public slots:
-	void skillInvoke(QString skill, int cost);
-	void stoneCrush(int hp, int damage, int mp, QString account);
-	void receiveInfo(QString account, int hp, int damage, int mp);
+	void skillInvoke(const QString& skill, int cost);
+	void stoneCrush(int hp, int damage, int mp, const QString& account);
+	void receiveInfo(const QString& account, int hp, int damage, int mp);
 	void initialStatus();
 signals:
 	void sendInfo(QString account, int hp, int damage, int mp);
@@ -21,8 +22,7 @@ signals:
 	void restartGame();
 public:
 	Player(QWidget* parent);
-	void setAccount(QString ACCOUNT);
-	Player(QWidget *parent, QString ACCOUNT);
+	void setAccount(QString account);
 	void setCharacter(Character* ch);
 	void setAsEnemy();
 	void takeDamage(int);
@@ -32,12 +32,12 @@ public:
 	~Player();
 
 private:
-	Ui::PlayerWidget ui;
-	Character* character;
+	Ui::PlayerWidget ui{};
+	Character* character{};
 	QString account = "NULL";
 	SkillManager* sm = new SkillManager(this);
 	int hp = 0, mp = 0;
-	int maxHP, maxMP;
+	int maxHP{}, maxMP{};
 	bool enemy = false;
 	bool gamePause = false;
 };
