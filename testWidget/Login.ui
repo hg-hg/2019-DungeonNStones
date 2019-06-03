@@ -6,14 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1056</width>
-    <height>769</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Login</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
@@ -23,10 +35,10 @@
       <widget class="QFrame" name="frame">
        <property name="geometry">
         <rect>
-         <x>320</x>
-         <y>220</y>
-         <width>391</width>
-         <height>391</height>
+         <x>200</x>
+         <y>100</y>
+         <width>400</width>
+         <height>400</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -77,8 +89,8 @@ border-bottom:1px solid #717207;
          <rect>
           <x>50</x>
           <y>180</y>
-          <width>291</width>
-          <height>91</height>
+          <width>300</width>
+          <height>100</height>
          </rect>
         </property>
         <property name="placeholderText">
@@ -88,10 +100,10 @@ border-bottom:1px solid #717207;
        <widget class="QPushButton" name="login">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>50</x>
           <y>310</y>
-          <width>331</width>
-          <height>51</height>
+          <width>300</width>
+          <height>50</height>
          </rect>
         </property>
         <property name="text">
@@ -103,8 +115,8 @@ border-bottom:1px solid #717207;
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>391</width>
-          <height>391</height>
+          <width>400</width>
+          <height>400</height>
          </rect>
         </property>
         <property name="text">
@@ -116,6 +128,9 @@ border-bottom:1px solid #717207;
         <property name="scaledContents">
          <bool>true</bool>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
        <widget class="QLabel" name="label_2">
         <property name="geometry">
@@ -125,6 +140,9 @@ border-bottom:1px solid #717207;
           <width>121</width>
           <height>201</height>
          </rect>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">QLabel{

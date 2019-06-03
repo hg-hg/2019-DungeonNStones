@@ -6,77 +6,112 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1064</width>
-    <height>745</height>
+    <width>800</width>
+    <height>602</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainScene</string>
   </property>
-  <widget class="MainSceneButton" name="shopBoard">
+  <widget class="QLabel" name="backPic">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>80</y>
-     <width>591</width>
-     <height>61</height>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>600</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>background/wall_complex.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="MainSceneButton" name="PVE">
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>210</y>
-     <width>591</width>
-     <height>61</height>
+     <x>50</x>
+     <y>310</y>
+     <width>300</width>
+     <height>250</height>
     </rect>
    </property>
-   <property name="text">
-    <string/>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
    </property>
-  </widget>
-  <widget class="MainSceneButton" name="PVP">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>330</y>
-     <width>591</width>
-     <height>61</height>
-    </rect>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
    </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="MainSceneButton" name="Setting">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>440</y>
-     <width>591</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="MainSceneButton" name="Quit">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>550</y>
-     <width>591</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
+   <widget class="MainSceneButton" name="shopBoard">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>180</y>
+      <width>90</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="MainSceneButton" name="PVE">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>300</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="MainSceneButton" name="PVP">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>90</y>
+      <width>300</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="MainSceneButton" name="Setting">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>180</y>
+      <width>90</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="MainSceneButton" name="Quit">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>180</y>
+      <width>90</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

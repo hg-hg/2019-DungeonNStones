@@ -23,9 +23,9 @@ Login::~Login()
 
 void Login::paintEvent(QPaintEvent*) {
 	QPainter painter(this);
-	QPixmap pix;
-	pix.load(".//Background//wall.png");
-	painter.drawPixmap(0, 0, this->width(), this->height(), pix);
+	//QPixmap pix;
+	//pix.load(".//Background//wall.png");
+	//painter.drawPixmap(0, 0, this->width(), this->height(), pix);
 }
 
 void Login::keyPressEvent(QKeyEvent * event)
