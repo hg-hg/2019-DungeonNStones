@@ -2,7 +2,7 @@
 #include "PVP.h"
 #include "Client.h"
 #include "Account.h"
-
+#include <QTimer>
 Account* account = Account::getInstance();
 
 
@@ -40,6 +40,12 @@ void PVP::continueMatching()
 
 void PVP::escape()
 {
+	ui.pushButton->ZoomPop();
+	ui.pushButton->ZoomPush();
+	ui.pushButton->setPicture("");
+	QTimer::singleShot(500, this, [=]() {
+
+	});
 	QMessageBox msg(this);
 	msg.setWindowTitle("escape");
 	msg.setText("are you sure?");

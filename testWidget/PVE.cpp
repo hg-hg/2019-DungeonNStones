@@ -1,7 +1,7 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "PVE.h"
 #include "CharacterManager.h"
-
+#include <QTimer>
 PVE::PVE(QWidget *parent)
 	: QWidget(parent)
 {
@@ -26,6 +26,12 @@ void PVE::confirm()
 void PVE::escape()
 {
 	QMessageBox msg(this);
+	ui.escape->ZoomPop();
+	ui.escape->ZoomPush();
+	ui.escape->setPicture("");
+	QTimer::singleShot(500, this, [=]() {
+
+	});
 	msg.setWindowTitle("escape");
 	msg.setText("are you sure?");
 	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);

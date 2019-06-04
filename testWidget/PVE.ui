@@ -103,7 +103,7 @@
        </size>
       </property>
       <widget class="QWidget" name="escapePage">
-       <widget class="QPushButton" name="escape">
+       <widget class="MainSceneButton" name="escape">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -170,6 +170,11 @@
    <extends>QWidget</extends>
    <header location="global">Gameboard.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MainSceneButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">mainscenebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
