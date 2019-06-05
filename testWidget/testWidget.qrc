@@ -10,14 +10,16 @@
         <file>Resources/stone/mp.png</file>
     </qresource>
     <qresource prefix="/skin">
-        <file>Resources/skin/big_demon_idle_anim_f0.gif</file>
-        <file>Resources/skin/big_demon_idle_anim_f0_ro.gif</file>
         <file>Resources/skin/defaultEnemy.png</file>
-        <file>Resources/skin/knight_m_idle_anim_f0.gif</file>
         <file>Resources/skin/test.png</file>
-        <file>Resources/skin/elf_f_idle_anim_f0.gif</file>
-        <file>Resources/skin/wizzard_m_idle_anim_f0.gif</file>
-        <file>Resources/skin/goblin_idle_anim_f0.gif</file>
+        <file>Resources/skin/big_demon.gif</file>
+        <file>Resources/skin/big_demon_ro.gif</file>
+        <file>Resources/skin/big_zombie.gif</file>
+        <file>Resources/skin/chort.gif</file>
+        <file>Resources/skin/elf.gif</file>
+        <file>Resources/skin/goblin.gif</file>
+        <file>Resources/skin/knight.gif</file>
+        <file>Resources/skin/wizzard.gif</file>
     </qresource>
     <qresource prefix="/font">
         <file>Resources/font/FZJCXS.TTF</file>

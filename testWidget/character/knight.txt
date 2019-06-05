@@ -3,5 +3,5 @@ An armed warrior.
 500
 1000
 500
-knight_m_idle_anim_f0.gif
+knight.gif
 bladeSlash

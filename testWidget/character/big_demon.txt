@@ -3,4 +3,4 @@ RUAAAAAAAAAAAAAAA!
 10000
 1200
 1200
-big_demon_idle_anim_f0_ro.gif
+big_demon.gif
