@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "GravityAnimation.h"
+#include "Sound.h"
 
 GravityAnimation::GravityAnimation(QObject* parent)
 	: QObject(parent)
@@ -66,6 +67,8 @@ void GravityAnimation::timerEvent(QTimerEvent* event)
 
 void GravityAnimation::animate()
 {
+	Sound::SEplayer->setMedia(QUrl("./Sound/Gravity.wav"));
+	Sound::SEplayer->play();
 	timerId = startTimer(40);
 	isAnimating = true;
 }

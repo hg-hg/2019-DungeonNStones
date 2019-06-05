@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CrushAnimation.h"
+#include "Sound.h"
 
 CrushAnimation::CrushAnimation(QObject* parent)
 	: QObject(parent)
@@ -57,6 +58,8 @@ void CrushAnimation::changeAlpha(Stone* stone)
 
 void CrushAnimation::animate(const int duration)
 {
+	Sound::SEplayer->setMedia(QUrl("./Sound/Crush.wav"));
+	Sound::SEplayer->play();
 	timerId = startTimer(30);
 	this->duration = duration;
 	isAnimating = true;

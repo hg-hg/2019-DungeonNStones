@@ -5,6 +5,8 @@
 #include "PVP.h"
 #include "ShopBoard.h"
 #include "GameBoard.h"
+#include "Setting.h"
+#include "Sound.h"
 
 Client * client = Client::getInstance();
 
@@ -20,6 +22,7 @@ testWidget::testWidget(QWidget *parent)
 	
 	//qDebug() << Account::getInstance()->name;
 	ui.setupUi(this);
+	Sound sound;
 	connect(ui.login, SIGNAL(mainScene()), this, SLOT(mainScene()));
 	connect(ui.mainScene, SIGNAL(goPVP()), this, SLOT(pvp()));
 	connect(ui.mainScene, SIGNAL(goPVE()), this, SLOT(pve()));
@@ -77,6 +80,10 @@ void testWidget::quit()
 
 void testWidget::setting()
 {
+	const auto setting = new Setting(this);
+	connect(setting, SIGNAL(mainScene()), this, SLOT(mainScene()));
+	ui.stackedWidget->addWidget(setting);
+	ui.stackedWidget->setCurrentWidget(setting);
 }
 
 void testWidget::mainScene()

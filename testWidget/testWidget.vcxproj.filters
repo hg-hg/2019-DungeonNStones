@@ -171,6 +171,12 @@
     <ClCompile Include="ShopBoard.cpp">
       <Filter>Source Files\shop</Filter>
     </ClCompile>
+    <ClCompile Include="Setting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -205,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MessageWidget.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_Setting.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +325,9 @@
     <QtMoc Include="ShopBoard.h">
       <Filter>Header Files\shop</Filter>
     </QtMoc>
+    <QtMoc Include="Setting.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="testWidget.ui">
@@ -340,6 +355,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="MessageWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Setting.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
