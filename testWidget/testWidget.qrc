@@ -15,6 +15,9 @@
         <file>Resources/skin/defaultEnemy.png</file>
         <file>Resources/skin/knight_m_idle_anim_f0.gif</file>
         <file>Resources/skin/test.png</file>
+        <file>Resources/skin/elf_f_idle_anim_f0.gif</file>
+        <file>Resources/skin/wizzard_m_idle_anim_f0.gif</file>
+        <file>Resources/skin/goblin_idle_anim_f0.gif</file>
     </qresource>
     <qresource prefix="/font">
         <file>Resources/font/FZJCXS.TTF</file>
