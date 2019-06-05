@@ -9,7 +9,7 @@ void Player::stoneCrush(const int hp, const int damage, const int mp, const QStr
 
 void Player::receiveInfo(const QString& account, const int hp, const int damage, const int mp)
 {
-	if (hp == 0) return;
+	if (this->hp == 0) return;
 	if (account != this->account) takeDamage(damage);
 	else
 	{
@@ -109,6 +109,7 @@ void Player::setAsEnemy()
 
 void Player::takeDamage(const int damage)
 {
+	if (damage == 0) return;
 	if (hp == 0) return;
 	if (hp > damage) hp -= damage;
 	else
@@ -121,15 +122,17 @@ void Player::takeDamage(const int damage)
 
 void Player::recoverHP(const int HP)
 {
+	if (HP == 0) return;
 	hp += HP;
-	hp = qMin(hp, character->hp);
+	hp = qMin(hp, maxHP);
 	ui.HP->setValue(hp);
 }
 
 void Player::recoverMP(const int MP)
 {
+	if (MP == 0) return;
 	mp += MP;
-	mp = qMin(mp, character->mp);
+	mp = qMin(mp, maxMP);
 	ui.MP->setValue(mp);
 }
 

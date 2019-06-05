@@ -37,7 +37,7 @@ private:
 	QString account = "NULL";
 	SkillManager* sm = new SkillManager(this);
 	int hp = 0, mp = 0;
-	int maxHP{}, maxMP{};
+	int maxHP, maxMP;
 	bool enemy = false;
 	bool gamePause = false;
 };
