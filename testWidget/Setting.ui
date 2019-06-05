@@ -24,7 +24,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QSlider::handle:horizontal {
-	image: url(:/stone/Resources/stone/background.png);
+	image: url(:/button/Resources/button/Slide_button.png)
 }</string>
    </property>
    <property name="orientation">
@@ -42,7 +42,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QSlider::handle:horizontal {
-	image: url(:/stone/Resources/stone/background.png);
+	image: url(:/button/Resources/button/Slide_button.png)
 }</string>
    </property>
    <property name="orientation">

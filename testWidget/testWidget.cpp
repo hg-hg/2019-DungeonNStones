@@ -36,8 +36,13 @@ testWidget::testWidget(QWidget *parent)
 
 void testWidget::closeEvent(QCloseEvent * event)
 {
+	if (entered)
+	{
+		account->sendAccountInfo();
+		Sound::writeFile();
+	}
 	client->sendDisconnecting();
-	if (entered) quit();
+	exit(0);
 }
 
 void testWidget::moveToCenter()
@@ -93,7 +98,7 @@ void testWidget::mainScene()
 {
 	entered = true;
 	setFixedSize({ 800, 600 });
-	auto toDelete = static_cast<QWidget*>(sender());
+	auto toDelete = dynamic_cast<QWidget*>(sender());
 	ui.stackedWidget->removeWidget(toDelete);
 	toDelete->deleteLater();
 	ui.stackedWidget->setCurrentWidget(ui.mainScene);

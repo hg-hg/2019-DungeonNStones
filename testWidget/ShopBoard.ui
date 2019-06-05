@@ -27,96 +27,128 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="QStackedWidget" name="stack">
-     <widget class="QWidget" name="page">
-      <widget class="QScrollArea" name="mainWidget">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>0</y>
-         <width>781</width>
-         <height>531</height>
-        </rect>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QStackedWidget" name="stack">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>800</width>
+        <height>600</height>
+       </rect>
+      </property>
+      <widget class="QWidget" name="page">
+       <widget class="QScrollArea" name="mainWidget">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>10</x>
           <y>0</y>
-          <width>779</width>
-          <height>529</height>
+          <width>781</width>
+          <height>531</height>
          </rect>
         </property>
-        <widget class="QWidget" name="gridLayoutWidget">
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>10</y>
-           <width>761</width>
-           <height>511</height>
+           <x>0</x>
+           <y>0</y>
+           <width>779</width>
+           <height>529</height>
           </rect>
          </property>
-         <layout class="QGridLayout" name="layout"/>
+         <widget class="QWidget" name="gridLayoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>761</width>
+            <height>511</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="layout"/>
+         </widget>
         </widget>
        </widget>
+       <widget class="MainSceneButton" name="backToMain">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>530</y>
+          <width>100</width>
+          <height>70</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="testWidget.qrc">
+          <normaloff>:/button/Resources/button/Exit_button.png</normaloff>:/button/Resources/button/Exit_button.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>100</width>
+          <height>70</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>560</y>
+          <width>111</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string> Your  Money :</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="moneyLabel">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>560</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>money</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </widget>
-      <widget class="MainSceneButton" name="backToMain">
-       <property name="geometry">
-        <rect>
-         <x>590</x>
-         <y>530</y>
-         <width>100</width>
-         <height>70</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="testWidget.qrc">
-         <normaloff>:/button/Resources/button/Exit_button.png</normaloff>:/button/Resources/button/Exit_button.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>100</width>
-         <height>70</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>560</y>
-         <width>111</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string> Your  Money :</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="moneyLabel">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>560</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>money</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
+      <widget class="QWidget" name="page_2"/>
      </widget>
-     <widget class="QWidget" name="page_2"/>
+     <widget class="QLabel" name="backPic">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>800</width>
+        <height>600</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="testWidget.qrc">:/background/Resources/background/ground.png</pixmap>
+      </property>
+     </widget>
     </widget>
    </item>
   </layout>

@@ -52,7 +52,7 @@ void Sound::initialVolume()
 
 void Sound::writeFile()
 {
-	QFile file(".//Sound//setting.txt");
+	QFile file(".//setting.txt");
 	file.open(QFile::WriteOnly | QFile::Text);
 	QTextStream out(&file);
 	out << QString::number(BGMPlayer->volume()) + " " + QString::number(SEPlayer->volume());
