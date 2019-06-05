@@ -34,12 +34,14 @@
         <file>Resources/button/Shop_button.png</file>
         <file>Resources/button/NO_button.png</file>
         <file>Resources/button/YES_button.png</file>
+        <file>Resources/button/Slide_button.png</file>
     </qresource>
     <qresource prefix="/background">
         <file>Resources/background/wall.png</file>
         <file>Resources/background/wall_character.png</file>
         <file>Resources/background/wall_complex.png</file>
         <file>Resources/background/wall_core.png</file>
+        <file>Resources/background/ground.png</file>
     </qresource>
     <qresource prefix="/word">
         <file>Resources/word/TryAgain_pic.png</file>
