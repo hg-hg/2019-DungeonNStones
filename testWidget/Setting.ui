@@ -22,6 +22,11 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::handle:horizontal {
+	image: url(:/stone/Resources/stone/background.png);
+}</string>
+   </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
@@ -34,6 +39,11 @@
      <width>381</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::handle:horizontal {
+	image: url(:/stone/Resources/stone/background.png);
+}</string>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
