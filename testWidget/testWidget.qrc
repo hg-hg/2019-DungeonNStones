@@ -32,6 +32,8 @@
         <file>Resources/button/PVP_button_p.png</file>
         <file>Resources/button/Setting_button.png</file>
         <file>Resources/button/Shop_button.png</file>
+        <file>Resources/button/NO_button.png</file>
+        <file>Resources/button/YES_button.png</file>
     </qresource>
     <qresource prefix="/background">
         <file>Resources/background/wall.png</file>
