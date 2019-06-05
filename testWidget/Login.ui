@@ -154,7 +154,7 @@ border-bottom:1px solid #717207;
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="testWidget.qrc">:/skin/Resources/skin/knight_m_idle_anim_f0.gif</pixmap>
+         <pixmap resource="testWidget.qrc">:/skin/Resources/skin/knight.gif</pixmap>
         </property>
        </widget>
        <zorder>corePic</zorder>

@@ -37,6 +37,7 @@ testWidget::testWidget(QWidget *parent)
 void testWidget::closeEvent(QCloseEvent * event)
 {
 	client->sendDisconnecting();
+	if (entered) quit();
 }
 
 void testWidget::moveToCenter()
@@ -90,6 +91,7 @@ void testWidget::setting()
 
 void testWidget::mainScene()
 {
+	entered = true;
 	setFixedSize({ 800, 600 });
 	auto toDelete = static_cast<QWidget*>(sender());
 	ui.stackedWidget->removeWidget(toDelete);

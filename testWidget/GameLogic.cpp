@@ -77,11 +77,13 @@ void GameLogic::useSkill(const QString& skill, const QString& account)
 	else if (skill == "damage") damage(account);
 	else if (skill == "heal") heal(account);
 	else if (skill == "BladeSlash") bladeSlash(account);
+	else if (skill == "lightning") lightning(account);
+	else if (skill == "meteor") meteor(account);
 }
 
 void GameLogic::fillBoard()
 {
-	/*this check if the board is alreay filled.
+	/*this check if the board is already filled.
 		If filled, delete this.*/
 	if (!board.isEmpty())
 		for (auto& col : board) for (auto& row : col) delete row;
@@ -413,19 +415,19 @@ void GameLogic::forceExchange(const int x1, const int y1, const int x2, const in
 	evaluate(Force);
 }
 
-void GameLogic::damage(const QString& account)
-{
-	emit stonesCrushing(0, 50, 0, account);
-}
-
 void GameLogic::damage(const QString& account, const int dam)
 {
 	emit stonesCrushing(0, dam, 0, account);
 }
 
-void GameLogic::heal(const QString& account)
+void GameLogic::heal(const QString& account, const int hp)
 {
-	emit(stonesCrushing(50, 0, 0, account));
+	emit stonesCrushing(hp, 0, 0, account);
+}
+
+void GameLogic::recover(const QString& account, const int mp)
+{
+	emit stonesCrushing(0, 0, mp, account);
 }
 
 void GameLogic::bladeSlash(const QString& account)
@@ -442,6 +444,47 @@ void GameLogic::bladeSlash(const QString& account)
 	dam /= 2;
 	damage(account, dam);
 	deleteRect(col, 0, 1, boardSize - 1);
+}
+
+void GameLogic::lightning(const QString& account)
+{
+	countEffect = false;
+	waitForStopAnimation();
+	auto mp = 0;
+	for (auto i = 0; i < boardSize; i++) {
+		stoneToCrush.append(qMakePair(i, i));
+		stoneToCrush.append(qMakePair(boardSize - i - 1, i));
+		mp += board[i][i]->MP;
+		mp += board[boardSize - i - 1][i]->MP;
+	}
+	mp /= 2;
+	recover(account, mp);
+	gravity();
+	countEffect = true;
+}
+
+void GameLogic::meteor(const QString& account)
+{
+	countEffect = false;
+	waitForStopAnimation();
+	auto dam = 0, mp = 0;
+	const auto splitter = boardSize / 2;
+	for (auto col = 0; col < splitter; col++)
+	{
+		const auto another = boardSize - 1 - col;
+		for (auto row = splitter - 1 - col; row <= splitter + col; row++)
+		{
+			stoneToCrush.append(qMakePair(col, row));
+			stoneToCrush.append(qMakePair(another, row));
+			const auto stone = board[col][row];
+			const auto anotherStone = board[another][row];
+			dam += stone->DAMAGE + anotherStone->DAMAGE;
+			mp += stone->MP + anotherStone->MP;
+		}
+	}
+	emit stonesCrushing(0, dam, mp, account);
+	gravity();
+	countEffect = true;
 }
 
 void GameLogic::gravity()

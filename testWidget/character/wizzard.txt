@@ -1,0 +1,8 @@
+Wizzard
+a  powerful wizzard.
+500
+500
+2000
+wizzard.gif
+lightning
+meteor

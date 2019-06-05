@@ -36,6 +36,5 @@ private:
 	AccountManager* am = new AccountManager();
 	Account* account = Account::getInstance();
 	Client* client = Client::getInstance();
-	/*PVE * pve;
-	PVP * pvp;*/
+	bool entered;
 };

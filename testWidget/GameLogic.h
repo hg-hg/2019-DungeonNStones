@@ -58,10 +58,12 @@ public slots:
 	void deleteRect(int col, int row, int width, int height);
 	void forceExchange();
 	void forceExchange(int x1, int y1, int x2, int y2);
-	void damage(const QString& account);
-	void damage(const QString& account, int dam);
-	void heal(const QString& account);
+	void damage(const QString& account, int dam = 50);
+	void heal(const QString& account, int hp = 50);
+	void recover(const QString& account, int mp = 50);
 	void bladeSlash(const QString& account);
+	void lightning(const QString& account);
+	void meteor(const QString& account);
 protected slots:
 	void endMove();
 	void gravity();
