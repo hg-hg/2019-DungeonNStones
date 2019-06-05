@@ -38,7 +38,7 @@
      <x>30</x>
      <y>300</y>
      <width>300</width>
-     <height>250</height>
+     <height>230</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -51,13 +51,23 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>180</y>
-      <width>90</width>
+      <y>160</y>
+      <width>100</width>
       <height>70</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>button/MainScene/Shop_button.png</normaloff>button/MainScene/Shop_button.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>70</height>
+     </size>
     </property>
    </widget>
    <widget class="MainSceneButton" name="PVE">
@@ -98,7 +108,8 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>button/MainScene/PVP_button.png</normaloff>button/MainScene/PVP_button.png</iconset>
+      <normaloff>button/MainScene/PVP_button.png</normaloff>
+      <normalon>button/MainScene/PVP_button_p.png</normalon>button/MainScene/PVP_button.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -111,26 +122,46 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>180</y>
-      <width>90</width>
+      <y>160</y>
+      <width>100</width>
       <height>70</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>button/MainScene/Setting_button.png</normaloff>button/MainScene/Setting_button.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>70</height>
+     </size>
     </property>
    </widget>
    <widget class="MainSceneButton" name="Quit">
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>180</y>
-      <width>90</width>
+      <y>160</y>
+      <width>100</width>
       <height>70</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>button/MainScene/Exit_button.png</normaloff>button/MainScene/Exit_button.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>70</height>
+     </size>
     </property>
    </widget>
   </widget>
