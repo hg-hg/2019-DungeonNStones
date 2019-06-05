@@ -8,8 +8,20 @@ QMediaPlayer* Sound::SEPlayer = new QMediaPlayer;
 
 Sound::Sound()
 {
+
+}
+
+
+Sound::~Sound()
+{
+}
+
+void Sound::initial()
+{
+	BGMPlayer->setVolume(50);
+	SEPlayer->setVolume(50);
 	initialVolume();
-	BGMPlaylist->addMedia(QUrl("./Sound/BGM.wav"));
+	BGMPlaylist->addMedia(QUrl("qrc:/sound/Resources/Sound/BGM.wav"));
 	BGMPlaylist->setCurrentIndex(1);
 	BGMPlaylist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
 	BGMPlayer->setPlaylist(BGMPlaylist);
@@ -18,14 +30,9 @@ Sound::Sound()
 	//SEPlayer->setVolume(50);
 }
 
-
-Sound::~Sound()
-{
-}
-
 void Sound::initialVolume()
 {
-	QFile file(".//Sound//setting.txt");
+	QFile file(".//setting.txt");
 	if (!file.open(QFile::ReadOnly | QFile::Text))
 	{
 		writeFile();

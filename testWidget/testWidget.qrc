@@ -44,4 +44,9 @@
     <qresource prefix="/word">
         <file>Resources/word/TryAgain_pic.png</file>
     </qresource>
+    <qresource prefix="/sound">
+        <file>Resources/Sound/BGM.wav</file>
+        <file>Resources/Sound/Crush.wav</file>
+        <file>Resources/Sound/Gravity.wav</file>
+    </qresource>
 </RCC>

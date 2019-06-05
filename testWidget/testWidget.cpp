@@ -17,7 +17,7 @@ testWidget::testWidget(QWidget *parent)
 	//wtf
 	//account = am->getCurrentAccount();
 	client->connectToServer();
-	Sound::initialVolume();
+	Sound::initial();
 	//获得了Account名
 	//client->requestAccount("yuri");
 	

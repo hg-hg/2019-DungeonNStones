@@ -67,7 +67,7 @@ void GravityAnimation::timerEvent(QTimerEvent* event)
 
 void GravityAnimation::animate()
 {
-	Sound::SEPlayer->setMedia(QUrl("./Sound/Gravity.wav"));
+	Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/Gravity.wav"));
 	Sound::SEPlayer->play();
 	timerId = startTimer(40);
 	isAnimating = true;
