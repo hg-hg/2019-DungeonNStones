@@ -22,7 +22,7 @@ void MainSceneButton::setPicture(QString normalImg)
 	this->setIcon(pix);
 	this->setIconSize(QSize(pix.width(), pix.height()));
 }
-void MainSceneButton::ZoomPush() {
+void MainSceneButton::zoomPush() {
 	QPropertyAnimation * animation = new QPropertyAnimation(this, "geometry");
 	animation->setDuration(200);
 	animation->setStartValue(QRect(this->x(), this->y(), this->width(), this->height()));
@@ -30,7 +30,7 @@ void MainSceneButton::ZoomPush() {
 	animation->setEasingCurve(QEasingCurve::OutBounce);
 	animation->start();
 }
-void MainSceneButton::ZoomPop() {
+void MainSceneButton::zoomPop() {
 	QPropertyAnimation * animation = new QPropertyAnimation(this, "geometry");
 	animation->setDuration(200);
 	animation->setStartValue(QRect(this->x(), this->y() + 10, this->width(), this->height()));

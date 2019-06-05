@@ -101,7 +101,7 @@ QProgressBar::chunk {
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>background/wall_character.png</pixmap>
+    <pixmap>C:/Users/admin/.designer/backup/background/wall_character.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>

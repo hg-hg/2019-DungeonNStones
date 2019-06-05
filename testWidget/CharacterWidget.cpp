@@ -66,7 +66,7 @@ void CharacterWidget::queryClicked()
 void CharacterWidget::setImage()
 {
 	background = Qt::white;
-	foreground = QPixmap("./skin/" + character->skin);
+	foreground = QPixmap(":/skin/Resources/skin/" + character->skin);
 	foreground = foreground.scaled(QSize(100, 130));
 }
 

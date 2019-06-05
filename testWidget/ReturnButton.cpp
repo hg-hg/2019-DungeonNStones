@@ -5,7 +5,7 @@ ReturnButton::ReturnButton(QWidget* parent)
 	: QPushButton(parent)
 {
 	initialStyle();
-	setPicture(".//Picture//back.bmp");
+	//setPicture(".//Picture//back.bmp");
 	connect(this, SIGNAL(clicked()), this, SLOT(returnClicked()));
 }
 

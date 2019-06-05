@@ -48,6 +48,9 @@
      <height>15</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
    <property name="text">
     <string>bgm</string>
    </property>
@@ -61,21 +64,34 @@
      <height>15</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
    <property name="text">
     <string>effct</string>
    </property>
   </widget>
-  <widget class="ReturnButton" name="backToMain">
+  <widget class="MainSceneButton" name="backToMain">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>510</y>
-     <width>151</width>
-     <height>51</height>
+     <x>620</x>
+     <y>490</y>
+     <width>100</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="testWidget.qrc">
+     <normaloff>:/button/Resources/button/Exit_button.png</normaloff>:/button/Resources/button/Exit_button.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>100</width>
+     <height>70</height>
+    </size>
    </property>
   </widget>
   <widget class="QLabel" name="bgmLabel">
@@ -86,6 +102,9 @@
      <width>72</width>
      <height>15</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>0</string>
@@ -100,20 +119,49 @@
      <height>15</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
    <property name="text">
     <string>0</string>
    </property>
   </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="testWidget.qrc">:/background/Resources/background/wall.png</pixmap>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>bgm</zorder>
+  <zorder>se</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>backToMain</zorder>
+  <zorder>bgmLabel</zorder>
+  <zorder>seLabel</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>ReturnButton</class>
+   <class>MainSceneButton</class>
    <extends>QPushButton</extends>
-   <header location="global">returnbutton.h</header>
+   <header location="global">mainscenebutton.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>backToMain</sender>

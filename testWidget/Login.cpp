@@ -8,9 +8,9 @@ Login::Login(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	auto movie = new QMovie(".//skin//knight_m_idle_anim_f0.gif");
-	movie->setScaledSize(QSize(ui.label_2->size().width(), ui.label_2->size().width() * 560 / 320));
-	ui.label_2->setMovie(movie);
+	auto movie = new QMovie(":/skin/Resources/skin/knight_m_idle_anim_f0.gif");
+	movie->setScaledSize(QSize(ui.characterMovie->size().width(), ui.characterMovie->size().width() * 560 / 320));
+	ui.characterMovie->setMovie(movie);
 	movie->start();
 	ui.stackedWidget->setCurrentWidget(ui.enterAccount);
 	connect(Client::getInstance(), SIGNAL(accountInitialized()), this, SLOT(accountInitialized()));

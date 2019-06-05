@@ -19,6 +19,6 @@ void StoneHP::setData()
 void StoneHP::setImage()
 {
 	//background = Qt::red;
-	background = QPixmap("./Resources/stone_background.png");
-	foreground = QPixmap(":/foreground/Resources/foreground/hp.png");
+	background = QPixmap(":/stone/Resources/stone/background.png");
+	foreground = QPixmap(":/stone/Resources/stone/hp.png");
 }

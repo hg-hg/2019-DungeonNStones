@@ -6,10 +6,7 @@ Setting::Setting(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-
-	ui.backToMain->setPicture(".//Picture//back.bmp");
 	initialSlider();
-
 }
 
 

@@ -78,6 +78,6 @@ void Stone::setData()
 void Stone::setImage()
 {
 	//background = Qt::black;
-	background = QPixmap("./Resources/stone_background.png");
-	foreground = QPixmap(":/foreground/Resources/foreground/icon.png");
+	background = QPixmap(":/stone/Resources/stone/background.png");
+	foreground = QPixmap(":/stone/Resources/stone/balanced.png");
 }

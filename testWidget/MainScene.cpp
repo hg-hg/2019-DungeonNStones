@@ -23,8 +23,8 @@ void MainScene::initButton()
 
 void MainScene::pvp()
 {
-	ui.PVP->ZoomPush();
-	ui.PVP->ZoomPop();
+	ui.PVP->zoomPush();
+	ui.PVP->zoomPop();
 	QTimer::singleShot(500, this, [=]() {
 		emit goPVP();
 	});
@@ -32,8 +32,8 @@ void MainScene::pvp()
 
 void MainScene::pve()
 {
-	ui.PVE->ZoomPush();
-	ui.PVE->ZoomPop();
+	ui.PVE->zoomPush();
+	ui.PVE->zoomPop();
 	QTimer::singleShot(500, this, [=]() {
 		emit goPVE();
 	});
@@ -41,8 +41,8 @@ void MainScene::pve()
 
 void MainScene::shop()
 {
-	ui.shopBoard->ZoomPush();
-	ui.shopBoard->ZoomPop();
+	ui.shopBoard->zoomPush();
+	ui.shopBoard->zoomPop();
 	QTimer::singleShot(500, this, [=]() {
 		emit goShop();
 	});
@@ -51,8 +51,8 @@ void MainScene::shop()
 
 void MainScene::quit()
 {
-	ui.Quit->ZoomPush();
-	ui.Quit->ZoomPop();
+	ui.Quit->zoomPush();
+	ui.Quit->zoomPop();
 	QTimer::singleShot(500, this, [=]() {
 		emit goQuit();
 	});
@@ -66,8 +66,8 @@ void MainScene::paintEvent(QPaintEvent*) {
 }
 void MainScene::setting()
 {
-	ui.Setting->ZoomPush();
-	ui.Setting->ZoomPop();
+	ui.Setting->zoomPush();
+	ui.Setting->zoomPop();
 	QTimer::singleShot(500, this, [=]() {
 		emit goSetting();
 	});

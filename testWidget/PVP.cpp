@@ -40,8 +40,8 @@ void PVP::continueMatching()
 
 void PVP::escape()
 {
-	ui.pushButton->ZoomPop();
-	ui.pushButton->ZoomPush();
+	ui.pushButton->zoomPop();
+	ui.pushButton->zoomPush();
 	ui.pushButton->setPicture("");
 	QTimer::singleShot(500, this, [=]() {
 

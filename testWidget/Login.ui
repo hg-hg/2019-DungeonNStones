@@ -132,7 +132,7 @@ border-bottom:1px solid #717207;
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="characterMovie">
         <property name="geometry">
          <rect>
           <x>140</x>
@@ -147,22 +147,22 @@ border-bottom:1px solid #717207;
         <property name="styleSheet">
          <string notr="true">QLabel{
 	border-radius:60px;
-	background:white;
+	background-color: rgba(255, 255, 224, 0%);
 }</string>
         </property>
         <property name="text">
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>Picture/logIn.jpg</pixmap>
+         <pixmap resource="testWidget.qrc">:/skin/Resources/skin/knight_m_idle_anim_f0.gif</pixmap>
         </property>
        </widget>
        <zorder>corePic</zorder>
        <zorder>account</zorder>
        <zorder>login</zorder>
-       <zorder>label_2</zorder>
+       <zorder>characterMovie</zorder>
       </widget>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="backPic">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -175,13 +175,13 @@ border-bottom:1px solid #717207;
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>background/wall.png</pixmap>
+        <pixmap resource="testWidget.qrc">:/background/Resources/background/wall.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
-      <zorder>label_3</zorder>
+      <zorder>backPic</zorder>
       <zorder>frame</zorder>
      </widget>
      <widget class="QWidget" name="waiting">
@@ -204,7 +204,9 @@ border-bottom:1px solid #717207;
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>login</sender>

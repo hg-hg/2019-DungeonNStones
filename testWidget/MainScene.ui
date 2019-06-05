@@ -26,7 +26,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>background/wall_complex.png</pixmap>
+    <pixmap resource="testWidget.qrc">:/background/Resources/background/wall_complex.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -60,8 +60,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>button/MainScene/Shop_button.png</normaloff>button/MainScene/Shop_button.png</iconset>
+     <iconset resource="testWidget.qrc">
+      <normaloff>:/button/Resources/button/Shop_button.png</normaloff>:/button/Resources/button/Shop_button.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -83,9 +83,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>button/MainScene/PVE_button.png</normaloff>
-      <normalon>button/MainScene/PVE_button_p.png</normalon>button/MainScene/PVE_button.png</iconset>
+     <iconset resource="testWidget.qrc">
+      <normaloff>:/button/Resources/button/PVE_button.png</normaloff>:/button/Resources/button/PVE_button.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -107,9 +106,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>button/MainScene/PVP_button.png</normaloff>
-      <normalon>button/MainScene/PVP_button_p.png</normalon>button/MainScene/PVP_button.png</iconset>
+     <iconset resource="testWidget.qrc">
+      <normaloff>:/button/Resources/button/PVP_button.png</normaloff>:/button/Resources/button/PVP_button.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -131,8 +129,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>button/MainScene/Setting_button.png</normaloff>button/MainScene/Setting_button.png</iconset>
+     <iconset resource="testWidget.qrc">
+      <normaloff>:/button/Resources/button/Setting_button.png</normaloff>:/button/Resources/button/Setting_button.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -154,8 +152,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>button/MainScene/Exit_button.png</normaloff>button/MainScene/Exit_button.png</iconset>
+     <iconset resource="testWidget.qrc">
+      <normaloff>:/button/Resources/button/Exit_button.png</normaloff>:/button/Resources/button/Exit_button.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -174,7 +172,9 @@
    <header location="global">mainscenebutton.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>shopBoard</sender>

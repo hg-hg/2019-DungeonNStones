@@ -10,8 +10,8 @@ public:
 	MainSceneButton(QWidget *parent = Q_NULLPTR);
 	~MainSceneButton();
 
-	void ZoomPush();
-	void ZoomPop();
+	void zoomPush();
+	void zoomPop();
 	void setPicture(QString normalImg);
 public:
 	QString normalImg;

@@ -62,7 +62,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>background/wall.png</pixmap>
+    <pixmap resource="testWidget.qrc">:/background/Resources/background/wall.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -81,7 +81,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>background/wall_core.png</pixmap>
+    <pixmap resource="testWidget.qrc">:/background/Resources/background/wall_core.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -107,6 +107,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
  <connections/>
 </ui>

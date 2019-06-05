@@ -12,7 +12,6 @@ ShopBoard::ShopBoard(QWidget *parent)
 	initialEvent();
 	initialSelectedCharacter();
 	initialMoney();
-	ui.backToMain->setPicture(".//Picture//back.bmp");
 }
 
 ShopBoard::~ShopBoard()

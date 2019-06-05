@@ -19,6 +19,6 @@ void StoneDM::setData()
 void StoneDM::setImage()
 {
 	//background = Qt::darkGreen;
-	background = QPixmap("./Resources/stone_background.png");
-	foreground = QPixmap(":/foreground/Resources/foreground/dm.png");
+	background = QPixmap(":/stone/Resources/stone/background.png");
+	foreground = QPixmap(":/stone/Resources/stone/dm.png");
 }

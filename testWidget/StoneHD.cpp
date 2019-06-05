@@ -20,6 +20,6 @@ void StoneHD::setData()
 void StoneHD::setImage()
 {
 	//background = Qt::yellow;
-	background = QPixmap("./Resources/stone_background.png");
-	foreground = QPixmap(":/foreground/Resources/foreground/hd.png");
+	background = QPixmap(":/stone/Resources/stone/background.png");
+	foreground = QPixmap(":/stone/Resources/stone/hd.png");
 }

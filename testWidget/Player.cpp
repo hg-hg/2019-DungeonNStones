@@ -65,7 +65,7 @@ void Player::setCharacter(Character* ch)
 		connect(this, SIGNAL(restartGame()), c, SLOT(restartTimer()));
 		ui.skills->addWidget(c);
 	}
-	const auto skinPath = "./skin/" + character->skin;
+	const auto skinPath = ":/skin/Resources/skin/" + character->skin;
 	if (character->skin.endsWith(".gif"))
 	{
 		auto skin = new QMovie(skinPath);

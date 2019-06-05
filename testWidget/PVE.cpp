@@ -26,8 +26,8 @@ void PVE::confirm()
 void PVE::escape()
 {
 	QMessageBox msg(this);
-	ui.escape->ZoomPop();
-	ui.escape->ZoomPush();
+	ui.escape->zoomPop();
+	ui.escape->zoomPush();
 	ui.escape->setPicture("");
 	QTimer::singleShot(500, this, [=]() {
 
