@@ -43,6 +43,9 @@
         <height>600</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <widget class="QWidget" name="page">
        <widget class="QScrollArea" name="mainWidget">
         <property name="geometry">
@@ -149,6 +152,8 @@
        <pixmap resource="testWidget.qrc">:/background/Resources/background/ground.png</pixmap>
       </property>
      </widget>
+     <zorder>backPic</zorder>
+     <zorder>stack</zorder>
     </widget>
    </item>
   </layout>
