@@ -1,23 +1,204 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>Setting</class>
- <widget class="QWidget" name="Setting" >
-  <property name="objectName" >
-   <string notr="true">Setting</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QWidget" name="Setting">
+  <property name="geometry">
    <rect>
-	<x>0</x>
-	<y>0</y>
-	<width>400</width>
-	<height>300</height>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Setting</string>
   </property>
+  <widget class="QSlider" name="bgm">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>130</y>
+     <width>381</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QSlider" name="se">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>330</y>
+     <width>381</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>140</y>
+     <width>72</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>bgm</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>350</y>
+     <width>72</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>effct</string>
+   </property>
+  </widget>
+  <widget class="ReturnButton" name="backToMain">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>510</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bgmLabel">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>150</y>
+     <width>72</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="seLabel">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>350</y>
+     <width>72</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ReturnButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">returnbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
- <connections/>
-</UI>
+ <connections>
+  <connection>
+   <sender>backToMain</sender>
+   <signal>clicked()</signal>
+   <receiver>Setting</receiver>
+   <slot>backToMainScene()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>679</x>
+     <y>542</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>723</x>
+     <y>606</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bgm</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>bgmLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>565</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>616</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>se</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>seLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>562</x>
+     <y>359</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>605</x>
+     <y>361</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bgm</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Setting</receiver>
+   <slot>changeBGMVolume(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>418</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>382</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>se</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Setting</receiver>
+   <slot>changeSEVolume(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>411</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>381</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>changeBGMVolume(int)</slot>
+  <slot>changeSEVolume(int)</slot>
+  <slot>backToMainScene()</slot>
+ </slots>
+</ui>

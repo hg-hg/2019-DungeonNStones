@@ -3,14 +3,17 @@
 #include <QtMultimedia/QMediaPlayer>
 #include <QMediaPlaylist>
 
+
 class Sound
 {
 public:
 	Sound();
 	~Sound();
-	static QMediaPlaylist *BGMplaylist;
-	static QMediaPlayer *BGMplayer;
-	static QMediaPlayer *SEplayer;
+	static void initialVolume();
+	static QMediaPlaylist *BGMPlaylist;
+	static QMediaPlayer *BGMPlayer;
+	static QMediaPlayer *SEPlayer;
+	static void writeFile();
 
 };
 

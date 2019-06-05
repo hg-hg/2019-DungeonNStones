@@ -2,19 +2,25 @@
 #include "Setting.h"
 #include "Sound.h"
 
-int Setting::BGMvolume = 50;
-int Setting::SEvolume = 50;
 Setting::Setting(QWidget *parent)
 	: QWidget(parent)
 {
-	ui.setupUi(this, BGMvolume, SEvolume);
+	ui.setupUi(this);
 
 	ui.backToMain->setPicture(".//Picture//back.bmp");
+	initialSlider();
 
 }
 
+
 Setting::~Setting()
 {
+}
+
+void Setting::initialSlider()
+{
+	ui.bgm->setValue(Sound::BGMPlayer->volume());
+	ui.se->setValue(Sound::SEPlayer->volume());
 }
 
 
@@ -27,14 +33,12 @@ void Setting::backToMainScene()
 	});
 }
 
-void Setting::changeBGMvolume(int volume)
+void Setting::changeBGMVolume(const int volume)
 {
-	Sound::BGMplayer->setVolume(volume);
-	BGMvolume = volume;
+	Sound::BGMPlayer->setVolume(volume);
 }
 
-void Setting::changeSEvolume(int volume)
+void Setting::changeSEVolume(const int volume)
 {
-	Sound::SEplayer->setVolume(volume);
-	SEvolume = volume;
+	Sound::SEPlayer->setVolume(volume);
 }

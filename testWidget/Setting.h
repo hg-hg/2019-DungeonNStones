@@ -2,8 +2,6 @@
 
 #include <QWidget>
 #include "ui_Setting.h"
-#include "CommodityWidget.h"
-#include "MessageWidget.h"
 
 class Setting : public QWidget
 {
@@ -14,13 +12,12 @@ public:
 	~Setting();
 
 private:
-	static int  BGMvolume;
-	static int  SEvolume;
+	void initialSlider();
 
 private slots:
 	void backToMainScene();
-	void changeBGMvolume(int);
-	void changeSEvolume(int);
+	void changeBGMVolume(int);
+	void changeSEVolume(int);
 
 signals:
 	void mainScene();
