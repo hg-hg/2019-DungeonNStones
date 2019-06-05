@@ -41,4 +41,7 @@
         <file>Resources/background/wall_complex.png</file>
         <file>Resources/background/wall_core.png</file>
     </qresource>
+    <qresource prefix="/word">
+        <file>Resources/word/TryAgain_pic.png</file>
+    </qresource>
 </RCC>
