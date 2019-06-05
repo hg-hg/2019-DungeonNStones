@@ -32,8 +32,8 @@ public:
 	~Player();
 
 private:
-	Ui::PlayerWidget ui{};
-	Character* character{};
+	Ui::PlayerWidget ui;
+	Character* character;
 	QString account = "NULL";
 	SkillManager* sm = new SkillManager(this);
 	int hp = 0, mp = 0;

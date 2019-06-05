@@ -46,17 +46,23 @@
     <Filter Include="Source Files\Base">
       <UniqueIdentifier>{a8284c9f-1b0c-485c-a265-e1571aa78463}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\shop">
-      <UniqueIdentifier>{a60dec4f-0ff8-4d1a-a23a-4c16b00cf871}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\shop">
-      <UniqueIdentifier>{061282c2-9a2d-436f-968a-dce5a9849fb1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\MainWindow">
       <UniqueIdentifier>{4715a878-35eb-4a8f-a891-126c97ca1729}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\MainWindow">
       <UniqueIdentifier>{9e3bad0b-f257-44dd-afc1-e0d3f3508d29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{a954ea4d-56e9-453e-a9d3-a977342d8121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{298c8a1b-ff96-4281-a87e-59950f6ea8d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shop">
+      <UniqueIdentifier>{a60dec4f-0ff8-4d1a-a23a-4c16b00cf871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shop">
+      <UniqueIdentifier>{061282c2-9a2d-436f-968a-dce5a9849fb1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,15 +96,6 @@
     <ClCompile Include="StoneMP.cpp">
       <Filter>Source Files\Stones</Filter>
     </ClCompile>
-    <ClCompile Include="GameLogic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameBoard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CrushAnimation.cpp">
       <Filter>Source Files\Animation</Filter>
     </ClCompile>
@@ -129,35 +126,23 @@
     <ClCompile Include="StoneManager.cpp">
       <Filter>Source Files\Stones</Filter>
     </ClCompile>
-    <ClCompile Include="GameServer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Client.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PVE.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PVP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BuyButton.cpp">
-      <Filter>Source Files\shop</Filter>
+      <Filter>Source Files\Shop</Filter>
     </ClCompile>
     <ClCompile Include="CharacterWidget.cpp">
-      <Filter>Source Files\shop</Filter>
+      <Filter>Source Files\Shop</Filter>
     </ClCompile>
     <ClCompile Include="CommodityWidget.cpp">
-      <Filter>Source Files\shop</Filter>
+      <Filter>Source Files\Shop</Filter>
     </ClCompile>
     <ClCompile Include="SelectButton.cpp">
-      <Filter>Source Files\shop</Filter>
+      <Filter>Source Files\Shop</Filter>
     </ClCompile>
     <ClCompile Include="ReturnButton.cpp">
-      <Filter>Source Files\shop</Filter>
+      <Filter>Source Files\Shop</Filter>
     </ClCompile>
     <ClCompile Include="MessageWidget.cpp">
-      <Filter>Source Files\shop</Filter>
+      <Filter>Source Files\Shop</Filter>
     </ClCompile>
     <ClCompile Include="Login.cpp">
       <Filter>Source Files\MainWindow</Filter>
@@ -169,13 +154,34 @@
       <Filter>Source Files\MainWindow</Filter>
     </ClCompile>
     <ClCompile Include="ShopBoard.cpp">
-      <Filter>Source Files\shop</Filter>
+      <Filter>Source Files\Shop</Filter>
     </ClCompile>
-    <ClCompile Include="Setting.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBoard.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogic.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServer.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="Sound.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="PVP.cpp">
+      <Filter>Source Files\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="PVE.cpp">
+      <Filter>Source Files\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Setting.cpp">
+      <Filter>Source Files\MainWindow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -216,7 +222,7 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Sound.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -243,15 +249,6 @@
     </QtMoc>
     <QtMoc Include="StoneMP.h">
       <Filter>Header Files\Stones</Filter>
-    </QtMoc>
-    <QtMoc Include="GameLogic.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Player.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="GameBoard.h">
-      <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="CrushAnimation.h">
       <Filter>Header Files\Animation</Filter>
@@ -283,35 +280,23 @@
     <QtMoc Include="StoneManager.h">
       <Filter>Header Files\Stones</Filter>
     </QtMoc>
-    <QtMoc Include="GameServer.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Client.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="PVE.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="PVP.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="CharacterWidget.h">
-      <Filter>Header Files\shop</Filter>
+      <Filter>Header Files\Shop</Filter>
     </QtMoc>
     <QtMoc Include="BuyButton.h">
-      <Filter>Header Files\shop</Filter>
+      <Filter>Header Files\Shop</Filter>
     </QtMoc>
     <QtMoc Include="CommodityWidget.h">
-      <Filter>Header Files\shop</Filter>
+      <Filter>Header Files\Shop</Filter>
     </QtMoc>
     <QtMoc Include="MessageWidget.h">
-      <Filter>Header Files\shop</Filter>
+      <Filter>Header Files\Shop</Filter>
     </QtMoc>
     <QtMoc Include="ReturnButton.h">
-      <Filter>Header Files\shop</Filter>
+      <Filter>Header Files\Shop</Filter>
     </QtMoc>
     <QtMoc Include="SelectButton.h">
-      <Filter>Header Files\shop</Filter>
+      <Filter>Header Files\Shop</Filter>
     </QtMoc>
     <QtMoc Include="Login.h">
       <Filter>Header Files\MainWindow</Filter>
@@ -323,10 +308,31 @@
       <Filter>Header Files\MainWindow</Filter>
     </QtMoc>
     <QtMoc Include="ShopBoard.h">
-      <Filter>Header Files\shop</Filter>
+      <Filter>Header Files\Shop</Filter>
+    </QtMoc>
+    <QtMoc Include="GameLogic.h">
+      <Filter>Header Files\Core</Filter>
+    </QtMoc>
+    <QtMoc Include="Client.h">
+      <Filter>Header Files\Core</Filter>
+    </QtMoc>
+    <QtMoc Include="GameBoard.h">
+      <Filter>Header Files\Core</Filter>
+    </QtMoc>
+    <QtMoc Include="Player.h">
+      <Filter>Header Files\Core</Filter>
     </QtMoc>
     <QtMoc Include="Setting.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MainWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="PVP.h">
+      <Filter>Header Files\MainWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="PVE.h">
+      <Filter>Header Files\MainWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="GameServer.h">
+      <Filter>Header Files\Core</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
