@@ -1,12 +1,11 @@
 #include "stdafx.h"
 #include "CommodityWidget.h"
 
-CommodityWidget::CommodityWidget(QWidget* parent, Character* character, Account* account)
+CommodityWidget::CommodityWidget(QWidget* parent, Character* character)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 	setCharacterWidget(character);
-	setAccount(account);
 	initialButton();
 }
 
@@ -17,11 +16,6 @@ CommodityWidget::~CommodityWidget()
 void CommodityWidget::setCharacterWidget(Character * character)
 {
 	ui.characterWidget->setCharacter(character);
-}
-
-void CommodityWidget::setAccount(Account * account)
-{
-	this->account = account;
 }
 
 CharacterWidget * CommodityWidget::getCharacterWidget()
@@ -49,8 +43,9 @@ void CommodityWidget::initialButton()
 	}
 	else
 	{
-		ui.buyButton->setText(QString::number(ui.characterWidget->getCharacter()->price));
-		ui.selectButton->setEnabled(false);
+		ui.selectButton->setVisible(false);
+		//ui.cost->setText(QString::number(ui.characterWidget->getCharacter()->price));
+		//ui.selectButton->setEnabled(false);
 	}
 }
 
@@ -68,6 +63,8 @@ void CommodityWidget::initialBuyConfirmMessage()
 		if (account->buyCharacter(name, cost))
 		{
 			ui.buyButton->setEnabled(false);
+			ui.selectButton->setVisible(true);
+			ui.selectButton->setIcon(canSelect);
 			ui.selectButton->setEnabled(true);
 			emit updateMoney();
 		}

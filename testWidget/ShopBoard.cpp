@@ -2,6 +2,8 @@
 #include "ShopBoard.h"
 #include "ReturnButton.h"
 #include <QTimer>
+
+
 ShopBoard::ShopBoard(QWidget *parent)
 	: QWidget(parent)
 {
@@ -17,6 +19,12 @@ ShopBoard::~ShopBoard()
 {
 }
 
+void ShopBoard::paintEvent(QPaintEvent* event)
+{
+	QPainter painter(this);
+	painter.fillRect(rect(), QBrush(QPixmap(":/background/Resources/background/ground.png")));
+}
+
 void ShopBoard::initialSelectedCharacter()
 {
 	const auto current = account->getSelectedCharacter();
@@ -24,12 +32,13 @@ void ShopBoard::initialSelectedCharacter()
 	{
 		if (it->getCharacterWidget()->getCharacter()->name == current->name)
 		{
-			it->getSelectButton()->setText("Selected");
 			it->getSelectButton()->setEnabled(false);
+			//it->getSelectButton()->setIcon(QIcon(":/button/Resources/button/NO_button.png"));
+			
 		}
 		else
 		{
-			it->getSelectButton()->setText("SELECT");
+			//it->getSelectButton()->setText("SELECT");
 		}
 	}
 }
@@ -41,6 +50,10 @@ void ShopBoard::initialMainWidget()
 
 void ShopBoard::initialStackWidget()
 {
+	const QPixmap background(":/background/Resources/background/ground.png");
+	QPalette palette;
+	palette.setBrush(QPalette::Background, background);
+	setPalette(palette);
 	for (auto it : messages)
 		ui.stack->addWidget(it);
 	ui.stack->setCurrentWidget(ui.page);
@@ -52,13 +65,14 @@ void ShopBoard::initialVectors()
 	messages.clear();
 	auto map = CharacterManager::getInstance()->characters;
 	for (auto it : map) {
-		auto tempCommodity = new CommodityWidget(this, it, account);
+		auto tempCommodity = new CommodityWidget(this, it);
 		commodities.push_back(tempCommodity);
 		connect(tempCommodity->getCharacterWidget(), SIGNAL(showMessage(CharacterWidget *)), this, SLOT(displayMessage(CharacterWidget*)));
 		connect(tempCommodity, SIGNAL(updateSelect()), this, SLOT(updateSelectedCharacter()));
 		connect(tempCommodity, SIGNAL(updateMoney()), this, SLOT(updateMoney()));
 		auto tempMessage = new MessageWidget(this, it);
 		messages.insert(it, tempMessage);
+		connect(tempMessage, SIGNAL(deleteSignal()), this, SLOT(deleteMessage()));
 	}
 }
 
@@ -75,14 +89,6 @@ void ShopBoard::initialLayoutMain()
 	}
 }
 
-//void ShopBoard::initialEvent()
-//{
-//	for (auto it : commodities)
-//	{
-//		connect(it->getCharacterWidget(), SIGNAL(showMessage(CharacterWidget *)), this, SLOT(displayMessage(CharacterWidget*)));
-//		connect(it, SIGNAL(updateSelect()), this, SLOT(updateSelectedCharacter()));
-//	}
-//}
 
 void ShopBoard::initialMoney()
 {
@@ -91,7 +97,7 @@ void ShopBoard::initialMoney()
 
 void ShopBoard::displayMessage(CharacterWidget * current)
 {
-	Character * character = current->getCharacter();
+	const auto character = current->getCharacter();
 	ui.stack->setCurrentWidget(messages[character]);
 }
 
@@ -105,10 +111,11 @@ void ShopBoard::updateSelectedCharacter()
 	const auto current = account->getSelectedCharacter();
 	for (auto it : commodities)
 	{
-		if (it->getCharacterWidget()->getCharacter()->name != current->name)
+		const auto currentName = it->getCharacterWidget()->getCharacter()->name;
+		if (currentName != current->name)
 		{
-			it->getSelectButton()->setText("SELECT");
-			if (account->hasBoughtCharacter(it->getCharacterWidget()->getCharacter()->name))
+			it->getSelectButton()->setIcon(canSelect);
+			if (account->hasBoughtCharacter(currentName))
 			{
 				it->getSelectButton()->setEnabled(true);
 			}
@@ -123,8 +130,6 @@ void ShopBoard::updateMoney()
 
 void ShopBoard::backToMainScene()
 {
-	ui.backToMain->zoomPush();
-	ui.backToMain->zoomPop();
 	QTimer::singleShot(500, this, [=]() {
 		emit mainScene();
 	});

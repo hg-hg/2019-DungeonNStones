@@ -36,6 +36,8 @@
         <file>Resources/button/NO_button.png</file>
         <file>Resources/button/YES_button.png</file>
         <file>Resources/button/Slide_button.png</file>
+        <file>Resources/button/Empty_button.png</file>
+        <file>Resources/button/Empty_button_tiny.png</file>
     </qresource>
     <qresource prefix="/background">
         <file>Resources/background/wall.png</file>
@@ -43,6 +45,7 @@
         <file>Resources/background/wall_complex.png</file>
         <file>Resources/background/wall_core.png</file>
         <file>Resources/background/ground.png</file>
+        <file>Resources/background/shop_character.png</file>
     </qresource>
     <qresource prefix="/word">
         <file>Resources/word/TryAgain_pic.png</file>

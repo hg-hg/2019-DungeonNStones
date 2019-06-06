@@ -40,7 +40,7 @@ void CharacterWidget::initialCharacter()
 	if (character->skin.endsWith(".gif")) 
 	{
 		auto skin = new QMovie(skinPath);
-		auto skinSize = QSize(130, 200);
+		auto skinSize = QSize(65, 100);
 		auto he = skinSize.height();
 		auto wi = skinSize.width();
 		if (wi > ui.foreground->size().width())

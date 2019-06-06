@@ -20,11 +20,6 @@ void MessageWidget::setCharacter(Character* character)
 	this->character = character;
 }
 
-ReturnButton* MessageWidget::getReturnButton()
-{
-	return ui.returnButton;
-}
-
 void MessageWidget::initialDisplay()
 {
 	ui.gridLayout->setVerticalSpacing(50);
@@ -41,11 +36,39 @@ void MessageWidget::initialDisplay()
 	description->setStyleSheet("color : white");
 	ui.gridLayout->addWidget(description, i, 0, 1, 1);
 	initialDescription();
+
+	const auto skinPath = ":/skin/Resources/skin/" + character->skin;
+	
+	if (skinPath.endsWith(".gif"))
+	{
+		auto skin = new QMovie(skinPath);
+		auto skinSize = QSize(130, 200);
+		auto he = skinSize.height();
+		auto wi = skinSize.width();
+		if (wi > ui.character->size().width())
+		{
+			he *= ui.character->size().width();
+			he /= wi;
+			wi = ui.character->size().width();
+		}
+		if (he > ui.character->size().height())
+		{
+			wi *= ui.character->size().height();
+			wi /= he;
+			he = ui.character->size().height();
+		}
+		ui.character->setMovie(skin);
+		skin->start();
+	} else
+	{
+		ui.character->setPixmap(QPixmap(skinPath));
+	}
+	
 }
 
 void MessageWidget::initialReturnEvent()
 {
-	connect(ui.returnButton, SIGNAL(returnSignal()), this, SLOT(deleteThis()));
+	connect(ui.returnButton, SIGNAL(clicked()), this, SLOT(deleteThis()));
 }
 
 void MessageWidget::initialLabels()
@@ -73,5 +96,7 @@ void MessageWidget::initialDescription()
 
 void MessageWidget::deleteThis()
 {
-	emit deleteSignal();
+	QTimer::singleShot(500, this, [=]() {
+		emit deleteSignal();
+	});
 }

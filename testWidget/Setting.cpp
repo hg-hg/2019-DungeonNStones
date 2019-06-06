@@ -23,8 +23,6 @@ void Setting::initialSlider()
 
 void Setting::backToMainScene()
 {
-	ui.backToMain->zoomPush();
-	ui.backToMain->zoomPop();
 	QTimer::singleShot(500, this, [=]() {
 		emit mainScene();
 	});

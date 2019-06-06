@@ -40,12 +40,7 @@ void PVP::continueMatching()
 
 void PVP::escape()
 {
-	ui.pushButton->zoomPop();
-	ui.pushButton->zoomPush();
 	ui.pushButton->setPicture("");
-	QTimer::singleShot(500, this, [=]() {
-
-	});
 	QMessageBox msg(this);
 	msg.setWindowTitle("escape");
 	msg.setText("are you sure?");

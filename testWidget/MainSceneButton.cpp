@@ -4,7 +4,11 @@
 MainSceneButton::MainSceneButton(QWidget *parent)
 	: QPushButton(parent)
 {
-
+	connect(this, &QPushButton::clicked, this, [=]()
+	{
+		zoomPush();
+		zoomPop();
+	});
 }
 
 MainSceneButton::~MainSceneButton()

@@ -13,6 +13,9 @@ class ShopBoard : public QWidget
 public:
 	ShopBoard(QWidget *parent = Q_NULLPTR);
 	~ShopBoard();
+
+protected:
+	void paintEvent(QPaintEvent* event) override;
 private:
 	void initialSelectedCharacter();
 	void initialMainWidget();
@@ -36,4 +39,7 @@ private:
 	QVector<CommodityWidget *> commodities;
 	QMap<Character *, MessageWidget *> messages;
 	Account * account = Account::getInstance();
+
+	QIcon canSelect = QIcon(":/button/Resources/button/YES_button.png");
+	QIcon cannotSelect = QIcon(":/button/Resources/button/NO_button.png");
 };

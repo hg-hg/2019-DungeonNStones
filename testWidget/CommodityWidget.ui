@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>120</width>
+    <width>116</width>
     <height>185</height>
    </rect>
   </property>
@@ -32,6 +32,14 @@
      <height>35</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>5</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -45,6 +53,9 @@
      <height>35</height>
     </size>
    </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="MainSceneButton" name="selectButton">
    <property name="geometry">
@@ -54,6 +65,11 @@
      <width>50</width>
      <height>35</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton:disabled{
+	icon: url(:/button/Resources/button/NO_button.png)
+}</string>
    </property>
    <property name="text">
     <string/>
@@ -73,53 +89,21 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
+   <class>MainSceneButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">mainscenebutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>CharacterWidget</class>
    <extends>QWidget</extends>
    <header location="global">Characterwidget.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>MainSceneButton</class>
-   <extends>QPushButton</extends>
-   <header location="global">MainSceneButton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
   <include location="testWidget.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>buyButton</sender>
-   <signal>clicked()</signal>
-   <receiver>CommodityWidget</receiver>
-   <slot>updateMoney()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>32</x>
-     <y>164</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>50</x>
-     <y>267</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buyButton</sender>
-   <signal>clicked()</signal>
-   <receiver>CommodityWidget</receiver>
-   <slot>mouseClickedBuy()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>10</x>
-     <y>171</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>284</x>
-     <y>291</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>selectButton</sender>
    <signal>clicked()</signal>
@@ -149,6 +133,38 @@
     <hint type="destinationlabel">
      <x>80</x>
      <y>279</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CommodityWidget</receiver>
+   <slot>mouseClickedBuy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>10</x>
+     <y>171</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CommodityWidget</receiver>
+   <slot>updateMoney()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>164</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>50</x>
+     <y>267</y>
     </hint>
    </hints>
   </connection>

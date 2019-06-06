@@ -9,9 +9,7 @@ class MainScene : public QWidget
 
 public:
 	MainScene(QWidget *parent = Q_NULLPTR);
-	void paintEvent(QPaintEvent*);
 	~MainScene();
-	void initButton();
 public slots:
 
 	void pvp();

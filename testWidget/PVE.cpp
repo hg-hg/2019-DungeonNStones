@@ -26,12 +26,6 @@ void PVE::confirm()
 void PVE::escape()
 {
 	QMessageBox msg(this);
-	ui.escape->zoomPop();
-	ui.escape->zoomPush();
-	ui.escape->setPicture("");
-	QTimer::singleShot(500, this, [=]() {
-
-	});
 	msg.setWindowTitle("escape");
 	msg.setText("are you sure?");
 	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);

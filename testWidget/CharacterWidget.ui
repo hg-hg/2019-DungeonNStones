@@ -25,15 +25,21 @@
    <property name="text">
     <string/>
    </property>
+   <property name="pixmap">
+    <pixmap resource="testWidget.qrc">:/background/Resources/background/shop_character.png</pixmap>
+   </property>
   </widget>
   <widget class="QLabel" name="foreground">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>50</y>
-     <width>120</width>
-     <height>80</height>
+     <x>20</x>
+     <y>0</y>
+     <width>80</width>
+     <height>100</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
    </property>
    <property name="text">
     <string/>
@@ -41,6 +47,8 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
  <connections/>
 </ui>

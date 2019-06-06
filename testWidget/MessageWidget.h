@@ -13,7 +13,6 @@ class MessageWidget : public QWidget
 public:
 	MessageWidget(QWidget *parent ,Character* character);
 	~MessageWidget();
-	ReturnButton * getReturnButton();
 private:
 	void setCharacter(Character *character);
 	void initialDisplay();

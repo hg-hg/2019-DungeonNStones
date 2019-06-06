@@ -40,23 +40,13 @@ color:white;
 </string>
    </property>
   </widget>
-  <widget class="QWidget" name="pictureField" native="true">
+  <widget class="MainSceneButton" name="returnButton">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>20</y>
-     <width>201</width>
-     <height>391</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="ReturnButton" name="returnButton">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>520</y>
-     <width>91</width>
-     <height>51</height>
+     <x>680</x>
+     <y>510</y>
+     <width>100</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -64,18 +54,43 @@ color:white;
 color: white</string>
    </property>
    <property name="text">
-    <string>RETURN</string>
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="testWidget.qrc">
+     <normaloff>:/button/Resources/button/Exit_button.png</normaloff>:/button/Resources/button/Exit_button.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>100</width>
+     <height>70</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="character">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>20</y>
+     <width>281</width>
+     <height>451</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>character</string>
    </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>ReturnButton</class>
+   <class>MainSceneButton</class>
    <extends>QPushButton</extends>
-   <header location="global">ReturnButton.h</header>
+   <header location="global">mainscenebutton.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
  <connections/>
 </ui>

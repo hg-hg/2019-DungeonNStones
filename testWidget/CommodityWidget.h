@@ -12,10 +12,9 @@ class CommodityWidget : public QWidget
 	Q_OBJECT
 
 public:
-	CommodityWidget(QWidget *parent, Character * character, Account * account);
+	CommodityWidget(QWidget *parent, Character * character);
 	~CommodityWidget();
 	void setCharacterWidget(Character * character);
-	void setAccount(Account * account);
 	CharacterWidget * getCharacterWidget();
 	MainSceneButton * getBuyButton();
 	MainSceneButton * getSelectButton();
@@ -32,5 +31,8 @@ private slots:
 	void mouseClickedSelect();
 private:
 	Ui::CommodityWidget ui;
-	Account * account;
+	Account * account = Account::getInstance();
+
+	QIcon canSelect = QIcon(":/button/Resources/button/YES_button.png");
+	QIcon cannotSelect = QIcon(":/button/Resources/button/NO_button.png");
 };
