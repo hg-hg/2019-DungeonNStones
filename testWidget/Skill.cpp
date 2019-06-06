@@ -5,6 +5,9 @@ Skill::Skill(QWidget* parent, const QString skillName, const QString desc, const
 	: QPushButton(parent), name(skillName), description(desc), cost(skillCost)
 {
 	setText(name);
+	QFont font = this->font();
+	font.setPixelSize(20);
+	setFont(font);
 	if (skillName == "damage" || skillName == "heal")
 	{
 		//timer = new QTimer(this);

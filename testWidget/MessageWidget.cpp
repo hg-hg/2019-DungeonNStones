@@ -32,10 +32,13 @@ void MessageWidget::initialDisplay()
 	int i;
 	for (i = 0; i < labels.size(); i++)
 	{
+		labels[i].first->setStyleSheet("color : white");
+		labels[i].second->setStyleSheet("color : white");
 		ui.gridLayout->addWidget(labels[i].first, i, 0, 1, 1);
 		ui.gridLayout->addWidget(labels[i].second, i, 1, 1, 1);
 	}
 	const auto description = new QLabel("Description :");
+	description->setStyleSheet("color : white");
 	ui.gridLayout->addWidget(description, i, 0, 1, 1);
 	initialDescription();
 }

@@ -23,6 +23,7 @@
     </qresource>
     <qresource prefix="/font">
         <file>Resources/font/FZJCXS.TTF</file>
+        <file>Resources/font/monogram_extended.ttf</file>
     </qresource>
     <qresource prefix="/button">
         <file>Resources/button/Exit_button.png</file>

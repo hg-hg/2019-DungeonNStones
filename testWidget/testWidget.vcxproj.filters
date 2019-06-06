@@ -126,18 +126,6 @@
     <ClCompile Include="StoneManager.cpp">
       <Filter>Source Files\Stones</Filter>
     </ClCompile>
-    <ClCompile Include="BuyButton.cpp">
-      <Filter>Source Files\Shop</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterWidget.cpp">
-      <Filter>Source Files\Shop</Filter>
-    </ClCompile>
-    <ClCompile Include="CommodityWidget.cpp">
-      <Filter>Source Files\Shop</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectButton.cpp">
-      <Filter>Source Files\Shop</Filter>
-    </ClCompile>
     <ClCompile Include="ReturnButton.cpp">
       <Filter>Source Files\Shop</Filter>
     </ClCompile>
@@ -183,6 +171,12 @@
     <ClCompile Include="Setting.cpp">
       <Filter>Source Files\MainWindow</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterWidget.cpp">
+      <Filter>Source Files\Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="CommodityWidget.cpp">
+      <Filter>Source Files\Shop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -223,6 +217,12 @@
     </ClInclude>
     <ClInclude Include="Sound.h">
       <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CharacterWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CommodityWidget.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -280,22 +280,10 @@
     <QtMoc Include="StoneManager.h">
       <Filter>Header Files\Stones</Filter>
     </QtMoc>
-    <QtMoc Include="CharacterWidget.h">
-      <Filter>Header Files\Shop</Filter>
-    </QtMoc>
-    <QtMoc Include="BuyButton.h">
-      <Filter>Header Files\Shop</Filter>
-    </QtMoc>
-    <QtMoc Include="CommodityWidget.h">
-      <Filter>Header Files\Shop</Filter>
-    </QtMoc>
     <QtMoc Include="MessageWidget.h">
       <Filter>Header Files\Shop</Filter>
     </QtMoc>
     <QtMoc Include="ReturnButton.h">
-      <Filter>Header Files\Shop</Filter>
-    </QtMoc>
-    <QtMoc Include="SelectButton.h">
       <Filter>Header Files\Shop</Filter>
     </QtMoc>
     <QtMoc Include="Login.h">
@@ -334,6 +322,12 @@
     <QtMoc Include="GameServer.h">
       <Filter>Header Files\Core</Filter>
     </QtMoc>
+    <QtMoc Include="CharacterWidget.h">
+      <Filter>Header Files\Shop</Filter>
+    </QtMoc>
+    <QtMoc Include="CommodityWidget.h">
+      <Filter>Header Files\Shop</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="testWidget.ui">
@@ -364,6 +358,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Setting.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="CharacterWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="CommodityWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

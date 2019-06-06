@@ -13,6 +13,16 @@
   <property name="windowTitle">
    <string>ShopBoard</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMessageBox QLabel{
+	color: white
+}
+
+QMessageBox QPushButton {
+	color: white
+}
+</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -44,7 +54,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: transparent;</string>
+       <string notr="true">background-image: url(:/background/Resources/background/ground.png);</string>
       </property>
       <widget class="QWidget" name="page">
        <widget class="QScrollArea" name="mainWidget">
@@ -108,23 +118,29 @@
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>560</y>
-          <width>111</width>
-          <height>21</height>
+          <y>540</y>
+          <width>131</width>
+          <height>41</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
+        </property>
         <property name="text">
-         <string> Your  Money :</string>
+         <string> Account:</string>
         </property>
        </widget>
        <widget class="QLabel" name="moneyLabel">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>560</y>
-          <width>121</width>
-          <height>21</height>
+          <x>190</x>
+          <y>540</y>
+          <width>101</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
         </property>
         <property name="text">
          <string>money</string>
@@ -136,24 +152,6 @@
       </widget>
       <widget class="QWidget" name="page_2"/>
      </widget>
-     <widget class="QLabel" name="backPic">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>800</width>
-        <height>600</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="testWidget.qrc">:/background/Resources/background/ground.png</pixmap>
-      </property>
-     </widget>
-     <zorder>backPic</zorder>
-     <zorder>stack</zorder>
     </widget>
    </item>
   </layout>

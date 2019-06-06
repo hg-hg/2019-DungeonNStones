@@ -18,7 +18,7 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>231</width>
+     <width>431</width>
      <height>391</height>
     </rect>
    </property>
@@ -29,39 +29,39 @@
     <rect>
      <x>20</x>
      <y>430</y>
-     <width>231</width>
+     <width>431</width>
      <height>131</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 9pt &quot;MS Serif&quot;;
-background-color: rgb(255, 132, 139,0);
+    <string notr="true">background-color: rgb(255, 132, 139,0);
 border-radius: 3px;
-color:rgb(0,0,0);
+color:white;
 </string>
    </property>
   </widget>
   <widget class="QWidget" name="pictureField" native="true">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>480</x>
      <y>20</y>
-     <width>311</width>
-     <height>551</height>
+     <width>201</width>
+     <height>391</height>
     </rect>
    </property>
   </widget>
   <widget class="ReturnButton" name="returnButton">
    <property name="geometry">
     <rect>
-     <x>660</x>
+     <x>540</x>
      <y>520</y>
      <width>91</width>
      <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 9pt &quot;Segoe UI Historic&quot;;</string>
+    <string notr="true">font: 17pt &quot;monogramextended&quot;;
+color: white</string>
    </property>
    <property name="text">
     <string>RETURN</string>

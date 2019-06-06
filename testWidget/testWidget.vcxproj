@@ -124,7 +124,6 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="AccountManager.cpp" />
-    <ClCompile Include="BuyButton.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CharacterManager.cpp" />
     <ClCompile Include="CharacterWidget.cpp" />
@@ -150,7 +149,6 @@
     <ClCompile Include="PVE.cpp" />
     <ClCompile Include="PVP.cpp" />
     <ClCompile Include="ReturnButton.cpp" />
-    <ClCompile Include="SelectButton.cpp" />
     <ClCompile Include="Setting.cpp" />
     <ClCompile Include="ShopBoard.cpp" />
     <ClCompile Include="Skill.cpp" />
@@ -176,9 +174,14 @@
     <QtMoc Include="Account.h" />
     <QtMoc Include="AccountManager.h" />
     <QtMoc Include="Client.h" />
-    <QtMoc Include="BuyButton.h" />
-    <QtMoc Include="CharacterWidget.h" />
-    <QtMoc Include="CommodityWidget.h" />
+    <QtMoc Include="CharacterWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
+    </QtMoc>
+    <QtMoc Include="CommodityWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
+    </QtMoc>
     <ClInclude Include="const.h" />
     <QtMoc Include="StoneManager.h" />
     <QtMoc Include="GameLogic.h" />
@@ -186,6 +189,8 @@
     <QtMoc Include="ExchangeAnimation.h" />
     <QtMoc Include="GameBoard.h" />
     <QtMoc Include="GameServer.h" />
+    <ClInclude Include="GeneratedFiles\ui_CharacterWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_CommodityWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_GameBoard.h" />
     <ClInclude Include="GeneratedFiles\ui_Login.h" />
     <ClInclude Include="GeneratedFiles\ui_MainScene.h" />
@@ -205,7 +210,6 @@
     <QtMoc Include="Login.h" />
     <QtMoc Include="MainScene.h" />
     <QtMoc Include="ReturnButton.h" />
-    <QtMoc Include="SelectButton.h" />
     <QtMoc Include="ShopBoard.h" />
     <QtMoc Include="MainSceneButton.h" />
     <QtMoc Include="MessageWidget.h" />
@@ -222,6 +226,8 @@
     <QtMoc Include="testWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="CharacterWidget.ui" />
+    <QtUic Include="CommodityWidget.ui" />
     <QtUic Include="GameBoard.ui" />
     <QtUic Include="Login.ui" />
     <QtUic Include="MainScene.ui" />

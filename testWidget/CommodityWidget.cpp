@@ -4,79 +4,54 @@
 CommodityWidget::CommodityWidget(QWidget* parent, Character* character, Account* account)
 	: QWidget(parent)
 {
+	ui.setupUi(this);
 	setCharacterWidget(character);
 	setAccount(account);
 	initialButton();
-	initialLayout();
-	initialBuyEvent();
 }
 
 CommodityWidget::~CommodityWidget()
 {
 }
 
-QSize CommodityWidget::sizeHint() const
+void CommodityWidget::setCharacterWidget(Character * character)
 {
-	return originSzie;
+	ui.characterWidget->setCharacter(character);
 }
 
-void CommodityWidget::setCharacterWidget(Character* character)
-{
-	this->characterWidget = new CharacterWidget(this, character);
-}
-
-void CommodityWidget::setAccount(Account* account)
+void CommodityWidget::setAccount(Account * account)
 {
 	this->account = account;
 }
 
-CharacterWidget* CommodityWidget::getCharacterWidget()
+CharacterWidget * CommodityWidget::getCharacterWidget()
 {
-	return characterWidget;
+	return ui.characterWidget;
 }
 
-SelectButton* CommodityWidget::getSelectButton()
+
+
+MainSceneButton * CommodityWidget::getSelectButton()
 {
-	return selectButton;
+	return ui.selectButton;
 }
 
-BuyButton* CommodityWidget::getBuyButton()
+MainSceneButton * CommodityWidget::getBuyButton()
 {
-	return buyButton;
+	return ui.buyButton;
 }
 
 void CommodityWidget::initialButton()
 {
-	buyButton = new BuyButton(this);
-	selectButton = new SelectButton(this);
-	if (account->hasBoughtCharacter(characterWidget->getCharacter()->name))
+	if (account->hasBoughtCharacter(ui.characterWidget->getCharacter()->name))
 	{
-		buyButton->setText("Already Own");
-		buyButton->setEnabled(false);
+		ui.buyButton->setEnabled(false);
 	}
 	else
 	{
-		buyButton->setText(QString::number(characterWidget->getCharacter()->price));
-		selectButton->setEnabled(false);
+		ui.buyButton->setText(QString::number(ui.characterWidget->getCharacter()->price));
+		ui.selectButton->setEnabled(false);
 	}
-}
-
-
-void CommodityWidget::initialLayout()
-{
-	auto layout = new QGridLayout;
-	layout->setRowMinimumHeight(1, 30);
-	layout->setVerticalSpacing(10);
-	layout->addWidget(characterWidget, 0, 0, 1, 1);
-	layout->addWidget(buyButton, 1, 0, 1, 1);
-	layout->addWidget(selectButton, 2, 0, 1, 1);
-	this->setLayout(layout);
-}
-
-void CommodityWidget::initialBuyEvent()
-{
-	connect(buyButton, SIGNAL(buySignal()), this, SLOT(mouseClickedBuy()));
-	connect(selectButton, SIGNAL(selectSignal()), this, SLOT(mouseClickedSelect()));
 }
 
 void CommodityWidget::initialBuyConfirmMessage()
@@ -88,13 +63,12 @@ void CommodityWidget::initialBuyConfirmMessage()
 
 	if (msg.exec() == QMessageBox::Ok)
 	{
-		const auto name = characterWidget->getCharacter()->name;
-		const auto cost = characterWidget->getCharacter()->price;
+		const auto name = ui.characterWidget->getCharacter()->name;
+		const auto cost = ui.characterWidget->getCharacter()->price;
 		if (account->buyCharacter(name, cost))
 		{
-			buyButton->setText("Already Own");
-			buyButton->setEnabled(false);
-			selectButton->setEnabled(true);
+			ui.buyButton->setEnabled(false);
+			ui.selectButton->setEnabled(true);
 			emit updateMoney();
 		}
 		else
@@ -112,24 +86,26 @@ void CommodityWidget::initialSelectConfirmMessage()
 {
 	QMessageBox msg(this);
 	msg.setWindowTitle("Confirm");
+	//msg.setWindowFlag(Qt::FramelessWindowHint);
 	msg.setText("Sure to select?");
 	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
 	if (msg.exec() == QMessageBox::Ok)
 	{
-		const auto name = characterWidget->getCharacter()->name;
+		const auto name = ui.characterWidget->getCharacter()->name;
 		account->setCharacter(name);
-		selectButton->setText("Selected");
-		selectButton->setEnabled(false);
+		ui.selectButton->setEnabled(false);
+		emit updateSelect();
 	}
-}
 
-void CommodityWidget::mouseClickedSelect()
-{
-	initialSelectConfirmMessage();
-	emit updateSelected();
 }
 
 void CommodityWidget::mouseClickedBuy()
 {
 	initialBuyConfirmMessage();
+}
+
+void CommodityWidget::mouseClickedSelect()
+{
+	initialSelectConfirmMessage();
+	
 }

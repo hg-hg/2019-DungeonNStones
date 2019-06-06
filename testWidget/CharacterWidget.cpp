@@ -1,61 +1,26 @@
 #include "stdafx.h"
 #include "CharacterWidget.h"
 
-CharacterWidget::CharacterWidget(QWidget *parent, Character * character)
+CharacterWidget::CharacterWidget(QWidget *parent)
 	: QWidget(parent)
 {
-	setCharacter(character);
-	setImage();
-	initialClickEvent();
+	ui.setupUi(this);
 }
 
 CharacterWidget::~CharacterWidget()
 {
 }
 
-QSize CharacterWidget::sizeHint() const
-{
-	return originSize;
-}
-
-void CharacterWidget::setCharacter(Character *character)
+void CharacterWidget::setCharacter(Character * character)
 {
 	this->character = character;
+	initialCharacter();
+	initialClickEvent();
 }
 
-Character * CharacterWidget::getCharacter() const
+Character * CharacterWidget::getCharacter()
 {
 	return character;
-}
-
-void CharacterWidget::paintEvent(QPaintEvent* event)
-{
-	QPainter painter(this);
-	painter.fillRect(event->rect(), QBrush(background));
-	painter.drawPixmap(foreground.rect(), foreground);
-	if (mouseHasEntered) {
-		painter.setPen(edge);
-		painter.drawRect(rect());
-	}
-}
-
-void CharacterWidget::mouseReleaseEvent(QMouseEvent * event)
-{
-	emit querySignal();
-}
-
-void CharacterWidget::enterEvent(QEvent * event)
-{
-	mouseHasEntered = true;
-	edge.setColor(QColor(0xFF, 0xFA, 0xCD, 0xDD));
-	edge.setWidth(10);
-	update();
-}
-
-void CharacterWidget::leaveEvent(QEvent * event)
-{
-	edge.setColor(background);
-	update();
 }
 
 void CharacterWidget::queryClicked()
@@ -63,15 +28,48 @@ void CharacterWidget::queryClicked()
 	emit showMessage(this);
 }
 
-void CharacterWidget::setImage()
+void CharacterWidget::mouseReleaseEvent(QMouseEvent * event)
 {
-	background = Qt::white;
-	foreground = QPixmap(":/skin/Resources/skin/" + character->skin);
-	foreground = foreground.scaled(QSize(100, 130));
+	emit querySignal();
+}
+
+void CharacterWidget::initialCharacter()
+{
+	this->character = character;
+	const auto skinPath = ":/skin/Resources/skin/" + character->skin;
+	if (character->skin.endsWith(".gif")) 
+	{
+		auto skin = new QMovie(skinPath);
+		auto skinSize = QSize(130, 200);
+		auto he = skinSize.height();
+		auto wi = skinSize.width();
+		if (wi > ui.foreground->size().width())
+		{
+			he *= ui.foreground->size().width();
+			he /= wi;
+			wi = ui.foreground->size().width();
+		}
+		if (he > ui.foreground->size().height())
+		{
+			wi *= ui.foreground->size().height();
+			wi /= he;
+			he = ui.foreground->size().height();
+		}
+		skinSize.setHeight(he);
+		skinSize.setWidth(wi);
+		skin->setScaledSize(skinSize);
+		ui.foreground->setMovie(skin);
+		skin->start();
+	}
+	else
+	{
+		QPixmap skin(skinPath);
+		skin = skin.scaled(ui.foreground->size(), Qt::KeepAspectRatio);
+		ui.foreground->setPixmap(skin);
+	}
 }
 
 void CharacterWidget::initialClickEvent()
 {
 	connect(this, SIGNAL(querySignal()), this, SLOT(queryClicked()));
 }
-

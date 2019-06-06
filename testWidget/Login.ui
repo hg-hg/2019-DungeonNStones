@@ -42,20 +42,9 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">*{
-	font-family:century gothic;
-	font-size:24px;
-}
-#LogIn{
-	background:url(E://LogInScene.jpg);
-}
-QFrame{
+        <string notr="true">QFrame{
 	background:#333;
 	border-radius:15px;
-}
-QToolButton{
-	border-radius:60px;
-	background:white;
 }
 QLabel{
 	color:white;
@@ -93,6 +82,12 @@ border-bottom:1px solid #717207;
           <height>100</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>century gothic</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="placeholderText">
          <string>User Name</string>
         </property>
@@ -105,6 +100,12 @@ border-bottom:1px solid #717207;
           <width>300</width>
           <height>50</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>monogramextended</family>
+          <pointsize>14</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>login</string>

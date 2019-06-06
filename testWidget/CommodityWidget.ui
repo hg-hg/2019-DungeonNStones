@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CommodityWidget</class>
+ <widget class="QWidget" name="CommodityWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>120</width>
+    <height>185</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CommodityWidget</string>
+  </property>
+  <widget class="CharacterWidget" name="characterWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>120</width>
+     <height>130</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="MainSceneButton" name="buyButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>150</y>
+     <width>50</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="testWidget.qrc">
+     <normaloff>:/button/Resources/button/Shop_button.png</normaloff>:/button/Resources/button/Shop_button.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>35</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="MainSceneButton" name="selectButton">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>150</y>
+     <width>50</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="testWidget.qrc">
+     <normaloff>:/button/Resources/button/YES_button.png</normaloff>:/button/Resources/button/YES_button.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>35</height>
+    </size>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>CharacterWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">Characterwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MainSceneButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">MainSceneButton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CommodityWidget</receiver>
+   <slot>updateMoney()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>164</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>50</x>
+     <y>267</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CommodityWidget</receiver>
+   <slot>mouseClickedBuy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>10</x>
+     <y>171</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CommodityWidget</receiver>
+   <slot>updateSelectedCharacter()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>108</x>
+     <y>166</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>112</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CommodityWidget</receiver>
+   <slot>mouseClickedSelect()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>86</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>80</x>
+     <y>279</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>updateMoney()</slot>
+  <slot>mouseClickedBuy()</slot>
+  <slot>updateSelectedCharacter()</slot>
+  <slot>mouseClickedSelect()</slot>
+ </slots>
+</ui>

@@ -19,7 +19,7 @@ private:
 	void initialStackWidget();
 	void initialVectors();
 	void initialLayoutMain();
-	void initialEvent();
+	//void initialEvent();
 	void initialMoney();
 private slots:
 	void displayMessage(CharacterWidget * current);

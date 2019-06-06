@@ -9,7 +9,6 @@ ShopBoard::ShopBoard(QWidget *parent)
 	initialVectors();
 	initialMainWidget();
 	initialStackWidget();
-	initialEvent();
 	initialSelectedCharacter();
 	initialMoney();
 }
@@ -28,12 +27,15 @@ void ShopBoard::initialSelectedCharacter()
 			it->getSelectButton()->setText("Selected");
 			it->getSelectButton()->setEnabled(false);
 		}
+		else
+		{
+			it->getSelectButton()->setText("SELECT");
+		}
 	}
 }
 
 void ShopBoard::initialMainWidget()
 {
-	
 	initialLayoutMain();
 }
 
@@ -52,6 +54,9 @@ void ShopBoard::initialVectors()
 	for (auto it : map) {
 		auto tempCommodity = new CommodityWidget(this, it, account);
 		commodities.push_back(tempCommodity);
+		connect(tempCommodity->getCharacterWidget(), SIGNAL(showMessage(CharacterWidget *)), this, SLOT(displayMessage(CharacterWidget*)));
+		connect(tempCommodity, SIGNAL(updateSelect()), this, SLOT(updateSelectedCharacter()));
+		connect(tempCommodity, SIGNAL(updateMoney()), this, SLOT(updateMoney()));
 		auto tempMessage = new MessageWidget(this, it);
 		messages.insert(it, tempMessage);
 	}
@@ -64,23 +69,20 @@ void ShopBoard::initialLayoutMain()
 	auto count = 0;
 	while (count < commodities.size())
 	{
-		commodities[count]->setMaximumSize(130, 240);
+		commodities[count]->setMaximumSize(120, 240);
 		ui.layout->addWidget(commodities[count], count / 4, count % 4, 1, 1);
 		count++;
 	}
 }
 
-void ShopBoard::initialEvent()
-{
-	for (auto it : commodities)
-	{
-		connect(it->getCharacterWidget(), SIGNAL(showMessage(CharacterWidget *)), this, SLOT(displayMessage(CharacterWidget*)));
-		connect(it, SIGNAL(updateSelected()), this, SLOT(updateSelectedCharacter()));
-		connect(it, SIGNAL(updateMoney()), this, SLOT(updateMoney()));
-	}
-	for (auto it : messages)
-		connect(it->getReturnButton(), SIGNAL(returnSignal()), this, SLOT(deleteMessage()));
-}
+//void ShopBoard::initialEvent()
+//{
+//	for (auto it : commodities)
+//	{
+//		connect(it->getCharacterWidget(), SIGNAL(showMessage(CharacterWidget *)), this, SLOT(displayMessage(CharacterWidget*)));
+//		connect(it, SIGNAL(updateSelect()), this, SLOT(updateSelectedCharacter()));
+//	}
+//}
 
 void ShopBoard::initialMoney()
 {

@@ -13,11 +13,10 @@ ReturnButton::~ReturnButton() = default;
 
 void ReturnButton::initialStyle()
 {
-	/*auto font = QFont("Microsoft YaHei", 8, 50, true);
+	QFont font = this->font();
+	font.setPixelSize(25);
 	setFont(font);
-	setText("RETURN");
-	setStyleSheet("color: black");
-	setMaximumSize(70, 40);*/
+	setStyleSheet("color:white");
 }
 
 void ReturnButton::zoomPush()

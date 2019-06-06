@@ -27,6 +27,9 @@
 	image: url(:/button/Resources/button/Slide_button.png)
 }</string>
    </property>
+   <property name="maximum">
+    <number>100</number>
+   </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
@@ -45,6 +48,9 @@
 	image: url(:/button/Resources/button/Slide_button.png)
 }</string>
    </property>
+   <property name="maximum">
+    <number>100</number>
+   </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
@@ -54,31 +60,37 @@
     <rect>
      <x>50</x>
      <y>140</y>
-     <width>72</width>
-     <height>15</height>
+     <width>81</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>bgm</string>
+    <string>BGM</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>350</y>
-     <width>72</width>
-     <height>15</height>
+     <y>340</y>
+     <width>81</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>effct</string>
+    <string>SE</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="MainSceneButton" name="backToMain">
@@ -107,26 +119,32 @@
   <widget class="QLabel" name="bgmLabel">
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>150</y>
-     <width>72</width>
-     <height>15</height>
+     <x>620</x>
+     <y>140</y>
+     <width>81</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="seLabel">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>350</y>
-     <width>72</width>
-     <height>15</height>
+     <x>620</x>
+     <y>340</y>
+     <width>81</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -134,6 +152,9 @@
    </property>
    <property name="text">
     <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="background">
