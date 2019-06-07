@@ -33,7 +33,7 @@ public:
 
 private:
 	Ui::PlayerWidget ui;
-	Character* character;
+	Character* character = new Character(this);
 	QString account = "NULL";
 	SkillManager* sm = new SkillManager(this);
 	int hp = 0, mp = 0;

@@ -36,5 +36,5 @@ private:
 	AccountManager* am = new AccountManager();
 	Account* account = Account::getInstance();
 	Client* client = Client::getInstance();
-	bool entered;
+	bool entered = false;
 };

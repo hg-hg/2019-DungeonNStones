@@ -17,7 +17,7 @@ MessageWidget::~MessageWidget()
 
 void MessageWidget::setCharacter(Character* character)
 {
-	this->character = character;
+	this->character->setData(character);
 }
 
 void MessageWidget::initialDisplay()
@@ -32,7 +32,7 @@ void MessageWidget::initialDisplay()
 		ui.gridLayout->addWidget(labels[i].first, i, 0, 1, 1);
 		ui.gridLayout->addWidget(labels[i].second, i, 1, 1, 1);
 	}
-	const auto description = new QLabel("Description :");
+	const auto description = new QLabel("Description :", this);
 	description->setStyleSheet("color : white");
 	ui.gridLayout->addWidget(description, i, 0, 1, 1);
 	initialDescription();
@@ -41,7 +41,9 @@ void MessageWidget::initialDisplay()
 	
 	if (skinPath.endsWith(".gif"))
 	{
-		auto skin = new QMovie(skinPath);
+		auto skin = new QMovie(this);
+		skin->setFileName(skinPath);
+
 		auto skinSize = QSize(130, 200);
 		auto he = skinSize.height();
 		auto wi = skinSize.width();
@@ -74,14 +76,14 @@ void MessageWidget::initialReturnEvent()
 void MessageWidget::initialLabels()
 {
 	labels.clear();
-	const auto name = new QLabel("Name : ");
-	const auto nameContent = new QLabel(character->name);
-	const auto hp = new QLabel("HP : ");
-	const auto hpContent = new QLabel(QString::number(character->hp));
-	const auto mp = new QLabel("MP : ");
-	const auto mpContent = new QLabel(QString::number(character->mp));
-	const auto price = new QLabel("Price : ");
-	const auto priceContent = new QLabel(QString::number(character->price));
+	const auto name = new QLabel("Name : ", this);
+	const auto nameContent = new QLabel(character->name, this);
+	const auto hp = new QLabel("HP : ", this);
+	const auto hpContent = new QLabel(QString::number(character->hp), this);
+	const auto mp = new QLabel("MP : ", this);
+	const auto mpContent = new QLabel(QString::number(character->mp), this);
+	const auto price = new QLabel("Price : ", this);
+	const auto priceContent = new QLabel(QString::number(character->price), this);
 	labels.push_back(QPair<QLabel*, QLabel*>(name, nameContent));
 	labels.push_back(QPair<QLabel*, QLabel*>(hp, hpContent));
 	labels.push_back(QPair<QLabel*, QLabel*>(mp, mpContent));

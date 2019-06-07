@@ -8,7 +8,7 @@ PVE::PVE(QWidget *parent)
 	ui.setupUi(this);
 	//Account * account = Account::getInstance();
 	ui.stackedWidget->setCurrentWidget(ui.playing);
-	ui.toast->setCurrentWidget(ui.escapePage);
+	//ui.toast->setCurrentWidget(ui.escapePage);
 	connect(ui.gameBoard, SIGNAL(sendPlayerDead(QString)), this, SLOT(playerDead(QString)));
 	ui.gameBoard->setData(CharacterManager::getInstance()->getCharacter("AutoRobot"));
 	ui.gameBoard->setLocalGame(true);
@@ -16,11 +16,12 @@ PVE::PVE(QWidget *parent)
 
 PVE::~PVE()
 {
+	qDebug();
 }
 
 void PVE::confirm()
 {
-	ui.toast->setCurrentWidget(ui.continuePage);
+	//ui.toast->setCurrentWidget(ui.continuePage);
 }
 
 void PVE::escape()
@@ -36,7 +37,7 @@ void PVE::continueGame()
 {
 	ui.gameBoard->restart();
 	ui.stackedWidget->setCurrentWidget(ui.playing);
-	ui.toast->setCurrentWidget(ui.escapePage);
+	//ui.toast->setCurrentWidget(ui.escapePage);
 }
 
 void PVE::quitGame()

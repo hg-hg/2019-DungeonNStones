@@ -26,5 +26,6 @@ signals:
 
 private:
 	Ui::CharacterWidget ui;
-	Character * character;
+
+	Character * character = new Character(this);
 };

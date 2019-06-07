@@ -11,6 +11,7 @@ CommodityWidget::CommodityWidget(QWidget* parent, Character* character)
 
 CommodityWidget::~CommodityWidget()
 {
+	qDebug();
 }
 
 void CommodityWidget::setCharacterWidget(Character * character)

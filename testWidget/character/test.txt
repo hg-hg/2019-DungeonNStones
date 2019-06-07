@@ -5,6 +5,4 @@ just test
 1000
 test.png
 randomRect
-randomStone
-exchangeStone
 changeBoard

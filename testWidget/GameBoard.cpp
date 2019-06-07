@@ -57,6 +57,7 @@ void GameBoard::playerDead(QString playerAccount)
 	Account* account = Account::getInstance();
 	if (playerAccount == account->name) account->addMoney(300);
 	else account->addMoney(1000);
+	ui.gameCore->waitForStopAnimation();
 	if (localGame) emit sendPlayerDead(playerAccount);
 	else Client::getInstance()->sendDead(account->name);
 }
@@ -70,11 +71,12 @@ void GameBoard::restart()
 
 GameBoard::~GameBoard()
 {
+	qDebug();
 }
 
 void GameBoard::setData(Character* enemyCha)
 {
-	auto account = Account::getInstance();
+	const auto account = Account::getInstance();
 	ui.player->setAccount(account->name);
 	ui.player->setCharacter(account->getSelectedCharacter());
 	ui.enemy->setAccount(enemyAccount);

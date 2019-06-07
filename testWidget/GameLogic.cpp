@@ -15,6 +15,13 @@ GameLogic::GameLogic(QWidget* parent)
 	connect(crushAnimation, SIGNAL(finished()), this, SLOT(gravity()));
 }
 
+GameLogic::~GameLogic()
+{
+	delete gravityAnimation;
+	delete crushAnimation;
+	delete exchangeAnimation;
+}
+
 void GameLogic::clickedStone(Stone* stone)
 {
 	if (stone->isAnimating) return;

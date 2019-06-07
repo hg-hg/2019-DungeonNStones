@@ -4,11 +4,6 @@
 #include <QSize>
 #include "const.h"
 
-//QT_BEGIN_NAMESPACE
-//class QMouseEvent;
-//class QPaintEvent;
-//QT_END_NAMESPACE
-
 class Stone : public QWidget
 {
 	Q_OBJECT

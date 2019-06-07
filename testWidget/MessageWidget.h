@@ -4,7 +4,6 @@
 #include <QLabel>
 #include "Character.h"
 #include "ui_MessageWidget.h"
-#include "ReturnButton.h"
 
 class MessageWidget : public QWidget
 {
@@ -25,7 +24,7 @@ private slots:
 	void deleteThis();
 private:
 	Ui::MessageWidget ui;
-	Character * character;
+	Character * character = new Character(this);
 	QVector<QPair<QLabel*, QLabel*>> labels;
 	
 };

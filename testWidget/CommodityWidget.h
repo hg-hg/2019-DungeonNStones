@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QWidget>
-#include <QMessageBox>
 #include "ui_CommodityWidget.h"
 #include "Character.h"
 #include "Account.h"

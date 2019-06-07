@@ -26,137 +26,126 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
-    <widget class="QFrame" name="frame">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QStackedWidget" name="stackedWidget">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1112</width>
-        <height>641</height>
-       </rect>
-      </property>
-      <property name="currentIndex">
-       <number>1</number>
-      </property>
-      <widget class="QWidget" name="playing">
-       <layout class="QGridLayout" name="gridLayout_2">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item row="0" column="0">
-         <widget class="GameBoard" name="gameBoard" native="true"/>
-        </item>
-       </layout>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <widget class="QWidget" name="playing">
+      <widget class="GameBoard" name="gameBoard" native="true">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1112</width>
+         <height>641</height>
+        </rect>
+       </property>
       </widget>
-      <widget class="QWidget" name="gameOver">
-       <widget class="QLabel" name="movie">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>961</width>
-          <height>711</height>
-         </rect>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
+      <widget class="MainSceneButton" name="escape">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>560</y>
+         <width>100</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="testWidget.qrc">
+         <normaloff>:/button/Resources/button/Exit_button.png</normaloff>:/button/Resources/button/Exit_button.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>70</height>
+        </size>
+       </property>
       </widget>
      </widget>
-     <widget class="QStackedWidget" name="toast">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>591</y>
-        <width>1112</width>
-        <height>50</height>
-       </rect>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>50</height>
-       </size>
-      </property>
-      <widget class="QWidget" name="escapePage">
-       <widget class="MainSceneButton" name="escape">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>1055</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>逃跑</string>
-        </property>
-       </widget>
+     <widget class="QWidget" name="gameOver">
+      <widget class="QLabel" name="askIfContinue">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>360</y>
+         <width>491</width>
+         <height>301</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>50</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Continue?</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
-      <widget class="QWidget" name="continuePage">
-       <widget class="QLabel" name="askIfContinue">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>20</y>
-          <width>72</width>
-          <height>15</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>是否继续？</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="continueGame">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>10</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>是</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="quitGame">
-        <property name="geometry">
-         <rect>
-          <x>650</x>
-          <y>10</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>否</string>
-        </property>
-       </widget>
+      <widget class="QPushButton" name="continueGame">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>570</y>
+         <width>100</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="testWidget.qrc">
+         <normaloff>:/button/Resources/button/YES_button.png</normaloff>:/button/Resources/button/YES_button.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>70</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="quitGame">
+       <property name="geometry">
+        <rect>
+         <x>940</x>
+         <y>570</y>
+         <width>100</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="testWidget.qrc">
+         <normaloff>:/button/Resources/button/NO_button.png</normaloff>:/button/Resources/button/NO_button.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>70</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QLabel" name="movie">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>90</y>
+         <width>431</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Movie</string>
+       </property>
       </widget>
      </widget>
     </widget>
@@ -166,18 +155,20 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
+   <class>MainSceneButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">mainscenebutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>GameBoard</class>
    <extends>QWidget</extends>
    <header location="global">Gameboard.h</header>
    <container>1</container>
   </customwidget>
-  <customwidget>
-   <class>MainSceneButton</class>
-   <extends>QPushButton</extends>
-   <header location="global">mainscenebutton.h</header>
-  </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="testWidget.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>escape</sender>
@@ -186,12 +177,12 @@
    <slot>escape()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>656</x>
-     <y>1179</y>
+     <x>79</x>
+     <y>591</y>
     </hint>
     <hint type="destinationlabel">
-     <x>858</x>
-     <y>766</y>
+     <x>129</x>
+     <y>676</y>
     </hint>
    </hints>
   </connection>
@@ -202,12 +193,12 @@
    <slot>continueGame()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>317</x>
-     <y>869</y>
+     <x>150</x>
+     <y>608</y>
     </hint>
     <hint type="destinationlabel">
-     <x>403</x>
-     <y>766</y>
+     <x>170</x>
+     <y>688</y>
     </hint>
    </hints>
   </connection>
@@ -218,12 +209,12 @@
    <slot>quitGame()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>708</x>
-     <y>869</y>
+     <x>994</x>
+     <y>626</y>
     </hint>
     <hint type="destinationlabel">
-     <x>767</x>
-     <y>766</y>
+     <x>972</x>
+     <y>708</y>
     </hint>
    </hints>
   </connection>

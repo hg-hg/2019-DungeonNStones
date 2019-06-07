@@ -54,7 +54,7 @@ void Player::skillInvoke(const QString& skill, const int cost)
 
 void Player::setCharacter(Character* ch)
 {
-	character = ch;
+	character->setData(ch);
 	initialStatus();
 	for (const auto& name : character->skills)
 	{
@@ -68,7 +68,8 @@ void Player::setCharacter(Character* ch)
 	const auto skinPath = ":/skin/Resources/skin/" + character->skin;
 	if (character->skin.endsWith(".gif"))
 	{
-		auto skin = new QMovie(skinPath);
+		auto skin = new QMovie(this);
+		skin->setFileName(skinPath);
 
 		auto skinSize = QSize(320, 560);
 		//QSize skinSize = skin->currentImage().size();

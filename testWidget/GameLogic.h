@@ -27,7 +27,8 @@ Q_OBJECT
 	/*functions*/
 public:
 	GameLogic(QWidget* parent = Q_NULLPTR);
-
+	~GameLogic();
+	void waitForStopAnimation() const;
 	void setMoveData(int fx, int fy, int sx, int sy);
 private:
 	QPoint getPosition(const Stone* stone) const;
@@ -42,15 +43,9 @@ private:
 	void evaluatePath(QVector<QPair<int, int>>& path) const;
 	void evaluateStonesToCrush(QVector<QPair<int, int>>& path);
 	void animateCrushingStones();
-	void waitForStopAnimation() const;
 	void enableAllStones();
-signals:
-	void stonesCrushing(int hp, int damage, int mp, QString account);
 
-public slots:
-	void useSkill(const QString& skill, const QString& account);
-	void fillBoard();
-	void clickedStone(Stone* stone); //invoke by Stone::clicked()
+	/**skills**/
 	void deleteStone();
 	void deleteStone(int col, int row);
 	void changeStone(int row, int col, int type);
@@ -64,6 +59,14 @@ public slots:
 	void bladeSlash(const QString& account);
 	void lightning(const QString& account);
 	void meteor(const QString& account);
+signals:
+	void stonesCrushing(int hp, int damage, int mp, QString account);
+
+public slots:
+	void useSkill(const QString& skill, const QString& account);
+	void fillBoard();
+	void clickedStone(Stone* stone); //invoke by Stone::clicked()
+	
 protected slots:
 	void endMove();
 	void gravity();

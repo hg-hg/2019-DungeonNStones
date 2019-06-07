@@ -9,11 +9,12 @@ CharacterWidget::CharacterWidget(QWidget *parent)
 
 CharacterWidget::~CharacterWidget()
 {
+	delete character;
 }
 
 void CharacterWidget::setCharacter(Character * character)
 {
-	this->character = character;
+	this->character->setData(character);
 	initialCharacter();
 	initialClickEvent();
 }
@@ -35,11 +36,11 @@ void CharacterWidget::mouseReleaseEvent(QMouseEvent * event)
 
 void CharacterWidget::initialCharacter()
 {
-	this->character = character;
 	const auto skinPath = ":/skin/Resources/skin/" + character->skin;
 	if (character->skin.endsWith(".gif")) 
 	{
-		auto skin = new QMovie(skinPath);
+		auto skin = new QMovie(this);
+		skin->setFileName(skinPath);
 		auto skinSize = QSize(65, 100);
 		auto he = skinSize.height();
 		auto wi = skinSize.width();
