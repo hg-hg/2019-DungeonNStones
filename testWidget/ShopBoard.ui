@@ -14,14 +14,7 @@
    <string>ShopBoard</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMessageBox QLabel{
-	color: white
-}
-
-QMessageBox QPushButton {
-	color: white
-}
-</string>
+   <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">

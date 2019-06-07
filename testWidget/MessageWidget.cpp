@@ -76,14 +76,14 @@ void MessageWidget::initialReturnEvent()
 void MessageWidget::initialLabels()
 {
 	labels.clear();
-	const auto name = new QLabel("Name : ", this);
-	const auto nameContent = new QLabel(character->name, this);
-	const auto hp = new QLabel("HP : ", this);
-	const auto hpContent = new QLabel(QString::number(character->hp), this);
-	const auto mp = new QLabel("MP : ", this);
-	const auto mpContent = new QLabel(QString::number(character->mp), this);
-	const auto price = new QLabel("Price : ", this);
-	const auto priceContent = new QLabel(QString::number(character->price), this);
+	const auto name = new QLabel("Name : ", ui.gridLayoutWidget);
+	const auto nameContent = new QLabel(character->name, ui.gridLayoutWidget);
+	const auto hp = new QLabel("HP : ", ui.gridLayoutWidget);
+	const auto hpContent = new QLabel(QString::number(character->hp), ui.gridLayoutWidget);
+	const auto mp = new QLabel("MP : ", ui.gridLayoutWidget);
+	const auto mpContent = new QLabel(QString::number(character->mp), ui.gridLayoutWidget);
+	const auto price = new QLabel("Price : ", ui.gridLayoutWidget);
+	const auto priceContent = new QLabel(QString::number(character->price), ui.gridLayoutWidget);
 	labels.push_back(QPair<QLabel*, QLabel*>(name, nameContent));
 	labels.push_back(QPair<QLabel*, QLabel*>(hp, hpContent));
 	labels.push_back(QPair<QLabel*, QLabel*>(mp, mpContent));

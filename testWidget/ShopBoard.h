@@ -22,10 +22,9 @@ private:
 	void initialStackWidget();
 	void initialVectors();
 	void initialLayoutMain();
-	//void initialEvent();
 	void initialMoney();
 private slots:
-	void displayMessage(CharacterWidget * current);
+	void displayMessage(const QString& character);
 	void deleteMessage();
 	void updateSelectedCharacter();
 	void updateMoney();
@@ -37,7 +36,7 @@ private:
 	Ui::ShopBoard ui;
 
 	QVector<CommodityWidget *> commodities;
-	QMap<Character *, MessageWidget *> messages;
+	QMap<QString, MessageWidget *> messages;
 	Account * account = Account::getInstance();
 
 	QIcon canSelect = QIcon(":/button/Resources/button/YES_button.png");

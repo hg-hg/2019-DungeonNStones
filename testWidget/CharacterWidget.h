@@ -22,7 +22,7 @@ private slots:
 	void queryClicked();
 signals:
 	void querySignal();
-	void showMessage(CharacterWidget *);
+	void showMessage(QString);
 
 private:
 	Ui::CharacterWidget ui;

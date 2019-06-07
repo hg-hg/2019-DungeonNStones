@@ -50,10 +50,6 @@ void ShopBoard::initialMainWidget()
 
 void ShopBoard::initialStackWidget()
 {
-	const QPixmap background(":/background/Resources/background/ground.png");
-	QPalette palette;
-	palette.setBrush(QPalette::Background, background);
-	setPalette(palette);
 	for (auto it : messages)
 		ui.stack->addWidget(it);
 	ui.stack->setCurrentWidget(ui.page);
@@ -67,11 +63,11 @@ void ShopBoard::initialVectors()
 	for (auto it : map) {
 		auto tempCommodity = new CommodityWidget(this, it);
 		commodities.push_back(tempCommodity);
-		connect(tempCommodity->getCharacterWidget(), SIGNAL(showMessage(CharacterWidget *)), this, SLOT(displayMessage(CharacterWidget*)));
+		connect(tempCommodity->getCharacterWidget(), SIGNAL(showMessage(QString)), this, SLOT(displayMessage(QString)));
 		connect(tempCommodity, SIGNAL(updateSelect()), this, SLOT(updateSelectedCharacter()));
 		connect(tempCommodity, SIGNAL(updateMoney()), this, SLOT(updateMoney()));
 		auto tempMessage = new MessageWidget(this, it);
-		messages.insert(it, tempMessage);
+		messages.insert(it->name, tempMessage);
 		connect(tempMessage, SIGNAL(deleteSignal()), this, SLOT(deleteMessage()));
 	}
 }
@@ -95,9 +91,8 @@ void ShopBoard::initialMoney()
 	ui.moneyLabel->setText(QString::number(account->money));
 }
 
-void ShopBoard::displayMessage(CharacterWidget * current)
+void ShopBoard::displayMessage(const QString& character)
 {
-	const auto character = current->getCharacter();
 	ui.stack->setCurrentWidget(messages[character]);
 }
 

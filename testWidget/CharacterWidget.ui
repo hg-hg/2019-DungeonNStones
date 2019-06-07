@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>CharacterWidget</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QLabel" name="background">
    <property name="geometry">
     <rect>
@@ -21,6 +24,9 @@
      <width>120</width>
      <height>130</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -39,7 +45,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background: transparent;</string>
+    <string notr="true">QLabel#foreground{background: transparent;}</string>
    </property>
    <property name="text">
     <string/>

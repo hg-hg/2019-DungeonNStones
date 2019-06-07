@@ -84,7 +84,6 @@ void CommodityWidget::initialSelectConfirmMessage()
 {
 	QMessageBox msg(this);
 	msg.setWindowTitle("Confirm");
-	//msg.setWindowFlag(Qt::FramelessWindowHint);
 	msg.setText("Sure to select?");
 	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
 	if (msg.exec() == QMessageBox::Ok)

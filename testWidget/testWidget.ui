@@ -19,6 +19,20 @@
   <property name="windowTitle">
    <string>testWidget</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMessageBox QLabel {
+color: white;
+}
+
+QMessageBox {
+background-image: url(:/background/Resources/background/wall.png);
+}
+
+QMessageBox QPushButton#yes{
+border-image: url(:/button/Resources/button/YES_button.png);
+text: &quot;&quot;
+}</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">

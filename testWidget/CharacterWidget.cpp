@@ -26,7 +26,7 @@ Character * CharacterWidget::getCharacter()
 
 void CharacterWidget::queryClicked()
 {
-	emit showMessage(this);
+	emit showMessage(character->name);
 }
 
 void CharacterWidget::mouseReleaseEvent(QMouseEvent * event)
