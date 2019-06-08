@@ -48,7 +48,7 @@ private:
 	/**skills**/
 	void deleteStone();
 	void deleteStone(int col, int row);
-	void changeStone(int row, int col, int type);
+	void changeStone(int col, int row, int type);
 	void deleteRect();
 	void deleteRect(int col, int row, int width, int height);
 	void forceExchange();
@@ -59,6 +59,9 @@ private:
 	void bladeSlash(const QString& account);
 	void lightning(const QString& account);
 	void meteor(const QString& account);
+	void greedy(const QString& account);
+	void sinisterStrike(const QString& account);
+	void forceOfNature(const QString& account);
 signals:
 	void stonesCrushing(int hp, int damage, int mp, QString account);
 
@@ -79,6 +82,7 @@ public:
 private:
 	bool isAnimating = false;
 	bool countEffect = true;
+	int extraBonus = 0;
 	Stone* first;
 	Stone* second;
 	QPoint firstPos;

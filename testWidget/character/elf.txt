@@ -1,0 +1,8 @@
+Elf
+A skillful elf.
+500
+500
+1000
+elf.gif
+sinisterStrike
+forceOfNature

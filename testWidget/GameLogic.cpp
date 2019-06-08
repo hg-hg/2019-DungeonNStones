@@ -21,6 +21,7 @@ GameLogic::~GameLogic()
 
 void GameLogic::clickedStone(Stone* stone)
 {
+	//if (isAnimating) return;
 	if (stone->isAnimating) return;
 	const auto location = getPosition(stone);
 	if (willDrop(location)) return;
@@ -59,6 +60,7 @@ void GameLogic::deleteStone(const int col, const int row)
 {
 	if (!isPositionValid(col, row)) return;
 	if (board[col][row] == nullptr) return;
+	if (board[col][row]->isAnimating) return;
 	stoneToCrush.append(qMakePair(col, row));
 	gravity();
 }
@@ -84,6 +86,9 @@ void GameLogic::useSkill(const QString& skill, const QString& account)
 	else if (skill == "BladeSlash") bladeSlash(account);
 	else if (skill == "lightning") lightning(account);
 	else if (skill == "meteor") meteor(account);
+	else if (skill == "greedy") greedy(account);
+	else if (skill == "SinisterStrike") sinisterStrike(account);
+	else if (skill == "ForceOfNature") forceOfNature(account);
 }
 
 void GameLogic::fillBoard()
@@ -358,7 +363,7 @@ void GameLogic::enableAllStones()
 	for (auto& col : board) for (auto& row : col) row->isAnimating = false;
 }
 
-auto GameLogic::changeStone(const int row, const int col, const int type) -> void
+auto GameLogic::changeStone(const int col, const int row, const int type) -> void
 {
 	auto stone = board[col][row];
 	if (stone->TYPE == type) return;
@@ -480,6 +485,29 @@ void GameLogic::meteor(const QString& account)
 	countEffect = true;
 }
 
+void GameLogic::greedy(const QString& account)
+{
+	useSkill("Stone", account);
+	const auto random = qrand() % 7;
+	if (random < 5) greedy(account);
+}
+
+void GameLogic::sinisterStrike(const QString& account)
+{
+	extraBonus = 1;
+}
+
+void GameLogic::forceOfNature(const QString& account)
+{
+	const auto col = 3;
+	const auto row = 3;
+	const auto type = NORMAL_STONE;
+	changeStone(col, row, type);
+	changeStone(col + 1, row, type);
+	changeStone(col, row + 1, type);
+	changeStone(col + 1, row + 1, type);
+}
+
 void GameLogic::gravity()
 {
 	enableAllStones();
@@ -505,6 +533,11 @@ void GameLogic::gravity()
 	{
 		if (bonus <= 3) bonus = 1;
 		else bonus -= 2;
+		if (extraBonus)
+		{
+			bonus += extraBonus;
+			extraBonus = 0;
+		}
 		hp *= bonus;
 		damage *= bonus;
 		mp *= bonus;
