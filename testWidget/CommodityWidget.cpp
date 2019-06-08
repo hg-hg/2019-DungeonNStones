@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CommodityWidget.h"
-
+#include "ConfirmBox.h"
 CommodityWidget::CommodityWidget(QWidget* parent, Character* character)
 	: QWidget(parent)
 {
@@ -45,19 +45,15 @@ void CommodityWidget::initialButton()
 	else
 	{
 		ui.selectButton->setVisible(false);
-		//ui.cost->setText(QString::number(ui.characterWidget->getCharacter()->price));
-		//ui.selectButton->setEnabled(false);
 	}
 }
 
 void CommodityWidget::initialBuyConfirmMessage()
-{
-	QMessageBox msg(this);
-	msg.setWindowTitle("Confirm");
-	msg.setText("Sure to buy?");
-	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-
-	if (msg.exec() == QMessageBox::Ok)
+{   
+	auto c = new ConfirmBox(this);
+	
+	c->setText("Sure to buy ?");
+	if (c->exec() == 1)
 	{
 		const auto name = ui.characterWidget->getCharacter()->name;
 		const auto cost = ui.characterWidget->getCharacter()->price;
@@ -71,22 +67,19 @@ void CommodityWidget::initialBuyConfirmMessage()
 		}
 		else
 		{
-			QMessageBox noEnoughMoney(this);
-			noEnoughMoney.setWindowTitle("Message");
-			noEnoughMoney.setText("You don't have enough money");
-			noEnoughMoney.setStandardButtons(QMessageBox::Ok);
-			noEnoughMoney.exec();
+			auto noEnoughMoney = new ConfirmBox(this);
+			noEnoughMoney->setText("No enough money !");
+			noEnoughMoney->exec();
 		}
 	}
 }
 
 void CommodityWidget::initialSelectConfirmMessage()
 {
-	QMessageBox msg(this);
-	msg.setWindowTitle("Confirm");
-	msg.setText("Sure to select?");
-	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-	if (msg.exec() == QMessageBox::Ok)
+
+	auto c = new ConfirmBox(this);
+	c->setText("Sure to select ?");
+	if (c->exec() == 1)
 	{
 		const auto name = ui.characterWidget->getCharacter()->name;
 		account->setCharacter(name);

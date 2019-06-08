@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "PVE.h"
 #include "CharacterManager.h"
+#include "ConfirmBox.h"
 #include <QTimer>
 PVE::PVE(QWidget *parent)
 	: QWidget(parent)
@@ -26,11 +27,9 @@ void PVE::confirm()
 
 void PVE::escape()
 {
-	QMessageBox msg(this);
-	msg.setWindowTitle("escape");
-	msg.setText("are you sure?");
-	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-	if (msg.exec() == QMessageBox::Ok) emit mainScene();
+	auto c = new ConfirmBox(this);
+	c->setText("Are you sure?");
+	if (c->exec() == 1) emit mainScene();
 }
 
 void PVE::continueGame()

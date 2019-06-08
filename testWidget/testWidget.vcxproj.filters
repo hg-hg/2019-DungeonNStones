@@ -177,6 +177,9 @@
     <ClCompile Include="CommodityWidget.cpp">
       <Filter>Source Files\Shop</Filter>
     </ClCompile>
+    <ClCompile Include="ConfirmBox.cpp">
+      <Filter>Source Files\MainWindow</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -209,9 +212,6 @@
     <ClInclude Include="GeneratedFiles\ui_ShopBoard.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_MessageWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_Setting.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -222,6 +222,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_CommodityWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_ConfirmBox.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -328,6 +331,9 @@
     <QtMoc Include="CommodityWidget.h">
       <Filter>Header Files\Shop</Filter>
     </QtMoc>
+    <QtMoc Include="ConfirmBox.h">
+      <Filter>Header Files\MainWindow</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="testWidget.ui">
@@ -354,9 +360,6 @@
     <QtUic Include="ShopBoard.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="MessageWidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="Setting.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -364,6 +367,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="CommodityWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ConfirmBox.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

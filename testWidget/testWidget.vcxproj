@@ -129,6 +129,7 @@
     <ClCompile Include="CharacterWidget.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="CommodityWidget.cpp" />
+    <ClCompile Include="ConfirmBox.cpp" />
     <ClCompile Include="CrushAnimation.cpp" />
     <ClCompile Include="ExchangeAnimation.cpp" />
     <ClCompile Include="GameBoard.cpp" />
@@ -182,6 +183,10 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
     </QtMoc>
+    <QtMoc Include="ConfirmBox.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtMultimediaWidgets</IncludePath>
+    </QtMoc>
     <ClInclude Include="const.h" />
     <QtMoc Include="StoneManager.h" />
     <QtMoc Include="GameLogic.h" />
@@ -191,10 +196,10 @@
     <QtMoc Include="GameServer.h" />
     <ClInclude Include="GeneratedFiles\ui_CharacterWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_CommodityWidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_ConfirmBox.h" />
     <ClInclude Include="GeneratedFiles\ui_GameBoard.h" />
     <ClInclude Include="GeneratedFiles\ui_Login.h" />
     <ClInclude Include="GeneratedFiles\ui_MainScene.h" />
-    <ClInclude Include="GeneratedFiles\ui_MessageWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_player.h" />
     <ClInclude Include="GeneratedFiles\ui_PVE.h" />
     <ClInclude Include="GeneratedFiles\ui_PVP.h" />
@@ -228,10 +233,10 @@
   <ItemGroup>
     <QtUic Include="CharacterWidget.ui" />
     <QtUic Include="CommodityWidget.ui" />
+    <QtUic Include="ConfirmBox.ui" />
     <QtUic Include="GameBoard.ui" />
     <QtUic Include="Login.ui" />
     <QtUic Include="MainScene.ui" />
-    <QtUic Include="MessageWidget.ui" />
     <QtUic Include="player.ui" />
     <QtUic Include="PVE.ui" />
     <QtUic Include="PVP.ui" />

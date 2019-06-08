@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PVP.h"
+#include "ConfirmBox.h"
 #include "Client.h"
 #include "Account.h"
 #include <QTimer>
@@ -41,22 +42,18 @@ void PVP::continueMatching()
 void PVP::escape()
 {
 	ui.pushButton->setPicture("");
-	QMessageBox msg(this);
-	msg.setWindowTitle("escape");
-	msg.setText("are you sure?");
-	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-	if (msg.exec() == QMessageBox::Cancel) return;
+	auto c = new ConfirmBox(this);
+	c->setText("Are you sure?");
+	if (c->exec() == 0) return;
 	Client::getInstance()->sendEscapeGame();
 	quitGame();
 }
 
 void PVP::stopMatching()
 {
-	QMessageBox msg(this);
-	msg.setWindowTitle("stop matching");
-	msg.setText("are you sure?");
-	msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-	if (msg.exec() == QMessageBox::Cancel) return;
+	auto c = new ConfirmBox(this);
+	c->setText("Are you sure?");
+	if (c->exec() == 0) return;
 	Client::getInstance()->sendStopMatching();
 	quitGame();
 }

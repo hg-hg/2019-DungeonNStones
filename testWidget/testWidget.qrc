@@ -1,58 +1,58 @@
 <RCC>
-    <qresource prefix="/stone">
-        <file>Resources/stone/background.png</file>
-        <file>Resources/stone/balanced.png</file>
-        <file>Resources/stone/damage.png</file>
-        <file>Resources/stone/dm.png</file>
-        <file>Resources/stone/hd.png</file>
-        <file>Resources/stone/hm.png</file>
-        <file>Resources/stone/hp.png</file>
-        <file>Resources/stone/mp.png</file>
-    </qresource>
-    <qresource prefix="/skin">
-        <file>Resources/skin/defaultEnemy.png</file>
-        <file>Resources/skin/test.png</file>
-        <file>Resources/skin/big_demon.gif</file>
-        <file>Resources/skin/big_demon_ro.gif</file>
-        <file>Resources/skin/big_zombie.gif</file>
-        <file>Resources/skin/chort.gif</file>
-        <file>Resources/skin/elf.gif</file>
-        <file>Resources/skin/goblin.gif</file>
-        <file>Resources/skin/knight.gif</file>
-        <file>Resources/skin/wizzard.gif</file>
-    </qresource>
-    <qresource prefix="/font">
-        <file>Resources/font/FZJCXS.TTF</file>
-        <file>Resources/font/monogram_extended.ttf</file>
-    </qresource>
-    <qresource prefix="/button">
-        <file>Resources/button/Exit_button.png</file>
-        <file>Resources/button/PVE_button.png</file>
-        <file>Resources/button/PVE_button_p.png</file>
-        <file>Resources/button/PVP_button.png</file>
-        <file>Resources/button/PVP_button_p.png</file>
-        <file>Resources/button/Setting_button.png</file>
-        <file>Resources/button/Shop_button.png</file>
-        <file>Resources/button/NO_button.png</file>
-        <file>Resources/button/YES_button.png</file>
-        <file>Resources/button/Slide_button.png</file>
-        <file>Resources/button/Empty_button.png</file>
-        <file>Resources/button/Empty_button_tiny.png</file>
-    </qresource>
-    <qresource prefix="/background">
-        <file>Resources/background/wall.png</file>
-        <file>Resources/background/wall_character.png</file>
-        <file>Resources/background/wall_complex.png</file>
-        <file>Resources/background/wall_core.png</file>
-        <file>Resources/background/ground.png</file>
-        <file>Resources/background/shop_character.png</file>
-    </qresource>
-    <qresource prefix="/word">
-        <file>Resources/word/TryAgain_pic.png</file>
-    </qresource>
-    <qresource prefix="/sound">
-        <file>Resources/Sound/BGM.wav</file>
-        <file>Resources/Sound/Crush.wav</file>
-        <file>Resources/Sound/Gravity.wav</file>
-    </qresource>
+  <qresource prefix="/stone">
+    <file>Resources/stone/background.png</file>
+    <file>Resources/stone/balanced.png</file>
+    <file>Resources/stone/damage.png</file>
+    <file>Resources/stone/dm.png</file>
+    <file>Resources/stone/hd.png</file>
+    <file>Resources/stone/hm.png</file>
+    <file>Resources/stone/hp.png</file>
+    <file>Resources/stone/mp.png</file>
+  </qresource>
+  <qresource prefix="/skin">
+    <file>Resources/skin/defaultEnemy.png</file>
+    <file>Resources/skin/test.png</file>
+    <file>Resources/skin/big_demon.gif</file>
+    <file>Resources/skin/big_demon_ro.gif</file>
+    <file>Resources/skin/big_zombie.gif</file>
+    <file>Resources/skin/chort.gif</file>
+    <file>Resources/skin/elf.gif</file>
+    <file>Resources/skin/goblin.gif</file>
+    <file>Resources/skin/knight.gif</file>
+    <file>Resources/skin/wizzard.gif</file>
+  </qresource>
+  <qresource prefix="/font">
+    <file>Resources/font/FZJCXS.TTF</file>
+    <file>Resources/font/monogram_extended.ttf</file>
+  </qresource>
+  <qresource prefix="/button">
+    <file>Resources/button/Exit_button.png</file>
+    <file>Resources/button/PVE_button.png</file>
+    <file>Resources/button/PVE_button_p.png</file>
+    <file>Resources/button/PVP_button.png</file>
+    <file>Resources/button/PVP_button_p.png</file>
+    <file>Resources/button/Setting_button.png</file>
+    <file>Resources/button/Shop_button.png</file>
+    <file>Resources/button/NO_button.png</file>
+    <file>Resources/button/YES_button.png</file>
+    <file>Resources/button/Slide_button.png</file>
+    <file>Resources/button/Empty_button.png</file>
+    <file>Resources/button/Empty_button_tiny.png</file>
+  </qresource>
+  <qresource prefix="/background">
+    <file>Resources/background/wall.png</file>
+    <file>Resources/background/wall_character.png</file>
+    <file>Resources/background/wall_complex.png</file>
+    <file>Resources/background/wall_core.png</file>
+    <file>Resources/background/ground.png</file>
+    <file>Resources/background/shop_character.png</file>
+  </qresource>
+  <qresource prefix="/word">
+    <file>Resources/word/TryAgain_pic.png</file>
+  </qresource>
+  <qresource prefix="/sound">
+    <file>Resources/Sound/BGM.wav</file>
+    <file>Resources/Sound/Crush.wav</file>
+    <file>Resources/Sound/Gravity.wav</file>
+  </qresource>
 </RCC>
