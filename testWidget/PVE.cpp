@@ -56,7 +56,8 @@ void PVE::playerDead(QString playerAccount)
 		//moviePath = "./";
 		ui.movie->setText("huaji win");
 	}
-	//QMovie* m = new QMovie(moviePath);
+	//QMovie* m = new QMovie(this);
+	//m.setFilePath(moviePath);
 	//ui.movie->setMovie(m);
 	QTimer::singleShot(500, this, [=]() {
 		//change display movie time 500ms

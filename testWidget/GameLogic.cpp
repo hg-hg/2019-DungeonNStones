@@ -17,9 +17,6 @@ GameLogic::GameLogic(QWidget* parent)
 
 GameLogic::~GameLogic()
 {
-	delete gravityAnimation;
-	delete crushAnimation;
-	delete exchangeAnimation;
 }
 
 void GameLogic::clickedStone(Stone* stone)
@@ -39,13 +36,15 @@ void GameLogic::clickedStone(Stone* stone)
 	}
 	if (second != nullptr)
 	{
-		if (isTwoStonesConnected())
+		if (isTwoStonesConnected() && evaluate(Click))
 		{
-			QVector<QVector<bool>> visited(boardSize, QVector<bool>(boardSize, false));
-			//TODO: Evaluate the board, using dfs;
-			evaluate(Click, visited);
+			first = second = nullptr;
+		} else
+		{
+			first = second;
+			firstPos = secondPos;
+			second = nullptr;
 		}
-		first = second = nullptr;
 	}
 }
 
@@ -58,8 +57,6 @@ void GameLogic::deleteStone()
 
 void GameLogic::deleteStone(const int col, const int row)
 {
-	waitForStopAnimation();
-	//if (isAnimating) return;
 	if (!isPositionValid(col, row)) return;
 	if (board[col][row] == nullptr) return;
 	stoneToCrush.append(qMakePair(col, row));
@@ -77,6 +74,7 @@ void GameLogic::endMove()
 
 void GameLogic::useSkill(const QString& skill, const QString& account)
 {
+	waitForStopAnimation();
 	if (skill == "changeBoard") fillBoard();
 	else if (skill == "exchange") forceExchange();
 	else if (skill == "Rect") deleteRect();
@@ -151,7 +149,7 @@ QPoint GameLogic::getPosition(const Stone* stone) const
 bool GameLogic::willDrop(const QPoint location) const
 {
 	auto col = board[location.x()];
-	for (auto i = location.y(); i < 8; i++)
+	for (auto i = location.y(); i < boardSize; i++)
 	{
 		if (col[i]->isAnimating) return true;
 	}
@@ -160,13 +158,6 @@ bool GameLogic::willDrop(const QPoint location) const
 
 bool GameLogic::isTwoStonesConnected()
 {
-	/*for (int col = 0; col < boardSize; col++) {
-		auto r = board[col];
-		for (int row = 0; row < boardSize; row++) {
-			if (r[row] == first) firstPos = QPoint(col, row);
-			if (r[row] == second) secondPos = QPoint(col, row);
-		}
-	}*/
 	md = MoveData(firstPos.x(), firstPos.y(), secondPos.x(), secondPos.y());
 	if (abs(md.firstX - md.secondX) == 1 && md.firstY == md.secondY) return true; //Horizental
 	if (abs(md.firstY - md.secondY) == 1 && md.firstX == md.secondX) return true; //Vertical
@@ -248,7 +239,7 @@ bool GameLogic::isPositionValid(const int position) const
 	return (0 <= position && position < boardSize);
 }
 
-auto GameLogic::isPositionValid(const int col, int row) const -> bool
+auto GameLogic::isPositionValid(const int col, const int row) const -> bool
 {
 	return isPositionValid(col) && isPositionValid(row);
 }
@@ -330,11 +321,11 @@ void GameLogic::evaluatePath(QVector<QPair<int, int>>& path) const
 
 void GameLogic::evaluateStonesToCrush(QVector<QPair<int, int>>& path)
 {
-	//int hp = 0, damage = 0, mp = 0;
-	for (auto stone : path)
-	{
-		stoneToCrush.append(stone);
-	}
+	stoneToCrush.append(path);
+	//for (auto stone : path)
+	//{
+	//	stoneToCrush.append(stone);
+	//}
 }
 
 void GameLogic::animateCrushingStones()
@@ -367,9 +358,8 @@ void GameLogic::enableAllStones()
 	for (auto& col : board) for (auto& row : col) row->isAnimating = false;
 }
 
-auto GameLogic::changeStone(const int row, const int col, int type) -> void
+auto GameLogic::changeStone(const int row, const int col, const int type) -> void
 {
-	waitForStopAnimation();
 	auto stone = board[col][row];
 	if (stone->TYPE == type) return;
 	stoneManager.changeStone(stone, type, this);
@@ -387,7 +377,6 @@ void GameLogic::deleteRect()
 void GameLogic::deleteRect(const int col, const int row, const int width, const int height)
 {
 	countEffect = false;
-	waitForStopAnimation();
 	if (!isPositionValid(col, row)) return;
 	const auto destX = col + width;
 	const auto destY = row + height;
@@ -417,7 +406,6 @@ void GameLogic::forceExchange()
 
 void GameLogic::forceExchange(const int x1, const int y1, const int x2, const int y2)
 {
-	waitForStopAnimation();
 	setMoveData(x1, y1, x2, y2);
 	evaluate(Force);
 }
@@ -456,7 +444,6 @@ void GameLogic::bladeSlash(const QString& account)
 void GameLogic::lightning(const QString& account)
 {
 	countEffect = false;
-	waitForStopAnimation();
 	auto mp = 0;
 	for (auto i = 0; i < boardSize; i++) {
 		stoneToCrush.append(qMakePair(i, i));
@@ -473,7 +460,6 @@ void GameLogic::lightning(const QString& account)
 void GameLogic::meteor(const QString& account)
 {
 	countEffect = false;
-	waitForStopAnimation();
 	auto dam = 0, mp = 0;
 	const auto splitter = boardSize / 2;
 	for (auto col = 0; col < splitter; col++)
@@ -553,6 +539,7 @@ void GameLogic::gravity()
 	}
 
 	/*drop from maxDy above*/
+	isAnimating = true;
 	for (auto col = 0; col < boardSize; col++)
 	{
 		auto& column = board[col];
@@ -565,11 +552,11 @@ void GameLogic::gravity()
 			stone->show();
 			column[row] = stone;
 			stone->move(col * size, (row - maxDy) * size);
-			QPoint p(col * size, row * size);
+			const QPoint p(col * size, row * size);
 			gravityAnimation->add(column[row], p);
 		}
 	}
-	isAnimating = true;
+	
 	gravityAnimation->animate();
 }
 

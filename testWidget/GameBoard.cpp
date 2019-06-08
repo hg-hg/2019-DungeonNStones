@@ -52,12 +52,12 @@ void GameBoard::setLocalGame(const bool flag)
 
 void GameBoard::playerDead(QString playerAccount)
 {
+	//ui.gameCore->waitForStopAnimation();
 	ui.enemy->setGamePause(true);
 	ui.player->setGamePause(true);
 	Account* account = Account::getInstance();
 	if (playerAccount == account->name) account->addMoney(300);
 	else account->addMoney(1000);
-	ui.gameCore->waitForStopAnimation();
 	if (localGame) emit sendPlayerDead(playerAccount);
 	else Client::getInstance()->sendDead(account->name);
 }

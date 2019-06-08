@@ -24,6 +24,11 @@ void GravityAnimation::timerEvent(QTimerEvent* event)
 		auto pair = *it;
 		auto stone = pair.first;
 		auto des = pair.second;
+		if (!stone->isValid())
+		{
+			it = data.erase(it);
+			continue;
+		}
 		auto p = stone->pos();
 
 		auto flag = 2;
