@@ -1,6 +1,22 @@
 yuri
-500
-Test
+20800
+Wizzard
 Test
 Test2
 Knight
+THE BIG DEMON
+Wizzard
+7
+AutoRobot
+7
+7
+7
+7
+7
+7
+7
+7
+7
+7
+goblin
+Elf

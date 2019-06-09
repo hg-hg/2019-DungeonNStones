@@ -35,8 +35,8 @@ QDialog {
     <string/>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>Resources/button/YES_button.png</normaloff>Resources/button/YES_button.png</iconset>
+    <iconset resource="testWidget.qrc">
+     <normaloff>:/button/Resources/button/YES_button.png</normaloff>:/button/Resources/button/YES_button.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -58,8 +58,8 @@ QDialog {
     <string/>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>Resources/button/NO_button.png</normaloff>Resources/button/NO_button.png</iconset>
+    <iconset resource="testWidget.qrc">
+     <normaloff>:/button/Resources/button/NO_button.png</normaloff>:/button/Resources/button/NO_button.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -90,7 +90,7 @@ QDialog {
   <customwidget>
    <class>MainSceneButton</class>
    <extends>QPushButton</extends>
-   <header location="global">MainSceneButton.h</header>
+   <header location="global">mainscenebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>

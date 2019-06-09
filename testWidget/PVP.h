@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QWidget>
-#include "Client.h"
 #include "GameBoard.h"
 #include "ui_PVP.h"
 

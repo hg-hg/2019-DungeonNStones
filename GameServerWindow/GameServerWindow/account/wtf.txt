@@ -1,6 +1,8 @@
 wtf
-6000
-Knight
+5800
+Wizzard
 Test
 Test2
 Knight
+Wizzard
+7

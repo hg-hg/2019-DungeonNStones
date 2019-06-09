@@ -12,7 +12,7 @@ ConfirmBox::~ConfirmBox()
 {
 }
 
-void ConfirmBox::setText(QString text)
+void ConfirmBox::setText(const QString text)
 {
 	ui.label->setText(text);
 }
@@ -24,15 +24,15 @@ void ConfirmBox::mousePressEvent(QMouseEvent * e)
 
 void ConfirmBox::mouseMoveEvent(QMouseEvent * e)
 {
-	int dx = e->globalX() - last.x();
-	int dy = e->globalY() - last.y();
+	const auto dx = e->globalX() - last.x();
+	const auto dy = e->globalY() - last.y();
 	last = e->globalPos();
 	move(x() + dx, y() + dy);
 }
 
 void ConfirmBox::mouseReleaseEvent(QMouseEvent * e)
 {
-	int dx = e->globalX() - last.x();
-	int dy = e->globalY() - last.y();
+	const auto dx = e->globalX() - last.x();
+	const auto dy = e->globalY() - last.y();
 	move(x() + dx, y() + dy);
 }

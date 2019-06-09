@@ -8,7 +8,7 @@ QMediaPlayer* Sound::SEPlayer = new QMediaPlayer;
 
 Sound::Sound()
 {
-
+	initial();
 }
 
 
