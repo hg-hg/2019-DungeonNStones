@@ -227,6 +227,9 @@
     <ClInclude Include="GeneratedFiles\ui_ConfirmBox.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MessageWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="testWidget.h">
@@ -370,6 +373,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="ConfirmBox.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MessageWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

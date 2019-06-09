@@ -200,6 +200,7 @@
     <ClInclude Include="GeneratedFiles\ui_GameBoard.h" />
     <ClInclude Include="GeneratedFiles\ui_Login.h" />
     <ClInclude Include="GeneratedFiles\ui_MainScene.h" />
+    <ClInclude Include="GeneratedFiles\ui_MessageWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_player.h" />
     <ClInclude Include="GeneratedFiles\ui_PVE.h" />
     <ClInclude Include="GeneratedFiles\ui_PVP.h" />
@@ -237,6 +238,7 @@
     <QtUic Include="GameBoard.ui" />
     <QtUic Include="Login.ui" />
     <QtUic Include="MainScene.ui" />
+    <QtUic Include="MessageWidget.ui" />
     <QtUic Include="player.ui" />
     <QtUic Include="PVE.ui" />
     <QtUic Include="PVP.ui" />
