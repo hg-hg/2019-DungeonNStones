@@ -163,7 +163,7 @@
     </property>
    </widget>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="logoPic">
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -174,9 +174,6 @@
    </property>
    <property name="text">
     <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="testWidget.qrc">:/word/Resources/word/Title_pic.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>

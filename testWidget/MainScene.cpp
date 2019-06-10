@@ -5,6 +5,10 @@ MainScene::MainScene(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+	auto logo = new QMovie(this);
+	logo->setFileName(":/word/Resources/word/Title_pic.gif");
+	ui.logoPic->setMovie(logo);
+	logo->start();
 }
 
 MainScene::~MainScene()

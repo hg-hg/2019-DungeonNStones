@@ -49,7 +49,7 @@
     </qresource>
     <qresource prefix="/word">
         <file>Resources/word/TryAgain_pic.png</file>
-        <file>Resources/word/Title_pic.png</file>
+        <file>Resources/word/Title_pic.gif</file>
     </qresource>
     <qresource prefix="/sound">
         <file>Resources/Sound/BGM.wav</file>
