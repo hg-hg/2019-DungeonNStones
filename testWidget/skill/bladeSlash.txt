@@ -1,3 +1,3 @@
 BladeSlash
 Waving a long sword, destroy 2 lines of stones.
-50
+100

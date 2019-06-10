@@ -5,4 +5,3 @@ Test
 Test2
 Knight
 Wizzard
-7

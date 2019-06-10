@@ -11,22 +11,19 @@ AccountManager::~AccountManager()
 {
 }
 
-QString AccountManager::getAccount(QString accountName)
+QString AccountManager::getAccount(const QString accountName)
 {
-	auto fileName = "./account/" + accountName + ".txt";
+	const auto fileName = "./account/" + accountName + ".txt";
 	QFile file(fileName);
 	if (!file.open(QFile::ReadOnly | QFile::Text)) {
-		qDebug(); return false;
+		return QString::number(MessageType::RequestAccount) + "\n" + createNewAccount(accountName);
 	}
 	QTextStream in(&file);
-	QString name, character;
-	int money;
-	name = in.readLine();
-	money = in.readLine().toInt();
-	//current = new Account(this, cm);
-	QString message = QString::number(MessageType::RequestAccount) + "\n";
+	const auto name = in.readLine();
+	const auto money = in.readLine().toInt();
+	auto message = QString::number(MessageType::RequestAccount) + "\n";
 	message.append(name + "\n" + QString::number(money) + "\n");
-	character = in.readLine();
+	auto character = in.readLine();
 	message.append(character + "\n");
 	QStringList list;
 	while (!in.atEnd()) {
@@ -39,7 +36,18 @@ QString AccountManager::getAccount(QString accountName)
 	return message;
 }
 
-void AccountManager::setAccount(QString accountName, QString str)
+QString AccountManager::createNewAccount(const QString accountName)
+{
+	const auto fileName = "./account/" + accountName + ".txt";
+	QFile file(fileName);
+	file.open(QFile::WriteOnly | QFile::Text);
+	QTextStream out(&file);
+	auto message = accountName + "\n" + QString::number(0) + "\n" + "Knight" + "\n" + QString::number(1)+ "\n" +"Knight";
+	out << message;
+	return message;
+}
+
+void AccountManager::setAccount(const QString accountName, QString str)
 {
 	auto fileName = "./account/" + accountName + ".txt";
 	QFile file(fileName);
@@ -50,4 +58,3 @@ void AccountManager::setAccount(QString accountName, QString str)
 	if (str[str.size() - 1] == "\n") str.chop(1);
 	out << accountName << "\n" << str;
 }
-

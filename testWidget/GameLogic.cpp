@@ -494,7 +494,7 @@ void GameLogic::greedy(const QString& account)
 
 void GameLogic::sinisterStrike(const QString& account)
 {
-	extraBonus = 1;
+	extraBonus++;
 }
 
 void GameLogic::forceOfNature(const QString& account)

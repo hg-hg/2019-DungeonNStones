@@ -49,16 +49,15 @@ void PVE::playerDead(QString playerAccount)
 	ui.stackedWidget->setCurrentWidget(ui.gameOver);
 	QString moviePath;
 	if (playerAccount == ui.gameBoard->enemyAccount) {
-		//moviePath = "./";
-		ui.movie->setText("you win");
+		moviePath = ":/skin/Resources/skin/" + Account::getInstance()->getSelectedCharacter()->skin;
+		const auto movie = new QMovie(this);
+		movie->setFileName(moviePath);
+		ui.movie->setMovie(movie);
+		movie->start();
 	}
 	else {
-		//moviePath = "./";
-		ui.movie->setText("huaji win");
+		ui.movie->setPixmap(QPixmap(":/word/Resources/word/newBee.png"));
 	}
-	//QMovie* m = new QMovie(this);
-	//m.setFilePath(moviePath);
-	//ui.movie->setMovie(m);
 	QTimer::singleShot(500, this, [=]() {
 		//change display movie time 500ms
 		confirm();

@@ -67,6 +67,9 @@
       </widget>
      </widget>
      <widget class="QWidget" name="gameOver">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <widget class="QLabel" name="askIfContinue">
        <property name="geometry">
         <rect>
@@ -81,6 +84,9 @@
          <pointsize>50</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
        <property name="text">
         <string>Continue?</string>
        </property>
@@ -91,8 +97,8 @@
       <widget class="QPushButton" name="continueGame">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>570</y>
+         <x>60</x>
+         <y>490</y>
          <width>100</width>
          <height>70</height>
         </rect>
@@ -114,8 +120,8 @@
       <widget class="QPushButton" name="quitGame">
        <property name="geometry">
         <rect>
-         <x>940</x>
-         <y>570</y>
+         <x>920</x>
+         <y>490</y>
          <width>100</width>
          <height>70</height>
         </rect>
@@ -137,16 +143,37 @@
       <widget class="QLabel" name="movie">
        <property name="geometry">
         <rect>
-         <x>330</x>
-         <y>90</y>
-         <width>431</width>
-         <height>261</height>
+         <x>180</x>
+         <y>10</y>
+         <width>731</width>
+         <height>441</height>
         </rect>
        </property>
        <property name="text">
-        <string>Movie</string>
+        <string/>
        </property>
       </widget>
+      <widget class="QLabel" name="backPic">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1112</width>
+         <height>641</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/background/Resources/background/wall.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <zorder>backPic</zorder>
+      <zorder>askIfContinue</zorder>
+      <zorder>continueGame</zorder>
+      <zorder>quitGame</zorder>
+      <zorder>movie</zorder>
      </widget>
     </widget>
    </item>

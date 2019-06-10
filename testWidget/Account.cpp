@@ -63,6 +63,7 @@ void Account::sendAccountInfo() const
 	list.append(name);
 	list.append(QString::number(money));
 	list.append(selectedCharacter->name);
+	list.append(QString::number(characters.size()));
 	for (auto c : characters) list.append(c);
 	Client::getInstance()->sendAccountInfo(list);
 }
