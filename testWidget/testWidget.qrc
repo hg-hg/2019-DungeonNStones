@@ -50,6 +50,7 @@
     <qresource prefix="/word">
         <file>Resources/word/TryAgain_pic.png</file>
         <file>Resources/word/Title_pic.gif</file>
+        <file>Resources/word/Icon_pic.png</file>
     </qresource>
     <qresource prefix="/sound">
         <file>Resources/Sound/BGM.wav</file>
