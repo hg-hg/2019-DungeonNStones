@@ -42,9 +42,11 @@ QString AccountManager::createNewAccount(const QString accountName)
 	QFile file(fileName);
 	file.open(QFile::WriteOnly | QFile::Text);
 	QTextStream out(&file);
-	auto message = accountName + "\n" + QString::number(0) + "\n" + "Knight" + "\n" + QString::number(1)+ "\n" +"Knight";
-	out << message;
-	return message;
+	const auto message = accountName + "\n0\nKnight\n";
+	const auto sendToClient = message + "1\nKnight";
+	const auto writeToFile = message + "Knight";
+	out << writeToFile;
+	return sendToClient;
 }
 
 void AccountManager::setAccount(const QString accountName, QString str)

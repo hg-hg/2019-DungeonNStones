@@ -1,7 +1,6 @@
 yuri
-Wizzard
 20300
-yuri
+Wizzard
 Test
 Test2
 Knight

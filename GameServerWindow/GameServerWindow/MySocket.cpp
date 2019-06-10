@@ -46,7 +46,10 @@ void MySocket::receiveGameData()
 void MySocket::accountChanged()
 {
 	AccountManager am;
-	auto str = getLine() + "\n" + getLine() + "\n" + getLine() + "\n"; // account, money, selected
+	const auto account = getLine();
+	const auto money = getLine();
+	const auto selectedCharacter = getLine();
+	auto str = money + "\n" + selectedCharacter + "\n"; // account, money, selected
 	const auto amount = getLine().toInt();
 	for (auto i = 0; i < amount; i++) str.append(getLine() + "\n");
 	am.setAccount(account, str);
