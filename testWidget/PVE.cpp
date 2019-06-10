@@ -47,16 +47,19 @@ void PVE::quitGame()
 void PVE::playerDead(QString playerAccount)
 {
 	ui.stackedWidget->setCurrentWidget(ui.gameOver);
-	QString moviePath;
 	if (playerAccount == ui.gameBoard->enemyAccount) {
-		moviePath = ":/skin/Resources/skin/" + Account::getInstance()->getSelectedCharacter()->skin;
+		const auto moviePath = ":/skin/Resources/skin/" + Account::getInstance()->getSelectedCharacter()->skin;
 		const auto movie = new QMovie(this);
 		movie->setFileName(moviePath);
 		ui.movie->setMovie(movie);
 		movie->start();
+		ui.loser->setVisible(false);
+		ui.movie->setVisible(true);
 	}
 	else {
-		ui.movie->setPixmap(QPixmap(":/word/Resources/word/newBee.png"));
+		ui.loser->setPixmap(QPixmap(":/word/Resources/word/newBee.png"));
+		ui.loser->setVisible(true);
+		ui.movie->setVisible(false);
 	}
 	QTimer::singleShot(500, this, [=]() {
 		//change display movie time 500ms

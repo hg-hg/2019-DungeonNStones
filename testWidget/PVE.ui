@@ -143,10 +143,10 @@
       <widget class="QLabel" name="movie">
        <property name="geometry">
         <rect>
-         <x>180</x>
-         <y>10</y>
-         <width>731</width>
-         <height>441</height>
+         <x>380</x>
+         <y>-120</y>
+         <width>320</width>
+         <height>560</height>
         </rect>
        </property>
        <property name="text">
@@ -169,11 +169,25 @@
         <string/>
        </property>
       </widget>
+      <widget class="QLabel" name="loser">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>50</y>
+         <width>421</width>
+         <height>401</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
       <zorder>backPic</zorder>
       <zorder>askIfContinue</zorder>
       <zorder>continueGame</zorder>
       <zorder>quitGame</zorder>
       <zorder>movie</zorder>
+      <zorder>loser</zorder>
      </widget>
     </widget>
    </item>

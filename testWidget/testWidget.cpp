@@ -13,14 +13,8 @@ Client * client = Client::getInstance();
 testWidget::testWidget(QWidget *parent)
 	: QMainWindow(parent)
 {
-	//am->setCurrentAccount("yuri");
-	//wtf
-	//account = am->getCurrentAccount();
 	client->connectToServer();
-	//获得了Account名
-	//client->requestAccount("yuri");
-	
-	//qDebug() << Account::getInstance()->name;
+
 	ui.setupUi(this);
 	Sound sound;
 	connect(ui.login, SIGNAL(mainScene()), this, SLOT(mainScene()));

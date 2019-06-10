@@ -17,7 +17,11 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>testWidget</string>
+   <string>Dungeon&amp;Stones</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="testWidget.qrc">
+    <normaloff>:/word/Resources/word/Icon_pic.png</normaloff>:/word/Resources/word/Icon_pic.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QMessageBox QLabel {
