@@ -43,7 +43,8 @@ void GameLogic::clickedStone(Stone* stone)
 		if (isTwoStonesConnected())
 		{
 			evaluate(Click);
-			first = second = nullptr;
+			first = nullptr;
+			second = nullptr;
 		} else
 		{
 			first = second;
@@ -77,13 +78,13 @@ void GameLogic::endMove()
 	{
 		Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/Crush.wav"));
 		Sound::SEPlayer->play();
-		evaluateStonesToCrush(pathOne);
+		stoneToCrush.append(pathOne);
 	}
 	if (pathTwo.size() >= 3)
 	{
 		Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/Crush.wav"));
 		Sound::SEPlayer->play();
-		evaluateStonesToCrush(pathTwo);
+		stoneToCrush.append(pathTwo);
 	}
 	if (es == Click || es == Force) animateCrushingStones();
 }
@@ -339,17 +340,9 @@ void GameLogic::evaluatePath(QVector<QPair<int, int>>& path) const
 	}
 }
 
-void GameLogic::evaluateStonesToCrush(QVector<QPair<int, int>>& path)
-{
-	stoneToCrush.append(path);
-	//for (auto stone : path)
-	//{
-	//	stoneToCrush.append(stone);
-	//}
-}
-
 void GameLogic::animateCrushingStones()
 {
+	if (stoneToCrush.isEmpty()) return;
 	for (auto& pos : stoneToCrush)
 	{
 		auto& st = board[pos.first][pos.second];

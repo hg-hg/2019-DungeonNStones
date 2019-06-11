@@ -41,7 +41,6 @@ private:
 	bool isMoveValid() const;
 	void dfs(int col, int row, QVector<QVector<bool>>& visited, QVector<QPair<int, int>>& path);
 	void evaluatePath(QVector<QPair<int, int>>& path) const;
-	void evaluateStonesToCrush(QVector<QPair<int, int>>& path);
 	void animateCrushingStones();
 	void enableAllStones();
 

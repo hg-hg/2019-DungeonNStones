@@ -3,6 +3,8 @@
 #include "CharacterManager.h"
 #include "ConfirmBox.h"
 #include <QTimer>
+#include "Account.h"
+
 PVE::PVE(QWidget *parent)
 	: QWidget(parent)
 {
