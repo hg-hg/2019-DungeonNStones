@@ -57,5 +57,7 @@
         <file>Resources/Sound/BGM.wav</file>
         <file>Resources/Sound/Crush.wav</file>
         <file>Resources/Sound/Gravity.wav</file>
+        <file>Resources/Sound/ClickStone.wav</file>
+        <file>Resources/Sound/ForceExchange.wav</file>
     </qresource>
 </RCC>

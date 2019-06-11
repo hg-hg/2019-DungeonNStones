@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "GameLogic.h"
+#include "Sound.h"
 
 GameLogic::GameLogic(QWidget* parent)
 	: QWidget(parent)
@@ -22,6 +23,8 @@ GameLogic::~GameLogic()
 void GameLogic::clickedStone(Stone* stone)
 {
 	//if (isAnimating) return;
+	Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/ClickStone.wav"));
+	Sound::SEPlayer->play();
 	if (stone->isAnimating) return;
 	const auto location = getPosition(stone);
 	if (willDrop(location)) return;
@@ -69,8 +72,18 @@ void GameLogic::endMove()
 {
 	isAnimating = false;
 	enableAllStones();
-	if (pathOne.size() >= 3) evaluateStonesToCrush(pathOne);
-	if (pathTwo.size() >= 3) evaluateStonesToCrush(pathTwo);
+	if (pathOne.size() >= 3)
+	{
+		Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/Crush.wav"));
+		Sound::SEPlayer->play();
+		evaluateStonesToCrush(pathOne);
+	}
+	if (pathTwo.size() >= 3)
+	{
+		Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/Crush.wav"));
+		Sound::SEPlayer->play();
+		evaluateStonesToCrush(pathTwo);
+	}
 	if (es == Click || es == Force) animateCrushingStones();
 }
 
@@ -156,7 +169,8 @@ bool GameLogic::willDrop(const QPoint location) const
 	auto col = board[location.x()];
 	for (auto i = location.y(); i < boardSize; i++)
 	{
-		if (col[i]->isAnimating) return true;
+		if (col[i]->isAnimating) 
+		return true;
 	}
 	return false;
 }
@@ -523,6 +537,8 @@ void GameLogic::gravity()
 				damage += st->DAMAGE;
 				mp += st->MP;
 				bonus++;
+				Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/Gravity.wav"));
+				Sound::SEPlayer->play();
 			}
 			delete st;
 			board[pos.first][pos.second] = nullptr;
