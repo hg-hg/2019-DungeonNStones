@@ -1,7 +1,7 @@
 Wizzard
 A powerful wizzard.
 500
-300
+500
 800
 wizzard.gif
 lightning

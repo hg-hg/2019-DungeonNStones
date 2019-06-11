@@ -1,7 +1,7 @@
 Elf
 A skillful elf.
 500
-400
+550
 500
 elf.gif
 sinisterStrike
