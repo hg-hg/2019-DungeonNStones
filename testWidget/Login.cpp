@@ -21,14 +21,6 @@ Login::~Login()
 {
 }
 
-void Login::paintEvent(QPaintEvent*)
-{
-	QPainter painter(this);
-	//QPixmap pix;
-	//pix.load(".//Background//wall.png");
-	//painter.drawPixmap(0, 0, this->width(), this->height(), pix);
-}
-
 void Login::keyPressEvent(QKeyEvent* event)
 {
 	if (event->key() == Qt::Key_Return)
@@ -46,6 +38,13 @@ void Login::loginToServer()
 {
 	const auto accountName = ui.account->text();
 	if (accountName.isEmpty()) return;
-	Client::getInstance()->requestAccount(ui.account->text());
+	Client * client = Client::getInstance();
+	if (!client->online)
+	{
+		auto am = new AccountManager(this);
+		am->setCurrentAccount(ui.account->text());
+		emit mainScene();
+	}
+	else client->requestAccount(accountName);
 	ui.stackedWidget->setCurrentWidget(ui.waiting);
 }

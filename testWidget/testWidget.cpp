@@ -7,14 +7,16 @@
 #include "GameBoard.h"
 #include "Setting.h"
 #include "Sound.h"
+#include "AccountManager.h"
 
 Client * client = Client::getInstance();
+bool online = false;
 
 testWidget::testWidget(QWidget *parent)
 	: QMainWindow(parent)
 {
-	client->connectToServer();
-
+	
+	online = client->connectToServer();
 	ui.setupUi(this);
 	Sound sound;
 	connect(ui.login, SIGNAL(mainScene()), this, SLOT(mainScene()));
@@ -31,7 +33,15 @@ void testWidget::closeEvent(QCloseEvent * event)
 {
 	if (entered)
 	{
-		account->sendAccountInfo();
+		if (online)
+		{
+			account->sendAccountInfo();
+		} else
+		{
+			AccountManager am;
+			am.setAccount();
+		}
+		
 		Sound::writeFile();
 	}
 	client->sendDisconnecting();
@@ -47,7 +57,7 @@ void testWidget::moveToCenter()
 
 void testWidget::pvp()
 {
-
+	if (!online) return;
 	PVP * pvp = new PVP(this);
 	moveToCenter();
 	connect(pvp, SIGNAL(mainScene()), this, SLOT(mainScene()));
@@ -57,6 +67,7 @@ void testWidget::pvp()
 
 void testWidget::pve()
 {
+	
 	PVE * pve = new PVE(this);
 	moveToCenter();
 	connect(pve, SIGNAL(mainScene()), this, SLOT(mainScene()));
@@ -74,7 +85,18 @@ void testWidget::shop()
 
 void testWidget::quit()
 {
-	account->sendAccountInfo();
+	if (entered)
+	{
+		if (online)
+		{
+			account->sendAccountInfo();
+		} else
+		{
+			AccountManager am;
+			am.setAccount();
+		}
+	}
+	
 	Sound::writeFile();
 	exit(0);
 }

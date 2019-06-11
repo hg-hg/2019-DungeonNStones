@@ -2,6 +2,7 @@
 #include "Client.h"
 #include <QHostAddress>
 
+
 Client* Client::instance = nullptr;
 
 Client::Client(QObject* parent)
@@ -51,12 +52,15 @@ void Client::release()
 	}
 }
 
-void Client::connectToServer()
+bool Client::connectToServer()
 {
 	connectToHost(QHostAddress("39.107.229.247"), 27015);
 	//connectToHost(QHostAddress::LocalHost, 27015);
-	waitForConnected();
+	waitForConnected(2000);
+	online = (state() == QAbstractSocket::ConnectedState);
+	if (!online) return false;
 	connect(this, SIGNAL(readyRead()), this, SLOT(readMessage()));
+	return true;
 }
 
 void Client::sendDisconnecting()
@@ -125,6 +129,10 @@ void Client::sendMessage(const QString& message)
 
 void Client::requestAccount(const QString& accountName)
 {
+	if (!online)
+	{
+		
+	}
 	const auto message = QString::number(RequestAccount) + "\n" + accountName;
 	sendMessage(message);
 	waitForReadyRead();

@@ -449,7 +449,6 @@ void GameLogic::bladeSlash(const QString& account)
 			dam += row->DAMAGE;
 		}
 	}
-	dam /= 2;
 	damage(account, dam);
 	deleteRect(col, 0, 1, boardSize - 1);
 }

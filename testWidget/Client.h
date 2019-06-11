@@ -23,7 +23,7 @@ private:
 public:
 	static Client* getInstance();
 	static void release();
-	void connectToServer();
+	bool connectToServer();
 	void sendMessage(const QString& message);
 	void requestAccount(const QString& accountName);
 	void sendWaitForGame(const QString& account, const QString& character);
@@ -46,4 +46,7 @@ signals:
 	void gameStart(QString enemyAccount, QString enemyCharacter);
 	void enemyDisconnect();
 	void dead(QString account);
+
+public:
+	bool online;
 };

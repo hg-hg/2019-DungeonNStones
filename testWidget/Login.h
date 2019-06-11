@@ -11,8 +11,6 @@ public:
 	Login(QWidget *parent = Q_NULLPTR);
 	~Login();
 	void keyPressEvent(QKeyEvent * event) override;
-	void paintEvent(QPaintEvent*) override;
-
 public slots:
 	void loginToServer();
 	void accountInitialized();

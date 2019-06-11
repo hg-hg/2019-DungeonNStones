@@ -14,6 +14,8 @@ public:
 	bool setCurrentAccount(QString accountName);
 	bool setCurrentAccount(QString name, int money, QString defaultCharacter);
 	Account* getCurrentAccount() const;
+	void createNewAccount(QString accountName);
+	void setAccount();
 private:
 	Account* current = Account::getInstance();
 	CharacterManager* cm = CharacterManager::getInstance();

@@ -16,7 +16,8 @@ bool AccountManager::setCurrentAccount(const QString accountName)
 	QFile file(fileName);
 	if (!file.open(QFile::ReadOnly | QFile::Text))
 	{
-		qDebug();
+		createNewAccount(accountName);
+		setCurrentAccount(accountName);
 		return false;
 	}
 	QTextStream in(&file);
@@ -47,4 +48,28 @@ bool AccountManager::setCurrentAccount(const QString name, const int money, cons
 Account* AccountManager::getCurrentAccount() const
 {
 	return current;
+}
+
+void AccountManager::createNewAccount(const QString accountName)
+{
+	const auto fileName = "./account/" + accountName + ".txt";
+	QFile file(fileName);
+	file.open(QFile::WriteOnly | QFile::Text);
+	QTextStream out(&file);
+	const auto message = accountName + "\n0\nKnight\nKnight";
+	out << message;
+}
+
+void AccountManager::setAccount()
+{
+	Account * account = Account::getInstance();
+	auto fileName = "./account/" + account->name + ".txt";
+	QFile file(fileName);
+	if (!file.open(QFile::WriteOnly | QFile::Text)) {
+		qDebug(); return;
+	}
+	QTextStream out(&file);
+	auto info = account->name + "\n" + QString::number(account->money) + "\n" + account->selectedCharacter->name;
+	for (auto c : account->characters) info += "\n" + c;
+	out << info;
 }
