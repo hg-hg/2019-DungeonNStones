@@ -1,7 +1,7 @@
 goblin
 A lucky and greedy goblin
 500
-700
+450
 500
 goblin.gif
 greedy

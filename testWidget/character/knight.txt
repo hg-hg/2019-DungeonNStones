@@ -1,7 +1,7 @@
 Knight
 An armed warrior.
 500
-1000
-500
+700
+300
 knight.gif
 bladeSlash
