@@ -40,8 +40,9 @@ void GameLogic::clickedStone(Stone* stone)
 	}
 	if (second != nullptr)
 	{
-		if (isTwoStonesConnected() && evaluate(Click))
+		if (isTwoStonesConnected())
 		{
+			evaluate(Click);
 			first = second = nullptr;
 		} else
 		{
