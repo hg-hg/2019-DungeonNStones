@@ -1,7 +1,0 @@
-Test2
-just testing
-5000
-500
-1000
-test.png
-changeBoard

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>116</width>
-    <height>200</height>
+    <width>120</width>
+    <height>210</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>0</x>
      <y>0</y>
      <width>120</width>
-     <height>130</height>
+     <height>150</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -30,8 +30,8 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>130</y>
-     <width>62</width>
+     <y>140</y>
+     <width>60</width>
      <height>70</height>
     </rect>
    </property>
@@ -52,7 +52,7 @@
    </property>
    <property name="iconSize">
     <size>
-     <width>62</width>
+     <width>60</width>
      <height>70</height>
     </size>
    </property>
@@ -64,8 +64,8 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>130</y>
-     <width>62</width>
+     <y>140</y>
+     <width>60</width>
      <height>70</height>
     </rect>
    </property>
@@ -81,7 +81,7 @@
    </property>
    <property name="iconSize">
     <size>
-     <width>62</width>
+     <width>60</width>
      <height>70</height>
     </size>
    </property>

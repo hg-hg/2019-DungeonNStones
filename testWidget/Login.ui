@@ -88,6 +88,12 @@ border-bottom:1px solid #717207;
           <pointsize>10</pointsize>
          </font>
         </property>
+        <property name="locale">
+         <locale language="English" country="UnitedStates"/>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhLatinOnly</set>
+        </property>
         <property name="maxLength">
          <number>20</number>
         </property>

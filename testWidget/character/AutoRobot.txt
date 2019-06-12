@@ -3,6 +3,6 @@ default enemy
 10000
 800
 0
-defaultEnemy.png
+big_demon_ro.gif
 damage
 heal

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>120</width>
-    <height>130</height>
+    <height>150</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
      <x>0</x>
      <y>0</y>
      <width>120</width>
-     <height>130</height>
+     <height>150</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -34,12 +34,15 @@
    <property name="pixmap">
     <pixmap resource="testWidget.qrc">:/background/Resources/background/shop_character.png</pixmap>
    </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="foreground">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>0</y>
+     <x>30</x>
+     <y>10</y>
      <width>80</width>
      <height>100</height>
     </rect>

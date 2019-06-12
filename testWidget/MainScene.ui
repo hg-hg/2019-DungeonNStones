@@ -167,7 +167,7 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>120</y>
+     <y>130</y>
      <width>371</width>
      <height>211</height>
     </rect>
@@ -177,6 +177,58 @@
    </property>
    <property name="scaledContents">
     <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="chaPic1">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>330</y>
+     <width>96</width>
+     <height>168</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="chaPic2">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>400</y>
+     <width>32</width>
+     <height>56</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="chaPic3">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>440</y>
+     <width>32</width>
+     <height>56</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="chaPic4">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>360</y>
+     <width>32</width>
+     <height>56</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
    </property>
   </widget>
  </widget>
