@@ -446,7 +446,13 @@ void GameLogic::forceExchange()
 void GameLogic::forceExchange(const int x1, const int y1, const int x2, const int y2)
 {
 	setMoveData(x1, y1, x2, y2);
-	evaluate(Force);
+	if (!isMoveValid()) return;
+	auto st1 = board[x1][y1];
+	auto st2 = board[x2][y2];
+	board[x1][y1] = st2;
+	board[x2][y2] = st1;
+	exchangeAnimation->legalExchange(st1, st2);
+	//evaluate(Force);
 }
 
 void GameLogic::damage(const QString& account, const int dam)
