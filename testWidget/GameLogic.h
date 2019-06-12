@@ -67,6 +67,8 @@ private:
 	void corrupt(const QString& account);
 	void chortPact(const QString& account);
 	void impPact(const QString& account);
+	void landslideHit(const QString& account);
+	void landslideHit();
 signals:
 	void stonesCrushing(int hp, int damage, int mp, QString account);
 
@@ -87,6 +89,7 @@ public:
 private:
 	bool isAnimating = false;
 	bool countEffect = true;
+	bool force = false;
 	int extraBonus = 0;
 	Stone* first;
 	Stone* second;

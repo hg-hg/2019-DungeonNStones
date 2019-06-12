@@ -23,7 +23,6 @@ GameLogic::~GameLogic()
 void GameLogic::clickedStone(Stone* stone)
 {
 	if (isAnimating) return;
-	
 	if (stone->isAnimating) return;
 	const auto location = getPosition(stone);
 	if (willDrop(location)) return;
@@ -43,7 +42,16 @@ void GameLogic::clickedStone(Stone* stone)
 	{
 		if (isTwoStonesConnected())
 		{
-			evaluate(Click);
+			if (force)
+			{
+				landslideHit();
+				return;
+			}
+			else
+			{
+				evaluate(Click);
+			}
+			
 			first = nullptr;
 			second = nullptr;
 		} else
@@ -104,6 +112,7 @@ void GameLogic::useSkill(const QString& skill, const QString& account)
 	else if (skill == "Imp'sPact") impPact(account);
 	else if (skill == "Chort'sPact") chortPact(account);
 	else if (skill == "Corrupt") corrupt(account);
+	else if (skill == "LandslideHit") landslideHit(account);
 }
 
 void GameLogic::fillBoard()
@@ -582,6 +591,36 @@ void GameLogic::impPact(const QString& account)
 	}
 	gravity();
 	countEffect = true;
+}
+
+void GameLogic::landslideHit(const QString& account)
+{
+	force = true;
+}
+
+void GameLogic::landslideHit()
+{
+	const auto x1 = firstPos.x();
+	const auto x2 = secondPos.x();
+	const auto y1 = firstPos.y();
+	const auto y2 = secondPos.y();
+	
+	forceExchange(x1, y1, x2, y2);
+	//same column, move rows
+	if (x1 == x2)
+	{
+		forceExchange(x1 - 1, y1, x2 - 1, y2);
+		forceExchange(x1 + 1, y1, x2 + 1, y2);
+	}
+	else
+	{
+		forceExchange(x1, y1 - 1, x2, y2 - 1);
+		forceExchange(x1, y1 + 1, x2, y2 + 1);
+	}
+
+	first = nullptr;
+	second = nullptr;
+	force = false;
 }
 
 void GameLogic::gravity()

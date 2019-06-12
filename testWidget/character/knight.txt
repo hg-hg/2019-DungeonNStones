@@ -5,3 +5,4 @@ An armed warrior.
 300
 knight.gif
 bladeSlash
+landslideHit
