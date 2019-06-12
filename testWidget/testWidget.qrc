@@ -20,6 +20,7 @@
         <file>Resources/skin/goblin.gif</file>
         <file>Resources/skin/knight.gif</file>
         <file>Resources/skin/wizzard.gif</file>
+        <file>Resources/skin/imp.gif</file>
     </qresource>
     <qresource prefix="/font">
         <file>Resources/font/FZJCXS.TTF</file>
