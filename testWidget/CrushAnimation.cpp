@@ -58,7 +58,9 @@ void CrushAnimation::changeAlpha(Stone* stone)
 
 void CrushAnimation::animate(const int duration)
 {
-
+	if (stonesToCrush.isEmpty()) return;
+	Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/Crush.wav"));
+	Sound::SEPlayer->play();
 	timerId = startTimer(30);
 	this->duration = duration;
 	isAnimating = true;

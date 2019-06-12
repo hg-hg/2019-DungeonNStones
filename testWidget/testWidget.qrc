@@ -59,6 +59,7 @@
         <file>Resources/Sound/Crush.wav</file>
         <file>Resources/Sound/Gravity.wav</file>
         <file>Resources/Sound/ClickStone.wav</file>
-        <file>Resources/Sound/ForceExchange.wav</file>
+        <file>Resources/Sound/illegalExchange.wav</file>
+        <file>Resources/Sound/legalExchange.wav</file>
     </qresource>
 </RCC>
