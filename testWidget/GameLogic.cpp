@@ -506,8 +506,8 @@ void GameLogic::sinisterStrike(const QString& account)
 
 void GameLogic::forceOfNature(const QString& account)
 {
-	const auto col = 3;
-	const auto row = 3;
+	const auto col = qrand() % (boardSize - 1);
+	const auto row = qrand() % (boardSize - 1);
 	const auto type = NORMAL_STONE;
 	changeStone(col, row, type);
 	changeStone(col + 1, row, type);

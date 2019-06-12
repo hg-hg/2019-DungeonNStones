@@ -1,3 +1,3 @@
 ForceOfNature
 summon 2x2 basic stones in random location.
-50
+125
