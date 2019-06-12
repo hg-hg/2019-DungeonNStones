@@ -182,8 +182,8 @@
   <widget class="QLabel" name="chaPic1">
    <property name="geometry">
     <rect>
-     <x>620</x>
-     <y>330</y>
+     <x>610</x>
+     <y>340</y>
      <width>96</width>
      <height>168</height>
     </rect>
@@ -195,8 +195,8 @@
   <widget class="QLabel" name="chaPic2">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>400</y>
+     <x>520</x>
+     <y>410</y>
      <width>32</width>
      <height>56</height>
     </rect>
@@ -208,8 +208,8 @@
   <widget class="QLabel" name="chaPic3">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>440</y>
+     <x>480</x>
+     <y>450</y>
      <width>32</width>
      <height>56</height>
     </rect>
@@ -221,8 +221,8 @@
   <widget class="QLabel" name="chaPic4">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>360</y>
+     <x>440</x>
+     <y>370</y>
      <width>32</width>
      <height>56</height>
     </rect>
