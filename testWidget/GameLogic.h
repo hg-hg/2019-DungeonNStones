@@ -49,7 +49,8 @@ private:
 	/**skills**/
 	void deleteStone();
 	void deleteStone(int col, int row);
-	void changeStone(int col, int row, int type);
+	void changeStone(int col, int row, StoneType type);
+	void changeStone(Stone* stone, StoneType type);
 	void deleteRect();
 	void deleteRect(int col, int row, int width, int height);
 	void forceExchange();
@@ -63,6 +64,9 @@ private:
 	void greedy(const QString& account);
 	void sinisterStrike(const QString& account);
 	void forceOfNature(const QString& account);
+	void corrupt(const QString& account);
+	void DiabloPact(const QString& account);
+	void demonPact(const QString& account);
 signals:
 	void stonesCrushing(int hp, int damage, int mp, QString account);
 

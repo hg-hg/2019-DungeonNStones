@@ -381,9 +381,13 @@ void GameLogic::enableAllStones()
 	for (auto& col : board) for (auto& row : col) row->isAnimating = false;
 }
 
-auto GameLogic::changeStone(const int col, const int row, const int type) -> void
+auto GameLogic::changeStone(const int col, const int row, const StoneType type) -> void
 {
-	auto stone = board[col][row];
+	changeStone(board[col][row], type);
+}
+
+void GameLogic::changeStone(Stone* stone, const StoneType type)
+{
 	if (stone->TYPE == type) return;
 	stoneManager.changeStone(stone, type, this);
 }
@@ -523,6 +527,58 @@ void GameLogic::forceOfNature(const QString& account)
 		const auto row = qrand() % (boardSize - 1);
 		changeStone(col, row, type);
 	}
+}
+
+void GameLogic::corrupt(const QString& account)
+{
+	for (auto col = 0; col < boardSize; col++)
+	{
+		auto& c = board[col];
+		for (auto row = 0; row < boardSize; row++)
+		{
+			auto stone = c[row];
+			if (stone->TYPE == DAMAGE_STONE) changeStone(stone, HP_STONE);
+		}
+	}
+		
+}
+
+void GameLogic::DiabloPact(const QString& account)
+{
+	countEffect = false;
+	auto count = 0;
+	for (auto col = 0; col < boardSize; col++)
+	{
+		auto& c = board[col];
+		for (auto row = 0; row < boardSize; row++)
+		{
+			auto r = c[row];
+			if (r->TYPE == NORMAL_STONE)
+			{
+				count++;
+				stoneToCrush.append({ col, row });
+			}
+		}
+	}
+	count *= 3;
+	count /= 2;
+	gravity();
+	countEffect = true;
+	emit stonesCrushing(count, count, count, account);
+}
+
+void GameLogic::demonPact(const QString& account)
+{
+	countEffect = false;
+	for (auto col = 0; col < boardSize; col++)
+	{
+		auto& c = board[col];
+		for (auto row = 0; row < boardSize; row++)
+		if (c[row]->TYPE == NORMAL_STONE) 
+			stoneToCrush.append({ col, row });
+	}
+	gravity();
+	countEffect = true;
 }
 
 void GameLogic::gravity()
