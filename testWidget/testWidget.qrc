@@ -38,6 +38,7 @@
         <file>Resources/button/Slide_button.png</file>
         <file>Resources/button/Empty_button.png</file>
         <file>Resources/button/Empty_button_tiny.png</file>
+        <file>Resources/button/Refresh_button.png</file>
     </qresource>
     <qresource prefix="/background">
         <file>Resources/background/wall.png</file>
