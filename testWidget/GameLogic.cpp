@@ -610,7 +610,7 @@ void GameLogic::gravity()
 			gravityAnimation->add(column[row], p);
 		}
 	}
-	
+
 	gravityAnimation->animate();
 }
 

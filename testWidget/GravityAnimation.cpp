@@ -72,6 +72,7 @@ void GravityAnimation::timerEvent(QTimerEvent* event)
 
 void GravityAnimation::animate()
 {
+	if (data.isEmpty()) return;
 	timerId = startTimer(40);
 	isAnimating = true;
 }
