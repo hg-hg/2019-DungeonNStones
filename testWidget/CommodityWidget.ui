@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>116</width>
-    <height>185</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,9 +30,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>150</y>
-     <width>50</width>
-     <height>35</height>
+     <y>130</y>
+     <width>62</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="font">
@@ -48,12 +48,12 @@
    </property>
    <property name="icon">
     <iconset resource="testWidget.qrc">
-     <normaloff>:/button/Resources/button/Shop_button.png</normaloff>:/button/Resources/button/Shop_button.png</iconset>
+     <normaloff>:/button/Resources/button/Buy_button_shop.png</normaloff>:/button/Resources/button/Buy_button_shop.png</iconset>
    </property>
    <property name="iconSize">
     <size>
-     <width>50</width>
-     <height>35</height>
+     <width>62</width>
+     <height>70</height>
     </size>
    </property>
    <property name="flat">
@@ -63,10 +63,10 @@
   <widget class="MainSceneButton" name="selectButton">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>150</y>
-     <width>50</width>
-     <height>35</height>
+     <x>60</x>
+     <y>130</y>
+     <width>62</width>
+     <height>70</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -77,12 +77,12 @@
    </property>
    <property name="icon">
     <iconset resource="testWidget.qrc">
-     <normaloff>:/button/Resources/button/YES_button.png</normaloff>:/button/Resources/button/YES_button.png</iconset>
+     <normaloff>:/button/Resources/button/Select_button_shop.png</normaloff>:/button/Resources/button/Select_button_shop.png</iconset>
    </property>
    <property name="iconSize">
     <size>
-     <width>50</width>
-     <height>35</height>
+     <width>62</width>
+     <height>70</height>
     </size>
    </property>
   </widget>

@@ -39,6 +39,10 @@
         <file>Resources/button/Empty_button.png</file>
         <file>Resources/button/Empty_button_tiny.png</file>
         <file>Resources/button/Refresh_button.png</file>
+        <file>Resources/button/Shop_button_tiny.png</file>
+        <file>Resources/button/YES_button_tiny.png</file>
+        <file>Resources/button/Buy_button_shop.png</file>
+        <file>Resources/button/Select_button_shop.png</file>
     </qresource>
     <qresource prefix="/background">
         <file>Resources/background/wall.png</file>
