@@ -146,6 +146,18 @@ void GameLogic::fillBoard()
 	first = second = nullptr;
 }
 
+void GameLogic::makeBoardFilledAgain()
+{
+	waitForStopAnimation();
+	countEffect = false;
+	for (auto col = 0; col < boardSize; col++)
+		for (auto row = 0; row < boardSize; row++)
+			stoneToCrush.append({ col, row });
+	gravity();
+	waitForStopAnimation();
+	countEffect = true;
+}
+
 void GameLogic::setMoveData(const int fx, const int fy, const int sx, const int sy)
 {
 	md = MoveData(fx, fy, sx, sy);
@@ -506,13 +518,13 @@ void GameLogic::sinisterStrike(const QString& account)
 
 void GameLogic::forceOfNature(const QString& account)
 {
-	const auto col = qrand() % (boardSize - 1);
-	const auto row = qrand() % (boardSize - 1);
 	const auto type = NORMAL_STONE;
-	changeStone(col, row, type);
-	changeStone(col + 1, row, type);
-	changeStone(col, row + 1, type);
-	changeStone(col + 1, row + 1, type);
+	for (auto i = 0; i < 4; i++)
+	{
+		const auto col = qrand() % (boardSize - 1);
+		const auto row = qrand() % (boardSize - 1);
+		changeStone(col, row, type);
+	}
 }
 
 void GameLogic::gravity()

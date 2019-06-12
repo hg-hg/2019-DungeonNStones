@@ -16,6 +16,9 @@ public slots:
 	void gameStart(QString enemy, QString enemyCharacter);
 	void playerDead(QString playerAccount);
 	void restart();
+
+private slots:
+	void makeBoardFilledAgain();
 signals:
 	void sendPlayerDead(QString playerAccount);
 

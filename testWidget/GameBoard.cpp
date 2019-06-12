@@ -69,6 +69,11 @@ void GameBoard::restart()
 	ui.enemy->initialStatus();
 }
 
+void GameBoard::makeBoardFilledAgain()
+{
+	ui.gameCore->makeBoardFilledAgain();
+}
+
 GameBoard::~GameBoard()
 {
 	qDebug();

@@ -88,6 +88,9 @@ border-bottom:1px solid #717207;
           <pointsize>10</pointsize>
          </font>
         </property>
+        <property name="maxLength">
+         <number>20</number>
+        </property>
         <property name="placeholderText">
          <string>User Name</string>
         </property>

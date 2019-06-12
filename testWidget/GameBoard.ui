@@ -87,11 +87,35 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="MainSceneButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>992</x>
+     <y>560</y>
+     <width>100</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="testWidget.qrc">
+     <normaloff>:/button/Resources/button/Refresh_button.png</normaloff>:/button/Resources/button/Refresh_button.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>100</width>
+     <height>70</height>
+    </size>
+   </property>
+  </widget>
   <zorder>backPic</zorder>
   <zorder>player</zorder>
   <zorder>enemy</zorder>
   <zorder>label</zorder>
   <zorder>gameCore</zorder>
+  <zorder>pushButton</zorder>
  </widget>
  <customwidgets>
   <customwidget>
@@ -106,9 +130,34 @@
    <header location="global">gamelogic.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>MainSceneButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">mainscenebutton.h</header>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="testWidget.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>GameBoard</receiver>
+   <slot>makeBoardFilledAgain()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1038</x>
+     <y>603</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1036</x>
+     <y>667</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>makeBoardFilledAgain()</slot>
+ </slots>
 </ui>

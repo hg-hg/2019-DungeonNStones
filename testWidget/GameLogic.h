@@ -30,6 +30,8 @@ public:
 	~GameLogic();
 	void waitForStopAnimation() const;
 	void setMoveData(int fx, int fy, int sx, int sy);
+	void fillBoard();
+	void makeBoardFilledAgain();
 private:
 	QPoint getPosition(const Stone* stone) const;
 	bool willDrop(QPoint location) const;
@@ -66,13 +68,13 @@ signals:
 
 public slots:
 	void useSkill(const QString& skill, const QString& account);
-	void fillBoard();
-	void clickedStone(Stone* stone); //invoke by Stone::clicked()
-	
-protected slots:
+
+private slots:
 	void endMove();
 	void gravity();
 	void gravityFinished();
+	
+	void clickedStone(Stone* stone); //invoke by Stone::clicked()
 	/*members*/
 public:
 	const int boardSize = 8;
