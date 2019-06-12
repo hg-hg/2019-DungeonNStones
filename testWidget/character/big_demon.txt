@@ -1,6 +1,8 @@
 THE BIG DEMON
 RUAAAAAAAAAAAAAAA!
-10000
+100000000
 800
-1200
-big_demon.gif
+0
+big_demon_ro.gif
+damage
+heal

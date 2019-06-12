@@ -32,6 +32,6 @@ private:
 	Ui::CommodityWidget ui;
 	Account * account = Account::getInstance();
 
-	QIcon canSelect = QIcon(":/button/Resources/button/YES_button.png");
+	QIcon canSelect = QIcon(":/button/Resources/button/Select_button_shop.png");
 	QIcon cannotSelect = QIcon(":/button/Resources/button/NO_button.png");
 };

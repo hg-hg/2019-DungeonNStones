@@ -1,8 +1,0 @@
-AutoRobot
-default enemy
-10000
-800
-0
-big_demon_ro.gif
-damage
-heal

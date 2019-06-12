@@ -4,4 +4,4 @@ A lucky and greedy goblin
 600
 500
 goblin.gif
-greedy
+Greedy

@@ -101,6 +101,9 @@ void GameLogic::useSkill(const QString& skill, const QString& account)
 	else if (skill == "greedy") greedy(account);
 	else if (skill == "SinisterStrike") sinisterStrike(account);
 	else if (skill == "ForceOfNature") forceOfNature(account);
+	else if (skill == "Imp'sPact") impPact(account);
+	else if (skill == "Chort'sPact") chortPact(account);
+	else if (skill == "Corrupt") corrupt(account);
 }
 
 void GameLogic::fillBoard()
@@ -543,17 +546,18 @@ void GameLogic::corrupt(const QString& account)
 		
 }
 
-void GameLogic::DiabloPact(const QString& account)
+void GameLogic::chortPact(const QString& account)
 {
 	countEffect = false;
 	auto count = 0;
+	const auto TYPE = qrand() % (DM_STONE + 1);
 	for (auto col = 0; col < boardSize; col++)
 	{
 		auto& c = board[col];
 		for (auto row = 0; row < boardSize; row++)
 		{
 			auto r = c[row];
-			if (r->TYPE == NORMAL_STONE)
+			if (r->TYPE == TYPE)
 			{
 				count++;
 				stoneToCrush.append({ col, row });
@@ -561,13 +565,12 @@ void GameLogic::DiabloPact(const QString& account)
 		}
 	}
 	count *= 3;
-	count /= 2;
 	gravity();
 	countEffect = true;
 	emit stonesCrushing(count, count, count, account);
 }
 
-void GameLogic::demonPact(const QString& account)
+void GameLogic::impPact(const QString& account)
 {
 	countEffect = false;
 	for (auto col = 0; col < boardSize; col++)

@@ -113,7 +113,7 @@ border-color: transparent;
        <widget class="MainSceneButton" name="backToMain">
         <property name="geometry">
          <rect>
-          <x>590</x>
+          <x>700</x>
           <y>530</y>
           <width>100</width>
           <height>70</height>

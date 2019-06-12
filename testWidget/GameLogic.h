@@ -65,8 +65,8 @@ private:
 	void sinisterStrike(const QString& account);
 	void forceOfNature(const QString& account);
 	void corrupt(const QString& account);
-	void DiabloPact(const QString& account);
-	void demonPact(const QString& account);
+	void chortPact(const QString& account);
+	void impPact(const QString& account);
 signals:
 	void stonesCrushing(int hp, int damage, int mp, QString account);
 

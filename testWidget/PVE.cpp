@@ -13,7 +13,7 @@ PVE::PVE(QWidget *parent)
 	ui.stackedWidget->setCurrentWidget(ui.playing);
 	//ui.toast->setCurrentWidget(ui.escapePage);
 	connect(ui.gameBoard, SIGNAL(sendPlayerDead(QString)), this, SLOT(playerDead(QString)));
-	ui.gameBoard->setData(CharacterManager::getInstance()->getCharacter("AutoRobot"));
+	ui.gameBoard->setData(CharacterManager::getInstance()->getCharacter("THE BIG DEMON"));
 	ui.gameBoard->setLocalGame(true);
 }
 
