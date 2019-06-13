@@ -128,6 +128,9 @@ color: white;</string>
          <pointsize>40</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: white;</string>
+       </property>
        <property name="text">
         <string>Continue?</string>
        </property>
@@ -140,6 +143,9 @@ color: white;</string>
          <width>161</width>
          <height>61</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white;</string>
        </property>
        <property name="text">
         <string>winner</string>
@@ -191,6 +197,30 @@ color: white;</string>
         </size>
        </property>
       </widget>
+      <widget class="QLabel" name="backPic">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1112</width>
+         <height>641</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="testWidget.qrc">:/background/Resources/background/wall.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <zorder>backPic</zorder>
+      <zorder>hint</zorder>
+      <zorder>winner</zorder>
+      <zorder>pushButton_3</zorder>
+      <zorder>pushButton_4</zorder>
      </widget>
     </widget>
    </item>
