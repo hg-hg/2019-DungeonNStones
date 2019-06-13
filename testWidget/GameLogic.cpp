@@ -632,6 +632,7 @@ void GameLogic::landslideHit()
 void GameLogic::gravity()
 {
 	enableAllStones();
+	if (stoneToCrush.isEmpty()) return;
 	auto hp = 0, damage = 0, mp = 0, bonus = 0;
 	for (const auto pos : stoneToCrush)
 	{
