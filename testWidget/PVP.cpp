@@ -35,6 +35,7 @@ void PVP::continueMatching()
 {
 	
 	ui.stackedWidget->setCurrentWidget(ui.waiting);
+	ui.gameBoard->restart();
 	Client::getInstance()->sendWaitForGame(account->name, account->getSelectedCharacter()->name);
 }
 

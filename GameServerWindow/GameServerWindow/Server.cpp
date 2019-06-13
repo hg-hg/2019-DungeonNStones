@@ -159,6 +159,8 @@ void Server::die(const QString& account)
 		{
 			emit sendMessage(first->sockDesc, message);
 			emit sendMessage(second->sockDesc, message);
+			emit sendMessage(first->sockDesc, message);
+			emit sendMessage(second->sockDesc, message);
 			it = playing.erase(it);
 			break;
 		}
