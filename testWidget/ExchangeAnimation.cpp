@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "ExchangeAnimation.h"
 #include "Sound.h"
+
+
 ExchangeAnimation::ExchangeAnimation(QObject* parent)
 	: QObject(parent)
 {
@@ -12,8 +14,7 @@ void ExchangeAnimation::legalExchange(Stone* one, Stone* two)
 	second = two;
 	first->isAnimating = true;
 	second->isAnimating = true;
-	Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/legalExchange.wav"));
-	Sound::SEPlayer->play();
+	Sound::getInstance()->playSoundEffect(LegalExchangeSE);
 	/*do not use QRect(QWidget*->rect())!!! I have wasted time finding this problem!!!
 		Or nothing changed at all, please refer to the doc to find out the reason*/
 	auto a1 = new QPropertyAnimation(one, "geometry");
@@ -40,8 +41,7 @@ void ExchangeAnimation::illegalExchange(Stone* one, Stone* two)
 	second = two;
 	first->isAnimating = true;
 	second->isAnimating = true;
-	Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/illegalExchange.wav"));
-	Sound::SEPlayer->play();
+	Sound::getInstance()->playSoundEffect(IllegalExchangeSE);
 	const auto dx = one->x() - two->x();
 	const auto dy = one->y() - two->y();
 

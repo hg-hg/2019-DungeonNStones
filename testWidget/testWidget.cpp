@@ -10,6 +10,7 @@
 #include "AccountManager.h"
 
 Client * client = Client::getInstance();
+Sound* sound = Sound::getInstance();
 bool online = false;
 
 testWidget::testWidget(QWidget *parent)
@@ -18,7 +19,8 @@ testWidget::testWidget(QWidget *parent)
 	
 	online = client->connectToServer();
 	ui.setupUi(this);
-	Sound sound;
+	sound->initialVolume();
+	sound->startBGM();
 	connect(ui.login, SIGNAL(mainScene()), this, SLOT(mainScene()));
 	connect(ui.mainScene, SIGNAL(goPVP()), this, SLOT(pvp()));
 	connect(ui.mainScene, SIGNAL(goPVE()), this, SLOT(pve()));
@@ -31,7 +33,8 @@ testWidget::testWidget(QWidget *parent)
 
 void testWidget::closeEvent(QCloseEvent * event)
 {
-	if (entered)
+	//sound->endLoops();
+	/*if (entered)
 	{
 		if (online)
 		{
@@ -42,10 +45,16 @@ void testWidget::closeEvent(QCloseEvent * event)
 			am.setAccount();
 		}
 		
-		Sound::writeFile();
+		sound->writeFile();
 	}
 	client->sendDisconnecting();
-	exit(0);
+	exit(0);*/
+	if (entered)
+	{
+		event->ignore();
+		return;
+	}
+	event->accept();
 }
 
 void testWidget::moveToCenter()
@@ -97,7 +106,7 @@ void testWidget::quit()
 		}
 	}
 	
-	Sound::writeFile();
+	sound->writeFile();
 	exit(0);
 }
 

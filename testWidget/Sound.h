@@ -1,21 +1,36 @@
 #pragma once
 
+
+#include <QtMultimedia/QSoundEffect>
+#include "const.h"
 #include <QtMultimedia/QMediaPlayer>
-#include <QMediaPlaylist>
 
-
-class Sound
+class Sound : public QObject
 {
-public:
-	Sound();
+	Q_OBJECT
+private:
+	Sound(QObject * parent = Q_NULLPTR);
+	Sound(const Sound&);
+	Sound& operator=(const Sound&);
 	~Sound();
-	static void initial();
-	static void initialVolume();
-	static QMediaPlaylist *BGMPlaylist;
-	static QMediaPlayer *BGMPlayer;
-	static QMediaPlayer *SEPlayer;
-	static void writeFile();
+private:
+	static Sound* instance;
+public:
+	QSoundEffect bgm;
 
+	qreal se;
+	Music type;
+	//QString path;
+	static Sound* getInstance();
+	static void release();
+
+	void initialVolume();
+	void startBGM();
+	void writeFile();
+	void playSoundEffect(Music music);
+	void endLoops();
+signals:
+	void end();
 };
 
 

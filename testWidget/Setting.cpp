@@ -16,8 +16,8 @@ Setting::~Setting()
 
 void Setting::initialSlider()
 {
-	ui.bgm->setValue(Sound::BGMPlayer->volume());
-	ui.se->setValue(Sound::SEPlayer->volume());
+	ui.bgm->setValue(Sound::getInstance()->bgm.volume() * 100.0);
+	ui.se->setValue(Sound::getInstance()->se * 100.0);
 }
 
 
@@ -30,10 +30,10 @@ void Setting::backToMainScene()
 
 void Setting::changeBGMVolume(const int volume)
 {
-	Sound::BGMPlayer->setVolume(volume);
+	Sound::getInstance()->bgm.setVolume(static_cast<qreal>(volume) / 100.0);
 }
 
 void Setting::changeSEVolume(const int volume)
 {
-	Sound::SEPlayer->setVolume(volume);
+	Sound::getInstance()->se = static_cast<qreal>(volume) / 100.0;
 }

@@ -26,8 +26,7 @@ void GameLogic::clickedStone(Stone* stone)
 	if (stone->isAnimating) return;
 	const auto location = getPosition(stone);
 	if (willDrop(location)) return;
-	Sound::SEPlayer->setMedia(QUrl("qrc:/sound/Resources/Sound/ClickStone.wav"));
-	Sound::SEPlayer->play();
+	Sound::getInstance()->playSoundEffect(ClickSE);
 	if (first == nullptr)
 	{
 		first = stone;

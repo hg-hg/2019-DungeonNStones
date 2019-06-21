@@ -1,33 +1,39 @@
 #include "stdafx.h"
 #include "Sound.h"
+#include <QtConcurrent/QtConcurrent>
 
 
-QMediaPlaylist* Sound::BGMPlaylist = new QMediaPlaylist;
-QMediaPlayer* Sound::BGMPlayer = new QMediaPlayer;
-QMediaPlayer* Sound::SEPlayer = new QMediaPlayer;
+Sound* Sound::instance = nullptr;
 
-Sound::Sound()
+Sound::Sound(QObject* parent)
+	:QObject(parent)
 {
-	initial();
-}
 
+}
 
 Sound::~Sound()
 {
+	emit end();
 }
 
-void Sound::initial()
+Sound* Sound::getInstance()
 {
-	BGMPlayer->setVolume(50);
-	SEPlayer->setVolume(50);
-	initialVolume();
-	BGMPlaylist->addMedia(QUrl("qrc:/sound/Resources/Sound/BGM.wav"));
-	BGMPlaylist->setCurrentIndex(1);
-	BGMPlaylist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
-	BGMPlayer->setPlaylist(BGMPlaylist);
-	//BGMPlayer->setVolume(50);
-	BGMPlayer->play();
-	//SEPlayer->setVolume(50);
+	if (instance == nullptr)
+	{
+		instance = new Sound();
+		atexit(release);
+
+	}
+	return instance;
+}
+
+void Sound::release()
+{
+	if (instance)
+	{
+		delete instance;
+		instance = nullptr;
+	}
 }
 
 void Sound::initialVolume()
@@ -46,8 +52,17 @@ void Sound::initialVolume()
 		writeFile();
 		return;
 	}
-	BGMPlayer->setVolume(strList[0].toInt());
-	SEPlayer->setVolume(strList[1].toInt());
+
+	
+	bgm.setVolume(static_cast<qreal>(strList[0].toInt()) / 100.0);
+	se = static_cast<qreal>(strList[1].toInt()) / 100.0;
+}
+
+void Sound::startBGM()
+{
+	bgm.setSource(QUrl::fromLocalFile(".//Sound//BGM.wav"));
+	bgm.setLoopCount(QSoundEffect::Infinite);
+	bgm.play();
 }
 
 void Sound::writeFile()
@@ -55,6 +70,55 @@ void Sound::writeFile()
 	QFile file(".//setting.txt");
 	file.open(QFile::WriteOnly | QFile::Text);
 	QTextStream out(&file);
-	out << QString::number(BGMPlayer->volume()) + " " + QString::number(SEPlayer->volume());
+	out << QString::number(bgm.volume() * 100.0) + " " + QString::number(se * 100.0);
+}
+
+void Sound::playSoundEffect(Music music)
+{
+	type = music;
+	QFuture<void> future = QtConcurrent::run([&]() {
+		QString path = ".//Sound//";
+		switch (type) {
+		case CrushSE:
+			path += "Crush.wav";
+			break;
+		case ClickSE:
+			path += "ClickStone.wav";
+			break;
+		case LegalExchangeSE:
+			//path = "legalExchange.wav";
+			break;
+		case IllegalExchangeSE:
+			path += "illegalExchange.wav";
+			break;
+		case GravitySE:
+			path += "Gravity.wav";
+			break;
+		default:
+			return;
+		}
+		if (!path.endsWith(".wav")) return;
+		QSoundEffect effect;
+		QEventLoop loop;
+		loop.setParent(this);
+		effect.setSource(QUrl::fromLocalFile(path));
+		effect.setVolume(se);
+		effect.play();
+		QObject::connect(&effect, &QSoundEffect::playingChanged, [&loop]()
+		{
+			qDebug() << "finished"; 
+			loop.exit();
+		});
+		QObject::connect(this, &Sound::end, &loop, [&]()
+		{
+			loop.exit();
+		});
+		loop.exec();
+	});
+}
+
+void Sound::endLoops()
+{
+	emit end();
 }
 

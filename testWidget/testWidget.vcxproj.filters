@@ -64,6 +64,12 @@
     <Filter Include="Header Files\Shop">
       <UniqueIdentifier>{061282c2-9a2d-436f-968a-dce5a9849fb1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Sound">
+      <UniqueIdentifier>{8da382da-24f6-4cd6-9663-9acee8f3cd14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Sound">
+      <UniqueIdentifier>{216cef4e-7369-4170-b035-d6c386b88bac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -159,9 +165,6 @@
     <ClCompile Include="GameServer.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
     <ClCompile Include="PVP.cpp">
       <Filter>Source Files\MainWindow</Filter>
     </ClCompile>
@@ -179,6 +182,9 @@
     </ClCompile>
     <ClCompile Include="ConfirmBox.cpp">
       <Filter>Source Files\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -214,9 +220,6 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_Setting.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_CharacterWidget.h">
       <Filter>Generated Files</Filter>
@@ -336,6 +339,9 @@
     </QtMoc>
     <QtMoc Include="ConfirmBox.h">
       <Filter>Header Files\MainWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="Sound.h">
+      <Filter>Header Files\Sound</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
